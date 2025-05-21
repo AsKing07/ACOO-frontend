@@ -1,0 +1,54 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+
+
+
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @error "Breakpoint #{$breakpoint} not found in map.";
+    }
+}
+
+// Boucle pour générer les classes de marges
+@for $i from 1 through 10 {
+    .m-#{$i} {
+        margin: calc($i * $spacer *2); 
+    }
+    .mt-#{$i} {
+        margin-top: calc($i * $spacer *2); 
+    }
+    .mb-#{$i} {
+        margin-bottom: calc($i * $spacer *2); 
+    }
+    .ml-#{$i} {
+        margin-left: calc($i * $spacer *2); 
+    }
+    .mr-#{$i} {
+        margin-right: calc($i * $spacer *2); 
+    }
+}
+
+// Boucle pour générer les classes de padding
+@for $i from 1 through 10 {
+    .p-#{$i} {
+        padding: calc($i * $spacer *2 ); 
+    }
+    .pl-#{$i} {
+        padding-left: calc($i * $spacer *2); 
+    }
+    .pr-#{$i} {
+        padding-right: calc($i * $spacer *2); 
+    }
+    .pt-#{$i} {
+        padding-top: calc($i * $spacer *2); 
+    }
+    .pb-#{$i} {
+        padding-bottom: calc($i * $spacer *2); 
+    }
+}
+

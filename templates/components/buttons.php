@@ -1,0 +1,44 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="section">
+     <h2 style="text-align: center;" >BOUTONS</h2>
+     <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12  flex">
+                <button class="btn-primary">Bouton PRIMARY</button>
+            </div>
+          <div class="col-sm-12 col-md-12 col-lg-12  flex">
+                <button class="btn-secondary">Bouton SECONDARY</button>
+            </div>
+          <div class="col-sm-12 col-md-12 col-lg-12  flex">
+                <button class="btn-tertiary">Bouton TERTIAIRE</button>
+            </div>
+          <div class="col-sm-12 col-md-12 col-lg-12  flex">
+                <button class="btn-quaternary">Bouton QUATENAIRE</button>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 flex">
+                <button class="btn-outline">Bouton transparent</button>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4  flex">
+                <button class="btn-success">Bouton SUCCESS</button>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 flex">
+                <button class="btn-danger">Bouton DANGER</button>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4  flex">
+                <button class="btn-warning">Bouton ALERT</button>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12  flex">
+                <button class="btn-gray">Bouton GRAY</button>
+            </div>
+     </div>
+</div>
+    
+</body>
+</html>
+

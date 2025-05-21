@@ -1,0 +1,8 @@
+@use '../base/variables' as *;
+
+
+body{
+    background-color: $background-color;
+    font-family: $font-family;
+    gap: $spacer;
+}

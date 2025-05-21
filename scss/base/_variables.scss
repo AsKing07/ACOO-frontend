@@ -1,0 +1,35 @@
+// Colors
+
+$primary-color: #39496B;
+$secondary-color: #EBEEF8;
+$tertiary-color: #A8412C;
+$quaternary-color: #9B51E0;
+$background-color: #f0f0f0;
+
+$success-color: #00d876;
+$danger-color: #FF0000;
+$warning-color: #FFA500;
+
+$blue-color: #2D9CDB;
+$gray-color: #828282;
+$violet-color: #9B51E0;
+
+// Fonts
+$font-family: 'Montserrat', 'Arial, sans-serif, roboto';
+
+$font-size-base: 10px;
+
+// Spacing
+$spacer: 2px;
+
+$unit: 1px;
+
+
+
+// Définir les breakpoints
+$breakpoints: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px
+);

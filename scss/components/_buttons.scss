@@ -1,0 +1,100 @@
+
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+
+
+// Commons styles for boutons
+@mixin common-style-btn($bg-color, $text-color: white) {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: $spacer;
+    width: 50% ;
+    text-align: center;
+    border-radius: $unit*5;
+    border: $unit solid $bg-color !important;
+    background-color: $bg-color;
+    cursor: pointer;
+    color: $text-color !important;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover{
+        transition: all ease-in-out 0.3s;
+        transform: scale(1.05);
+        background-color: darken($bg-color, 20%);
+        color: $text-color;	
+
+    }
+    
+    &:active {
+        transform: translateY(4px) scale(1.05);
+    }
+
+    
+
+}
+
+
+.btn
+{
+    @include common-style-btn($primary-color)
+}
+
+.btn-outline{
+
+      @include common-style-btn( rgba($primary-color, 0.1)  , $primary-color);
+}
+
+
+// Primary button
+.btn-primary
+{
+    @include common-style-btn($primary-color)
+}
+
+// Secondary button
+.btn-secondary
+{
+    @include common-style-btn($secondary-color, $primary-color)
+}
+
+
+// Tertiary button
+.btn-tertiary
+{
+    @include common-style-btn($tertiary-color)
+}
+
+
+// Quaternary button
+.btn-quaternary
+{
+    @include common-style-btn($quaternary-color)
+}
+
+// Success button
+.btn-success
+{
+    @include common-style-btn($success-color)
+}
+
+// Danger button
+.btn-danger
+{
+    @include common-style-btn($danger-color)
+}
+
+// Warning button
+.btn-warning
+{
+    @include common-style-btn($warning-color)
+}
+
+// Gray button
+.btn-gray
+{
+    @include common-style-btn($gray-color)
+}

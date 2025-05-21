@@ -1,0 +1,108 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.container {
+    display: flex;
+    flex-wrap: wrap; // Permet aux éléments de passer à la ligne
+    gap: 10px; // Espacement entre les boutons
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+
+// FlexBox
+.row {
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: $spacer * 4;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: $spacer*3;
+    max-width: 100%;
+    width: 100%;
+}
+
+
+
+// Générer les classes de colonnes pour chaque breakpoint
+@each $breakpoint, $size in $breakpoints {
+    @for $i from 1 through 12 {
+        .col-#{$breakpoint}-#{$i} {
+            width: 100%; // Largeur par défaut pour les petits écrans
+
+            @include respond-to($breakpoint) {
+                width: calc(100% / 12 * #{$i}); // Applique la largeur au breakpoint
+            }
+
+            &.bg-primary {
+                background-color: $primary-color;
+            }
+            &.bg-secondary {
+                background-color: $secondary-color;
+            }
+            &.bg-tertiary {
+                background-color: $tertiary-color;
+            }
+            &.text-primary {
+                color: $primary-color;
+            }
+            &.text-secondary {
+                color: $secondary-color;
+            }
+            &.text-tertiary {
+                color: $tertiary-color;
+            }
+            &.rounded {
+                border-radius: $unit * 5;
+            }
+            &.flex {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            &.bordered {
+                border: 1px solid $primary-color;
+                &.radius {
+                    border-radius: $unit * 5;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+// Grid
+.row-grid
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: $spacer * 2;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: $spacer*2;
+    max-width: 100%;
+    width: 100%;
+
+    flex-wrap: wrap; 
+
+    @each $breakpoint, $size in $breakpoints {
+        @for $i from 1 through 12 {
+            .col-#{$breakpoint}-#{$i} {
+                grid-column: span $i;
+                &.bg-primary {
+                    background-color: $primary-color;
+                }
+            }
+        }
+    }
+    
+    
+}
