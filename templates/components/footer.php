@@ -7,6 +7,7 @@
 <body>
 
 <footer class="footer">
+    <h2 style="text-align: center;">FOOTER</h2>
   <div class="footer__container">
     <div class="footer__block footer__block--club">
       <div class="footer__block-title">ACOO - Club d’aviron</div>

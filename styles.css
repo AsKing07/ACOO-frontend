@@ -918,6 +918,111 @@
     font-size: 25px;
   }
 }
+.champion-section {
+  padding: 30px 0 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+.champion-section__title {
+  width: 100%;
+  height: 93px;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 700;
+  color: black;
+}
+
+.champion-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 63px;
+  background: white;
+  padding: 35px 80px;
+  margin-bottom: 35px;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.champion-card__image {
+  width: 483px;
+  height: 483px;
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+.champion-card__content {
+  width: 715px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+@media (max-width: 768px) {
+  .champion-card__content {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+.champion-card__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  word-break: break-word;
+  width: 100%;
+}
+.champion-card__description {
+  font-size: 20px;
+  font-weight: 400;
+  color: black;
+  line-height: 1.5;
+  word-break: break-word;
+  width: 100%;
+}
+@media (max-width: 992px) {
+  .champion-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 20px 10px;
+  }
+  .champion-card__image {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    margin: 0 auto 20px auto;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+  }
+  .champion-card__content {
+    width: 100%;
+    gap: 10px;
+  }
+}
+@media (max-width: 768px) {
+  .champion-card {
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 2px;
+  }
+  .champion-card__image {
+    max-width: 100%;
+    margin-bottom: 6px;
+  }
+  .champion-card__content {
+    gap: 6px;
+  }
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;

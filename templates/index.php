@@ -28,6 +28,8 @@
 
 <?php require_once 'components/events_card.php'; ?>
 
+<?php require_once 'components/champion_card.php'; ?>
+
 <?php require_once 'components/footer.php'; ?>
 
 
