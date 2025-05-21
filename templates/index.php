@@ -23,6 +23,10 @@
 
 
 <?php require_once 'components/buttons.php'; ?>
+
+<?php require_once 'components/events_card.php'; ?>
+
+
     
 </body>
 </html>

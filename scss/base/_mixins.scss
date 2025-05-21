@@ -14,6 +14,16 @@
     }
 }
 
+@mixin respond-to-max($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (max-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @error "Breakpoint #{$breakpoint} not found in map.";
+    }
+}
+
 // Boucle pour générer les classes de marges
 @for $i from 1 through 10 {
     .m-#{$i} {
