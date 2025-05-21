@@ -19,6 +19,9 @@
 </head>
 <body>
 
+<?php require_once 'components/grille.php'; ?>
+
+
 <?php require_once 'components/buttons.php'; ?>
     
 </body>

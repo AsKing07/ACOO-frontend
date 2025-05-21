@@ -399,15 +399,15 @@
 }
 
 .btn {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #39496B !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #39496B;
   cursor: pointer;
   color: white !important;
@@ -415,7 +415,7 @@
 }
 .btn:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #161c28;
   color: white;
 }
@@ -424,15 +424,15 @@
 }
 
 .btn-outline {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid rgba(57, 73, 107, 0.1) !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: rgba(57, 73, 107, 0.1);
   cursor: pointer;
   color: #39496B !important;
@@ -440,7 +440,7 @@
 }
 .btn-outline:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: rgba(22, 28, 40, 0.1);
   color: #39496B;
 }
@@ -449,15 +449,15 @@
 }
 
 .btn-primary {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #39496B !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #39496B;
   cursor: pointer;
   color: white !important;
@@ -465,7 +465,7 @@
 }
 .btn-primary:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #161c28;
   color: white;
 }
@@ -474,15 +474,15 @@
 }
 
 .btn-secondary {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #EBEEF8 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #EBEEF8;
   cursor: pointer;
   color: #39496B !important;
@@ -490,7 +490,7 @@
 }
 .btn-secondary:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #9faede;
   color: #39496B;
 }
@@ -499,15 +499,15 @@
 }
 
 .btn-tertiary {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #A8412C !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #A8412C;
   cursor: pointer;
   color: white !important;
@@ -515,7 +515,7 @@
 }
 .btn-tertiary:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #572217;
   color: white;
 }
@@ -524,15 +524,15 @@
 }
 
 .btn-quaternary {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #9B51E0 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #9B51E0;
   cursor: pointer;
   color: white !important;
@@ -540,7 +540,7 @@
 }
 .btn-quaternary:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #681fac;
   color: white;
 }
@@ -549,15 +549,15 @@
 }
 
 .btn-success {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #00d876 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #00d876;
   cursor: pointer;
   color: white !important;
@@ -565,7 +565,7 @@
 }
 .btn-success:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #00723e;
   color: white;
 }
@@ -574,15 +574,15 @@
 }
 
 .btn-danger {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #FF0000 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #FF0000;
   cursor: pointer;
   color: white !important;
@@ -590,7 +590,7 @@
 }
 .btn-danger:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #990000;
   color: white;
 }
@@ -599,15 +599,15 @@
 }
 
 .btn-warning {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #FFA500 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #FFA500;
   cursor: pointer;
   color: white !important;
@@ -615,7 +615,7 @@
 }
 .btn-warning:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #996300;
   color: white;
 }
@@ -624,15 +624,15 @@
 }
 
 .btn-gray {
-  position: relative;
-  display: flex;
+  display: inline-block;
   justify-content: center;
   align-items: center;
-  padding: 2px;
+  padding: 22px 46px;
   width: 50%;
   text-align: center;
   border-radius: 5px;
   border: 1px solid #828282 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #828282;
   cursor: pointer;
   color: white !important;
@@ -640,7 +640,7 @@
 }
 .btn-gray:hover {
   transition: all ease-in-out 0.3s;
-  transform: scale(1.05);
+  transform: scale(1.03);
   background-color: #4f4f4f;
   color: white;
 }
