@@ -3208,6 +3208,189 @@
   background-color: #39496B;
 }
 
+.footer {
+  background: #39496B;
+  padding: 2px 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.footer__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  min-height: 377px;
+  box-sizing: border-box;
+  flex-wrap: nowrap;
+}
+.footer__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  color: white;
+}
+.footer__block--club {
+  width: 320px;
+  min-width: 200px;
+  max-width: 100%;
+  text-align: center;
+}
+.footer__block--club .footer__block-title {
+  font-size: 24px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  padding: 10px 0;
+}
+.footer__block--club .footer__block-desc {
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 400;
+}
+.footer__block--links {
+  width: 240px;
+  min-width: 180px;
+  max-width: 100%;
+}
+.footer__block--links .footer__block-title {
+  font-size: 24px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  padding: 10px 0;
+  text-align: center;
+}
+.footer__block--links .footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.footer__block--links .footer__links a {
+  color: white;
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  transition: color 0.2s;
+}
+.footer__block--links .footer__links a:hover {
+  color: #EBEEF8;
+}
+.footer__block--contact {
+  width: 240px;
+  min-width: 180px;
+  max-width: 100%;
+}
+.footer__block--contact .footer__block-title {
+  font-size: 24px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  padding: 10px 0;
+  text-align: center;
+}
+.footer__block--contact .footer__contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer__block--contact .footer__contact-list div {
+  color: white;
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  text-align: center;
+}
+.footer__divider {
+  width: 188px;
+  height: 0;
+  border-top: 1px solid white;
+  transform: rotate(90deg);
+  align-self: center;
+  margin: 0 10px;
+  transition: all 0.3s;
+}
+.footer__copyright {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    min-height: unset;
+    gap: 20px;
+  }
+  .footer__block {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .footer__block .footer__block-title,
+  .footer__block .footer__block-desc,
+  .footer__block .footer__contact-list div {
+    text-align: center;
+  }
+  .footer__divider {
+    width: 188px;
+    height: 0;
+    border-top: 1px solid white;
+    transform: none;
+    margin: 10px 0;
+    align-self: center;
+    display: block;
+  }
+  .footer__copyright {
+    position: static;
+    margin-top: 14px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 30px 0;
+  }
+  .footer__container {
+    padding: 20px;
+    gap: 14px;
+  }
+  .footer__block {
+    gap: 6px;
+  }
+  .footer__block .footer__block-title {
+    font-size: 21px;
+  }
+  .footer__block .footer__block-desc,
+  .footer__block .footer__contact-list div {
+    font-size: 11px;
+  }
+  .footer__copyright {
+    font-size: 11px;
+    margin-top: 14px;
+  }
+}
 body {
   background-color: #f0f0f0;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
