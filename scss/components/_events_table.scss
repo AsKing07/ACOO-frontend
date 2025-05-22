@@ -1,0 +1,139 @@
+@use '../base/variables' as *;
+
+.event-table-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: $spacer * 10 0;
+  background: none;
+}
+
+.event-table__container {
+  width: 100%;
+  max-width: 90vw;
+  background: $primary-color;
+  border-radius: $spacer * 10;
+  box-shadow: 0 0 $spacer * 5 rgba(0,0,0,0.04);
+  padding: $spacer * 10 $spacer * 10;
+  margin: $spacer * 5 0;
+  position: relative;
+  overflow-x: auto;
+}
+
+.event-table__header {
+  margin-bottom: $spacer * 7;
+  .event-table__title {
+    color: white;
+    font-size: $font-size-base * 2.2;
+    font-family: $font-family;
+    font-weight: 700;
+    margin: 0;
+  }
+}
+
+.event-table__wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.event-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: transparent;
+  font-family: $font-family;
+  color: white;
+  th, td {
+    padding: $spacer * 6 $spacer * 5;
+    text-align: left;
+    font-size: $font-size-base * 1.4;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  th {
+    color: $light-gray-color;
+    font-size: $font-size-base * 1.1;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    background: none;
+    border-bottom: 2px solid $light-gray-color;
+  }
+  td {
+    vertical-align: middle;
+    background: none;
+  }
+}
+
+.event-table__name {
+  display: flex;
+  align-items: center;
+  gap: $spacer * 5;
+  .event-table__avatar {
+    width: $spacer * 20;
+    height: $spacer * 20;
+    border-radius: $spacer * 6;
+    background: #4FD1C5;
+    box-shadow: 0 $spacer * 1.75 $spacer * 2.75 rgba(0,0,0,0.02);
+    object-fit: cover;
+  }
+  span {
+    color: white;
+    font-weight: 700;
+    font-size: $font-size-base * 1.4;
+  }
+}
+
+.event-table__type {
+  display: inline-block;
+  border: 1px solid white;
+  border-radius: $spacer * 4;
+  padding: $spacer * 2 $spacer * 5;
+  font-size: $font-size-base * 1.4;
+  color: white;
+  text-align: center;
+  min-width: $spacer * 32;
+}
+
+.event-table__edit {
+  background: none;
+  border: none;
+  color: $gray-color;
+  font-size: $font-size-base * 1.4;
+  font-family: $font-family;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover {
+    color: $secondary-color;
+    text-decoration: underline;
+  }
+}
+
+// Responsive
+@media (max-width: 900px) {
+  .event-table__container {
+    max-width: 100vw;
+    padding: $spacer * 5 $spacer * 2;
+  }
+  .event-table__header .event-table__title {
+    font-size: $font-size-base * 1.7;
+  }
+  .event-table th, .event-table td {
+    font-size: $font-size-base * 1.1;
+    padding: $spacer * 4 $spacer * 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .event-table__container {
+    padding: $spacer * 2 $spacer * 1;
+    border-radius: $spacer * 4;
+  }
+  .event-table__header .event-table__title {
+    font-size: $font-size-base * 1.3;
+  }
+  .event-table th, .event-table td {
+    font-size: $font-size-base * 0.9;
+    padding: $spacer * 2 $spacer * 1;
+  }
+}
