@@ -1,0 +1,196 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.footer {
+  background: $primary-color;
+  padding: $spacer   0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  &__container {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: $spacer * 10 $spacer * 30;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
+    gap: $spacer * 10;
+    position: relative;
+    min-height: 377px;
+    box-sizing: border-box;
+    flex-wrap: nowrap; 
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacer * 5;
+    background: none;
+    color: white;
+
+    &--club {
+      width: $spacer * 160;
+      min-width: 200px;
+      max-width: 100%;
+      text-align: center;
+      .footer__block-title {
+        font-size: $font-size-base * 2.4;
+        font-family: $font-family;
+        font-weight: 700;
+        padding: $spacer * 5 0;
+      }
+      .footer__block-desc {
+        font-size: $font-size-base * 1.6;
+        font-family: $font-family;
+        font-weight: 400;
+      }
+    }
+
+    &--links {
+      width: $spacer * 120;
+      min-width: 180px;
+      max-width: 100%;
+      .footer__block-title {
+        font-size: $font-size-base * 2.4;
+        font-family: $font-family;
+        font-weight: 700;
+        padding: $spacer * 5 0;
+        text-align: center;
+      }
+      .footer__links {
+        display: flex;
+        flex-direction: column;
+        gap: $spacer * 5;
+        align-items: center;
+        a {
+          color: white;
+          font-size: $font-size-base * 1.6;
+          font-family: $font-family;
+          font-weight: 700;
+          text-decoration: none;
+          width: 100%;
+          text-align: center;
+          transition: color 0.2s;
+          &:hover {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+
+    &--contact {
+      width: $spacer * 120;
+      min-width: 180px;
+      max-width: 100%;
+      .footer__block-title {
+        font-size: $font-size-base * 2.4;
+        font-family: $font-family;
+        font-weight: 700;
+        padding: $spacer * 5 0;
+        text-align: center;
+      }
+      .footer__contact-list {
+        display: flex;
+        flex-direction: column;
+        gap: $spacer * 5;
+        div {
+          color: white;
+          font-size: $font-size-base * 1.6;
+          font-family: $font-family;
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__divider {
+    width: $spacer * 94;
+    height: 0;
+    border-top: 1px solid white;
+    transform: rotate(90deg);
+    align-self: center;
+    margin: 0 $spacer * 5;
+    transition: all 0.3s;
+  }
+
+  &__copyright {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: $spacer * 5;
+    text-align: center;
+    color: white;
+    font-size: $font-size-base * 1.6;
+    font-family: $font-family;
+    font-weight: 400;
+    margin-top: $spacer * 10;
+    margin-bottom: $spacer * 5;
+    width: 100%;
+  }
+}
+
+// Responsive
+@include respond-to-max(lg) {
+  .footer__container {
+    flex-direction: column;
+    align-items: center;
+    padding: $spacer * 15;
+    min-height: unset;
+    gap: $spacer * 10;
+  }
+  .footer__block {
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+    .footer__block-title,
+    .footer__block-desc,
+    .footer__contact-list div {
+      text-align: center;
+    }
+  }
+  .footer__divider {
+     width: $spacer * 94;
+    height: 0;
+    border-top: 1px solid white;
+    transform: none;
+    margin: $spacer * 5 0;
+    align-self: center;
+    display: block;
+  }
+  .footer__copyright {
+    position: static;
+    margin-top: $spacer * 7;
+    font-size: $font-size-base * 1.1;
+  }
+}
+
+@include respond-to-max(md) {
+  .footer {
+    padding: $spacer * 15 0;
+  }
+  .footer__container {
+    padding: $spacer * 10;
+    gap: $spacer * 7;
+  }
+  .footer__block {
+    gap: $spacer * 3;
+    .footer__block-title {
+      font-size: $font-size-base * 2.1;
+    }
+    .footer__block-desc,
+    .footer__contact-list div {
+      font-size: $font-size-base * 1.1;
+    }
+  }
+  .footer__copyright {
+    font-size: $font-size-base * 1.1;
+    margin-top: $spacer * 7;
+  }
+}

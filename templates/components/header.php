@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <section>
+        <header class="header">
+  <div class="header__container">
+    <a href="#" class="header__logo">
+  
+      <img src="https://charbel_sonon.etudiant.eemi.tech/acoo/images/Logo.png" alt="Logo ACOO" />
+    </a>
+    <nav class="header__nav">
+      <a href="#">ACCUEIL</a>
+      <a href="#">CLUB</a>
+      <a href="#">ÉVÉNEMENTS</a>
+      <a href="#">GALERIE</a>
+      <a href="#">PALMARÈS</a>
+      <a href="#">CONTACT</a>
+    </nav>
+    <button class="header__burger" aria-label="Menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="header__mobile-menu">
+    <nav>
+      <a href="#">ACCUEIL</a>
+      <a href="#">CLUB</a>
+      <a href="#">ÉVÉNEMENTS</a>
+      <a href="#">GALERIE</a>
+      <a href="#">PALMARÈS</a>
+      <a href="#">CONTACT</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Simple JS pour ouvrir/fermer le menu mobile
+  document.addEventListener('DOMContentLoaded', function () {
+    const burger = document.querySelector('.header__burger');
+    const mobileMenu = document.querySelector('.header__mobile-menu');
+    burger.addEventListener('click', function () {
+      burger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', burger.classList.contains('active'));
+    });
+  });
+</script>
+    </section>
+</body>
+</html>

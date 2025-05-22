@@ -6,9 +6,14 @@
 
 // Import des composants
 @use 'components/buttons';
+@use 'components/event_card';   
+@use 'components/champion_card'; 
 
 //Import des layouts
 @use 'layout/grid';
+@use 'layout/header';
+@use 'layout/footer';
+
 
 
 
