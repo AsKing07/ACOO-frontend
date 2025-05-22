@@ -46,7 +46,7 @@
     padding: $spacer * 10 $spacer * 8;
     background: white;
     border-radius: $spacer * 4;
-    border: 1px solid #D9D9D9;
+    border: 1px solid $gray-color;
     font-size: $font-size-base * 1.6;
     font-family: $font-family;
     color: black;
@@ -57,7 +57,7 @@
     }
     &:not(:placeholder-shown) + .form__label,
     &:focus + .form__label {
-      top: $spacer * 2;
+      top: $spacer ;
       left: $spacer * 8;
       font-size: $font-size-base * 1.2;
       color: $primary-color;
@@ -78,7 +78,7 @@
     left: $spacer * 8;
     top: 50%;
     transform: translateY(-50%);
-    color: #B3B3B3;
+    color: $light-gray-color;
     font-size: $font-size-base * 1.6;
     font-family: $font-family;
     font-weight: 400;
@@ -116,24 +116,25 @@
 
 
 
-.form__input--search {
-  background: #D9D9D9;
-  border-radius: $spacer * 10;
-  font-size: $font-size-base * 2;
-  font-family: $font-family;
-  font-weight: 300;
-  padding-left: $spacer * 15.5;
-  padding-right: $spacer * 15.5;
-  height: 61px;
-  border: none;
-  color: black;
-}
+
+// .form__input--search {
+//   background: $gray-color;
+//   border-radius: $spacer * 10;
+//   font-size: $font-size-base * 2;
+//   font-family: $font-family;
+//   font-weight: 300;
+//   padding-left: $spacer * 15.5;
+//   padding-right: $spacer * 15.5;
+//   height: 61px;
+//   border: none;
+//   color: black;
+// }
 
 .form__select {
   appearance: none;
   background: white;
   border-radius: $spacer * 4;
-  border: 1px solid #D9D9D9;
+  border: 1px solid $light-gray-color;
   font-size: $font-size-base * 1.6;
   font-family: $font-family;
   color: black;
@@ -143,13 +144,18 @@
   }
 }
 
+// Search and Select
+
 .search-section {
   background: white;
   padding: $spacer * 15 $spacer * 30;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+    justify-content: center;
   gap: $spacer * 15;
+
+
 
   &__title {
     color: black;
@@ -161,7 +167,7 @@
   &__input-wrapper {
     width: 100%;
     max-width: 1242px;
-    background: #D9D9D9;
+    background: $light-gray-color;
     border-radius: $spacer * 10;
     padding: $spacer * 6 $spacer * 15.5;
     display: flex;
@@ -184,7 +190,8 @@
   padding: $spacer * 15 $spacer * 30;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+    justify-content: center;
   gap: $spacer * 15;
 
   &__title {
@@ -197,7 +204,7 @@
   &__input-wrapper {
     width: 100%;
     max-width: 600px;
-    background: #D9D9D9;
+    background: $light-gray-color;
     border-radius: $spacer * 10;
     padding: $spacer * 6 $spacer * 15.5;
     display: flex;

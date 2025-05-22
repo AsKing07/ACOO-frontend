@@ -6,6 +6,8 @@
 </head>
 <body>
 
+<section>
+
 <footer class="footer">
     <h2 style="text-align: center;">FOOTER</h2>
   <div class="footer__container">
@@ -40,6 +42,9 @@
     </div>
   </div>
 </footer>
+
+</section>
+
     
 </body>
 </html>

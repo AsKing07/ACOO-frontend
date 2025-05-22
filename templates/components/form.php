@@ -1,3 +1,15 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+
+<section>
+
 <section class="form-section">
   <div class="form-section__header">
     <h2>FORMULAIRE TEMPLATE</h2>
@@ -17,7 +29,7 @@
     </div>
     <div class="form__group">
       <select id="choix" class="form__input form__select" required>
-        <option value="" disabled selected hidden></option>
+        <option value="" disabled selected hidden>Choisissez...</option>
         <option value="option1">Option 1</option>
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
@@ -34,7 +46,7 @@
 
 <!-- Search input screen -->
 <section class="search-section">
-  <div class="search-section__title">Rechercher une image</div>
+  <div class="search-section__title">Rechercher</div>
   <div class="search-section__input-wrapper">
     <input type="search" class="search-section__input" placeholder="Rechercher ici..." />
   </div>
@@ -52,3 +64,10 @@
     </select>
   </div>
 </section>
+
+</section>
+    
+</body>
+</html>
+
+
