@@ -1039,6 +1039,217 @@
   }
 }
 
+.form-section {
+  background: #EBEEF8;
+  padding: 30px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form-section__header {
+  width: 100%;
+  max-width: 1440px;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-section__header h2 {
+  color: black;
+  font-size: 40px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  margin: 0;
+}
+
+.form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.form__group {
+  position: relative;
+  width: 100%;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+}
+.form__input {
+  width: 100%;
+  padding: 20px 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  color: black;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.form__input:focus {
+  border-color: #39496B;
+}
+.form__input:not(:placeholder-shown) + .form__label, .form__input:focus + .form__label {
+  top: 4px;
+  left: 16px;
+  font-size: 12px;
+  color: #39496B;
+  background: white;
+  padding: 0 4px;
+}
+.form__textarea {
+  min-height: 80px;
+  resize: vertical;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.form__label {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #B3B3B3;
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 400;
+  pointer-events: none;
+  transition: all 0.2s;
+  background: transparent;
+}
+
+@media (max-width: 900px) {
+  .form-section {
+    padding: 20px 10px;
+  }
+  .form {
+    max-width: 100%;
+    gap: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .form-section {
+    padding: 10px 4px;
+  }
+  .form__header h2 {
+    font-size: 25px;
+  }
+  .form {
+    gap: 14px;
+  }
+}
+.form__input--search {
+  background: #D9D9D9;
+  border-radius: 20px;
+  font-size: 20px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 300;
+  padding-left: 31px;
+  padding-right: 31px;
+  height: 61px;
+  border: none;
+  color: black;
+}
+
+.form__select {
+  appearance: none;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #D9D9D9;
+  font-size: 16px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  color: black;
+  padding: 20px 16px;
+}
+.form__select:focus {
+  border-color: #39496B;
+}
+
+.search-section {
+  background: white;
+  padding: 30px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+.search-section__title {
+  color: black;
+  font-size: 36px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.search-section__input-wrapper {
+  width: 100%;
+  max-width: 1242px;
+  background: #D9D9D9;
+  border-radius: 20px;
+  padding: 12px 31px;
+  display: flex;
+  align-items: center;
+}
+.search-section__input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 300;
+  color: black;
+  outline: none;
+}
+
+.select-section {
+  background: white;
+  padding: 30px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+}
+.select-section__title {
+  color: black;
+  font-size: 36px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.select-section__input-wrapper {
+  width: 100%;
+  max-width: 600px;
+  background: #D9D9D9;
+  border-radius: 20px;
+  padding: 12px 31px;
+  display: flex;
+  align-items: center;
+}
+.select-section__select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 300;
+  color: black;
+  outline: none;
+  appearance: none;
+}
+
+@media (max-width: 900px) {
+  .search-section,
+  .select-section {
+    padding: 20px 6px;
+  }
+  .search-section__input-wrapper,
+  .select-section__input-wrapper {
+    max-width: 100%;
+    padding: 12px 10px;
+  }
+}
 .container {
   display: flex;
   flex-wrap: wrap;

@@ -1,0 +1,229 @@
+@use '../base/variables' as *;
+
+.form-section {
+  background: $secondary-color;
+  padding: $spacer * 15 $spacer * 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__header {
+    width: 100%;
+    max-width: 1440px;
+    padding: $spacer * 10 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      color: black;
+      font-size: $font-size-base * 4;
+      font-family: $font-family;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+}
+
+.form {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: $spacer * 20;
+
+  &__group {
+    position: relative;
+    width: 100%;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: $spacer * 2;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $spacer * 10 $spacer * 8;
+    background: white;
+    border-radius: $spacer * 4;
+    border: 1px solid #D9D9D9;
+    font-size: $font-size-base * 1.6;
+    font-family: $font-family;
+    color: black;
+    outline: none;
+    transition: border-color 0.2s;
+    &:focus {
+      border-color: $primary-color;
+    }
+    &:not(:placeholder-shown) + .form__label,
+    &:focus + .form__label {
+      top: $spacer * 2;
+      left: $spacer * 8;
+      font-size: $font-size-base * 1.2;
+      color: $primary-color;
+      background: white;
+      padding: 0 4px;
+    }
+  }
+
+  &__textarea {
+    min-height: 80px;
+    resize: vertical;
+    padding-top: $spacer * 6;
+    padding-bottom: $spacer * 6;
+  }
+
+  &__label {
+    position: absolute;
+    left: $spacer * 8;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #B3B3B3;
+    font-size: $font-size-base * 1.6;
+    font-family: $font-family;
+    font-weight: 400;
+    pointer-events: none;
+    transition: all 0.2s;
+    background: transparent;
+  }
+}
+
+
+
+// Responsive
+@media (max-width: 900px) {
+  .form-section {
+    padding: $spacer * 10 $spacer * 5;
+  }
+  .form {
+    max-width: 100%;
+    gap: $spacer * 10;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-section {
+    padding: $spacer * 5 $spacer * 2;
+  }
+  .form__header h2 {
+    font-size: $font-size-base * 2.5;
+  }
+  .form {
+    gap: $spacer * 7;
+  }
+}
+
+
+
+
+.form__input--search {
+  background: #D9D9D9;
+  border-radius: $spacer * 10;
+  font-size: $font-size-base * 2;
+  font-family: $font-family;
+  font-weight: 300;
+  padding-left: $spacer * 15.5;
+  padding-right: $spacer * 15.5;
+  height: 61px;
+  border: none;
+  color: black;
+}
+
+.form__select {
+  appearance: none;
+  background: white;
+  border-radius: $spacer * 4;
+  border: 1px solid #D9D9D9;
+  font-size: $font-size-base * 1.6;
+  font-family: $font-family;
+  color: black;
+  padding: $spacer * 10 $spacer * 8;
+  &:focus {
+    border-color: $primary-color;
+  }
+}
+
+.search-section {
+  background: white;
+  padding: $spacer * 15 $spacer * 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacer * 15;
+
+  &__title {
+    color: black;
+    font-size: $font-size-base * 3.6;
+    font-family: $font-family;
+    font-weight: 700;
+    margin-bottom: $spacer * 7;
+  }
+  &__input-wrapper {
+    width: 100%;
+    max-width: 1242px;
+    background: #D9D9D9;
+    border-radius: $spacer * 10;
+    padding: $spacer * 6 $spacer * 15.5;
+    display: flex;
+    align-items: center;
+  }
+  &__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: $font-size-base * 2;
+    font-family: $font-family;
+    font-weight: 300;
+    color: black;
+    outline: none;
+  }
+}
+
+.select-section {
+  background: white;
+  padding: $spacer * 15 $spacer * 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacer * 15;
+
+  &__title {
+    color: black;
+    font-size: $font-size-base * 3.6;
+    font-family: $font-family;
+    font-weight: 700;
+    margin-bottom: $spacer * 7;
+  }
+  &__input-wrapper {
+    width: 100%;
+    max-width: 600px;
+    background: #D9D9D9;
+    border-radius: $spacer * 10;
+    padding: $spacer * 6 $spacer * 15.5;
+    display: flex;
+    align-items: center;
+  }
+  &__select {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: $font-size-base * 2;
+    font-family: $font-family;
+    font-weight: 300;
+    color: black;
+    outline: none;
+    appearance: none;
+  }
+}
+
+// Responsive
+@media (max-width: 900px) {
+  .search-section,
+  .select-section {
+    padding: $spacer * 10 $spacer * 3;
+    &__input-wrapper {
+      max-width: 100%;
+      padding: $spacer * 6 $spacer * 5;
+    }
+  }
+}

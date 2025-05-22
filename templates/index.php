@@ -32,6 +32,8 @@
 
 <?php require_once 'components/champion_card.php'; ?>
 
+<?php require_once 'components/form.php'; ?>
+
 <?php require_once 'components/footer.php'; ?>
 
 
