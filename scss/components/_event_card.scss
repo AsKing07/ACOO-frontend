@@ -103,7 +103,7 @@
   
 
   // Responsive
-  @include respond-to-max(lg) {
+  @include respond-to-max(md) {
     flex-direction: column;
     align-items: stretch;
     gap: $spacer * 10;
@@ -117,32 +117,25 @@
       aspect-ratio: 1/1;
     }
 
+     &__title {
+      font-size: $font-size-base * 2.2;
+      text-align: center;
+     }
+
     &__content {
       width: 100%;
       gap: $spacer * 5;
     }
+
+    &__description {
+       font-size: $font-size-base * 1.5;
+        text-align: center;
+     }
   }
 
-  // @include respond-to-max(md) {
-  //   padding: $spacer * 5 $spacer * 2;
-
-  //   &__image {
-  //     max-width: 220px;
-  //     margin: 0 auto $spacer * 5 auto;
-  //   }
-
-  //   &__title {
-  //     font-size: $font-size-base * 2.2;
-  //   }
-
-  //   &__description {
-  //     font-size: $font-size-base * 1.5;
-  //   }
 
 
-  // }
-
-  @include respond-to-max(md) {
+  @include respond-to-max(sm) {
     gap: $spacer * 5;
     padding: $spacer * 3 $spacer * 1;
 

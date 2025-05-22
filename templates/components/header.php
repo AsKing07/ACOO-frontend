@@ -10,7 +10,7 @@
   <div class="header__container">
     <a href="#" class="header__logo">
   
-      <img src="/images/logo.png" alt="Logo ACOO" />
+      <img src="https://charbel_sonon.etudiant.eemi.tech/acoo/images/Logo.png" alt="Logo ACOO" />
     </a>
     <nav class="header__nav">
       <a href="#">ACCUEIL</a>
