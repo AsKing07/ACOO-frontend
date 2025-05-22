@@ -14,12 +14,14 @@
             /* Ligne de séparatiion en bas */
             border-bottom: 1px solid black;
             margin-bottom: 20px;
+            padding-bottom: 20px;
             
         }
     </style>
     <link rel="stylesheet"  href="styles.css">
 </head>
 <body>
+<?php require_once 'components/header.php'; ?>
 
 <?php require_once 'components/grille.php'; ?>
 

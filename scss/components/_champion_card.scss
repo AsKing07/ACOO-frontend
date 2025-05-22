@@ -118,5 +118,9 @@
     &__content {
       gap: $spacer * 3;
     }
+     &__title{
+      text-align: center;
+      margin: 5px auto;
+    }
   }
 }
