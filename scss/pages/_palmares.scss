@@ -1,0 +1,149 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+
+.body-palmares {
+  background: #fff;
+
+  .palmares-hero {
+    position: relative;
+    width: 100%;
+    height: 38vw;
+    min-height: 320px;
+    max-height: 420px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    &__overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-top: 25px;
+      background: rgba(0,0,0,0.15);
+    }
+    &__logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+    &__text {
+      background: rgba(57,73,107,0.8);
+      border-radius: 12px;
+      padding: 20px 28px;
+      color: #fff;
+      text-align: center;
+      h1 {
+        font-size: 2rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        margin-bottom: 5px;
+      }
+      p {
+        font-size: 1.1rem;
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+      }
+    }
+  }
+
+  .palmares-trophees {
+    background: #5c7292;
+    padding: 40px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 32px;
+    }
+    &__content {
+      display: flex;
+      gap: 32px;
+      width: 100%;
+      max-width: 900px;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    &__card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 220px;
+      img {
+        width: 200px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+      &__label {
+        color: #39496B;
+        font-weight: 700;
+        font-size: 1.1rem;
+        text-align: center;
+        margin-top: 8px;
+      }
+    }
+    &__champion {
+      img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      }
+    }
+    &__cta {
+      margin-top: 24px;
+      button {
+        min-width: 220px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+ 
+  // Responsive
+  @media (max-width: 900px) {
+    .palmares-hero {
+      height: 220px;
+      &__logo { width: 80px; }
+      &__text { padding: 12px 10px; h1 { font-size: 1.2rem; } }
+    }
+    .palmares-trophees__content {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .palmares-trophees__champion img,
+    .palmares-trophees__card img { width: 160px; height: 100px; }
+ 
+  }
+  @media (max-width: 600px) {
+    .palmares-hero { min-height: 120px; }
+    .palmares-trophees { padding: 20px 0 30px 0; }
+   
+   
+  }
+}

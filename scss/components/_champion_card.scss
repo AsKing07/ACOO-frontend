@@ -4,123 +4,92 @@
 
 
 
-// Page EVENEMENTS
-.champion-section {
-  padding: calc($spacer * 15) 0 calc($spacer * 25);
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
+  .palmares-champions {
 
-  &__title {
-    width: 100%;
-    height: $font-size-base * 9.3;
-    padding: $spacer * 10 0;
-    text-align: center;
-    font-size: $font-size-base * 4;
-    font-weight: 700;
-    color: black;
-  }
-}
-
-.champion-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: $spacer * 31.5; // 63px
-  background: white;
-  padding: $spacer * 17.5 $spacer * 40; // 35px 80px
-  margin-bottom: $spacer * 17.5;
-  max-width: 100%;
-  width: 100%;
-  box-sizing: border-box;
-
-  &__image {
-    width: $spacer * 241.5; // 483px
-    height: $spacer * 241.5;
-    max-width: 100%;
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    flex-shrink: 0;
-    border-radius: $spacer * 2.5;
-  }
-
-  &__content {
-    width: $spacer * 357.5; // 715px
-    max-width: 100%;
+    padding: 48px 0;
     display: flex;
     flex-direction: column;
-    gap: $spacer * 5;
-    align-items: flex-start;
+    gap: 32px;
+    align-items: center;
 
-    @include respond-to-max(md) {
-      width: 100%;
+    .champion-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 32px 24px;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      text-align: center;
+      gap: 32px;
+      width: 90%;
+      max-width: 1100px;
+
+      &__image {
+        width: 160px;
+        height: 160px;
+        border-radius: 12px;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      &__content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        h3 {
+          font-size: 1.5rem;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 700;
+          margin: 0 0 8px 0;
+        }
+        p {
+          font-size: 1rem;
+          color: #222;
+          margin-bottom: 12px;
+        }
+        .btn-primary {
+          align-self: flex-start;
+        }
+      }
     }
-  }
-
-
-  &__title {
-    font-size: $font-size-base * 3.2;
-    font-weight: 700;
-    color: black;
-    word-break: break-word;
-    width: 100%;
-  }
-
-  &__description {
-    font-size: $font-size-base * 2;
-    font-weight: 400;
-    color: black;
-    line-height: 1.5;
-    word-break: break-word;
-    width: 100%;
-  }
-
-  
-
-  // Responsive
-  @include respond-to-max(lg) {
-    flex-direction: column;
-    align-items: stretch;
-    gap: $spacer * 10;
-    padding: $spacer * 10 $spacer * 5;
-
-    &__image {
-      width: 100%;
-      max-width: 350px;
-      height: auto;
-      margin: 0 auto $spacer * 10 auto;
-      aspect-ratio: 1/1;
-      border-radius: $spacer * 2.5;
-    }
-
-    &__content {
-      width: 100%;
-      gap: $spacer * 5;
-    }
-  }
-
-
-  @include respond-to-max(md) {
+    // Responsive
+  @media (max-width: 900px) {
     justify-content: center;
     align-items: center;
-    gap: $spacer * 5;
-    padding: $spacer * 3 $spacer * 1;
+   
+    .champion-card {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-    &__image {
-      max-width: 100%;
-      margin-bottom: $spacer * 3;
-    }
+      .btn-primary
+{
+            width: fit-content;
+        
+          align-self: center;;
 
-    &__content {
-      gap: $spacer * 3;
+}
+
+.champion-card__content {
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+      }
+
+      padding: 20px 10px;
+      gap: 16px;
+      width: 98%;
     }
-     &__title{
-      text-align: center;
-      margin: 5px auto;
+ .champion-card__image {
+      width: 120px; height: 120px;
     }
   }
+  @media (max-width: 600px) {
+  
+ padding: 20px 0; gap: 16px; 
+ .champion-card { padding: 10px 2px;
+
+
 }
+  .champion-card__image { width: 80px; height: 80px; }
+  }
+  }

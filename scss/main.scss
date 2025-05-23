@@ -6,11 +6,17 @@
 
 // Import des composants
 @use 'components/buttons';
+@use 'components/card';
 @use 'components/event_card';   
 @use 'components/champion_card'; 
 @use 'components/form';
 @use 'components/faq';
 @use 'components/events_table';
+
+
+//Import des styles des pages personnalisées
+@use 'pages/accueil';
+@use 'pages/palmares';
 
 //Import des layouts
 @use 'layout/grid';
