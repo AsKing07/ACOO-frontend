@@ -1398,6 +1398,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 20px 0;
   background: none;
 }
@@ -1671,51 +1672,72 @@
   width: 70%;
 }
 
-.calendar {
-  width: 420px;
-  margin: auto;
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background: none;
+}
+.calendar-container .calendar {
+  width: 100%;
+  max-width: 1200px;
+  margin: 48px;
+  color: black;
   font-family: sans-serif;
-  color: white;
   text-align: center;
 }
-.calendar .header {
+.calendar-container .calendar .header-calendar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 30px;
 }
-.calendar .header button {
-  background: none;
+.calendar-container .calendar .header-calendar button {
   border: none;
-  color: #39496B;
-  font-size: 1.5rem;
+  background-color: #39496B;
+  color: white;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 11px;
   cursor: pointer;
 }
-.calendar .header .month {
+.calendar-container .calendar .header-calendar .month {
   font-weight: bold;
   line-height: 1.2;
+  font-size: 32px;
 }
-.calendar .day-names {
+.calendar-container .calendar .day-names {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin-bottom: 0.5rem;
+  gap: 5px;
 }
-.calendar .day-names div {
+.calendar-container .calendar .day-names div {
   color: white;
   font-size: 0.8rem;
+  background-color: #39496B;
+  border-radius: 3px;
+  padding: 9px 29px;
+  font-weight: bold;
 }
-.calendar .grid {
+.calendar-container .calendar .grid-calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 0.4rem;
 }
-.calendar .grid .day {
+.calendar-container .calendar .grid-calendar .day {
   background-color: #39496B;
-  padding: 0.8rem 0;
+  padding: 0.8rem 20px;
   border-radius: 0.4rem;
   font-weight: bold;
+  color: white;
+  font-size: 32px;
+  height: 172px;
+  text-align: left;
 }
-.calendar .grid .day.adjacent {
+.calendar-container .calendar .grid-calendar .day.adjacent {
   background-color: #A3B0CA;
 }
 

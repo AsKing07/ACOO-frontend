@@ -1,54 +1,79 @@
-.calendar {
-  width: 420px;
-  margin: auto;
-  font-family: sans-serif;
-  color: white;
-  text-align: center;
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
 
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+.calendar-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacer * 10 0;
+  background: none;
+  .calendar {
+    width: 100%;
+    max-width: 1200px;
+    margin: 48px;
+    color: black;
+    font-family: sans-serif;
+    text-align: center;
 
-    button {
-      background: none;
-      border: none;
-      color: #39496B;
-      font-size: 1.5rem;
-      cursor: pointer;
+    .header-calendar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      gap: 30px;
+
+      button{
+        border: none;
+        background-color: $primary-color;
+        color: white;
+        border-radius: 5px;
+        font-size: 12px;
+        padding: 11px;
+        cursor: pointer;
+      }
+
+      .month {
+        font-weight: bold;
+        line-height: 1.2;
+        font-size: 32px;
+      }
     }
 
-    .month {
-      font-weight: bold;
-      line-height: 1.2;
+    .day-names {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin-bottom: 0.5rem;
+      gap: 5px;
+
+      div {
+        color: white;
+        font-size: 0.8rem;
+        background-color: $primary-color;
+        border-radius: 3px;
+        padding: 9px 29px;
+        font-weight: bold;
+      }
     }
-  }
 
-  .day-names {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    margin-bottom: 0.5rem;
+    .grid-calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.4rem;
 
-    div {
-      color: white;
-      font-size: 0.8rem;
-    }
-  }
+      .day {
+        background-color: $primary-color;
+        padding: 0.8rem 20px;
+        border-radius: 0.4rem;
+        font-weight: bold;
+        color: white;
+        font-size: 32px;
+        height: 172px;
+        text-align: left;
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 0.4rem;
-
-    .day {
-      background-color: #39496B;
-      padding: 0.8rem 0;
-      border-radius: 0.4rem;
-      font-weight: bold;
-
-      &.adjacent {
-        background-color: #A3B0CA;
+        &.adjacent {
+          background-color: $calendar-secondary-color;
+        }
       }
     }
   }
