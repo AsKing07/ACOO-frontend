@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ACOO : Notre palmares</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
@@ -117,7 +117,7 @@
     <div class="footer__block footer__block--links">
       <div class="footer__block-title">LIENS</div>
       <nav class="footer__links">
-        <a href="#">ACCUEIL</a>
+        <a href="./accueil.php">ACCUEIL</a>
         <a href="#">CLUB</a>
         <a href="#">ÉVÉNEMENTS</a>
         <a href="#">GALERIE</a>

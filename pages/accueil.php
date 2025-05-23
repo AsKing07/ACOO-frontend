@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styles.css">
 
+    <title>ACOO: Aviron Orléans</title>
+
 </head>
 <body class="body-accueil">
 <header class="header">
@@ -57,7 +59,7 @@
   <section class="about-section">
     <h2 class="section-title">A PROPOS DU CLUB</h2>
     <div class="about-section__content">
-      <img src="../assets/images/logo.png" alt="Logo ACOO" class="about-section__image">
+      <img src="../assets/images/Logo.png" alt="Logo ACOO" class="about-section__image">
       <div class="about-section__text">
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <a href="#" class="btn-primary">EN SAVOIR +</a>
@@ -137,7 +139,7 @@
         <textarea class="form__input form__textarea" placeholder=" " required></textarea>
         <label class="form__label">Message</label>
       </div>
-       <div class="contact-form__cta">
+       <div class="form__cta">
         <button type="submit" class="btn-primary">ENVOYER</button>
       </div>
 
@@ -160,7 +162,7 @@
         <a href="#">CLUB</a>
         <a href="#">ÉVÉNEMENTS</a>
         <a href="#">GALERIE</a>
-        <a href="#">PALMARÈS</a>
+        <a href="./palmares.php">PALMARÈS</a>
         <a href="#">CONTACT</a>
       </nav>
     </div>

@@ -8,7 +8,7 @@
 // Commons styles for boutons
 @mixin common-style-btn($bg-color, $text-color: white) {
     // position: relative;
-    display: inline-block;
+    // display: inline-block;
     justify-content: center;
     align-items: center;
     padding: calc($spacer * 11) calc($spacer * 23);
