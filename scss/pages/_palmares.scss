@@ -147,3 +147,27 @@
    
   }
 }
+
+
+  .palmares-champions {
+
+    padding: 48px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+
+
+    // Responsive
+  @media (max-width: 900px) {
+    justify-content: center;
+    align-items: center;
+   
+
+  }
+  @media (max-width: 600px) {
+  
+ padding: 20px 0; gap: 16px; 
+
+  }
+  }

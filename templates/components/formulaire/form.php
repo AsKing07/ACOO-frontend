@@ -1,26 +1,4 @@
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="stylesheet" href="../../css/styles.css">
-
-</head>
-<body>
-
-
-<section>
-
-        <div style="margin-bottom: 50px;" >
-
-          <a href="../index.html">
-          <button class="btn-primary">
-        RETOUR AU TEMPLATE
-      </button>
-      </a>
-
-      </div>
-
 <section class="form-section">
   <div class="form-section__header">
     <h2>FORMULAIRE TEMPLATE</h2>
@@ -55,30 +33,5 @@
   </form>
 </section>
 
-<!-- Search input screen -->
-<section class="search-section">
-  <div class="search-section__title">Rechercher</div>
-  <div class="search-section__input-wrapper">
-    <input type="search" class="search-section__input" placeholder="Rechercher ici..." />
-  </div>
-</section>
-
-<!-- Select screen -->
-<section class="select-section">
-  <div class="select-section__title">Choisir une option</div>
-  <div class="select-section__input-wrapper">
-    <select name="choix" id="choix" class="select-section__select">
-      <option value="" disabled selected hidden>Choisissez...</option>
-      <option value="option1">Option 1</option>
-      <option value="option2">Option 2</option>
-      <option value="option3">Option 3</option>
-    </select>
-  </div>
-</section>
-
-</section>
-    
-</body>
-</html>
 
 

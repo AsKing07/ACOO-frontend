@@ -1,29 +1,4 @@
-
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/styles.css">
-
-</head>
-<body>
-
-    
-      <div style="margin-bottom: 50px;" >
-
-          <a href="../index.html">
-          <button class="btn-primary">
-        RETOUR AU TEMPLATE
-      </button>
-      </a>
-
-      </div>
-
-        <div class="section">
-        <h2 style="text-align: center;" >Tableau Evenement Dashboard</h2>
-       
-       <section class="event-table-section">
+<section class="event-table-section">
  
   <div class="event-table__container">
     <div class="event-table__header">
@@ -73,12 +48,9 @@
               <button class="event-table__edit">Modifier</button>
             </td>
           </tr>
-       
+          <!-- Ajoute d'autres lignes ici -->
         </tbody>
       </table>
     </div>
   </div>
 </section>
-    </div>
-</body>
-</html>

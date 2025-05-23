@@ -1,27 +1,9 @@
 
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/styles.css">
-
-</head>
-<body>
-
     
-      <div style="margin-bottom: 50px;" >
+     
 
-          <a href="../index.html">
-          <button class="btn-primary">
-        RETOUR AU TEMPLATE
-      </button>
-      </a>
-
-      </div>
-
-        <div class="section">
-        <h2 style="text-align: center;" >Tableau</h2>
+     
         <!-- Table Responsive Générique -->
 <section class="table-section">
   <div class="table__container">
@@ -52,6 +34,4 @@
   </div>
 </section>
        
-    </div>
-</body>
-</html>
+  

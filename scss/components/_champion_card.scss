@@ -4,15 +4,10 @@
 
 
 
-  .palmares-champions {
 
-    padding: 48px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    align-items: center;
 
-    .champion-card {
+
+      .champion-card {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -50,13 +45,12 @@
           align-self: flex-start;
         }
       }
-    }
+
+      
     // Responsive
   @media (max-width: 900px) {
-    justify-content: center;
-    align-items: center;
-   
-    .champion-card {
+ 
+    
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -78,18 +72,18 @@
       padding: 20px 10px;
       gap: 16px;
       width: 98%;
-    }
+    
  .champion-card__image {
       width: 120px; height: 120px;
     }
   }
   @media (max-width: 600px) {
   
- padding: 20px 0; gap: 16px; 
- .champion-card { padding: 10px 2px;
+
+ padding: 10px 2px;
 
 
-}
+
   .champion-card__image { width: 80px; height: 80px; }
   }
-  }
+    }
