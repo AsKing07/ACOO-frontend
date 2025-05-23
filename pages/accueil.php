@@ -35,7 +35,7 @@
       <a href="#">CLUB</a>
       <a href="#">ÉVÉNEMENTS</a>
       <a href="#">GALERIE</a>
-      <a href="palmares.html">PALMARÈS</a>
+      <a href="palmares.php">PALMARÈS</a>
       <a href="#">CONTACT</a>
     </nav>
   </div>
