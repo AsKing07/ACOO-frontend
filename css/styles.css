@@ -1775,6 +1775,138 @@
   margin: 48px 0;
 }
 
+.labels-container {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  justify-content: center;
+}
+.labels-container .label-para {
+  justify-content: center;
+  align-items: center;
+  padding: 22px 46px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #2D9CDB !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  background-color: #2D9CDB;
+  font-weight: bold;
+  cursor: pointer;
+  color: white !important;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+.labels-container .label-para:hover {
+  transition: all ease-in-out 0.3s;
+  transform: scale(1.03);
+  background-color: rgb(23.7073170732, 96.8048780488, 138.2926829268);
+  color: white;
+}
+.labels-container .label-para:active {
+  transform: translateY(4px) scale(1.05);
+}
+.labels-container .label-avifit {
+  justify-content: center;
+  align-items: center;
+  padding: 22px 46px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #828282 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  background-color: #828282;
+  font-weight: bold;
+  cursor: pointer;
+  color: white !important;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+.labels-container .label-avifit:hover {
+  transition: all ease-in-out 0.3s;
+  transform: scale(1.03);
+  background-color: #4f4f4f;
+  color: white;
+}
+.labels-container .label-avifit:active {
+  transform: translateY(4px) scale(1.05);
+}
+.labels-container .label-indoor {
+  justify-content: center;
+  align-items: center;
+  padding: 22px 46px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #00d876 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  background-color: #00d876;
+  font-weight: bold;
+  cursor: pointer;
+  color: white !important;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+.labels-container .label-indoor:hover {
+  transition: all ease-in-out 0.3s;
+  transform: scale(1.03);
+  background-color: rgb(0, 114, 62.2777777778);
+  color: white;
+}
+.labels-container .label-indoor:active {
+  transform: translateY(4px) scale(1.05);
+}
+.labels-container .label-riviere {
+  justify-content: center;
+  align-items: center;
+  padding: 22px 46px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #FFA500 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  background-color: #FFA500;
+  font-weight: bold;
+  cursor: pointer;
+  color: white !important;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+.labels-container .label-riviere:hover {
+  transition: all ease-in-out 0.3s;
+  transform: scale(1.03);
+  background-color: #996300;
+  color: white;
+}
+.labels-container .label-riviere:active {
+  transform: translateY(4px) scale(1.05);
+}
+.labels-container .label-sante {
+  justify-content: center;
+  align-items: center;
+  padding: 22px 46px;
+  width: fit-content;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid #9B51E0 !important;
+  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
+  background-color: #9B51E0;
+  font-weight: bold;
+  cursor: pointer;
+  color: white !important;
+  text-decoration: none;
+  transition: transform 0.3s ease-in-out;
+}
+.labels-container .label-sante:hover {
+  transition: all ease-in-out 0.3s;
+  transform: scale(1.03);
+  background-color: rgb(103.9756097561, 30.6975609756, 172.3024390244);
+  color: white;
+}
+.labels-container .label-sante:active {
+  transform: translateY(4px) scale(1.05);
+}
+
 .body-accueil .accueil-hero {
   position: relative;
   width: 100%;

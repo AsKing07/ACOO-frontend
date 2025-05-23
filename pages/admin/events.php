@@ -72,6 +72,16 @@
 
         </div>
 
+        <div class="responsive labels-container">
+            <div class="label-para"><p>Para-Aviron</p></div>
+            <div class="label-avifit"><p>Avifit</p></div>
+            <div class="label-indoor"><p>Aviron Indoor</p></div>
+            <div class="label-riviere"><p>Aviron en rivière</p></div>
+            <div class="label-sante"><p>Aviron Santé et bien-être</p></div>
+        </div>
+
+            
+
         <div class="responsive event-table">
             <section class="event-table-section">
                 <div class="event-table__container">
