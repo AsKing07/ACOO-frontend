@@ -1,15 +1,7 @@
-
-
-
-
-
     <div class="event-card">
-      <img src="/assets/images/Galerie2.png" alt="Illustration événement" class="event-card__image">
+      <img src="https://placehold.co/483x483" alt="Illustration événement" class="event-card__image">
       <div class="event-card__content">
-        <div class="event-card__tag">
-          <img src="/assets/images/icons/aviron-silhouette.png" alt="Logo activité">
-          <div class="event-card__tag-text">Aviron Indoor</div>
-        </div>
+
         <h3 class="event-card__title">Compétition le 22 octobre</h3>
         <p class="event-card__description">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard

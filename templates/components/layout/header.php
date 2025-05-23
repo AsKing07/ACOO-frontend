@@ -11,7 +11,7 @@
       <a href="/">ACCUEIL</a>
       <a href="#">CLUB</a>
       <a href="#">ÉVÉNEMENTS</a>
-      <a href="#">ACTUALITES</a>
+      <a href="/pages/actualites.php">ACTUALITES</a>
       <a href="#">GALERIE</a>
       <a href="/pages/palmares.php">PALMARÈS</a>
       <a href="#">CONTACT</a>
@@ -27,7 +27,7 @@
       <a href="/">ACCUEIL</a>
       <a href="#">CLUB</a>
       <a href="#">ÉVÉNEMENTS</a>
-      <a href="#">ACTUALITES</a>
+      <a href="/pages/actualites.php">ACTUALITES</a>
 
       <a href="#">GALERIE</a>
       <a href="/pages/palmares.php">PALMARÈS</a>

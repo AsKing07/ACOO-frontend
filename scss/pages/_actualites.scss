@@ -1,0 +1,145 @@
+
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.body-actualites {
+  background: $secondary-color;
+  min-height: 100vh;
+  font-family: $font-family;
+}
+
+// HERO
+.actualites-hero {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.6);
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  &__title {
+    font-size: $font-size-base * 3.2;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+  }
+
+  &__subtitle {
+    font-size: $font-size-base * 1.7;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+}
+
+// NEWSLETTERS
+.newsletters-section {
+
+  margin: 40px auto 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 3.5rem 3rem 3rem 3rem;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    h2 {
+      font-size: $font-size-base * 3.2; 
+      font-weight: 800;
+      color: $primary-color;
+      margin: 0;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  &__content {
+     p:nth-child(1), p:nth-child(2) {
+        text-align: center;;
+    }
+    margin-bottom: 2.5rem;
+    p {
+      color: $primary-color;
+      margin-bottom: 0.7rem;
+      font-size: $font-size-base * 1.5;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    // justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__suggestion {
+    background: $secondary-color;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2.5rem;
+    text-align: center;
+    h3 {
+      color: $primary-color;
+      font-size: $font-size-base * 2.1; // Plus grand
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+  }
+}
+
+
+// Responsive
+@include respond-to-max(lg) {
+  .actualites-hero {
+    height: 220px;
+    &__title { font-size: $font-size-base * 2.2; }
+    &__subtitle { font-size: $font-size-base * 1.2; }
+  }
+   .newsletters-section {
+    max-width: 98vw;
+    padding: 2rem 0.5rem;
+    &__header h2 { font-size: $font-size-base * 2.2; }
+    &__card { gap: 1.2rem; }
+    &__suggestion h3 { font-size: $font-size-base * 1.5; }
+  }
+}
+
+@include respond-to-max(md) {
+  .actualites-hero {
+    height: 140px;
+    &__title { font-size: $font-size-base * 1.4; }
+    &__subtitle { font-size: $font-size-base * 1; }
+  }
+   .newsletters-section {
+    max-width: 100vw;
+    padding: 1rem 0.2rem;
+    &__header h2 { font-size: $font-size-base * 1.4; }
+    &__suggestion h3 { font-size: $font-size-base * 1.1; }
+  }
+}
