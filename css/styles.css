@@ -411,6 +411,7 @@
   background-color: #39496B;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn:hover {
@@ -435,6 +436,7 @@
   background-color: rgba(57, 73, 107, 0.1);
   cursor: pointer;
   color: #39496B !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-outline:hover {
@@ -459,6 +461,7 @@
   background-color: #39496B;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-primary:hover {
@@ -483,6 +486,7 @@
   background-color: #EBEEF8;
   cursor: pointer;
   color: #39496B !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-secondary:hover {
@@ -507,6 +511,7 @@
   background-color: #A8412C;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-tertiary:hover {
@@ -531,6 +536,7 @@
   background-color: #9B51E0;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-quaternary:hover {
@@ -555,6 +561,7 @@
   background-color: #00d876;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-success:hover {
@@ -579,6 +586,7 @@
   background-color: #FF0000;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-danger:hover {
@@ -603,6 +611,7 @@
   background-color: #FFA500;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-warning:hover {
@@ -627,6 +636,7 @@
   background-color: #828282;
   cursor: pointer;
   color: white !important;
+  text-decoration: none;
   transition: transform 0.3s ease-in-out;
 }
 .btn-gray:hover {
@@ -1676,7 +1686,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
   background: none;
 }
 .calendar-container .calendar {
@@ -1739,6 +1748,18 @@
 }
 .calendar-container .calendar .grid-calendar .day.adjacent {
   background-color: #A3B0CA;
+}
+
+.main-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main-container h1 {
+  color: #39496B;
+  font-size: 57px;
+  font-weight: bold;
 }
 
 .body-accueil .accueil-hero {

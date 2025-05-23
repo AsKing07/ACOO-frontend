@@ -1,0 +1,16 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.main-container{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h1 {
+        color: $primary-color;
+        font-size: 57px;
+        font-weight: bold;
+    }
+}

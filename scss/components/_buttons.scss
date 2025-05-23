@@ -20,6 +20,7 @@
     background-color: $bg-color;
     cursor: pointer;
     color: $text-color !important;
+    text-decoration: none;
     transition: transform 0.3s ease-in-out;
 
     &:hover{
