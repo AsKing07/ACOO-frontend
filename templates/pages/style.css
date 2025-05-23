@@ -1,0 +1,270 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    background-color: black;
+    opacity: 0.4;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    
+   
+    
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+    gap: 15px;
+}
+
+.nav li {
+    margin: 0;
+}
+
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav a:hover {
+    color: #f39c12;
+}
+
+.nav img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    margin-left: 20px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.container {
+    max-width: 100%;
+    height: auto;
+    padding: 50px 20px;
+    text-align: center;
+    background-image: url('/images/Palmares.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.container .img {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.Trophees {
+    background-color: #547394;
+    padding: 40px 20px;
+    color: white;
+}
+
+.Trophees h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.video .img {
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 350px;
+    border: none;
+    border-radius: 10px;
+}
+
+.champion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 50px 20px;
+    gap: 20px;
+}
+
+.champion img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.Sectionchampion {
+    max-width: 700px;
+    text-align: center;
+}
+
+.Sectionchampion h2 {
+    margin-bottom: 10px;
+}
+
+.Sectionchampion p {
+    margin-bottom: 20px;
+}
+
+.Sectionchampion button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #547394;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Sectionchampion button:hover {
+    background-color: #415b70;
+}
+
+.footer {
+    background-color: #39496B;
+    color: #fff;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    text-align: center;
+}
+
+.footer h2 {
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin: 5px 0;
+}
+
+.footer hr {
+    border: 1px solid #fff;
+    margin: 10px auto;
+    width: 80%;
+}
+
+@media screen and (min-width: 768px) {
+    .video {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .champion {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .Sectionchampion {
+        text-align: left;
+        margin-left: 30px;
+    }
+
+    .footer {
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+        justify-content: center;
+
+    }
+}
+
+.footer a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.footer-content{
+    width: 23%;
+    border-right: 1px solid #fff;
+    padding: 20px;
+    
+}
+.footer-content1{
+    width: 23%;
+    border-right: 1px solid #fff;
+    padding: 20px;
+}
+.footer-content2{
+    width: 23%;
+   
+}
+
+
+.containerAccueil{
+    max-width: 100%;
+    height: 600px;
+    padding: 50px 20px;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    
+    
+
+}
+
+.video-background video {
+  
+  min-width: 100%;
+  min-height: 100%;
+} 
+
+.text{
+
+    position: absolute;
+    bottom: 20%;
+    background-color: #39496B;
+    opacity: 0.6;
+    border-radius: 2%;
+    padding: 2%;
+    color: white;
+   
+
+}
+.text h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.video-background{
+    display: flex;
+    justify-content: center;
+
+}
+
