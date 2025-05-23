@@ -3,25 +3,42 @@
 @use '../base/mixins' as *;
 
 
+// header {
+//     color: #fff;
+//     padding: 10px;
+//     text-align: center;
+//     background-color: black;
+//     opacity: 0.4;
+//     position: fixed;
+//     width: 100%;
+//     z-index: 1;
+    
+   
+    
+// }
+
 
 
 .header {
-  width: 100%;
-  background: $gray-color;
-  position: relative;
-  z-index: 10;
+ width: 100%;
+  background: rgba(0, 0, 0, 0.85); // Fond noir semi-transparent
+  position: fixed; // Fixe en haut de page
+  top: 0;
+  left: 0;
+  z-index: 100;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
 
   &__container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: $spacer * 14.5 $spacer * 55; // 29px 110px
+    padding: $spacer * 14.5 $spacer * 55;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: $spacer * 10; // 20px
+    gap: $spacer * 10;
     position: relative;
   }
-
   &__logo {
     margin-right: $spacer * 10;
     img {
@@ -115,6 +132,10 @@
 
 // Responsive
 @media (max-width: 1100px) {
+
+
+
+
   .header__container {
     padding: $spacer * 10 $spacer * 7;
     gap: $spacer * 5;

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ACOO : Notre palmares</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
 </head>
 
 
@@ -132,6 +133,14 @@
         <div>Téléphone : 02 35 39 23 45</div>
         <div>Email : acoo@acoo.fr</div>
       </div>
+                 <div class="footer__socials">
+  <a  href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="footer__social-link">
+  <i class="fa-brands fa-facebook"></i>
+  </a>
+  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+<i class="fa-brands fa-square-instagram"></i>
+  </a>
+</div>
     </div>
     <div class="footer__copyright">
       ACOO x EEMI - Copyright @2025

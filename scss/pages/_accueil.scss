@@ -27,11 +27,12 @@
     }
   }
  &__content {
+margin-top: $spacer * 10;
     position: relative;
     z-index: 2;
     background: rgba(0,0,0,0.35);
     border-radius: 10px;
-    padding: 2.5rem 2rem;
+    padding: $spacer * 10;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,11 +51,13 @@
     font-size: 3rem;
     font-weight: 700;
     color: #fff;
+    margin: 0;
   }
   &__subtitle {
     font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
+    margin: 0;
   }
 }
 
@@ -105,22 +108,7 @@
     }
   }
 
-  // ÉVÉNEMENTS (mini-cards déjà stylées dans components)
-  // .events-section {
-  //   background: #ebeef8;
-  //   padding: 2.5rem 0 2rem 0;
-  //   &__cards {
-  //     display: flex;
-  //     gap: 2rem;
-  //     justify-content: center;
-  //     flex-wrap: wrap;
-  //     margin-bottom: 2rem;
-  //   }
-  //   &__cta {
-  //     display: flex;
-  //     justify-content: center;
-  //   }
-  // }
+
 
   // GALERIE
   .gallery-section {
@@ -175,12 +163,12 @@
 @media (max-width: 900px) {
   .body-accueil {
 
-    .accueil-hero__content { padding: 1.5rem 1rem; }
+    .accueil-hero__content { padding: $spacer * 3; }
      .accueil-hero__title {
-    font-size: 2rem;
+    font-size: $font-size-base * 2.5;
   }
   .accueil-hero__subtitle {
-    font-size: 1rem;
+    font-size: $font-size-base * 1.5;
   }
     .about-section__content { flex-direction: column; gap: 1.5rem;       justify-content: center;
       text-align: center; }
@@ -190,7 +178,7 @@
 }
 @media (max-width: 600px) {
   .body-accueil {
-    .accueil-hero__title { font-size: 2rem; }
+    .accueil-hero__title { font-size: $font-size-base *2; }
     .section-title { font-size: 1.3rem; }
     .about-section__image { width: 120px; height: 120px; }
     .gallery-section__image { max-width: 100%; height: 120px; }
