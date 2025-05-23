@@ -409,6 +409,7 @@
   border: 1px solid #39496B !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #39496B;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -434,6 +435,7 @@
   border: 1px solid rgba(57, 73, 107, 0.1) !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: rgba(57, 73, 107, 0.1);
+  font-weight: bold;
   cursor: pointer;
   color: #39496B !important;
   text-decoration: none;
@@ -459,6 +461,7 @@
   border: 1px solid #39496B !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #39496B;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -484,6 +487,7 @@
   border: 1px solid #EBEEF8 !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #EBEEF8;
+  font-weight: bold;
   cursor: pointer;
   color: #39496B !important;
   text-decoration: none;
@@ -509,6 +513,7 @@
   border: 1px solid #A8412C !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #A8412C;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -534,6 +539,7 @@
   border: 1px solid #9B51E0 !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #9B51E0;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -559,6 +565,7 @@
   border: 1px solid #00d876 !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #00d876;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -584,6 +591,7 @@
   border: 1px solid #FF0000 !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #FF0000;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -609,6 +617,7 @@
   border: 1px solid #FFA500 !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #FFA500;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -634,6 +643,7 @@
   border: 1px solid #828282 !important;
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25);
   background-color: #828282;
+  font-weight: bold;
   cursor: pointer;
   color: white !important;
   text-decoration: none;
@@ -1758,8 +1768,11 @@
 }
 .main-container h1 {
   color: #39496B;
-  font-size: 57px;
+  font-size: 48px;
   font-weight: bold;
+}
+.main-container .cta-container {
+  margin: 48px 0;
 }
 
 .body-accueil .accueil-hero {
