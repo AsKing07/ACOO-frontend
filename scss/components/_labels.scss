@@ -1,0 +1,65 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Commons styles for label
+@mixin common-style-label($bg-color, $text-color: white) {
+    // position: relative;
+    // display: inline-block;
+    justify-content: center;
+    align-items: center;
+    padding: calc($spacer * 11) calc($spacer * 23);
+    width: fit-content;
+    text-align: center;
+    border-radius: $unit*5;
+    border: $unit solid $bg-color !important;
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.25) ; 
+    background-color: $bg-color;
+    font-weight: bold;
+    cursor: pointer;
+    color: $text-color !important;
+    text-decoration: none;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover{
+        transition: all ease-in-out 0.3s;
+        transform: scale(1.03);
+        background-color: darken($bg-color, 20%);
+        color: $text-color;	
+
+    }
+    
+    &:active {
+        transform: translateY(4px) scale(1.05);
+    }
+
+    
+
+}
+
+.labels-container {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+
+    .label-para {
+        @include common-style-label($blue-color)
+    }
+
+    .label-avifit {
+        @include common-style-label($gray-color)
+    }
+
+    .label-indoor {
+        @include common-style-label($success-color)
+    }
+
+    .label-riviere {
+        @include common-style-label($warning-color)
+    }
+
+    .label-sante {
+        @include common-style-label($violet-color)
+    }
+}

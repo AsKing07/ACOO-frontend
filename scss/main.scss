@@ -15,12 +15,16 @@
 @use 'components/table';
 @use 'components/menu_dashboard';
 @use 'components/galleryCarousel';
+@use 'components/calendar';
+@use 'components/main_container';
 
 
 //Import des styles des pages personnalisées
 @use 'pages/accueil';
 @use 'pages/palmares';
 @use 'pages/actualites';
+
+@use 'pages/admin/event_dashboard';
 
 //Import des layouts
 @use 'layout/grid';
