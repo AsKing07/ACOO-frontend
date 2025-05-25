@@ -23,20 +23,16 @@
     </div>
     <div class="footer__divider"></div>
     <div class="footer__block footer__block--contact">
-      <div class="footer__block-title">CONTACT</div>
-      <div class="footer__contact-list">
-        <div>Téléphone : 02 35 39 23 45</div>
-        <div>Email : acoo@acoo.fr</div>
-      </div>
-<div class="footer__socials">
-  <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook" class="footer__social-link">
-    <i class="fa-brands fa-facebook"></i>
-  </a>
-  <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
-    <i  class="fa-brands fa-square-instagram"></i>
-  </a>
+  <div class="footer__block-title">CONTACT</div>
+  <div class="footer__contact-list">
+    <div>Téléphone : <span id="footer-phone"></span></div>
+    <div>Email : <span id="footer-email"></span></div>
+  </div>
+  <div class="footer__socials" id="footer-socials"></div>
+  <div class="footer__contact-address">
+  <span id="footer-address"></span>
 </div>
-    </div>
+</div>
     <div class="footer__copyright">
       ACOO x EEMI - Copyright @2025
     </div>
@@ -44,3 +40,24 @@
 </footer>
 
 </section>
+
+
+<script type="module">
+  import { getContactClub } from '/service/api/contactClubApi.js';
+
+  getContactClub().then(data => {
+          console.log("Data fetched from API:", data);
+
+    document.getElementById('footer-phone').textContent = data.telephone;
+    document.getElementById('footer-email').textContent = data.email;
+    document.getElementById('footer-address').textContent = data.adresse;
+    document.getElementById('footer-socials').innerHTML = `
+      <a href="${data.facebook}" target="_blank" rel="noopener" aria-label="Facebook" class="footer__social-link">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+      <a href="${data.instagram}" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
+        <i class="fa-brands fa-square-instagram"></i>
+      </a>
+    `;
+  });
+</script>

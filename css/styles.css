@@ -4856,49 +4856,42 @@
   flex-wrap: nowrap;
 }
 .footer__block {
+  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
   background: none;
   color: white;
+  min-width: 0;
+  max-width: 100%;
 }
-.footer__block--club {
-  width: 320px;
-  min-width: 200px;
+.footer__block--club, .footer__block--links, .footer__block--contact {
+  width: 100%;
+  min-width: 0;
   max-width: 100%;
   text-align: center;
 }
-.footer__block--club .footer__block-title {
+.footer__block .footer__block-title {
   font-size: 24px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
   font-weight: 700;
   padding: 10px 0;
+  text-align: center;
 }
-.footer__block--club .footer__block-desc {
+.footer__block .footer__block-desc {
   font-size: 16px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
   font-weight: 400;
-}
-.footer__block--links {
-  width: 240px;
-  min-width: 180px;
-  max-width: 100%;
-}
-.footer__block--links .footer__block-title {
-  font-size: 24px;
-  font-family: "Montserrat", "Arial, sans-serif, roboto";
-  font-weight: 700;
-  padding: 10px 0;
   text-align: center;
 }
-.footer__block--links .footer__links {
+.footer__block .footer__links {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
 }
-.footer__block--links .footer__links a {
+.footer__block .footer__links a {
   color: white;
   font-size: 16px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
@@ -4908,25 +4901,8 @@
   text-align: center;
   transition: color 0.2s;
 }
-.footer__block--links .footer__links a:hover {
+.footer__block .footer__links a:hover {
   color: #EBEEF8;
-}
-.footer__block--contact {
-  width: 240px;
-  min-width: 180px;
-  max-width: 100%;
-}
-.footer__block--contact .footer__block-title {
-  font-size: 24px;
-  font-family: "Montserrat", "Arial, sans-serif, roboto";
-  font-weight: 700;
-  padding: 10px 0;
-  text-align: center;
-}
-.footer__block--contact .footer__contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 .footer__block--contact .footer__contact-list div {
   color: white;
