@@ -1,0 +1,30 @@
+@use '../base/variables' as *;
+
+#notification-container {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notification {
+  min-width: 220px;
+  max-width: 350px;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  background: #f4f4f4;
+  color: #222;
+  margin-bottom: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.notification--error { background: #fbeaea; color: $danger-color; }
+.notification--success { background: #eafbf0; color:$success-color; }
+.notification--warning { background: #fff8e1; color: $warning-color; }
+.notification--info { background: #eaf1fb; color: $primary-color; }

@@ -11,15 +11,15 @@ export async function getFaqs() {
 
 export async function addFaq(faq) {
     const user = User.getCurrentUser();
-const token = user ? user.token : null;
-if (!token)
+const tokenData = user ? user.tokenData : null;
+if (!tokenData)
 {
     throw new Error('Vous devez être connecté pour ajouter une FAQ.');
 }
   const res = await fetch(`${API_BASE_URL}/api/questions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'
-, 'Authorization': `Bearer ${token}`
+, 'Authorization': `Bearer ${tokenData.token}`
      },
     body: JSON.stringify(faq)
   });
@@ -29,15 +29,15 @@ if (!token)
 
 export async function updateFaq(id, faq) {
         const user = User.getCurrentUser();
-const token = user ? user.token : null;
-if (!token)
+const tokenData = user ? user.tokenData : null;
+if (!tokenData)
 {
     throw new Error('Vous devez être connecté pour modifier une FAQ.');
 }
   const res = await fetch(`${API_BASE_URL}/api/questions/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/merge-patch+json',
+    'Authorization': `Bearer ${tokenData.token}`
      },
     body: JSON.stringify(faq)
   });
@@ -47,17 +47,17 @@ if (!token)
 
 export async function deleteFaq(id) {
         const user = User.getCurrentUser();
-const token = user ? user.token : null;
-if (!token)
+const tokenData = user ? user.tokenData : null;
+if (!tokenData)
 {
     throw new Error('Vous devez être connecté pour supprimer une FAQ.');
 }
   const res = await fetch(`${API_BASE_URL}/api/questions/${id}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json',
-    'Authorization': `Bearer ${token}`
+    'Authorization': `Bearer ${tokenData.token}`
      }
   });
-  if (!res.ok) throw new Error('Erreur lors de la suppression');
-  return await res.json();
+  if (!res.status === 204) throw new Error('Erreur lors de la suppression');
+  return res.status === 204; 
 }

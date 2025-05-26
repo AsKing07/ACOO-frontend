@@ -1,4 +1,5 @@
 import { getFaqs, addFaq, updateFaq, deleteFaq } from '../../service/api/faqApi.js';
+import { showNotification } from '../showNotification.js';
 
 const faqList = document.getElementById('faq-list');
 const addBtn = document.getElementById('add-faq-btn');
@@ -11,40 +12,59 @@ const modalTitle = document.getElementById('modal-title');
 const faqIdInput = document.getElementById('faq-id');
 const questionInput = document.getElementById('faq-question');
 const answerInput = document.getElementById('faq-answer');
-const categoryInput = document.getElementById('faq-category');
+const categoryInput = document.getElementById('faq-category-select');
+// const categoryInput = document.getElementById('faq-category');
 const faqSubmitBtn = document.getElementById('faq-submit-btn');
 const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
 const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
 const loaderDiv = document.getElementById('faq-loader');
 const reloadBtn = document.getElementById('reload-faqs-btn');
+const categoryFilter = document.getElementById('faq-category-filter');
+const categorySelect = document.getElementById('faq-category-select');
+const categoryNewInput = document.getElementById('faq-category-new');
 
-// Ajout d'un conteneur pour les erreurs
-let errorDiv = document.getElementById('faq-error');
-if (!errorDiv) {
-  errorDiv = document.createElement('div');
-  errorDiv.id = 'faq-error';
-  errorDiv.style.color = '#e74c3c';
-  errorDiv.style.background = '#fbeaea';
-  errorDiv.style.borderRadius = '6px';
-  errorDiv.style.padding = '0.7rem 1rem';
-  errorDiv.style.marginBottom = '1rem';
-  errorDiv.style.fontSize = '1rem';
-  errorDiv.style.display = 'none';
-  faqList.parentNode.insertBefore(errorDiv, faqList);
-}
 
 let faqs = [];
 let faqToDelete = null;
+let categories = [];
+let currentCategory = "";
+
+// Récupère les catégories uniques
+function extractCategories() {
+  categories = [...new Set(faqs.map(f => f.category).filter(Boolean))];
+}
+
+// Met à jour les options du filtre et du select
+function updateCategoryOptions() {
+  // Pour le filtre
+  if (categoryFilter) {
+    categoryFilter.innerHTML = `<option value="">Toutes</option>` +
+      categories.map(cat => `<option value="${cat}">${cat}</option>`).join('');
+    categoryFilter.value = currentCategory;
+  }
+  // Pour le select du formulaire
+  if (categorySelect) {
+    categorySelect.innerHTML =
+     `option value="" disabled selected >Choisissez...</option>` +
+      categories.map(cat => `<option value="${cat}">${cat}</option>`).join('') +
+     
+      `<option value="__new__">Créer une nouvelle catégorie…</option>`;
+  }
+}
 
 
 // Affiche la liste des FAQs
 async function renderFaqs() {
-  errorDiv.style.display = 'none';
-  loaderDiv.style.display = 'block'; // Affiche le loader
+  loaderDiv.style.display = 'block';
   try {
     faqs = await getFaqs();
+    extractCategories();
+    updateCategoryOptions();
     faqList.innerHTML = '';
-    faqs.forEach(faq => {
+    let filteredFaqs = currentCategory
+      ? faqs.filter(f => f.category === currentCategory)
+      : faqs;
+    filteredFaqs.forEach(faq => {
       const card = document.createElement('div');
       card.className = 'faq-card';
       card.innerHTML = `
@@ -58,7 +78,6 @@ async function renderFaqs() {
       `;
       faqList.appendChild(card);
     });
-    // Ajoute les listeners sur les boutons
     document.querySelectorAll('.btn-edit').forEach(btn => {
       btn.addEventListener('click', (e) => openEditModal(e.target.dataset.id));
     });
@@ -66,12 +85,34 @@ async function renderFaqs() {
       btn.addEventListener('click', (e) => openDeleteModal(e.target.dataset.id));
     });
   } catch (err) {
-    errorDiv.textContent = err.message || "Erreur lors du chargement des FAQs.";
-    errorDiv.style.display = 'block';
+    // showError(err.message || "Erreur lors du chargement des FAQs.");
+    showNotification(err.message || "Erreur lors du chargement des FAQs.", 'error');
   } finally {
-    loaderDiv.style.display = 'none'; // Cache le loader
+    loaderDiv.style.display = 'none';
   }
 }
+
+// Filtre par catégorie
+if (categoryFilter) {
+  categoryFilter.addEventListener('change', (e) => {
+    currentCategory = e.target.value;
+    renderFaqs();
+  });
+}
+
+// Gestion du select/nouvelle catégorie dans le formulaire
+if (categorySelect && categoryNewInput) {
+  categorySelect.addEventListener('change', (e) => {
+    if (e.target.value === "__new__") {
+      categoryNewInput.style.display = 'block';
+      categoryNewInput.required = true;
+    } else {
+      categoryNewInput.style.display = 'none';
+      categoryNewInput.required = false;
+    }
+  });
+}
+
 
 // Ouvre le modal d'ajout
 addBtn.addEventListener('click', () => {
@@ -79,8 +120,6 @@ addBtn.addEventListener('click', () => {
   faqForm.reset();
   faqIdInput.value = '';
   faqModal.style.display = 'flex';
-    faqModal.style.display = 'flex';
-  errorDiv.style.display = 'none';
 });
 
 // Ouvre le modal d'édition
@@ -93,14 +132,12 @@ function openEditModal(id) {
   answerInput.value = faq.answer;
   categoryInput.value = faq.category || '';
   faqModal.style.display = 'flex';
-   errorDiv.style.display = 'none';
 }
 
 // Ouvre le modal de suppression
 function openDeleteModal(id) {
   faqToDelete = id;
   deleteModal.style.display = 'flex';
-   errorDiv.style.display = 'none';
 }
 
 // Fermer les modals
@@ -111,12 +148,21 @@ cancelDeleteBtn.onclick = () => deleteModal.style.display = 'none';
 // Soumission du formulaire (ajout/modif)
 faqForm.onsubmit = async (e) => {
   e.preventDefault();
+  // Affiche un loader sur le bouton
+  faqSubmitBtn.disabled = true;
+  const oldBtnContent = faqSubmitBtn.innerHTML;
+  faqSubmitBtn.innerHTML = `<span class="loader" style="width:18px;height:18px;border-width:3px;vertical-align:middle;"></span>`;
+
+    let categoryValue = categorySelect.value === "__new__"
+    ? categoryNewInput.value.trim()
+    : categorySelect.value;
+
   const faqData = {
     question: questionInput.value,
     answer: answerInput.value,
-    category: categoryInput.value
+    category: categoryValue
   };
-try {
+  try {
     if (faqIdInput.value) {
       await updateFaq(faqIdInput.value, faqData);
     } else {
@@ -124,31 +170,43 @@ try {
     }
     faqModal.style.display = 'none';
     renderFaqs();
+    showNotification("FAQ enregistrée avec succès.", 'success');
   } catch (err) {
-    errorDiv.textContent = err.message || "Erreur lors de l'enregistrement de la FAQ.";
-    errorDiv.style.display = 'block';
+    // showError(err.message || "Erreur lors de l'enregistrement de la FAQ.");
+    showNotification(err.message || "Erreur lors de l'enregistrement de la FAQ.", 'error');
     faqModal.style.display = 'none';
+  } finally {
+    faqSubmitBtn.disabled = false;
+    faqSubmitBtn.innerHTML = oldBtnContent;
   }
 };
 
 // Suppression
 confirmDeleteBtn.onclick = async () => {
   if (faqToDelete) {
-   try {
+    // Affiche un loader sur le bouton
+    confirmDeleteBtn.disabled = true;
+    const oldBtnContent = confirmDeleteBtn.innerHTML;
+    confirmDeleteBtn.innerHTML = `<span class="loader" style="width:18px;height:18px;border-width:3px;vertical-align:middle;"></span>`;
+    try {
       await deleteFaq(faqToDelete);
       faqToDelete = null;
       deleteModal.style.display = 'none';
       renderFaqs();
+      showNotification("FAQ supprimée avec succès.", 'success');
     } catch (err) {
-      errorDiv.textContent = err.message || "Erreur lors de la suppression de la FAQ.";
-      errorDiv.style.display = 'block';
+    //   showError(err.message || "Erreur lors de la suppression de la FAQ.");
       deleteModal.style.display = 'none';
+              showNotification(err.message || "Erreur lors de la suppression de la FAQ.", 'error');
+
+    } finally {
+      confirmDeleteBtn.disabled = false;
+      confirmDeleteBtn.innerHTML = oldBtnContent;
     }
   }
 };
 
 reloadBtn.onclick = renderFaqs;
-
 
 // Initialisation
 renderFaqs();

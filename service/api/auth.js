@@ -26,7 +26,6 @@ export async function login(username, password) {
 
 export async function logout() {
     localStorage.removeItem('user');
-    localStorage.removeItem('token');
     // rediriger vers la page de connexion ou d'accueil
     window.location.href = '/admin/auth/login.html'; 
 }

@@ -1,11 +1,14 @@
 @use '../base/variables' as *;
 
 .form-section {
-  background: $secondary-color;
-  padding: $spacer * 15 $spacer * 40;
+  box-sizing: border-box;
+  padding: $spacer * 10 $spacer * 5;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+    width: 100%;
+
 
   &__header {
     width: 100%;
@@ -26,6 +29,7 @@
 }
 
 .form {
+  box-sizing: border-box;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -34,7 +38,7 @@
   gap: $spacer * 20;
   justify-items: center;
   align-items: center;
-  padding: $spacer * 10;
+  padding: $spacer * 5;
 
   &__group {
     position: relative;

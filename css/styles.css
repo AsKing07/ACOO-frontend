@@ -1057,11 +1057,13 @@
 }
 
 .form-section {
-  background: #EBEEF8;
-  padding: 30px 80px;
+  box-sizing: border-box;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .form-section__header {
   width: 100%;
@@ -1081,6 +1083,7 @@
 }
 
 .form {
+  box-sizing: border-box;
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
@@ -1089,7 +1092,7 @@
   gap: 40px;
   justify-items: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 .form__group {
   position: relative;
@@ -1799,6 +1802,51 @@
     transform: rotate(360deg);
   }
 }
+#notification-container {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.notification {
+  min-width: 220px;
+  max-width: 350px;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  background: #f4f4f4;
+  color: #222;
+  margin-bottom: 8px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.notification--error {
+  background: #fbeaea;
+  color: #FF0000;
+}
+
+.notification--success {
+  background: #eafbf0;
+  color: #00d876;
+}
+
+.notification--warning {
+  background: #fff8e1;
+  color: #FFA500;
+}
+
+.notification--info {
+  background: #eaf1fb;
+  color: #39496B;
+}
+
 .body-accueil .accueil-hero {
   position: relative;
   width: 100%;
@@ -2465,6 +2513,18 @@
   flex-direction: column;
   gap: 2rem;
 }
+.faq-dashboard__filter {
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.faq-dashboard__filter label {
+  font-weight: 500;
+}
+.faq-dashboard__filter select {
+  min-width: 160px;
+}
 .faq-dashboard .faq-card {
   background: #FAF9F8;
   border-radius: 10px;
@@ -2525,19 +2585,6 @@
   font-size: 2rem;
   color: #828282;
   cursor: pointer;
-}
-.faq-dashboard .btn-danger {
-  background: #FF0000;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.7rem 1.5rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-.faq-dashboard .btn-danger:hover {
-  background: #cc0000;
 }
 
 .login-body {

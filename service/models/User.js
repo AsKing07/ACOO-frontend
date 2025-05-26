@@ -1,16 +1,18 @@
 
+
 /**
  * @class
  */
 export class User {
     /**
-     * @param {{ username: string, email: string, roles: string[], token: string }} data
-    */
-    constructor({ username, email, roles, token }) {
+     * @param {{ username: string, email: string, role: string[], tokenData: { expires_at: string, token: string } }} data
+     */
+    constructor({ username, email, roles, tokenData }) {
         this.username = username;
         this.email = email;
         this.roles = roles;
-        this.token = token;
+        this.tokenData = tokenData;
+        this.isAdmin = roles.includes('ROLE_ADMIN') || this.roles.includes('ROLE_SUPER_ADMIN');
 
         // Assurez-vous que les rôles sont toujours un tableau
         if (!Array.isArray(this.roles)) {
@@ -24,10 +26,7 @@ export class User {
         }
         return new User(data);
     }
-    get isAdmin() {
-        // Vérifie si l'utilisateur a le rôle 'ROLE_ADMIN'
-        return this.roles.includes('ROLE_ADMIN');
-    }
+
 
     static getCurrentUser() {
         const userData = localStorage.getItem('user');
@@ -42,6 +41,16 @@ export class User {
             }
         }
         return null;
+    }
+
+    isTokenValid() {
+        if (!this.tokenData) {
+            return false;
+        }
+        const now = new Date();
+        const expiresAt = new Date(this.tokenData.expires_at*1000);
+        // console.log(`Vérification de la validité du token: maintenant=${now}, expiration=${expiresAt}`);
+        return now < expiresAt;
     }
    
 
