@@ -34,6 +34,7 @@
   gap: $spacer * 20;
   justify-items: center;
   align-items: center;
+  padding: $spacer * 10;
 
   &__group {
     position: relative;
@@ -45,7 +46,7 @@
   }
 
   &__input {
-    width: 100%;
+   
     padding: $spacer * 10 $spacer * 8;
     background: white;
     border-radius: $spacer * 4;
@@ -181,7 +182,7 @@
     margin-bottom: $spacer * 7;
   }
   &__input-wrapper {
-    width: 100%;
+
     max-width: 1242px;
     background: $light-gray-color;
     border-radius: $spacer * 10;
@@ -190,7 +191,7 @@
     align-items: center;
   }
   &__input {
-    width: 100%;
+
     background: transparent;
     border: none;
     font-size: $font-size-base * 2;

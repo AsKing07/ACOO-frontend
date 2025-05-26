@@ -1,0 +1,85 @@
+@use '../../base/functions' as *;
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+
+.login-body{
+  background: linear-gradient(120deg, $primary-color 0%, lighten-color($primary-color, 15%) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-family;
+
+
+.login-container {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba($primary-color, 0.13);
+  padding: 2.5rem 2rem 2rem 2rem;
+  max-width: 370px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.7s;
+
+  form{
+    padding: 0.5rem 0 !important;
+  }
+}
+
+.login-logo {
+  width: 70px;
+  margin-bottom: 1.2rem;
+}
+
+.login-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $primary-color;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+
+// Utilise le composant bouton si tu veux, sinon conserve ce style :
+.login-btn {
+  background: linear-gradient(90deg, $primary-color 0%, #5c7292 100%);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  padding: $spacer * 10 $spacer * 8;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s, transform 0.2s;
+
+  &:hover {
+    background: linear-gradient(90deg, #5c7292 0%, $primary-color 100%);
+    transform: translateY(-2px) scale(1.03);
+  }
+}
+
+.login-error {
+  color: $danger-color;
+  background: #fbeaea;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
+  text-align: center;
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: none;}
+}
+
+@media (max-width: 500px) {
+  .login-container { padding: 1.2rem 0.5rem; }
+}
+}
