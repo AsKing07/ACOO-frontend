@@ -12,8 +12,17 @@
       <a href="#">CLUB</a>
       <a href="#">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>
+      
       <a href="#">GALERIE</a>
       <a href="/pages/palmares.php">PALMARÈS</a>
+      <div class="header__nav-item header__nav-dropdown">
+  <a href="#" class="header__nav-link">RAMER AU CLUB</a>
+  <div class="header__dropdown-menu">
+    <a href="#">S'inscrire au club</a>
+    <a href="#">Stage découverte/initiation</a>
+    <a href="#">Règlement intérieur</a>
+  </div>
+</div>
       <a href="#">CONTACT</a>
     </nav>
     <button class="header__burger" aria-label="Menu" aria-expanded="false">
@@ -24,6 +33,7 @@
   </div>
   <div class="header__mobile-menu">
     <nav>
+      
       <a href="/">ACCUEIL</a>
       <a href="#">CLUB</a>
       <a href="#">ÉVÉNEMENTS</a>
@@ -31,6 +41,14 @@
 
       <a href="#">GALERIE</a>
       <a href="/pages/palmares.php">PALMARÈS</a>
+      <div class="header__nav-item header__nav-dropdown">
+  <span  class="header__nav-link">RAMER AU CLUB</span>
+  <div class="header__dropdown-menu">
+    <a href="#">S'inscrire au club</a>
+    <a href="#">Stage découverte/initiation</a>
+    <a href="#">Règlement intérieur</a>
+  </div>
+</div>
       <a href="#">CONTACT</a>
     </nav>
   </div>

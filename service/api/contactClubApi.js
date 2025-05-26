@@ -1,8 +1,9 @@
 import {ContactClub} from '../models/ContactClub.js';
 
+import {API_BASE_URL} from '../config.js';
 
 export async function getContactClub() {
-  const response = await fetch('/Backend/api/contact_clubs');
+  const response = await fetch(`${API_BASE_URL}/api/contact_clubs`);
   if (!response.ok) throw new Error('Erreur API');
   const data = await response.json();
   console.log('ContactClub data:', data);
@@ -15,7 +16,7 @@ if (!token)
 {
     throw new Error('Vous devez être connecté pour modifier les informations de contact du club.');
 }
-  const response = await fetch('/Backend/api/contact_clubs', {
+  const response = await fetch(`${API_BASE_URL}/api/contact_clubs`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

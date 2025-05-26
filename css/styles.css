@@ -4768,7 +4768,6 @@
 .header__mobile-menu nav {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 14px;
   padding: 20px 0;
 }
@@ -4782,6 +4781,7 @@
   width: 100%;
   text-align: center;
   transition: color 0.2s;
+  border-bottom: 1px solid rgba(217, 217, 217, 0.3);
 }
 .header__mobile-menu nav a:hover {
   color: #EBEEF8;
@@ -4809,6 +4809,10 @@
   }
   .header__mobile-menu.open {
     display: block;
+    padding: 20px 40px;
+  }
+  .header__mobile-menu nav a {
+    text-align: left;
   }
 }
 @media (max-width: 600px) {
@@ -4830,6 +4834,73 @@
   }
   to {
     opacity: 1;
+  }
+}
+.header__nav-item {
+  position: relative;
+}
+
+.header__nav-dropdown:hover .header__dropdown-menu, .header__nav-dropdown:focus-within .header__dropdown-menu {
+  display: flex;
+}
+
+.header__dropdown-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #39496B;
+  min-width: 220px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  z-index: 200;
+}
+.header__dropdown-menu a {
+  color: white;
+  padding: 6px 10px;
+  text-align: left;
+  font-size: 13px;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.header__dropdown-menu a:hover {
+  background: #EBEEF8;
+  color: #39496B;
+}
+
+@media (max-width: 900px) {
+  .header__dropdown-menu {
+    position: static;
+    display: flex !important;
+    flex-direction: column;
+    box-shadow: none;
+    background: none;
+    padding-left: 16px;
+  }
+  .header__dropdown-menu a {
+    padding: 4px 0;
+    font-size: 11px;
+    color: white;
+    text-align: left;
+    width: 100%;
+    border-left: 2px solid #EBEEF8;
+    margin-bottom: 2px;
+  }
+  .header__dropdown-menu a:hover {
+    background: #EBEEF8;
+    color: #39496B !important;
+  }
+  .header__nav-dropdown > .header__nav-link {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: #EBEEF8;
+    margin-bottom: 2px;
+    cursor: pointer;
+    color: white;
   }
 }
 .footer {
