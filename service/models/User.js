@@ -20,9 +20,9 @@ export class User {
     static fromApi(data) {
         // Si l'API retourne un tableau, prends le premier élément
         if (Array.isArray(data)) {
-            return new Admin(data[0]);
+            return new User(data[0]);
         }
-        return new Admin(data);
+        return new User(data);
     }
     get isAdmin() {
         // Vérifie si l'utilisateur a le rôle 'ROLE_ADMIN'

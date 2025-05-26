@@ -18,6 +18,7 @@ export async function login(username, password) {
   }
     const data = await response.json();
     const user = User.fromApi(data);
+    console.log('Utilisateur connecté:', user);
   localStorage.setItem('user', user);
   return user;
 

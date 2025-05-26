@@ -49,6 +49,7 @@
         // window.location.href = '/pages/admin/dashboard.php';
         alert('Connexion réussie !');
       } catch (err) {
+        console.error(err);
         errorDiv.textContent = err.message;
         errorDiv.style.display = 'block';
       }
