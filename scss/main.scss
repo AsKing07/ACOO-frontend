@@ -17,6 +17,7 @@
 @use 'components/galleryCarousel';
 @use 'components/calendar';
 @use 'components/main_container';
+@use 'components/loader';
 
 
 //Import des styles des pages personnalisées
@@ -26,6 +27,7 @@
 
 @use 'pages/admin/dashboard_layout';
 @use 'pages/admin/event_dashboard';
+@use 'pages/admin/faq_dashboard';
 @use 'pages/admin/login';
 
 //Import des layouts

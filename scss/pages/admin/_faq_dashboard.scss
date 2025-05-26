@@ -1,0 +1,110 @@
+@use '../../base/variables' as *;
+
+.faq-dashboard {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  max-width: 1100px;
+  margin: 2rem auto;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h1 {
+      color: $primary-color;
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+
+  .faq-card {
+  background: #FAF9F8;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  &__question {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $primary-color;
+  }
+  &__answer {
+    font-size: 1.1rem;
+    color: #222;
+    line-height: 1.7;
+  }
+  &__category {
+    font-size: 0.95rem;
+    color: $gray-color;
+    font-style: italic;
+  }
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    button {
+      min-width: 120px;
+    }
+  }
+}
+
+// Modals
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal-content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    min-width: 350px;
+    max-width: 95vw;
+    position: relative;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+  }
+  .modal-close {
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+    font-size: 2rem;
+    color: $gray-color;
+    cursor: pointer;
+  }
+}
+
+.btn-danger {
+  background: $danger-color;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: darken($danger-color, 10%);
+  }
+}
+
+
+}
+

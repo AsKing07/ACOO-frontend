@@ -14,6 +14,8 @@
   <title>Dashboard Admin</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../../css/styles.css">
+  <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="dashboard-layout">
@@ -28,7 +30,7 @@
   </main>
 </div>
 
-  <script src="../script/admin/dashboard.js" type="module">
+  <script src="/script/admin/dashboard.js" type="module">
     
   </script>
 

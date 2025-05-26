@@ -10,7 +10,7 @@ async function loadPage(url) {
     import('../galleryCarrousel.js');
   }
   if (url.includes('faq.php')) {
-    import('../faq.js');
+    import('/script/admin/faq_dashboard.js');
   }
   // Ajoute d'autres conditions selon les besoins
 }
@@ -33,7 +33,7 @@ async function loadPage(url) {
           case 'actus': url = '/pages/admin/actualites'; break;
           case 'evenements': url = '/pages/admin/events.php'; break;
           case 'galerie': url = '/pages/admin/partials/galerie.php'; break;
-          case 'faq': url = '/pages/admin/partials/faq.php'; break;
+          case 'faq': url = '/pages/admin/faq.php'; break;
           case 'messagerie': url = '/pages/admin/partials/messagerie.php'; break;
           case 'admin': url = '/pages/admin/partials/admin.php'; break;
           default: url = '';

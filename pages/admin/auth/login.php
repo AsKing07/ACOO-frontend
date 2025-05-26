@@ -46,8 +46,8 @@
 
       try {
         await login(username, password);
-        // window.location.href = '/pages/admin/dashboard.php';
-        alert('Connexion réussie !');
+         window.location.href = '/pages/admin/index.php';
+      
       } catch (err) {
         console.error(err);
         errorDiv.textContent = err.message;

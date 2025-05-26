@@ -31,6 +31,7 @@ export class User {
 
     static getCurrentUser() {
         const userData = localStorage.getItem('user');
+        console.log('Récupération de l\'utilisateur courant depuis localStorage:', userData);
         if (userData) {
             try {
                 const parsedData = JSON.parse(userData);

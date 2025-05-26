@@ -1784,6 +1784,21 @@
   margin: 48px 0;
 }
 
+.loader {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #39496B;
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 .body-accueil .accueil-hero {
   position: relative;
   width: 100%;
@@ -2424,6 +2439,105 @@
 }
 .body-event-dashboard .labels-container .label-sante:active {
   transform: translateY(4px) scale(1.05);
+}
+
+.faq-dashboard {
+  padding: 2rem;
+  background: #fff;
+  border-radius: 16px;
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+.faq-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.faq-dashboard__header h1 {
+  color: #39496B;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+}
+.faq-dashboard__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.faq-dashboard .faq-card {
+  background: #FAF9F8;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.faq-dashboard .faq-card__question {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #39496B;
+}
+.faq-dashboard .faq-card__answer {
+  font-size: 1.1rem;
+  color: #222;
+  line-height: 1.7;
+}
+.faq-dashboard .faq-card__category {
+  font-size: 0.95rem;
+  color: #828282;
+  font-style: italic;
+}
+.faq-dashboard .faq-card__actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.faq-dashboard .faq-card__actions button {
+  min-width: 120px;
+}
+.faq-dashboard .modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.faq-dashboard .modal .modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  min-width: 350px;
+  max-width: 95vw;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.faq-dashboard .modal .modal-close {
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+  font-size: 2rem;
+  color: #828282;
+  cursor: pointer;
+}
+.faq-dashboard .btn-danger {
+  background: #FF0000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7rem 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.faq-dashboard .btn-danger:hover {
+  background: #cc0000;
 }
 
 .login-body {
