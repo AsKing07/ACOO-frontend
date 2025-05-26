@@ -1,5 +1,5 @@
 import {ContactClub} from '../models/ContactClub.js';
-import {getCurrentUser} from '/service/models/User.js';
+import {User} from '../models/User.js';
 import {API_BASE_URL} from '../config.js';
 
 export async function getContactClub() {
@@ -11,7 +11,7 @@ export async function getContactClub() {
 }
 
 export async function updateContactClub(data) {
-const user = getCurrentUser();
+const user = User.getCurrentUser();
 const token = user ? user.token : null;
 if (!token)
 {
