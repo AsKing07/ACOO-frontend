@@ -1,12 +1,6 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="../../css/styles.css">
-</head>
-<body>
-    
-    <div class="container_navigation">
+
+    <div class="container_sidebar">
+         <div class="container_navigation">
 
         <nav class="container_nav_first">
 
@@ -23,8 +17,8 @@
                         </div>
                         <ul>
                             <li>
-                                <img src="../../assets/images/icons/home.png" alt="acceuil">
-                                <span>ACCEUIL</span>
+                                <img src="../../assets/images/icons/home.png" alt="accueil">
+                                <span>ACCUEIL</span>
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/aviron-silhouette.png" alt="club">
@@ -78,10 +72,9 @@
                 </div>
             </div>
             <div class="container_nav_connexion">
-                <button class="btn-primary">DECONNEXION</button>
+                <button class="btn-primary btn-logout">DECONNEXION</button>
             </div>
         </nav>
     </div>
-
-</body>
-</html>
+    </div>
+   

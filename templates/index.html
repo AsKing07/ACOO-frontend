@@ -36,33 +36,33 @@
     <div class="section-select">
         <select title="Select a component" name="component" id="component-select">
             <option value="">Sélectionnez un composant…</option>
-            <option value="components/layout/header.php">Header</option>
-                <option value="components/layout/menu_dashboard.php">Sidebar admin</option>
-            <option value="components/layout/footer.php">Footer</option>
-            <option value="components/formulaire/formContact.php">Formulaire de contact</option>
-            <option value="components/formulaire/searchInput.php">Champ de recherche</option>
-            <option value="components/formulaire/form.php">Formulaire Exemple</option>
+            <option value="/templates/components/layout/header.php">Header</option>
+            <option value="/templates/components/layout/menu_dashboard.php">Sidebar admin</option>
+            <option value="/templates/components/layout/footer.php">Footer</option>
+            <option value="/templates/components/formulaire/formContact.php">Formulaire de contact</option>
+            <option value="/templates/components/formulaire/searchInput.php">Champ de recherche</option>
+            <option value="/templates/components/formulaire/form.php">Formulaire Exemple</option>
 
 
 
 
         
-            <option value="components/layout/grille.php">Grille</option>
-            <option value="components/cards/card.php">Simple Card</option>
-            <option value="components/cards/champion_card.php">Champions Card</option>
-            <option value="components/cards/event_card.php">Event Card</option>
-            <option value="components/cards/mini_event_card.php">Event Mini Card</option>
-            <option value="components/gallery_carousel.php">Gallery Carousel</option>
-            <option value="components/tables/event_table.php">Tableau des Evenements Dashboard</option>
-            <option value="components/tables/tableauResponsif.php">Tableau générique responsif</option>
+            <option value="/templates/components/layout/grille.php">Grille</option>
+            <option value="/templates/components/cards/card.php">Simple Card</option>
+            <option value="/templates/components/cards/champion_card.php">Champions Card</option>
+            <option value="/templates/components/cards/event_card.php">Event Card</option>
+            <option value="/templates/components/cards/mini_event_card.php">Event Mini Card</option>
+            <option value="/templates/components/gallery_carousel.php">Gallery Carousel</option>
+            <option value="/templates/components/tables/event_table.php">Tableau des Evenements Dashboard</option>
+            <option value="/templates/components/tables/tableauResponsif.php">Tableau générique responsif</option>
 
 
 
-            <option value="components/ui/buttons.php">Boutons</option>
+            <option value="/templates/components/ui/buttons.php">Boutons</option>
          
-            <option value="components/tableauEventDashboard.php">Evenement Dashboard</option>
+            <option value="/templates/components/tableauEventDashboard.php">Evenement Dashboard</option>
 
-            <option value="components/faq.php">FAQ</option>
+            <option value="/templates/components/faq.php">FAQ</option>
         </select>
     </div>
     <div id="component-container">
@@ -70,30 +70,10 @@
     </div>
 </main>
 
-<script>
-    const select = document.getElementById('component-select');
-    const container = document.getElementById('component-container');
-
-    select.addEventListener('change', function() {
-        const value = this.value;
-        if (!value) {
-            container.innerHTML = "<p style='text-align:center;color:#888;'>Sélectionnez un composant dans le menu déroulant pour l’afficher ici.</p>";
-            return;
-        }
-        fetch(value)
-            .then(res => res.text())
-            .then(html => {
-                container.innerHTML = html;
-            })
-            .catch(() => {
-                container.innerHTML = "<p style='color:red;text-align:center;'>Erreur lors du chargement du composant.</p>";
-            });
-    });
+<script src="../script/template.js">
 </script>
 <script src="../script/navbar.js"></script>
-<script src="../script/formContact.js"></script>
-<script src="../script/galleryCarrousel.js"></script>
-<script src="../script/faq.js"></script>
+<script></script>
 
 </body>
 </html>

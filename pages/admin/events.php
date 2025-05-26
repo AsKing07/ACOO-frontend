@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../css/styles.css">
-
-    <title>Events Dashboard</title>
-</head>
-<body class="body-event-dashboard">
-            <?php 
-            // include __DIR__ . '/../../templates/layout/components/menu_dashboard.html'; 
-            ?>
+<main class="body-event-dashboard">
     <div class="main-container">
         <h1>ÉVÈNEMENTS</h1>
         <div class="calendar-container">
@@ -211,5 +198,4 @@
             <a class="btn-primary" href="#">Ajouter un évènement</a>
         </div>
     </div>
-</body>
-</html>
+</main>

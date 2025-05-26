@@ -1,0 +1,25 @@
+@use '../../base/functions' as *;
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: $background-color;
+  min-width: 100% ;
+}
+
+
+.dashboard-sidebar {
+  width: 20%;
+
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 2rem;
+  min-width: 0;
+  background: $background-color;
+}

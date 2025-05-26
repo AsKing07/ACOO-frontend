@@ -3,13 +3,21 @@
 @use '../base/mixins' as *;
 
 
+.container_sidebar{
 
-.container_navigation{
-    position:fixed;
-    width: 20%;
-    height: 100%;
-    padding: 1% 3%;
-    background-color: #FFFFFF;
+    width: 100%;
+        position:sticky;
+    top: 0;
+    z-index: 1;
+    flex-shrink: 0;
+
+
+    height: 100vh;
+   
+    background-color: white;
+
+    .container_navigation{
+         padding: $spacer*4 $spacer*4;
 
     .container_nav_logo{
         display: flex;
@@ -29,13 +37,16 @@
             gap: 20px;
             font-weight: 550;
             font-size: 0.8em;
-            color: #858585;
+            color: $gray-color;
 
             li{
                 list-style: none;
                 display: flex;
                 gap: 4%;
                 align-items: center;
+                cursor: pointer;
+                
+
 
                 span{
                     transition: transform 0.5s ease-in-out;
@@ -65,10 +76,22 @@
         align-items: center;
         justify-content: center;
 
-        .btn-primary{
+        .btn-logout{
             width: 70%;
         }
     }
 
 
 }
+
+.sidebar-active,
+.container_nav_pages li.active,
+.container_nav_system li.active {
+  background: $primary-color; 
+  color: white;
+  border-radius: 8px;
+  padding: $spacer*1 $spacer*2;
+}
+
+}
+
