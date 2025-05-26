@@ -1,4 +1,10 @@
+/**
+ * @class
+ */
 export class ContactClub {
+  /**
+   * @param {{phoneNumber: string, mail: string, facebook: string, instagram: string}} data
+   */
   constructor({ phoneNumber, mail, address, facebook, instagram }) {
     this.telephone = phoneNumber;
     this.email = mail;

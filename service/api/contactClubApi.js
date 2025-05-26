@@ -1,5 +1,5 @@
 import {ContactClub} from '../models/ContactClub.js';
-
+import {getCurrentUser} from '/service/models/User.js';
 import {API_BASE_URL} from '../config.js';
 
 export async function getContactClub() {
@@ -11,7 +11,8 @@ export async function getContactClub() {
 }
 
 export async function updateContactClub(data) {
-const token = localStorage.getItem('token');
+const user = getCurrentUser();
+const token = user ? user.token : null;
 if (!token)
 {
     throw new Error('Vous devez être connecté pour modifier les informations de contact du club.');
