@@ -13,7 +13,6 @@ const faqIdInput = document.getElementById('faq-id');
 const questionInput = document.getElementById('faq-question');
 const answerInput = document.getElementById('faq-answer');
 const categoryInput = document.getElementById('faq-category-select');
-// const categoryInput = document.getElementById('faq-category');
 const faqSubmitBtn = document.getElementById('faq-submit-btn');
 const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
 const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
@@ -45,7 +44,7 @@ function updateCategoryOptions() {
   // Pour le select du formulaire
   if (categorySelect) {
     categorySelect.innerHTML =
-     `option value="" disabled selected >Choisissez...</option>` +
+     `<option value="" disabled selected >Choisissez...</option>` +
       categories.map(cat => `<option value="${cat}">${cat}</option>`).join('') +
      
       `<option value="__new__">Créer une nouvelle catégorie…</option>`;
@@ -85,7 +84,6 @@ async function renderFaqs() {
       btn.addEventListener('click', (e) => openDeleteModal(e.target.dataset.id));
     });
   } catch (err) {
-    // showError(err.message || "Erreur lors du chargement des FAQs.");
     showNotification(err.message || "Erreur lors du chargement des FAQs.", 'error');
   } finally {
     loaderDiv.style.display = 'none';
@@ -120,6 +118,7 @@ addBtn.addEventListener('click', () => {
   faqForm.reset();
   faqIdInput.value = '';
   faqModal.style.display = 'flex';
+  categoryNewInput.style.display = 'none'; 
 });
 
 // Ouvre le modal d'édition
@@ -132,6 +131,7 @@ function openEditModal(id) {
   answerInput.value = faq.answer;
   categoryInput.value = faq.category || '';
   faqModal.style.display = 'flex';
+  categoryNewInput.style.display = 'none'; 
 }
 
 // Ouvre le modal de suppression
