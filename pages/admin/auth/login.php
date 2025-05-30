@@ -43,8 +43,12 @@
       errorDiv.style.display = 'none';
       const username = form.username.value.trim();
       const password = form.password.value;
+      const loginButton = form.querySelector('.login-btn');
 
       try {
+        
+        loginButton.disabled = true; // Désactiver le bouton pour éviter les soumissions multiples
+        loginButton.innerHTML = `<span class="loader" style="width:18px;height:18px;border-width:3px;vertical-align:middle; color:white;"></span>`;
         await login(username, password);
          window.location.href = '/pages/admin/index.php';
       
@@ -52,6 +56,8 @@
         console.error(err);
         errorDiv.textContent = err.message;
         errorDiv.style.display = 'block';
+        loginButton.disabled = false; // Reactiver le bouton après une erreur
+        loginButton.innerHTML = 'Se connecter'; // Réinitialiser le texte du bouton
       }
     });
   </script>

@@ -20,6 +20,9 @@
 .dashboard-main {
   flex: 1;
   padding: 2rem;
-  min-width: 0;
+  min-width: 80% ;
   background: $background-color;
+ align-items: center;
+  justify-content: center; 
+
 }

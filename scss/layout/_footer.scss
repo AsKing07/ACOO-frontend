@@ -201,12 +201,11 @@
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     border: 2px solid transparent;
 
-    i {
-      font-size: $spacer * 7;
+    i{
+      font-size: $spacer * 9;
       color: #fff !important;
       transition: color 0.2s, transform 0.2s;
       filter: none !important;
-      // Pas de translate ici
     }
 
     &:hover,

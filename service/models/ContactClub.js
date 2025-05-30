@@ -3,13 +3,12 @@
  */
 export class ContactClub {
   /**
-   * @param {{phoneNumber: string, mail: string, facebook: string, instagram: string}} data
+   * @param {{phoneNumber: string, mail: string}} data
    */
-  constructor({ phoneNumber, mail, address, facebook, instagram }) {
+  constructor({id, phoneNumber, mail, address}) {
+    this.id = id;
     this.telephone = phoneNumber;
     this.email = mail;
-    this.facebook = facebook;
-    this.instagram = instagram;
     this.adresse = address;
   }
 
@@ -26,4 +25,30 @@ static fromApi(data) {
     }
     return new ContactClub(data);
   }
-}   
+};
+
+/**
+ * @class
+ */
+export class contactClubRequest
+{
+  /**
+   * @param {string} phoneNumber
+   * @param {string} mail
+   * @param {string} address
+   */
+  constructor(phoneNumber, mail, address) {
+    this.telephone = phoneNumber;
+    this.email = mail;
+    this.adresse = adress;
+  }
+  toJSON() {
+    return {
+      phoneNumber: this.telephone,
+      mail: this.email,
+      facebook: this.facebook,
+      instagram: this.instagram,
+      address: this.adresse
+    };
+  }
+}

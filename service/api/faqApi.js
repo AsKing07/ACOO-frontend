@@ -1,4 +1,5 @@
 import { Faq } from "../models/Faq.js";
+import { FaqRequest } from "../models/Faq.js";
 import {User} from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
 
@@ -10,6 +11,9 @@ export async function getFaqs() {
 }
 
 export async function addFaq(faq) {
+
+  const faqRequest = new FaqRequest(faq.question, faq.answer, faq.category).toJSON();
+
     const user = User.getCurrentUser();
 const tokenData = user ? user.tokenData : null;
 if (!tokenData)
@@ -21,13 +25,16 @@ if (!tokenData)
     headers: { 'Content-Type': 'application/json'
 , 'Authorization': `Bearer ${tokenData.token}`
      },
-    body: JSON.stringify(faq)
+    body: JSON.stringify(faqRequest)
   });
   if (!res.ok) throw new Error('Erreur lors de l\'ajout');
-  return await res.json();
+ const data =await res.json();
+ return Faq.fromApi(data);
 }
 
 export async function updateFaq(id, faq) {
+    const faqRequest = new FaqRequest(faq.question, faq.answer, faq.category).toJSON();
+
         const user = User.getCurrentUser();
 const tokenData = user ? user.tokenData : null;
 if (!tokenData)
@@ -39,7 +46,7 @@ if (!tokenData)
     headers: { 'Content-Type': 'application/merge-patch+json',
     'Authorization': `Bearer ${tokenData.token}`
      },
-    body: JSON.stringify(faq)
+    body: JSON.stringify(faqRequest)
   });
   if (!res.ok) throw new Error('Erreur lors de la modification');
   return await res.json();

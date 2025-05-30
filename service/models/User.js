@@ -55,3 +55,27 @@ export class User {
    
 
 }
+
+
+/**
+ * @class
+ */
+export class UserRequest {
+    /**
+     * @param {string} username
+     * @param {string} email
+     * @param {string} password
+     */
+    constructor(username, email, password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+    toJSON() {
+        return {
+            username: this.username,
+            email: this.email,
+            password: this.password
+        };
+    }
+}

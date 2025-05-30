@@ -2,7 +2,7 @@ import {User} from '../models/User.js';
 import {API_BASE_URL} from '../config.js';
 
 export async function login(username, password) {
-  const response = await fetch(`${API_BASE_URL}/login`, {
+  const response = await fetch(`${API_BASE_URL}/api/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

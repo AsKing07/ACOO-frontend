@@ -44,20 +44,58 @@
 
 <script type="module">
   import { getContactClub } from '/service/api/contactClubApi.js';
+  import { getSocialMedias} from '/service/api/socialMediasApi.js';
 
   getContactClub().then(data => {
-          console.log("Data fetched from API:", data);
+          console.log("Contact club Data fetched from API:", data);
 
     document.getElementById('footer-phone').textContent = data.telephone;
     document.getElementById('footer-email').textContent = data.email;
     document.getElementById('footer-address').textContent = data.adresse;
-    document.getElementById('footer-socials').innerHTML = `
-      <a href="${data.facebook}" target="_blank" rel="noopener" aria-label="Facebook" class="footer__social-link">
-        <i class="fa-brands fa-facebook"></i>
-      </a>
-      <a href="${data.instagram}" target="_blank" rel="noopener" aria-label="Instagram" class="footer__social-link">
-        <i class="fa-brands fa-square-instagram"></i>
-      </a>
-    `;
+
   });
+  getSocialMedias().then(data => {
+    console.log("Social Media Data fetched from API:", data);
+
+const socialMediaList = document.getElementById('footer-socials');
+
+data.forEach(socialMedia =>{
+  const a = document.createElement('a');
+  a.href = socialMedia.url;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.ariaLabel = socialMedia.platform;
+  a.classList.add('footer__social-link');
+
+  const icon = document.createElement('i');
+  icon.src = socialMedia.iconUrl;
+
+  icon.classList.add('fa-brands');
+  switch (socialMedia.platform.toLowerCase()) {
+    case 'facebook':
+      icon.classList.add('fa-facebook');
+      break;
+    case 'instagram':
+      icon.classList.add('fa-square-instagram');
+      break;
+    case 'x':
+      icon.classList.add('fa-x');
+      break;
+    default:
+      icon.classList.add('fa-globe'); // Default icon for other platforms
+      break;
+  }
+
+
+
+  icon.alt = socialMedia.platform;
+  icon.classList.add('footer__social-icon');
+
+  a.appendChild(icon);
+  socialMediaList.appendChild(a);
+
+})
+
+  });
+
 </script>

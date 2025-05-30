@@ -44,7 +44,7 @@ if (!user) {
   <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
 
 </head>
-<body>
+<body class="dashboard-body">
 <div class="dashboard-layout">
   <aside class="dashboard-sidebar">
     <?php include '../../templates/components/layout/menu_dashboard.php'; ?>
@@ -53,7 +53,7 @@ if (!user) {
     <!-- contenu dynamique -->
     <h1>Bienvenue dans le Dashboard Admin</h1>
     <p>Utilisez le menu à gauche pour naviguer entre les différentes sections.</p>
-    <button class="btn btn-primary">Déconnexion</button>
+    <!-- <button class="btn btn-primary">Déconnexion</button> -->
   </main>
 </div>
 

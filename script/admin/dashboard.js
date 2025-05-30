@@ -9,9 +9,12 @@ async function loadPage(url) {
   if (url.includes('galerie.php')) {
     import('../galleryCarrousel.js');
   }
-  if (url.includes('faq.php')) {
-    import('/script/admin/faq_dashboard.js');
-  }
+if (url.includes('faq.php')) {
+  import('/script/admin/faq_dashboard.js').then(module => {
+    module.initFaq(); // Exécution de l'initialisation
+  });
+}
+
   // Ajoute d'autres conditions selon les besoins
 }
 

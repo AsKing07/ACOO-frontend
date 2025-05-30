@@ -14,7 +14,6 @@ export class Faq {
   }
 
   static fromApi(data) {
-    // Si l'API retourne un tableau, prends le premier élément
     if (Array.isArray(data)) {
         return data.map(item => new Faq(item));
         }
@@ -22,6 +21,30 @@ export class Faq {
   }
 }
       
+/**
+ * @class
+ */
+export class FaqRequest {
+  /**
+   * @param {string} question
+   * @param {string} answer
+   * @param {string} category
+   */
+  constructor(question, answer, category) {
+    this.question = question;
+    this.answer = answer;
+    this.category = category;
+  }
+
+  toJSON() {
+    return {
+      question: this.question,
+      answer: this.answer,
+      category: this.category,
+    };
+  }
+}
+
 
 
 

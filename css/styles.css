@@ -2353,8 +2353,10 @@
 .dashboard-main {
   flex: 1;
   padding: 2rem;
-  min-width: 0;
+  min-width: 80%;
   background: #f0f0f0;
+  align-items: center;
+  justify-content: center;
 }
 
 .body-event-dashboard .labels-container {
@@ -5351,7 +5353,7 @@
   border: 2px solid transparent;
 }
 .footer__socials .footer__social-link i {
-  font-size: 14px;
+  font-size: 18px;
   color: #fff !important;
   transition: color 0.2s, transform 0.2s;
   filter: none !important;
