@@ -1628,9 +1628,6 @@
   align-items: center;
   justify-content: center;
 }
-.container_sidebar .container_navigation .container_nav_connexion .btn-logout {
-  width: 70%;
-}
 .container_sidebar .sidebar-active,
 .container_sidebar .container_nav_pages li.active,
 .container_sidebar .container_nav_system li.active {
