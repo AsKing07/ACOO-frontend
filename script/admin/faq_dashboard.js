@@ -1,3 +1,20 @@
+/**
+ * @fileoverview
+ * This script initializes the FAQ management dashboard, allowing users to view, add, edit, and delete FAQs.
+ * It also handles category filtering and dynamic category creation.
+ * @module script/admin/faq_dashboard.js
+ * @requires module:service/api/faqApi.js
+ * @requires module:showNotification.js
+ * * @description
+ * This script provides functionality for managing FAQs in an admin dashboard.
+ * It allows administrators to:
+ * - View a list of FAQs with options to filter by category.
+ * - Add new FAQs with a dynamic category selection.
+ * - Edit existing FAQs.
+ * - Delete FAQs with confirmation.
+ * * It also includes a loading indicator while fetching data and provides user feedback through notifications.
+ */
+
 import { getFaqs, addFaq, updateFaq, deleteFaq } from '../../service/api/faqApi.js';
 import { showNotification } from '../showNotification.js';
 

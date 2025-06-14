@@ -19,13 +19,9 @@ if (!user) {
     ) {
 // Alert vous alert('Session expirée ou utilisateur non autorisé.'); et lorsque confirme on redirige
 
-    alert('Session expirée ou utilisateur non autorisé.');
+    alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
     // Redirection vers la page de connexion
     localStorage.removeItem('user'); // Nettoyer le localStorage
-
-
-      
-
       window.location.href = '/pages/admin/auth/login.php';
     }
   } catch (e) {

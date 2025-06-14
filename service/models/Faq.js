@@ -3,7 +3,7 @@
  */
 export class Faq {
   /**
-   * @param {{question: string, answer: string, category: string}} data
+   * @param {{id: number, question: string, answer: string, category: string}} data
    */
   constructor({ id,question, answer, category }){
     this.id = id; 

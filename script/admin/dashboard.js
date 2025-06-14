@@ -7,16 +7,75 @@ async function loadPage(url) {
   // Charger dynamiquement le script JS associé à la page
 
   if (url.includes('galerie.php')) {
-    import('../galleryCarrousel.js');
-  }
+    import('/script/admin/gallerie_dahsboard.js').then(module => {
+      module.initGallery(); // Exécution de l'initialisation
+    });}
+    // import('../galleryCarrousel.js');
+  
 if (url.includes('faq.php')) {
   import('/script/admin/faq_dashboard.js').then(module => {
     module.initFaq(); // Exécution de l'initialisation
   });
 }
 
-  // Ajoute d'autres conditions selon les besoins
+  if(url.includes('actualites.php')) {
+    import('/script/admin/actualites_dashboard.js').then(module => {
+      module.initActualites(); // Exécution de l'initialisation
+    });
+  }
+
+    if(url.includes('admin.php'))
+    {
+      import('/script/admin/adminProfil_dashboard.js').then(module => {
+        module.initAdminProfilDashboard(); // Exécution de l'initialisation
+      });
+    }
+
+    if(url.includes('club.php')) {
+      import('/script/admin/club_dahsboard.js').then(module => {
+        module.initClub(); // Exécution de l'initialisation
+      });
+    }
+
+    if(url.includes('partenaires.php')) {
+      import('/script/admin/partenaires_dashboard.js').then(module => {
+        module.initPartenairesDashboard(); // Exécution de l'initialisation
+      });
+    }
+
+
+    if(url.includes('dashboard_accueil.php')) {
+      import('/script/admin/accueil_dashboard.js').then(module => {
+        module.initDashboardAccueil(); // Exécution de l'initialisation
+      });
+    }
+    if(url.includes('events.php')) {
+      import('/script/admin/events_dashboard.js').then(module => {
+        module.initEventsDashboard(); // Exécution de l'initialisation
+      });
+    }
+    if(url.includes('messagerie.php')) {
+      import('/script/admin/messagerie_dahsboard.js').then(module => {
+        module.initMessagerieDashboard(); // Exécution de l'initialisation
+      });
+    }
+  if(url.includes('palmares.php')) {
+    import('/script/admin/palmares_dashboard.js').then(module => {
+      module.initPalmaresDashboard(); // Exécution de l'initialisation
+    });
+  }
+  if(url.includes('partage_documents.php')) {
+    import('/script/admin/partage_documents_dashboard.js').then(module => {
+      module.initPartageDocumentsDashboard(); // Exécution de l'initialisation
+    });
+  }
+
+
+
+
 }
+
+
 
     // Sélection des éléments du menu de la sidebar
     document.querySelectorAll('.container_nav_pages li, .container_nav_system li').forEach(item => {
@@ -29,17 +88,18 @@ if (url.includes('faq.php')) {
     const page = this.querySelector('span').textContent.trim().toLowerCase();
     let url = '';
         switch(page) {
-          case 'accueil': url = '/pages/admin/partials/accueil.php'; break;
-          case 'club': url = '/pages/admin/partials/club.php'; break;
-          case 'palmares': url = '/pages/admin/partials/palmares.php'; break;
-          case 'partenaires': url = '/pages/admin/partials/partenaires.php'; break;
-          case 'actus': url = '/pages/admin/actualites'; break;
+          case 'accueil': url = '/pages/admin/dashboard-accueil.php'; break;
+          case 'club': url = '/pages/admin/club.php'; break;
+          case 'palmares': url = '/pages/admin/palmares.php'; break;
+          case 'partenaires': url = '/pages/admin/partenaires.php'; break;
+          case 'actus': url = '/pages/admin/actualites.php'; break;
           case 'evenements': url = '/pages/admin/events.php'; break;
-          case 'galerie': url = '/pages/admin/partials/galerie.php'; break;
+          case 'galerie': url = '/pages/admin/gallerie.php'; break;
           case 'faq': url = '/pages/admin/faq.php'; break;
-          case 'messagerie': url = '/pages/admin/partials/messagerie.php'; break;
-          case 'admin': url = '/pages/admin/partials/admin.php'; break;
-          default: url = '';
+          case 'messagerie': url = '/pages/admin/messagerie.php'; break;
+          case 'admin': url = '/pages/admin/admin.php'; break;
+          case 'partage de documents': url = '/pages/admin/partage_documents.php'; break;
+          default: url = '/pages/admin/dashboard-accueil.php';
         }
         if(url) loadPage(url);
       });

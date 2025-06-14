@@ -44,6 +44,10 @@
                                 <img src="../../assets/images/icons/galery.png" alt="galerie">
                                 <span>GALERIE</span>
                             </li>
+                            <li>
+                                <img src="../../assets/images/icons/document.png" alt="document">
+                                <span>PARTAGE DE DOCUMENTS</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
