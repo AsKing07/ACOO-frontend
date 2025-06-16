@@ -10,23 +10,27 @@
     </div>
     <div class="graphic-index">
       <div class="index">
-        <span><b>Active Users</b></span>
-        <span><b class="vert">(+23)</b> than last week.</span>
+        <span><b>Visiteurs uniques</b></span>
+
+        <span><b class="unique-users-value vert">0</b></span>
       </div>
       <div class="index">
-        <div><img src="../../assets/images/dashboard-icon-viewers.png" alt="icon">Viewers</div>
-        <span><b>32,984</b></span>
+        <div><img src="../../assets/images/dashboard-icon-viewers.png" alt="icon">Nombre de visites</div>
+        <!-- <span><b>32,984</b></span> -->
+        <span><b class="total-session-value">0</b></span>
       </div>
       <div class="index">
-        <div><img src="../../assets/images/dashboard-icon-clicks.png" alt="icon">Clicks</div>
-        <span><b>2,42m</b></span>
+        <div><img src="../../assets/images/dashboard-icon-clicks.png" alt="icon">Utilisateurs actifs</div>
+        <!-- <span><b>2,42m</b></span> -->
+        <span><b class="curent-users-value">0</b></span>
       </div>
     </div>
   </div>
 
   <div class="accueil-dashbord-burger-calendar">
     <div class="dashboard-burger">
-      <img src="../../assets/images/dashboard-burger.png" alt="graphic pizza">
+      <!-- Une image présentant un graphique en disque stat des pages les plus visitées -->
+      <canvas id="topPagesChart" width="200" height="200"></canvas>
     </div>
     <button style="border: none;">
           <div class="dashboard-calendar">
