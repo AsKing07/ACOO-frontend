@@ -6,15 +6,7 @@
     <link rel="stylesheet" href="../css/styles.css">
 
     <title>ACOO: Aviron Orléans</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XW47D8BQJJ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XW47D8BQJJ');
-</script>
+<script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
 </head>
 <body class="body-accueil">
