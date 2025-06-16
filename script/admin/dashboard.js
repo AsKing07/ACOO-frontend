@@ -44,7 +44,7 @@ if (url.includes('faq.php')) {
     }
 
 
-    if(url.includes('dashboard_accueil.php')) {
+    if(url.includes('dashboard-accueil.php')) {
       import('/script/admin/accueil_dashboard.js').then(module => {
         module.initDashboardAccueil(); // Exécution de l'initialisation
       });

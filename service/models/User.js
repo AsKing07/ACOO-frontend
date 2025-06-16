@@ -5,14 +5,16 @@
  */
 export class User {
     /**
-     * @param {{ username: string, email: string, role: string[], tokenData: { expires_at: string, token: string } }} data
+     * @param {{ username: string, email: string, role: string[], phone: string, address: string tokenData: { expires_at: string, token: string } }} data
      */
-    constructor({ username, email, roles, tokenData }) {
+    constructor({ username, email, roles, tokenData, phone, address }) {
         this.username = username;
         this.email = email;
         this.roles = roles;
         this.tokenData = tokenData;
         this.isAdmin = roles.includes('ROLE_ADMIN') || this.roles.includes('ROLE_SUPER_ADMIN');
+        this.phone = phone || 'Non renseigné';
+        this.address = address || 'Non renseigné';
 
         // Assurez-vous que les rôles sont toujours un tableau
         if (!Array.isArray(this.roles)) {
@@ -65,17 +67,24 @@ export class UserRequest {
      * @param {string} username
      * @param {string} email
      * @param {string} password
+     * @param {string} [phone]
+     * @param {string} [address]
      */
-    constructor(username, email, password) {
+    constructor(username, email, password, phone, address) {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.phone = phone;
+        this.address = address;
     }
     toJSON() {
-        return {
+        const json = {
             username: this.username,
             email: this.email,
             password: this.password
         };
+        if (this.phone !== undefined) json.phone = this.phone;
+        if (this.address !== undefined) json.address = this.address;
+        return json;
     }
 }

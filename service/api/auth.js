@@ -46,3 +46,13 @@ export async function register(username, email, password) {
   alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
 
 }
+
+export async function getUser() {
+  const user = localStorage.getItem('user');
+  if (user) {
+    return User.fromApi(JSON.parse(user));
+  }
+  return null;
+}
+
+
