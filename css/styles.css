@@ -1575,6 +1575,7 @@
     padding: 4px 2px;
   }
 }
+<<<<<<< HEAD
 .container_sidebar {
   width: 100%;
   position: sticky;
@@ -1583,6 +1584,15 @@
   flex-shrink: 0;
   height: 100vh;
   background-color: white;
+=======
+.container_navigation {
+  position: fixed;
+  width: 20%;
+  height: 100%;
+  top: 0px;
+  padding: 1% 3%;
+  background-color: #FFFFFF;
+>>>>>>> fbaa6ca32e9c7c72d47f871f348ed5396bf44c88
 }
 .container_sidebar .container_navigation {
   padding: 8px 8px;
@@ -2215,6 +2225,7 @@
   }
 }
 
+<<<<<<< HEAD
 .palmares-champions {
   padding: 48px 0;
   display: flex;
@@ -2999,6 +3010,184 @@
   .login-body .login-container {
     padding: 1.2rem 0.5rem;
   }
+=======
+.container_dashboard {
+  margin-left: 26%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container_dashboard .dashboard-retour-site {
+  background-color: #39496B;
+  height: 50px;
+  width: 25%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.container_dashboard .dashboard-retour-site a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  width: 100%;
+  height: 100%;
+}
+.container_dashboard .dashboard-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  height: 200px;
+}
+.container_dashboard .dashboard-title h1 {
+  color: #2e344c;
+  font-weight: 550;
+}
+.container_dashboard .container-dashboard-graphic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container_dashboard .container-dashboard-graphic .dashboard-graphic img {
+  border-radius: 10px;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 120px;
+  align-items: center;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index .index {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index .index b {
+  font-weight: 1000;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index .index .vert {
+  color: #12d612;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index .index div {
+  display: flex;
+  gap: 10px;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index .index div img {
+  width: 32px;
+  border-radius: 10px;
+  position: relative;
+}
+.container_dashboard .container-dashboard-graphic .graphic-index .index div span {
+  text-align: end;
+}
+.container_dashboard .container-dashbord-burger-calendar {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  height: 400px;
+}
+.container_dashboard .container-dashbord-burger-calendar img {
+  width: 100%;
+  border-radius: 10px;
+}
+.container_dashboard .container-dashboard-profil {
+  background-color: white;
+  width: 70%;
+  border-radius: 10px;
+  color: white;
+}
+.container_dashboard .container-dashboard-profil .dashboard-profil-title {
+  background-color: #39496B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  border-radius: 10px;
+}
+.container_dashboard .container-dashboard-profil .dashboard-profil-title h2 {
+  color: white;
+  text-shadow: 1px 3px 6px rgba(18, 7, 26, 0.98);
+}
+.container_dashboard .container-dashboard-profil form {
+  padding-top: 80px;
+  padding-left: 80px;
+  padding-right: 80px;
+  padding-bottom: 80px;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info-display .dashboard-profil-info {
+  width: 50%;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info {
+  background-color: #39496B;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info .profil-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 80%;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info .profil-info input {
+  background-color: #39496B;
+  border: none;
+  height: 20px;
+  width: 100%;
+  color: white;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info img {
+  width: 26px;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info-btn .custom-btn {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 0;
+  border: none;
+  background: #39496B;
+  border-radius: 10px;
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info-btn .custom-btn::before {
+  content: "ENREGISTRER";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  color: white;
+  transform: translateX(-50%);
+}
+.container_dashboard .container-dashboard-profil form .dashboard-profil-info-btn .custom-btn::after {
+  content: "LES INFORMATIONS";
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  color: white;
+  transform: translateX(-50%);
+  width: 150px;
+>>>>>>> fbaa6ca32e9c7c72d47f871f348ed5396bf44c88
 }
 
 .container {

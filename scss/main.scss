@@ -25,6 +25,7 @@
 //Import des styles des pages personnalisées
 @use 'pages/accueil';
 @use 'pages/palmares';
+<<<<<<< HEAD
 @use 'pages/actualites';
 @use 'pages/club';
 
@@ -32,6 +33,9 @@
 @use 'pages/admin/event_dashboard';
 @use 'pages/admin/faq_dashboard';
 @use 'pages/admin/login';
+=======
+@use 'pages/dashboard';
+>>>>>>> fbaa6ca32e9c7c72d47f871f348ed5396bf44c88
 
 //Import des layouts
 @use 'layout/grid';
