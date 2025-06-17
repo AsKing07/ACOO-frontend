@@ -11,6 +11,8 @@
 </head>
 <body class="body-accueil">
 
+<?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
+
    
 <!-- HERO -->
 <section class="accueil-hero">
