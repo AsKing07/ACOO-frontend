@@ -1,32 +1,85 @@
-import { PLAUSIBLE_API_KEY, SITE_ID, PLAUSIBLE_API_URL } from "../config.js"
-
-// Check if the API key is present and throw a clear error if not
-if (!PLAUSIBLE_API_KEY || PLAUSIBLE_API_KEY === "YOUR_PLAUSIBLE_API_KEY") {
-    throw new Error("Missing or invalid Plausible API key. Please set PLAUSIBLE_API_KEY in config.js.");
-}
-
-console.log("Plausible API KEY:", PLAUSIBLE_API_KEY);
+import { ANALYTICS_API_URL, PLAUSIBLE_API_KEY, SITE_ID } from "../config.js"
 
 
-export async function getPlausibleStats() {
-    const url = `${PLAUSIBLE_API_URL}/aggregate?site_id=${SITE_ID}&metrics=visits,pageviews,visitors`;
+
+// Configuration pour les headers d'authentification
+const getHeaders = () => ({
+    "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`, // Remplacez par votre système d'auth
+    "Content-Type": "application/json"
+});
+
+/**
+ * Récupère les visiteurs en temps réel
+ */
+export async function getRealtime() {
+    const url = `${ANALYTICS_API_URL}/realtime?site_id=${SITE_ID}`;
     const res = await fetch(url, {
-        headers: {
-            "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`,
-            "Content-Type": "application/json"
-        }
+        headers: getHeaders()
     });
-    if (!res.ok) throw new Error("Erreur lors de la récupération des stats Plausible");
+    if (!res.ok) throw new Error("Erreur lors de la récupération des visiteurs temps réel");
     return res.json();
 }
 
-export async function getPlausibleTopPages() {
-    const url = `${PLAUSIBLE_API_URL}/breakdown?site_id=${SITE_ID}&property=event:page&metrics=pageviews&limit=5`;
+/**
+ * Récupère les métriques agrégées (visiteurs, pages vues, etc.)
+ */
+export async function getAggregateStats( period = "7d", metrics = "visitors,pageviews,visits,bounce_rate") {
+    const url = `${ANALYTICS_API_URL}/aggregate?site_id=${SITE_ID}&period=${period}&metrics=${metrics}`;
     const res = await fetch(url, {
-        headers: { "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`,
-            "Content-Type": "application/json"
-         }
+        headers: getHeaders()
     });
-    if (!res.ok) throw new Error("Erreur top pages Plausible");
+    if (!res.ok) throw new Error("Erreur lors de la récupération des stats agrégées");
+    return res.json();
+}
+
+/**
+ * Récupère les données temporelles pour le graphique
+ */
+export async function getTimeseries( period = "7d", metrics = "visitors") {
+    const url = `${ANALYTICS_API_URL}/timeseries?site_id=${SITE_ID}&period=${period}&metrics=${metrics}&dimensions=time:day`;
+    const res = await fetch(url, {
+        headers: getHeaders()
+    });
+    if (!res.ok) throw new Error("Erreur lors de la récupération des données temporelles");
+    return res.json();
+}
+
+/**
+ * Récupère les pages les plus populaires
+ */
+export async function getTopPages( period = "7d") {
+    const url = `${ANALYTICS_API_URL}/breakdown?dimensions=event:page&site_id=${SITE_ID}&period=${period}&metrics=visitors`;
+    const res = await fetch(url, {
+        headers: getHeaders()
+    });
+    if (!res.ok) throw new Error("Erreur lors de la récupération des pages populaires");
+    return res.json();
+}
+
+/**
+ * Récupère le trafic par pays
+ */
+export async function getCountries( period = "7d") {
+    const url = `${ANALYTICS_API_URL}/breakdown?dimensions=visit:country_name&site_id=${SITE_ID}&period=${period}&metrics=visitors`;
+    const res = await fetch(url, {
+        headers: getHeaders()
+    });
+    if (!res.ok) throw new Error("Erreur lors de la récupération du trafic par pays");
+    return res.json();
+}
+
+/**
+ * Teste la connexion à l'API
+ */
+export async function testConnection() {
+    const url = `${ANALYTICS_API_URL}/test-connection`;
+    const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ api_key: PLAUSIBLE_API_KEY, site_id: SITE_ID})
+    });
+    if (!res.ok) throw new Error("Erreur lors du test de connexion");
     return res.json();
 }
