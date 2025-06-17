@@ -42,14 +42,16 @@
 
           <div class="edit-wording-card">
             <div class="edit-wording_content">
+              <h2 class="edit-wording_title">Histoire du club</h2>
               <p class="edit-wording_description">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                 dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.
               </p>
-              <div class="edit-wording_btn">
-                  <a href="#" class="">
+              <div class="edit-actions-wording_btns">
+                  
+                  <button class="btn-primary">Voir</button>
                   <button class="btn-primary">Modifier</button>
-                  </a>
+                 
               </div>
             </div>
           </div>
@@ -58,6 +60,7 @@
         <div class="container-editing">
           <div class="edit-wording-card">
             <div class="edit-wording_content">
+                <h2 class="edit-wording_title">Histoire du club</h2>
               <p class="edit-wording_description">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                 dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it.

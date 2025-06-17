@@ -11,4 +11,32 @@
 
 .edit-wording_content {
     padding: 24px;
+      .edit-wording_title {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            color: $primary-color;
+        }
+
+    .edit-wording_description{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+
+      
+
+        .edit-wording_text {
+            font-size: 16px;
+            color: $gray-color;
+            line-height: 1.5;
+        }
+
+        .edit-actions-wording_btns{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 }
