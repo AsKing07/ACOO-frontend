@@ -3,13 +3,13 @@
 @use '../base/mixins' as *;
 
 .organigramme-container {
-  background: $white-color;
+  background: #FFFFFF;
   border-radius: 1rem;
   padding: 2rem;
-  max-width: 500px;
-  margin: auto;
-  font-family: $font-family;
-  color: $black-color;
+  max-width: 100%;
+  width: 100%;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  color: #000000;
 
   h2 {
     font-size: 1.2rem;
