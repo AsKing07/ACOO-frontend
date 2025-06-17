@@ -106,3 +106,18 @@
     }
   }
 }
+
+
+.sports-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sports-card .card {
+    width: 40%;
+    margin: 12px;
+    border-radius: 16px;
+    justify-content: flex-start;
+}
