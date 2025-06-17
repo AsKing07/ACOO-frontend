@@ -101,3 +101,13 @@
 {
     @include common-style-btn($gray-color)
 }
+
+// components with 2 buttons
+
+.edit-btnS {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 24px;
+}

@@ -1,0 +1,49 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.container-editing {
+    display: flex;
+    flex-direction: row;
+    background-color: $light-gray-color;
+    padding: 24px;
+    margin-top: 24px;
+    gap: 34px;
+}
+
+.container-editing-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $light-gray-color;
+    margin-top: 24px;
+    padding: 24px;
+    gap: 34px;
+}
+
+.editing-img-wording-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-top: 24px;
+    background-color: $light-gray-color;
+    align-items: center;
+    align-content: center;
+    text-align: start;
+    padding: 24px;
+}
+
+.edit-img {
+    width: 50%;
+}
+
+.edit-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.edit-description .edit-btnS {
+    justify-content: flex-start;
+}
