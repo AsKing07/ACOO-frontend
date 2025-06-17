@@ -28,9 +28,6 @@ export function initDashboardAccueil() {
         visitorsChart: null
     };
 
-    // Gestion du profil utilisateur
-    loadUserProfile();
-    
     // Gestion du formulaire profil
     setupProfileForm();
     
@@ -39,49 +36,6 @@ export function initDashboardAccueil() {
     
     // Démarrage des mises à jour automatiques
     startAutomaticUpdates();
-}
-
-/**
- * Charge le profil utilisateur
- */
-async function loadUserProfile() {
-    try {
-        const user = await getUser();
-        if (user) {
-            document.getElementById('email').value = user.email || '';
-            document.getElementById('username').value = user.username || '';
-            document.getElementById('telephone').value = user.phone || '';
-            document.getElementById('address').value = user.address || '';
-        } else {
-            console.log("Aucun utilisateur connecté.");
-        }
-    } catch (error) {
-        console.error("Erreur lors de la récupération de l'utilisateur :", error);
-    }
-}
-
-/**
- * Configure le formulaire profil
- */
-function setupProfileForm() {
-    document.getElementById("form-dashboard-profil").addEventListener("submit", async function(event) {
-        event.preventDefault();
-        
-        // Navigation vers la page admin
-        document.querySelectorAll('.container_nav_pages li, .container_nav_system li').forEach(item => {
-            item.classList.remove('active');
-        });
-        document.querySelector('.container_nav_system li#container_nav_system_admin').classList.add('active');
-
-        const res = await fetch('/pages/admin/admin.php', { credentials: 'same-origin' });
-        const html = await res.text();
-        document.getElementById('dashboard-content').innerHTML = html;
-        
-        // Charger dynamiquement le script JS associé à la page
-        import('/script/admin/adminProfil_dashboard.js').then(module => {
-            module.initAdminProfilDashboard();
-        });
-    });
 }
 
 /**
