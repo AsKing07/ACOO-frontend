@@ -5,16 +5,15 @@
   <div class="header__container">
     <a href="#" class="header__logo">
   
-      <img src="/assets/images/Logo.png" alt="Logo ACOO" />
+      <img src="../assets/images/Logo.png" alt="Logo ACOO" />
     </a>
     <nav class="header__nav">
-      <a href="/">ACCUEIL</a>
-      <a href="#">CLUB</a>
-      <a href="#">ÉVÉNEMENTS</a>
-      <a href="/pages/actualites.php">ACTUALITES</a>
+      <a href="accueil.php">ACCUEIL</a>
+      <a href="club.php">CLUB</a>
+      <a href="evenements.php">ÉVÉNEMENTS</a>
+      <a href="actualites.php">ACTUALITES</a>
       
       <a href="#">GALERIE</a>
-      <a href="/pages/palmares.php">PALMARÈS</a>
       <div class="header__nav-item header__nav-dropdown">
   <a href="#" class="header__nav-link">RAMER AU CLUB</a>
   <div class="header__dropdown-menu">
@@ -33,8 +32,7 @@
   </div>
   <div class="header__mobile-menu">
     <nav>
-      
-      <a href="/">ACCUEIL</a>
+      <a href="accueil.php">ACCUEIL</a>
       <a href="#">CLUB</a>
       <a href="#">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>

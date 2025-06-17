@@ -55,10 +55,7 @@
   <section class="palmares-champions">
     <?php include __DIR__ . '/../templates/components/cards/champion_card.php'; ?>
     <?php include __DIR__ . '/../templates/components/cards/champion_card.php'; ?>
-
-
   
-
   </section>
   
 <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
