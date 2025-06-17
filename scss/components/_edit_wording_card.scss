@@ -1,0 +1,14 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.edit-wording-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $white-color;
+}
+
+.edit-wording_content {
+    padding: 24px;
+}

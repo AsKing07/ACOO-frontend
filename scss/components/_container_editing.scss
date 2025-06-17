@@ -1,0 +1,20 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+.container-editing {
+    display: flex;
+    flex-direction: row;
+    background-color: $light-gray-color;
+    padding: 24px;
+    gap: 34px;
+}
+
+.container-editing-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: $light-gray-color;
+    padding: 24px;
+    gap: 34px;
+}
