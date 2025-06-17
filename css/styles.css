@@ -1896,6 +1896,33 @@
   gap: 34px;
 }
 
+.editing-img-wording-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 24px;
+  background-color: #D9D9D9;
+  align-items: center;
+  align-content: center;
+  text-align: start;
+  padding: 24px;
+}
+
+.edit-img {
+  width: 50%;
+}
+
+.edit-description {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.edit-description .edit-btnS {
+  justify-content: flex-start;
+}
+
 .organigramme-container {
   background: #FFFFFF;
   border-radius: 1rem;
