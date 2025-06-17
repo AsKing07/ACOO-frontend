@@ -5,14 +5,7 @@
   <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../css/styles.css">
   <title>ACOO: Aviron Orléans</title>
-  <style>
-    /* Ajouté ici pour t'assurer que le bouton actif soit visible */
-    .gallery-filters .btn-primary.active {
-      background-color: #0077cc;
-      color: white;
-      border: 1px solid #005fa3;
-    }
-  </style>
+ 
 </head>
 
 <body class="body-accueil">
@@ -132,7 +125,6 @@
         button.addEventListener("click", () => {
           const category = button.dataset.category;
 
-          // Toggle du bouton actif
           if (activeCategory === category) {
             activeCategory = "";
             button.classList.remove("active");
@@ -155,7 +147,6 @@
         if (currentPage < totalPages) showImages(currentPage + 1);
       });
 
-      // Initialisation
       showImages(1);
     });
   </script>
