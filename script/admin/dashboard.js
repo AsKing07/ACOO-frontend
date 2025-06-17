@@ -273,6 +273,66 @@ async function loadPage(url) {
     }
 }
 
+<<<<<<< HEAD
+=======
+  if(url.includes('actualites.php')) {
+    import('/script/admin/actualites_dashboard.js').then(module => {
+      module.initActualites(); // Exécution de l'initialisation
+    });
+  }
+
+    if(url.includes('admin.php'))
+    {
+      import('/script/admin/adminProfil_dashboard.js').then(module => {
+        module.initAdminProfilDashboard(); // Exécution de l'initialisation
+      });
+    }
+
+    if(url.includes('club.php')) {
+      import('/script/admin/club_dahsboard.js').then(module => {
+        module.initClub(); // Exécution de l'initialisation
+      });
+    }
+
+    if(url.includes('information.php')) {
+      import('/script/admin/informations_dahsboard.js').then(module => {
+        module.initInformationsDashboard(); // Exécution de l'initialisation
+      });
+    }
+
+    if(url.includes('partenaires.php')) {
+      import('/script/admin/partenaires_dashboard.js').then(module => {
+        module.initPartenairesDashboard(); // Exécution de l'initialisation
+      });
+    }
+
+
+    if(url.includes('dashboard_accueil.php')) {
+      import('/script/admin/accueil_dashboard.js').then(module => {
+        module.initDashboardAccueil(); // Exécution de l'initialisation
+      });
+    }
+    if(url.includes('events.php')) {
+      import('/script/admin/events_dashboard.js').then(module => {
+        module.initEventsDashboard(); // Exécution de l'initialisation
+      });
+    }
+    if(url.includes('messagerie.php')) {
+      import('/script/admin/messagerie_dahsboard.js').then(module => {
+        module.initMessagerieDashboard(); // Exécution de l'initialisation
+      });
+    }
+  if(url.includes('palmares.php')) {
+    import('/script/admin/palmares_dashboard.js').then(module => {
+      module.initPalmaresDashboard(); // Exécution de l'initialisation
+    });
+  }
+  if(url.includes('partage_documents.php')) {
+    import('/script/admin/partage_documents_dashboard.js').then(module => {
+      module.initPartageDocumentsDashboard(); // Exécution de l'initialisation
+    });
+  }
+>>>>>>> 17e9f0b83395e7b96fbf0306f14fff5a940a88e8
 
 
 
@@ -302,6 +362,7 @@ async function loadPage(url) {
         switch(page) {
           case 'accueil': url = '/pages/admin/dashboard-accueil.php'; break;
           case 'club': url = '/pages/admin/club.php'; break;
+          case 'informations': url = '/pages/admin/informations.php'; break;
           case 'palmares': url = '/pages/admin/palmares.php'; break;
           case 'partenaires': url = '/pages/admin/partenaires.php'; break;
           case 'actus': url = '/pages/admin/actualites.php'; break;

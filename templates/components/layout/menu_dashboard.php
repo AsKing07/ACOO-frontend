@@ -25,6 +25,10 @@
                                 <span>CLUB</span>
                             </li>
                             <li>
+                                <img src="../../assets/images/icons/information.png" alt="informations">
+                                <span>INFORMATIONS</span>
+                            </li>
+                            <li>
                                 <img src="../../assets/images/icons/star.png" alt="palmares">
                                 <span>PALMARES</span>
                             </li>
