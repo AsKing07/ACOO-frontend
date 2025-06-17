@@ -19,12 +19,14 @@
 @use 'components/main_container';
 @use 'components/loader';
 @use 'components/notification';
+@use 'components/club_menu';
 
 
 //Import des styles des pages personnalisées
 @use 'pages/accueil';
 @use 'pages/palmares';
 @use 'pages/actualites';
+@use 'pages/club';
 
 @use 'pages/admin/dashboard_layout';
 @use 'pages/admin/event_dashboard';
