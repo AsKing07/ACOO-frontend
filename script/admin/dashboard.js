@@ -37,6 +37,12 @@ if (url.includes('faq.php')) {
       });
     }
 
+    if(url.includes('information.php')) {
+      import('/script/admin/informations_dahsboard.js').then(module => {
+        module.initInformationsDashboard(); // Exécution de l'initialisation
+      });
+    }
+
     if(url.includes('partenaires.php')) {
       import('/script/admin/partenaires_dashboard.js').then(module => {
         module.initPartenairesDashboard(); // Exécution de l'initialisation
@@ -90,6 +96,7 @@ if (url.includes('faq.php')) {
         switch(page) {
           case 'accueil': url = '/pages/admin/dashboard-accueil.php'; break;
           case 'club': url = '/pages/admin/club.php'; break;
+          case 'informations': url = '/pages/admin/informations.php'; break;
           case 'palmares': url = '/pages/admin/palmares.php'; break;
           case 'partenaires': url = '/pages/admin/partenaires.php'; break;
           case 'actus': url = '/pages/admin/actualites.php'; break;
