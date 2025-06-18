@@ -1,0 +1,2846 @@
+From f160d280cfe9818e74e9c6fed750db311664b6e7 Mon Sep 17 00:00:00 2001
+From: alvyn <alvyn.richard@hotmail.fr>
+Date: Tue, 17 Jun 2025 16:51:56 +0200
+Subject: [PATCH] page club presque fini a pofininer
+
+---
+ assets/images/rame.png                    | Bin 0 -> 98121 bytes
+ css/styles.css                            | 460 +++++++++++++++++++---
+ css/styles.css.map                        |   2 +-
+ pages/club.php                            | 385 ++++++++++++++++++
+ pages/contact.php                         |  14 +
+ pages/evenement.php                       |  14 +
+ pages/galerie.php                         |  14 +
+ pages/palmares.php                        |   3 -
+ pages/ramerAuClub.php                     |  14 +
+ script/club.js                            |  47 +++
+ script/histoire.js                        |  55 +++
+ script/sport.js                           |  24 ++
+ scss/components/_club_menu.scss           |  48 +++
+ scss/layout/_header.scss                  |   2 +-
+ scss/main.scss                            |   2 +
+ scss/pages/_club.scss                     | 358 +++++++++++++++++
+ templates/components/layout/header.php    |  14 +-
+ templates/components/layout/menu_club.php |  30 ++
+ 18 files changed, 1412 insertions(+), 74 deletions(-)
+ create mode 100644 assets/images/rame.png
+ create mode 100644 pages/club.php
+ create mode 100644 pages/contact.php
+ create mode 100644 pages/evenement.php
+ create mode 100644 pages/galerie.php
+ create mode 100644 pages/ramerAuClub.php
+ create mode 100644 script/club.js
+ create mode 100644 script/histoire.js
+ create mode 100644 script/sport.js
+ create mode 100644 scss/components/_club_menu.scss
+ create mode 100644 scss/pages/_club.scss
+ create mode 100644 templates/components/layout/menu_club.php
+
+diff --git a/assets/images/rame.png b/assets/images/rame.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..c991574df43a3ecd2c0d93eb25a37a7b869bbb84
+GIT binary patch
+literal 98121
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/css/styles.css b/css/styles.css
+index 86bc488..bbfd88f 100644
+--- a/css/styles.css
++++ b/css/styles.css
+@@ -1,3 +1,4 @@
++@charset "UTF-8";
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+ .m-1 {
+   margin: 4px;
+@@ -418,7 +419,7 @@
+ .btn:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #161c28;
++  background-color: rgb(21.5487804878, 27.5975609756, 40.4512195122);
+   color: white;
+ }
+ .btn:active {
+@@ -444,7 +445,7 @@
+ .btn-outline:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: rgba(22, 28, 40, 0.1);
++  background-color: rgba(21.5487804878, 27.5975609756, 40.4512195122, 0.1);
+   color: #39496B;
+ }
+ .btn-outline:active {
+@@ -470,7 +471,7 @@
+ .btn-primary:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #161c28;
++  background-color: rgb(21.5487804878, 27.5975609756, 40.4512195122);
+   color: white;
+ }
+ .btn-primary:active {
+@@ -496,7 +497,7 @@
+ .btn-secondary:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #9faede;
++  background-color: rgb(159.4444444444, 173.7777777778, 221.5555555556);
+   color: #39496B;
+ }
+ .btn-secondary:active {
+@@ -522,7 +523,7 @@
+ .btn-tertiary:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #572217;
++  background-color: rgb(87.1698113208, 33.7264150943, 22.8301886792);
+   color: white;
+ }
+ .btn-tertiary:active {
+@@ -548,7 +549,7 @@
+ .btn-quaternary:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #681fac;
++  background-color: rgb(103.9756097561, 30.6975609756, 172.3024390244);
+   color: white;
+ }
+ .btn-quaternary:active {
+@@ -574,7 +575,7 @@
+ .btn-success:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #00723e;
++  background-color: rgb(0, 114, 62.2777777778);
+   color: white;
+ }
+ .btn-success:active {
+@@ -1766,7 +1767,7 @@
+   text-align: left;
+ }
+ .calendar-container .calendar .grid-calendar .day.adjacent {
+-  background-color: #8194bc;
++  background-color: rgb(129.0792682927, 147.9085365854, 187.9207317073);
+ }
+ 
+ .main-container {
+@@ -1844,6 +1845,48 @@
+   color: #39496B;
+ }
+ 
++#menu_club {
++  display: flex;
++  flex-direction: column;
++  align-items: flex-start;
++  gap: 20px;
++  padding: 20px;
++  width: 12%;
++  margin: 30px 0px;
++}
++#menu_club .ram {
++  position: relative;
++  width: 300px;
++  height: 60px;
++  cursor: pointer;
++  transition: transform 0.3s ease;
++}
++#menu_club .ram:hover {
++  transform: translateX(15px);
++}
++#menu_club .ram img {
++  position: absolute;
++  top: 50%;
++  left: -60%;
++  width: 200px;
++  transform: translateY(-50%) rotate(90deg);
++  z-index: 0;
++  pointer-events: none;
++}
++#menu_club .ram span {
++  position: absolute;
++  top: 50%;
++  left: 38%;
++  transform: translate(-50%, -50%);
++  color: white;
++  font-weight: bold;
++  font-size: 14px;
++  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
++  z-index: 1;
++  white-space: nowrap;
++  pointer-events: none;
++}
++
+ .body-accueil .accueil-hero {
+   position: relative;
+   width: 100%;
+@@ -2336,6 +2379,301 @@
+     font-size: 11px;
+   }
+ }
++#club_container {
++  margin-top: 6.5%;
++  display: flex;
++  overflow: hidden;
++  /* Conteneur global des cartes */
++  /* Carte individuelle */
++  /* Image de profil */
++  /* Nom et rôle */
++  /* Réseaux sociaux en ligne */
++}
++#club_container #title_club {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++}
++#club_container #title_club h1 {
++  font-size: 1.9em;
++  font-weight: 700;
++  color: black;
++}
++#club_container .container_club {
++  width: 100%;
++  overflow: hidden;
++}
++#club_container .container_club #club_presentation {
++  font-size: 18px;
++}
++#club_container .container_club #club_presentation .box {
++  border-radius: 4px;
++  height: 60px;
++  margin-bottom: 10px;
++  padding-left: 80px;
++  display: flex;
++  align-items: center;
++}
++#club_container .container_club #club_presentation .color1 {
++  background-color: #39496B;
++}
++#club_container .container_club #club_presentation .color2 {
++  background-color: #547394;
++}
++#club_container .container_club #club_presentation .color3 {
++  background-color: #A8412C;
++}
++#club_container .container_club #club_presentation .color4 {
++  background-color: #8A6AC0;
++}
++#club_container .container_club #club_presentation .carousel {
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  gap: 10px;
++  margin-top: 50px;
++  margin-bottom: 60px;
++}
++#club_container .container_club #club_presentation .carousel .carousel-window {
++  width: 940px;
++  overflow: hidden;
++  border-radius: 10px;
++}
++#club_container .container_club #club_presentation .carousel .carousel-track {
++  display: flex;
++  transition: transform 0.5s ease;
++  gap: 20px;
++}
++#club_container .container_club #club_presentation .carousel img {
++  width: 300px;
++  height: 250px;
++  object-fit: cover;
++  flex-shrink: 0;
++}
++#club_container .container_club #club_presentation .carousel .carousel-button {
++  color: #39496B;
++  font-size: 2rem;
++  border: none;
++  cursor: pointer;
++  padding: 10px;
++  border-radius: 50%;
++  transition: background 0.3s;
++}
++#club_container .container_club #club_presentation .carousel .carousel-button:hover {
++  transform: scale(1.2);
++}
++#club_container #club_histoire {
++  color: white;
++  padding: 40px;
++}
++#club_container #club_histoire .timeline-container {
++  overflow-x: hidden;
++}
++#club_container #club_histoire .timeline-container .timeline {
++  overflow-x: auto;
++  scrollbar-width: none;
++  -ms-overflow-style: none;
++}
++#club_container #club_histoire .timeline-container .timeline::-webkit-scrollbar {
++  display: none;
++}
++#club_container #club_histoire .timeline-container .timeline .cercle {
++  display: flex;
++  gap: 40px;
++  padding: 20px 40px;
++  position: relative;
++  width: max-content;
++  transition: transform 0.3s ease;
++}
++#club_container #club_histoire .timeline-container .timeline .year {
++  position: relative;
++  background-color: #1c3a6f;
++  border-radius: 50%;
++  width: 70px;
++  height: 70px;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  font-weight: bold;
++  color: white;
++  cursor: pointer;
++  z-index: 2;
++  transition: all 0.3s ease;
++  flex-shrink: 0;
++}
++#club_container #club_histoire .timeline-container .timeline .year.selected {
++  border-radius: 20px;
++  background-color: #295bb4;
++  transform: scale(1.1);
++}
++#club_container #club_histoire .timeline-container .timeline .line {
++  position: absolute;
++  top: 50%;
++  left: 0;
++  height: 4px;
++  width: 100%;
++  background-color: #A8412C;
++  z-index: 1;
++  transform: translateY(-50%);
++}
++#club_container #club_histoire .timeline-container .content {
++  display: flex;
++  gap: 20px;
++  align-items: center;
++  margin: 40px 9%;
++  background-color: #1c3a6f;
++  height: 300px;
++  border-radius: 10px;
++  padding: 0px 4%;
++}
++#club_container #club_histoire .timeline-container .content img {
++  width: 200px;
++  height: auto;
++  border-radius: 8px;
++}
++#club_container #club_histoire .timeline-container .content p {
++  max-width: 600px;
++  font-size: 1.1rem;
++}
++#club_container .container_equipe {
++  display: grid;
++  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
++  gap: 20px;
++  padding: 40px 20px;
++  justify-items: center;
++}
++#club_container .container_card {
++  width: 100%;
++  max-width: 250px;
++  background-color: #ffffff;
++  border-radius: 12px;
++  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
++  overflow: hidden;
++  text-align: center;
++  font-family: Arial, sans-serif;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  padding: 16px;
++  gap: 12px;
++}
++#club_container .container_img img {
++  width: 100px;
++  height: 100px;
++  border-radius: 10px;
++  object-fit: cover;
++  border: 3px solid #0055a5;
++}
++#club_container .container_info h4 {
++  margin: 8px 0 4px;
++  font-size: 18px;
++  color: #333;
++}
++#club_container .container_info span {
++  font-size: 14px;
++  color: #777;
++}
++#club_container .container_social {
++  display: flex;
++  gap: 10px;
++  justify-content: center;
++}
++#club_container .container_social img {
++  width: 24px;
++  height: 24px;
++  cursor: pointer;
++  transition: transform 0.2s ease;
++}
++#club_container .container_social img:hover {
++  transform: scale(1.1);
++}
++#club_container #club_lieux button {
++  border: none;
++  background: #0055a5;
++  color: white;
++  height: 35px;
++  min-width: 100px;
++  border-radius: 8px;
++}
++#club_container #club_lieux #map {
++  height: 450px;
++  margin: 10px 60px;
++}
++#club_container #club_sports .carousel-wrapper {
++  position: relative;
++  display: flex;
++  align-items: center;
++  overflow: hidden;
++  padding: 20px;
++}
++#club_container #club_sports .carousel {
++  display: flex;
++  overflow-x: auto;
++  scroll-behavior: smooth;
++  padding: 10px 10px;
++}
++#club_container #club_sports .carousel::-webkit-scrollbar {
++  display: none;
++}
++#club_container #club_sports .aviron-item {
++  flex: 0 0 auto;
++  width: 220px;
++  height: 400px;
++  clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
++  border: 3px solid #0055a5;
++  background-color: #e3e3e3;
++  position: relative;
++  overflow: hidden;
++  transition: transform 0.3s ease;
++  cursor: pointer;
++}
++#club_container #club_sports .aviron-item img {
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++  display: block;
++}
++#club_container #club_sports .aviron-title {
++  position: absolute;
++  bottom: 10px;
++  left: 10px;
++  color: white;
++  font-weight: bold;
++  background-color: rgba(0, 0, 0, 0.6);
++  padding: 6px 10px;
++  border-radius: 5px;
++  opacity: 0;
++  transform: translateY(10px);
++  transition: 0.3s ease;
++}
++#club_container #club_sports .aviron-item:hover {
++  transform: scale(1.05);
++}
++#club_container #club_sports .aviron-item:hover .aviron-title {
++  opacity: 1;
++  transform: translateY(0);
++}
++#club_container #club_sports .carousel-btn {
++  color: #0055a5;
++  font-size: 50px;
++  border: none;
++  width: 40px;
++  height: 40px;
++  border-radius: 50%;
++  cursor: pointer;
++  z-index: 2;
++  transition: background 0.2s ease;
++}
++#club_container #club_sports .carousel-btn:hover {
++  transform: scale(1.2);
++}
++#club_container #club_sports .carousel-btn.left {
++  margin-right: 10px;
++}
++#club_container #club_sports .carousel-btn.right {
++  margin-left: 10px;
++}
++
+ .dashboard-layout {
+   display: flex;
+   min-height: 100vh;
+@@ -2381,7 +2719,7 @@
+ .body-event-dashboard .labels-container .label-para:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #18618a;
++  background-color: rgb(23.7073170732, 96.8048780488, 138.2926829268);
+   color: white;
+ }
+ .body-event-dashboard .labels-container .label-para:active {
+@@ -2431,7 +2769,7 @@
+ .body-event-dashboard .labels-container .label-indoor:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #00723e;
++  background-color: rgb(0, 114, 62.2777777778);
+   color: white;
+ }
+ .body-event-dashboard .labels-container .label-indoor:active {
+@@ -2481,7 +2819,7 @@
+ .body-event-dashboard .labels-container .label-sante:hover {
+   transition: all ease-in-out 0.3s;
+   transform: scale(1.03);
+-  background-color: #681fac;
++  background-color: rgb(103.9756097561, 30.6975609756, 172.3024390244);
+   color: white;
+ }
+ .body-event-dashboard .labels-container .label-sante:active {
+@@ -2587,7 +2925,7 @@
+ }
+ 
+ .login-body {
+-  background: linear-gradient(120deg, #39496B 0%, #576481 100%);
++  background: linear-gradient(120deg, #39496B 0%, rgb(86.7, 100.3, 129.2) 100%);
+   min-height: 100vh;
+   display: flex;
+   align-items: center;
+@@ -2688,7 +3026,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-1 {
+-    width: calc(100% / 12 * 1);
++    width: calc(8.3333333333% * 1);
+   }
+ }
+ .col-sm-1.bg-primary {
+@@ -2729,7 +3067,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-2 {
+-    width: calc(100% / 12 * 2);
++    width: calc(8.3333333333% * 2);
+   }
+ }
+ .col-sm-2.bg-primary {
+@@ -2770,7 +3108,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-3 {
+-    width: calc(100% / 12 * 3);
++    width: calc(8.3333333333% * 3);
+   }
+ }
+ .col-sm-3.bg-primary {
+@@ -2811,7 +3149,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-4 {
+-    width: calc(100% / 12 * 4);
++    width: calc(8.3333333333% * 4);
+   }
+ }
+ .col-sm-4.bg-primary {
+@@ -2852,7 +3190,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-5 {
+-    width: calc(100% / 12 * 5);
++    width: calc(8.3333333333% * 5);
+   }
+ }
+ .col-sm-5.bg-primary {
+@@ -2893,7 +3231,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-6 {
+-    width: calc(100% / 12 * 6);
++    width: calc(8.3333333333% * 6);
+   }
+ }
+ .col-sm-6.bg-primary {
+@@ -2934,7 +3272,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-7 {
+-    width: calc(100% / 12 * 7);
++    width: calc(8.3333333333% * 7);
+   }
+ }
+ .col-sm-7.bg-primary {
+@@ -2975,7 +3313,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-8 {
+-    width: calc(100% / 12 * 8);
++    width: calc(8.3333333333% * 8);
+   }
+ }
+ .col-sm-8.bg-primary {
+@@ -3016,7 +3354,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-9 {
+-    width: calc(100% / 12 * 9);
++    width: calc(8.3333333333% * 9);
+   }
+ }
+ .col-sm-9.bg-primary {
+@@ -3057,7 +3395,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-10 {
+-    width: calc(100% / 12 * 10);
++    width: calc(8.3333333333% * 10);
+   }
+ }
+ .col-sm-10.bg-primary {
+@@ -3098,7 +3436,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-11 {
+-    width: calc(100% / 12 * 11);
++    width: calc(8.3333333333% * 11);
+   }
+ }
+ .col-sm-11.bg-primary {
+@@ -3139,7 +3477,7 @@
+ }
+ @media (min-width: 576px) {
+   .col-sm-12 {
+-    width: calc(100% / 12 * 12);
++    width: calc(8.3333333333% * 12);
+   }
+ }
+ .col-sm-12.bg-primary {
+@@ -3180,7 +3518,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-1 {
+-    width: calc(100% / 12 * 1);
++    width: calc(8.3333333333% * 1);
+   }
+ }
+ .col-md-1.bg-primary {
+@@ -3221,7 +3559,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-2 {
+-    width: calc(100% / 12 * 2);
++    width: calc(8.3333333333% * 2);
+   }
+ }
+ .col-md-2.bg-primary {
+@@ -3262,7 +3600,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-3 {
+-    width: calc(100% / 12 * 3);
++    width: calc(8.3333333333% * 3);
+   }
+ }
+ .col-md-3.bg-primary {
+@@ -3303,7 +3641,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-4 {
+-    width: calc(100% / 12 * 4);
++    width: calc(8.3333333333% * 4);
+   }
+ }
+ .col-md-4.bg-primary {
+@@ -3344,7 +3682,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-5 {
+-    width: calc(100% / 12 * 5);
++    width: calc(8.3333333333% * 5);
+   }
+ }
+ .col-md-5.bg-primary {
+@@ -3385,7 +3723,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-6 {
+-    width: calc(100% / 12 * 6);
++    width: calc(8.3333333333% * 6);
+   }
+ }
+ .col-md-6.bg-primary {
+@@ -3426,7 +3764,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-7 {
+-    width: calc(100% / 12 * 7);
++    width: calc(8.3333333333% * 7);
+   }
+ }
+ .col-md-7.bg-primary {
+@@ -3467,7 +3805,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-8 {
+-    width: calc(100% / 12 * 8);
++    width: calc(8.3333333333% * 8);
+   }
+ }
+ .col-md-8.bg-primary {
+@@ -3508,7 +3846,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-9 {
+-    width: calc(100% / 12 * 9);
++    width: calc(8.3333333333% * 9);
+   }
+ }
+ .col-md-9.bg-primary {
+@@ -3549,7 +3887,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-10 {
+-    width: calc(100% / 12 * 10);
++    width: calc(8.3333333333% * 10);
+   }
+ }
+ .col-md-10.bg-primary {
+@@ -3590,7 +3928,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-11 {
+-    width: calc(100% / 12 * 11);
++    width: calc(8.3333333333% * 11);
+   }
+ }
+ .col-md-11.bg-primary {
+@@ -3631,7 +3969,7 @@
+ }
+ @media (min-width: 768px) {
+   .col-md-12 {
+-    width: calc(100% / 12 * 12);
++    width: calc(8.3333333333% * 12);
+   }
+ }
+ .col-md-12.bg-primary {
+@@ -3672,7 +4010,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-1 {
+-    width: calc(100% / 12 * 1);
++    width: calc(8.3333333333% * 1);
+   }
+ }
+ .col-lg-1.bg-primary {
+@@ -3713,7 +4051,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-2 {
+-    width: calc(100% / 12 * 2);
++    width: calc(8.3333333333% * 2);
+   }
+ }
+ .col-lg-2.bg-primary {
+@@ -3754,7 +4092,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-3 {
+-    width: calc(100% / 12 * 3);
++    width: calc(8.3333333333% * 3);
+   }
+ }
+ .col-lg-3.bg-primary {
+@@ -3795,7 +4133,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-4 {
+-    width: calc(100% / 12 * 4);
++    width: calc(8.3333333333% * 4);
+   }
+ }
+ .col-lg-4.bg-primary {
+@@ -3836,7 +4174,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-5 {
+-    width: calc(100% / 12 * 5);
++    width: calc(8.3333333333% * 5);
+   }
+ }
+ .col-lg-5.bg-primary {
+@@ -3877,7 +4215,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-6 {
+-    width: calc(100% / 12 * 6);
++    width: calc(8.3333333333% * 6);
+   }
+ }
+ .col-lg-6.bg-primary {
+@@ -3918,7 +4256,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-7 {
+-    width: calc(100% / 12 * 7);
++    width: calc(8.3333333333% * 7);
+   }
+ }
+ .col-lg-7.bg-primary {
+@@ -3959,7 +4297,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-8 {
+-    width: calc(100% / 12 * 8);
++    width: calc(8.3333333333% * 8);
+   }
+ }
+ .col-lg-8.bg-primary {
+@@ -4000,7 +4338,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-9 {
+-    width: calc(100% / 12 * 9);
++    width: calc(8.3333333333% * 9);
+   }
+ }
+ .col-lg-9.bg-primary {
+@@ -4041,7 +4379,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-10 {
+-    width: calc(100% / 12 * 10);
++    width: calc(8.3333333333% * 10);
+   }
+ }
+ .col-lg-10.bg-primary {
+@@ -4082,7 +4420,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-11 {
+-    width: calc(100% / 12 * 11);
++    width: calc(8.3333333333% * 11);
+   }
+ }
+ .col-lg-11.bg-primary {
+@@ -4123,7 +4461,7 @@
+ }
+ @media (min-width: 992px) {
+   .col-lg-12 {
+-    width: calc(100% / 12 * 12);
++    width: calc(8.3333333333% * 12);
+   }
+ }
+ .col-lg-12.bg-primary {
+@@ -4164,7 +4502,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-1 {
+-    width: calc(100% / 12 * 1);
++    width: calc(8.3333333333% * 1);
+   }
+ }
+ .col-xl-1.bg-primary {
+@@ -4205,7 +4543,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-2 {
+-    width: calc(100% / 12 * 2);
++    width: calc(8.3333333333% * 2);
+   }
+ }
+ .col-xl-2.bg-primary {
+@@ -4246,7 +4584,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-3 {
+-    width: calc(100% / 12 * 3);
++    width: calc(8.3333333333% * 3);
+   }
+ }
+ .col-xl-3.bg-primary {
+@@ -4287,7 +4625,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-4 {
+-    width: calc(100% / 12 * 4);
++    width: calc(8.3333333333% * 4);
+   }
+ }
+ .col-xl-4.bg-primary {
+@@ -4328,7 +4666,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-5 {
+-    width: calc(100% / 12 * 5);
++    width: calc(8.3333333333% * 5);
+   }
+ }
+ .col-xl-5.bg-primary {
+@@ -4369,7 +4707,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-6 {
+-    width: calc(100% / 12 * 6);
++    width: calc(8.3333333333% * 6);
+   }
+ }
+ .col-xl-6.bg-primary {
+@@ -4410,7 +4748,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-7 {
+-    width: calc(100% / 12 * 7);
++    width: calc(8.3333333333% * 7);
+   }
+ }
+ .col-xl-7.bg-primary {
+@@ -4451,7 +4789,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-8 {
+-    width: calc(100% / 12 * 8);
++    width: calc(8.3333333333% * 8);
+   }
+ }
+ .col-xl-8.bg-primary {
+@@ -4492,7 +4830,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-9 {
+-    width: calc(100% / 12 * 9);
++    width: calc(8.3333333333% * 9);
+   }
+ }
+ .col-xl-9.bg-primary {
+@@ -4533,7 +4871,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-10 {
+-    width: calc(100% / 12 * 10);
++    width: calc(8.3333333333% * 10);
+   }
+ }
+ .col-xl-10.bg-primary {
+@@ -4574,7 +4912,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-11 {
+-    width: calc(100% / 12 * 11);
++    width: calc(8.3333333333% * 11);
+   }
+ }
+ .col-xl-11.bg-primary {
+@@ -4615,7 +4953,7 @@
+ }
+ @media (min-width: 1200px) {
+   .col-xl-12 {
+-    width: calc(100% / 12 * 12);
++    width: calc(8.3333333333% * 12);
+   }
+ }
+ .col-xl-12.bg-primary {
+@@ -4958,7 +5296,7 @@
+   position: fixed;
+   top: 0;
+   left: 0;
+-  z-index: 100;
++  z-index: 10000;
+   color: #fff;
+   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+ }
+diff --git a/css/styles.css.map b/css/styles.css.map
+index 02f30cc..219eeb2 100644
+--- a/css/styles.css.map
++++ b/css/styles.css.map
+@@ -1 +1 @@
+-{"version":3,"sourceRoot":"","sources":["../scss/base/_variables.scss","../scss/base/_mixins.scss","../scss/components/_buttons.scss","../scss/components/_card.scss","../scss/components/_event_card.scss","../scss/components/_champion_card.scss","../scss/components/_form.scss","../scss/components/_faq.scss","../scss/components/_events_table.scss","../scss/components/_table.scss","../scss/components/_menu_dashboard.scss","../scss/components/_galleryCarousel.scss","../scss/components/_calendar.scss","../scss/components/_main_container.scss","../scss/components/_loader.scss","../scss/components/_notification.scss","../scss/pages/_accueil.scss","../scss/pages/_palmares.scss","../scss/pages/_actualites.scss","../scss/pages/admin/_dashboard_layout.scss","../scss/pages/admin/_event_dashboard.scss","../scss/pages/admin/_faq_dashboard.scss","../scss/pages/admin/_login.scss","../scss/layout/_grid.scss","../scss/layout/_header.scss","../scss/layout/_footer.scss","../scss/base/_reset.scss"],"names":[],"mappings":"AAGQ;ACyBJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAMJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;ACjBR;EAhCI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFdY;EEeZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAaR;EArCI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBA+B6B;EA9B7B;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OFzBQ;;AE6BZ;EACI;;;AAoBR;EA5CI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFdY;EEeZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AA0BR;EAlDI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFbc;EEcd;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OFzBQ;;AE6BZ;EACI;;;AAiCR;EAzDI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFZa;EEab;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAwCR;EAhEI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFXe;EEYf;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AA8CR;EAtEI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFRY;EESZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAoDR;EA5EI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFPW;EEQX;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AA0DR;EAlFI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFNY;EEOZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAgER;EAxFI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFHS;EEIT;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AC/BR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AFdI;EEQN;IASI;IACA;IACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AFrCI;EEdR;IAwDI;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;;EAGF;IACE;IACA;;EAGF;IACE;IACA;;EAGF;IACE;IACA;;;AFnEE;EEdR;IAsFI;IACA;;EAEA;IACE;IACA;;EAGF;IACE;;EAGF;IACE;IACA;;;;ACjGN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AHnCI;EG6BN;IASI;IACA;IACA;;;AAIN;EACI;EACA;EACA;EACA;EACA,kBJtDY;EIuDZ;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AHjFI;EGOR;IAiFI;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;;EAGD;IACC;IACA;;EAGF;IACE;IACA;;EAGF;IACG;IACC;;;AHjHA;EGOR;IAiHI;IACA;;EAEA;IACE;IACA;;EAGF;IACE;;EAGF;IACE;IACA;;;;AAUN;EACE;EACA;EACA,YJhKc;EIiKd;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,aJlKQ;EImKR;EACA;EACA;EACA;;AAEF;EACE;EACA,aJ1KQ;EI2KR;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,aJrMQ;EIsMR;EACA;EACA;;AAEF;EACE;EACA,aJ5MQ;EI6MR;EACA;EACA;;;AHpNE;EG2NN;IACE;IACA;IACA;;;AH9NI;EGoOJ;IACA;IACA;IACA;IACA;;EACA;IACE;;EAEF;IACE;IACA;IACA;;EAEF;IACE;;EACA;AAAA;IAEE;;;AC9PF;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;AAEF;EACE;;AAMR;EAzCI;IA4CA;IACA;IACA;IAgBA;IACA;IACA;;EAhBA;IAEM;IAEF;;EAIV;IACQ;IACA;IACA;;EAOP;IACK;IAAc;;;AAGlB;EAtEI;IAyEL;;EAIC;IAAwB;IAAa;;;;ACpFvC;EACE;EACA;EACA;EACA;EACA;EACA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EAEE;EACA;EACA;EACA;EACA;EACA,aNnCU;EMoCV;EACA;EACA;;AACA;EACE,cN1DU;;AM4DZ;EAEE,KNvCG;EMwCH;EACA;EACA,ONjEU;EMkEV;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA,ONvEe;EMwEf;EACA,aNnEU;EMoEV;EACA;EACA;EACA;;AAGC;EACC;EACA;EACA;;AAEF;EAEE;EACA;EACA;;;AAQN;EACE;IACE;;EAEF;IACE;IACA;;;AAIJ;EACE;IACE;;EAEF;IACE;;EAEF;IACE;;;AAqBJ;EACE;EACA;EACA;EACA;EACA;EACA,aNxIY;EMyIZ;EACA;;AACA;EACE,cN9JY;;;AMoKhB;EACE;EACA;EACA;EACA;EACA;EACE;EACF;;AAIA;EACE;EACA;EACA,aNhKU;EMiKV;EACA;;AAEF;EAEE;EACA,YN7Ke;EM8Kf;EACA;EACA;EACA;;AAEF;EAEE;EACA;EACA;EACA,aNlLU;EMmLV;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACE;EACF;;AAEA;EACE;EACA;EACA,aNrMU;EMsMV;EACA;;AAEF;EACE;EACA;EACA,YNlNe;EMmNf;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA,aNvNU;EMwNV;EACA;EACA;EACA;;;AAKJ;EACE;AAAA;IAEE;;EACA;AAAA;IACE;IACA;;;ACxPN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,aPSU;EORV;EACA,OPXY;EOYZ;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA,aPnBU;EOoBV;EACA;EACA,OPxCY;EOyCZ;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;;AAEF;EACE,YPrDY;;AOyDhB;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA,aPlDQ;EOmDR;;;AAMN;EACE;IACE;;EAEF;IACE;;;ACnFJ;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA,YRTc;EQUd;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;AACA;EACE;EACA;EACA,aRLU;EQMV;EACA;;;AAIJ;EACE;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA,aRrBY;EQsBZ;;AACA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE,ORrCe;EQsCf;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;;;AAIJ;EACE;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA,ORpFW;EQqFX;EACA,aR/EY;EQgFZ;EACA;EACA;;AACA;EACE,ORrGc;EQsGd;;;AAKJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;AAIJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;ACtIJ;EACE;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA,YTTc;ESUd;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;AACA;EACE;EACA;EACA,aTLU;ESMV;EACA;;;AAIJ;EACE;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA,aTrBY;ESsBZ;;AACA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE,OTrCe;ESsCf;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;;;AAKJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;AAIJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;ACvFJ;EAEI;EACI;EACJ;EACA;EACA;EAGA;EAEA;;AAEA;EACK;;AAEL;EACI;EACA;;AAEA;EACI;;AAMJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA,OVvBC;;AUyBD;EACI;EACA;EACA;EACA;EACA;;AAIA;EACI;;AAEA;EACA;EACA;;AAKJ;EACI;;AAMZ;EACI;;AAIR;EACI;EACA;EACA;EACA;;AAOR;AAAA;AAAA;EAGE,YVjFc;EUkFd;EACA;EACA;;;ACvFA;EACE;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EAAU;;AACV;EAAU;;AAEZ;EACE;EACA;EACA;;AAEF;EAEE;EACA;;;AAQN;EAEI;IAA8B;IAAwB;;EACtD;IAA0B;IAAa;IAAkB;;;AAG7D;EAEI;IAA0B;IAAiB;;;ACtD/C;EACE;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,kBZrBQ;EYsBR;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,kBZ7CQ;EY8CR;EACA;EACA;;AAIJ;EACE;EACA;EACA;;AAEA;EACE,kBZ1DQ;EY2DR;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;;ACrEV;EACI;EACA;EACA;EACA;;AAEA;EACI,ObNQ;EaOR;EACA;;AAGJ;EACI;;;ACdR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;;AAEF;EACE;IAAK;;;ACXP;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAEF;EAAuB;EAAqB,Ofd7B;;;Aeef;EAAyB;EAAqB,OfhB9B;;;AeiBhB;EAAyB;EAAqB,Off9B;;;AegBhB;EAAsB;EAAqB,OfxB3B;;;AgBAhB;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAGL;EACD;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EAEE;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;;AAKF;EACE;EACA;EACA;EACA;EACA,OhBjEY;;AgBqEd;EACE;EACA;;AACA;EACE;EACA;EACA;EACA;EAEA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;AACA;EACE;;AAIJ;EAEE;EACA;;;AAWN;EAGI;IAAyB;;EACxB;IACD;;EAEF;IACE;;EAEA;IAA0B;IAAwB;IAAmB;IACnE;;;AAIN;EAEI;IAAuB;;EACvB;IAAiB;;EACjB;IAAwB;IAAc;;;AAQ1C;EACE,YhB3IgB;EgB4IhB;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,ahB7IQ;EgB8IR;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;;AfxKI;EekLN;IACE;IACA;;;AfpLI;Ee2LN;IACE;;EACA;IACE;;;AC3MN;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EAAQ;EAAS;EAAU;EAC3B;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AAIF;EACE;EACA;EACA;EACA;EACA;;AAGJ;EACE;;AACA;EACE;EACA;;AAON;EACE;IACE;;EACA;IAAU;;EACV;IAAU;;EAAoB;IAAK;;EAErC;IACE;IACA;IACA;;EAEF;AAAA;IAC+B;IAAc;;;AAG/C;EACE;IAAiB;;EACjB;IAAqB;;;;AAOvB;EAEE;EACA;EACA;EACA;EACA;;AAIF;EAVA;IAWE;IACA;;;AAIF;EAhBA;IAkBD;IAAiB;;;;ACrKlB;EACE,YlBCgB;EkBAhB;EACA,alBgBY;;;AkBZd;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;;AAKJ;EAEE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AACA;EACE;EACA;EACA,OlBnEU;EkBoEV;EACA;;AAIJ;EAIE;;AAHC;EACG;;AAGJ;EACE,OlB/EU;EkBgFV;EACA;;AAIJ;EACE;EACA;EACA;EAEA;EACA;;AAGF;EACE,YlB9Fc;EkB+Fd;EACA;EACA;EACA;;AACA;EACE,OlBrGU;EkBsGV;EACA;EACA;EACA;;;AjB5FE;EiBoGN;IACE;;EACA;IAAW;;EACX;IAAc;;EAEf;IACC;IACA;;EACA;IAAe;;EACf;IAAU;;EACV;IAAmB;;;AjB9Gf;EiBmHN;IACE;;EACA;IAAW;;EACX;IAAc;;EAEf;IACC;IACA;;EACA;IAAe;;EACf;IAAmB;;;ACxIvB;EACE;EACA;EACA;EACA;;;AAIF;EACE;;;AAIF;EACE;EACA;EACA;EACA,YnBdiB;EmBelB;EACC;;;ACiBE;EACA;EACA;EACA;EACA;;AAEA;EAxCA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBpBDS;EoBET;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AAoBJ;EA5CA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AAwBJ;EAhDA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBpBLY;EoBMZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AA4BJ;EApDA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBpBHY;EoBIZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AAgCJ;EAxDA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBpBIW;EoBHX;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;;AC9BR;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE,OrBXU;EqBYV;EACA;EACA;;AAIJ;EACE;EACA;EACA;;AAGF;EACA;EACA;EACA;EACA;;AACA;EAAQ;;AACR;EAAS;;AAIT;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,OrB9CY;;AqBgDd;EACE;EACA;EACA;;AAEF;EACE;EACA,OrB5CS;EqB6CT;;AAEF;EACE;EACA;EACA;;AACA;EACE;;AAMN;EACE;EACA;EACA;EAAS;EAAQ;EAAU;EAC3B;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA,OrBjFS;EqBkFT;;;AC7FJ;EACE;EACA;EACA;EACA;EACA;EACA,atBYY;;AsBTd;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;;AAGF;EACE;EACA;EACA,OtBlCc;EsBmCd;EACA;EACA;;AAKF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE,OtBtDa;EsBuDb;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;IAAO;IAAY;;EACnB;IAAK;IAAY;;;AAGnB;EACE;IAAmB;;;;AC9ErB;EACI;EACA;EACA;EACA;EACA;EACA;;;AAKJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AASI;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AtBzBJ;EsBwBA;IAIQ;;;AAGJ;EACI,kBvBnCA;;AuBqCJ;EACI,kBvBrCE;;AuBuCN;EACI,kBvBvCC;;AuByCL;EACI,OvB5CA;;AuB8CJ;EACI,OvB9CE;;AuBgDN;EACI,OvBhDC;;AuBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAE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IACA;;EAGA;IACK;;;AAMX;EACE;IACE;IACA;;EAEF;IACE;IACA;;EAEF;IACE;;;AAIJ;EACE;IAAO;;EACP;IAAK;;;AAMP;EACE;;;AAKA;EAEE;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA,YxBxMc;EwByMd;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA,axB/LU;EwBgMV;EACA;EACA;;AACA;EACE,YxBrNY;EwBsNZ,OxBvNU;;;AwB6NhB;EACE;IACE;IACA;IACA;IACA;IACA;IACA;;EACA;IACE;IACA;IACA;IACA;IACA;IACA;IACA;;EACA;IACA,YxB7OY;IwB8OZ;;EAKJ;IACE;IACA;IACA;IACA;IACA,OxBxPc;IwByPd;IACA;IACA;;;AC7PJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACC;EACD;;AAEI;EACF;EACA;EACA;EACA;;AAGF;EACE;EACA,azBzBQ;EyB0BR;EACA;EACA;;AAEF;EACE;EACA,azBhCQ;EyBiCR;EACA;;AAGD;EACG;EACA;EACA;EACA;;AACA;EACE;EACA;EACA,azB7CI;EyB8CJ;EACA;EACA;EACA;EACA;;AACA;EACE,OzBrEM;;AyB+EV;EACE;EACA;EACA,azBjEI;EyBkEJ;EACA;;AAMR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA,azB3FU;EyB4FV;EACA;EACA;EACA;;;AxBpGI;EwB0GN;IACE;IACA;IACA;IACA;IACA;;EAEF;IACE;IACA;IACA;;EACA;AAAA;AAAA;IAGE;;EAGJ;IACG;IACD;IACA;IACA;IACA;IACA;IACA;;EAEF;IACE;IACA;IACA;;;AxBvII;EwB4IN;IACE;;EAEF;IACE;IACA;;EAEF;IACE;;EACA;IACE;;EAEF;AAAA;IAEE;;EAGJ;IACE;IACA;;;AAMJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAGF;EAGE;EACA;EACA;;AAEA;EACE;EACA;;;ACxNR;EACI,kB1BKe;E0BJf,a1BkBU;E0BjBV,K1BsBK;E0BrBL;EACA","file":"styles.css"}
+\ No newline at end of file
++{"version":3,"sourceRoot":"","sources":["../scss/base/_variables.scss","../scss/base/_mixins.scss","../scss/components/_buttons.scss","../scss/components/_card.scss","../scss/components/_event_card.scss","../scss/components/_champion_card.scss","../scss/components/_form.scss","../scss/components/_faq.scss","../scss/components/_events_table.scss","../scss/components/_table.scss","../scss/components/_menu_dashboard.scss","../scss/components/_galleryCarousel.scss","../scss/components/_calendar.scss","../scss/components/_main_container.scss","../scss/components/_loader.scss","../scss/components/_notification.scss","../scss/components/_club_menu.scss","../scss/pages/_accueil.scss","../scss/pages/_palmares.scss","../scss/pages/_actualites.scss","../scss/pages/_club.scss","../scss/pages/admin/_dashboard_layout.scss","../scss/pages/admin/_event_dashboard.scss","../scss/pages/admin/_faq_dashboard.scss","../scss/pages/admin/_login.scss","../scss/layout/_grid.scss","../scss/layout/_header.scss","../scss/layout/_footer.scss","../scss/base/_reset.scss"],"names":[],"mappings":";AAGQ;ACyBJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAMJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAbJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;AAEJ;EACI;;;ACjBR;EAhCI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFdY;EEeZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAaR;EArCI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBA+B6B;EA9B7B;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OFzBQ;;AE6BZ;EACI;;;AAoBR;EA5CI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFdY;EEeZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AA0BR;EAlDI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFbc;EEcd;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OFzBQ;;AE6BZ;EACI;;;AAiCR;EAzDI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFZa;EEab;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAwCR;EAhEI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFXe;EEYf;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AA8CR;EAtEI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFRY;EESZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAoDR;EA5EI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFPW;EEQX;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AA0DR;EAlFI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFNY;EEOZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AAgER;EAxFI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBFHS;EEIT;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtBwC;;AA0B5C;EACI;;;AC/BR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AFdI;EEQN;IASI;IACA;IACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AFrCI;EEdR;IAwDI;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;;EAGF;IACE;IACA;;EAGF;IACE;IACA;;EAGF;IACE;IACA;;;AFnEE;EEdR;IAsFI;IACA;;EAEA;IACE;IACA;;EAGF;IACE;;EAGF;IACE;IACA;;;;ACjGN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AHnCI;EG6BN;IASI;IACA;IACA;;;AAIN;EACI;EACA;EACA;EACA;EACA,kBJtDY;EIuDZ;EACA;EACA;;AAEA;EACE;EACA;;AAGF;EACE;EACA;EACA;;AAKJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;;AHjFI;EGOR;IAiFI;IACA;IACA;IACA;;EAEA;IACE;IACA;IACA;IACA;IACA;;EAGD;IACC;IACA;;EAGF;IACE;IACA;;EAGF;IACG;IACC;;;AHjHA;EGOR;IAiHI;IACA;;EAEA;IACE;IACA;;EAGF;IACE;;EAGF;IACE;IACA;;;;AAUN;EACE;EACA;EACA,YJhKc;EIiKd;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,aJlKQ;EImKR;EACA;EACA;EACA;;AAEF;EACE;EACA,aJ1KQ;EI2KR;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,aJrMQ;EIsMR;EACA;EACA;;AAEF;EACE;EACA,aJ5MQ;EI6MR;EACA;EACA;;;AHpNE;EG2NN;IACE;IACA;IACA;;;AH9NI;EGoOJ;IACA;IACA;IACA;IACA;;EACA;IACE;;EAEF;IACE;IACA;IACA;;EAEF;IACE;;EACA;AAAA;IAEE;;;AC9PF;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;AAEF;EACE;;AAMR;EAzCI;IA4CA;IACA;IACA;IAgBA;IACA;IACA;;EAhBA;IAEM;IAEF;;EAIV;IACQ;IACA;IACA;;EAOP;IACK;IAAc;;;AAGlB;EAtEI;IAyEL;;EAIC;IAAwB;IAAa;;;;ACpFvC;EACE;EACA;EACA;EACA;EACA;EACA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;;;AAKN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EAEE;EACA;EACA;EACA;EACA;EACA,aNnCU;EMoCV;EACA;EACA;;AACA;EACE,cN1DU;;AM4DZ;EAEE,KNvCG;EMwCH;EACA;EACA,ONjEU;EMkEV;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA,ONvEe;EMwEf;EACA,aNnEU;EMoEV;EACA;EACA;EACA;;AAGC;EACC;EACA;EACA;;AAEF;EAEE;EACA;EACA;;;AAQN;EACE;IACE;;EAEF;IACE;IACA;;;AAIJ;EACE;IACE;;EAEF;IACE;;EAEF;IACE;;;AAqBJ;EACE;EACA;EACA;EACA;EACA;EACA,aNxIY;EMyIZ;EACA;;AACA;EACE,cN9JY;;;AMoKhB;EACE;EACA;EACA;EACA;EACA;EACE;EACF;;AAIA;EACE;EACA;EACA,aNhKU;EMiKV;EACA;;AAEF;EAEE;EACA,YN7Ke;EM8Kf;EACA;EACA;EACA;;AAEF;EAEE;EACA;EACA;EACA,aNlLU;EMmLV;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACE;EACF;;AAEA;EACE;EACA;EACA,aNrMU;EMsMV;EACA;;AAEF;EACE;EACA;EACA,YNlNe;EMmNf;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA,aNvNU;EMwNV;EACA;EACA;EACA;;;AAKJ;EACE;AAAA;IAEE;;EACA;AAAA;IACE;IACA;;;ACxPN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,aPSU;EORV;EACA,OPXY;EOYZ;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA,aPnBU;EOoBV;EACA;EACA,OPxCY;EOyCZ;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;;AAEF;EACE,YPrDY;;AOyDhB;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA,aPlDQ;EOmDR;;;AAMN;EACE;IACE;;EAEF;IACE;;;ACnFJ;EACE;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA,YRTc;EQUd;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;AACA;EACE;EACA;EACA,aRLU;EQMV;EACA;;;AAIJ;EACE;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA,aRrBY;EQsBZ;;AACA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE,ORrCe;EQsCf;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;;;AAIJ;EACE;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA,ORpFW;EQqFX;EACA,aR/EY;EQgFZ;EACA;EACA;;AACA;EACE,ORrGc;EQsGd;;;AAKJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;AAIJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;ACtIJ;EACE;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA,YTTc;ESUd;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;;AACA;EACE;EACA;EACA,aTLU;ESMV;EACA;;;AAIJ;EACE;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA,aTrBY;ESsBZ;;AACA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE,OTrCe;ESsCf;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;;;AAKJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;AAIJ;EACE;IACE;IACA;;EAEF;IACE;;EAEF;IACE;IACA;;;ACvFJ;EAEI;EACI;EACJ;EACA;EACA;EAGA;EAEA;;AAEA;EACK;;AAEL;EACI;EACA;;AAEA;EACI;;AAMJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA,OVvBC;;AUyBD;EACI;EACA;EACA;EACA;EACA;;AAIA;EACI;;AAEA;EACA;EACA;;AAKJ;EACI;;AAMZ;EACI;;AAIR;EACI;EACA;EACA;EACA;;AAOR;AAAA;AAAA;EAGE,YVjFc;EUkFd;EACA;EACA;;;ACvFA;EACE;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EAAU;;AACV;EAAU;;AAEZ;EACE;EACA;EACA;;AAEF;EAEE;EACA;;;AAQN;EAEI;IAA8B;IAAwB;;EACtD;IAA0B;IAAa;IAAkB;;;AAG7D;EAEI;IAA0B;IAAiB;;;ACtD/C;EACE;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA,kBZrBQ;EYsBR;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,kBZ7CQ;EY8CR;EACA;EACA;;AAIJ;EACE;EACA;EACA;;AAEA;EACE,kBZ1DQ;EY2DR;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;;ACrEV;EACI;EACA;EACA;EACA;;AAEA;EACI,ObNQ;EaOR;EACA;;AAGJ;EACI;;;ACdR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;;AAEF;EACE;IAAK;;;ACXP;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AAEF;EAAuB;EAAqB,Ofd7B;;;Aeef;EAAyB;EAAqB,OfhB9B;;;AeiBhB;EAAyB;EAAqB,Off9B;;;AegBhB;EAAsB;EAAqB,OfxB3B;;;AgBHhB;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;ACvCN;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAGL;EACD;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EAEE;EACA;;AAIJ;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;;AAKF;EACE;EACA;EACA;EACA;EACA,OjBjEY;;AiBqEd;EACE;EACA;;AACA;EACE;EACA;EACA;EACA;EAEA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;AACA;EACE;;AAIJ;EAEE;EACA;;;AAWN;EAGI;IAAyB;;EACxB;IACD;;EAEF;IACE;;EAEA;IAA0B;IAAwB;IAAmB;IACnE;;;AAIN;EAEI;IAAuB;;EACvB;IAAiB;;EACjB;IAAwB;IAAc;;;AAQ1C;EACE,YjB3IgB;EiB4IhB;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,ajB7IQ;EiB8IR;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;;AhBxKI;EgBkLN;IACE;IACA;;;AhBpLI;EgB2LN;IACE;;EACA;IACE;;;AC3MN;EACE;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EAAQ;EAAS;EAAU;EAC3B;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;;AAKN;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA;;AAIF;EACE;EACA;EACA;EACA;EACA;;AAGJ;EACE;;AACA;EACE;EACA;;AAON;EACE;IACE;;EACA;IAAU;;EACV;IAAU;;EAAoB;IAAK;;EAErC;IACE;IACA;IACA;;EAEF;AAAA;IAC+B;IAAc;;;AAG/C;EACE;IAAiB;;EACjB;IAAqB;;;;AAOvB;EAEE;EACA;EACA;EACA;EACA;;AAIF;EAVA;IAWE;IACA;;;AAIF;EAhBA;IAkBD;IAAiB;;;;ACrKlB;EACE,YnBCgB;EmBAhB;EACA,anBgBY;;;AmBZd;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;;;AAKJ;EAEE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AACA;EACE;EACA;EACA,OnBnEU;EmBoEV;EACA;;AAIJ;EAIE;;AAHC;EACG;;AAGJ;EACE,OnB/EU;EmBgFV;EACA;;AAIJ;EACE;EACA;EACA;EAEA;EACA;;AAGF;EACE,YnB9Fc;EmB+Fd;EACA;EACA;EACA;;AACA;EACE,OnBrGU;EmBsGV;EACA;EACA;EACA;;;AlB5FE;EkBoGN;IACE;;EACA;IAAW;;EACX;IAAc;;EAEf;IACC;IACA;;EACA;IAAe;;EACf;IAAU;;EACV;IAAmB;;;AlB9Gf;EkBmHN;IACE;;EACA;IAAW;;EACX;IAAc;;EAEf;IACC;IACA;;EACA;IAAe;;EACf;IAAmB;;;ACzIvB;EACI;EACA;EACA;AA8KA;AASA;AAiBA;AASA;AAYA;;AA1NA;EACI;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAKR;EACI;EACA;;AAEA;EAEI;;AAEA;EACI;EACA;EACA;EACA;EACA;EACA;;AAEJ;EACI;;AAEJ;EACI;;AAEJ;EACI;;AAEJ;EACI;;AAGL;EACK;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAGJ;EACI;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;;AAQrB;EAEC;EACA;;AAEA;EACI;;AAEA;EACA;EACA;EACA;;AACA;EACI;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACA;EACA;EACA;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAIJ;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;;AAGJ;EACI;EACA;;AAOR;EACI;EACA;EACA;EACA;EACA;;AAIJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAIJ;EACI;EACA;EACA;EACA;EACA;;AAIJ;EACI;EACA;EACA;;AAGJ;EACI;EACA;;AAIJ;EACI;EACA;EACA;;AAGJ;EACI;EACA;EACA;EACA;;AAGJ;EACI;;AAKA;EACI;EACA;EACA;EACA;EACA;EACA;;AAGJ;EACI;EACA;;AAQJ;EACI;EACA;EACA;EACA;EACA;;AAGA;EACA;EACA;EACA;EACA;;AAGA;EACA;;AAGA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGA;EACA;EACA;EACA;EACA;;AAGA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGA;EACI;;AAGJ;EACA;EACA;;AAGA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGA;EACA;;AAGA;EACA;;AAGA;EACA;;;ACzVZ;EACE;EACA;EACA;EACA;;;AAIF;EACE;;;AAIF;EACE;EACA;EACA;EACA,YrBdiB;EqBelB;EACC;;;ACiBE;EACA;EACA;EACA;EACA;;AAEA;EAxCA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBtBDS;EsBET;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AAoBJ;EA5CA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AAwBJ;EAhDA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBtBLY;EsBMZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AA4BJ;EApDA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBtBHY;EsBIZ;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;AAgCJ;EAxDA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA,kBtBIW;EsBHX;EACA;EACA;EACA;EACA;;AAEA;EACI;EACA;EACA;EACA,OAtB0C;;AA0B9C;EACI;;;AC9BR;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAEA;EACE,OvBXU;EuBYV;EACA;EACA;;AAIJ;EACE;EACA;EACA;;AAGF;EACA;EACA;EACA;EACA;;AACA;EAAQ;;AACR;EAAS;;AAIT;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA,OvB9CY;;AuBgDd;EACE;EACA;EACA;;AAEF;EACE;EACA,OvB5CS;EuB6CT;;AAEF;EACE;EACA;EACA;;AACA;EACE;;AAMN;EACE;EACA;EACA;EAAS;EAAQ;EAAU;EAC3B;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;EACA;EACA;EACA;EACA,OvBjFS;EuBkFT;;;AC7FJ;EACE;EACA;EACA;EACA;EACA;EACA,axBYY;;AwBTd;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAIJ;EACE;EACA;;AAGF;EACE;EACA;EACA,OxBlCc;EwBmCd;EACA;EACA;;AAKF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;;AAIJ;EACE,OxBtDa;EwBuDb;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;IAAO;IAAY;;EACnB;IAAK;IAAY;;;AAGnB;EACE;IAAmB;;;;AC9ErB;EACI;EACA;EACA;EACA;EACA;EACA;;;AAKJ;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;;AASI;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AApCZ;EACI;;AxBzBJ;EwBwBA;IAIQ;;;AAGJ;EACI,kBzBnCA;;AyBqCJ;EACI,kBzBrCE;;AyBuCN;EACI,kBzBvCC;;AyByCL;EACI,OzB5CA;;AyB8CJ;EACI,OzB9CE;;AyBgDN;EACI,OzBhDC;;AyBkDL;EACI;;AAEJ;EACI;EACA;EACA;;AAEJ;EACI;;AACA;EACI;;;AAcpB;EAEI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EAEA;;AAIQ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;AyB6FJ;EACI;;AACA;EACI,kBzBhGJ;;;A0BgBhB;EACC;EACC;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEF;EACE;;AACA;EACE;EACA;EACA;;AAIJ;EACE;EACA;;AACA;EACE;EACA;EACA,a1BjCQ;E0BkCR;EACA;EACA;;AACA;EACE,O1BvDU;;A0B4DhB;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;;AAEF;EACE;;AAEF;EACE;;AAIJ;EACE;EACA;EACA;EACA;EAAS;EACT,Y1BjGY;E0BkGZ;;AACA;EACE;EACA;EACA;EACA;;AACA;EACE;EACA;EACA,a1BzFM;E0B0FN;EACA;EACA;EACA;EACA;EACA;EACA;;AACA;EACE,O1BnHQ;;A0BuHd;EACE;EACA;;;AAMN;EAKE;IACE;IACA;;;AAIJ;EACE;IACE;;EAEF;IACE;;EAEF;IACE;;EACA;IACE;IACA;;EAGA;IACK;;;AAMX;EACE;IACE;IACA;;EAEF;IACE;IACA;;EAEF;IACE;;;AAIJ;EACE;IAAO;;EACP;IAAK;;;AAMP;EACE;;;AAKA;EAEE;;;AAIJ;EACE;EACA;EACA;EACA;EACA;EACA,Y1BxMc;E0ByMd;EACA;EACA;;AACA;EACE;EACA;EACA;EACA;EACA,a1B/LU;E0BgMV;EACA;EACA;;AACA;EACE,Y1BrNY;E0BsNZ,O1BvNU;;;A0B6NhB;EACE;IACE;IACA;IACA;IACA;IACA;IACA;;EACA;IACE;IACA;IACA;IACA;IACA;IACA;IACA;;EACA;IACA,Y1B7OY;I0B8OZ;;EAKJ;IACE;IACA;IACA;IACA;IACA,O1BxPc;I0ByPd;IACA;IACA;;;AC7PJ;EACE;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACC;EACD;;AAEI;EACF;EACA;EACA;EACA;;AAGF;EACE;EACA,a3BzBQ;E2B0BR;EACA;EACA;;AAEF;EACE;EACA,a3BhCQ;E2BiCR;EACA;;AAGD;EACG;EACA;EACA;EACA;;AACA;EACE;EACA;EACA,a3B7CI;E2B8CJ;EACA;EACA;EACA;EACA;;AACA;EACE,O3BrEM;;A2B+EV;EACE;EACA;EACA,a3BjEI;E2BkEJ;EACA;;AAMR;EACE;EACA;EACA;EACA;EACA;EACA;EACA;;AAGF;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA,a3B3FU;E2B4FV;EACA;EACA;EACA;;;A1BpGI;E0B0GN;IACE;IACA;IACA;IACA;IACA;;EAEF;IACE;IACA;IACA;;EACA;AAAA;AAAA;IAGE;;EAGJ;IACG;IACD;IACA;IACA;IACA;IACA;IACA;;EAEF;IACE;IACA;IACA;;;A1BvII;E0B4IN;IACE;;EAEF;IACE;IACA;;EAEF;IACE;;EACA;IACE;;EAEF;AAAA;IAEE;;EAGJ;IACE;IACA;;;AAMJ;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;EACA;EACA;EACA;;AAGF;EAGE;EACA;EACA;;AAEA;EACE;EACA;;;ACxNR;EACI,kB5BKe;E4BJf,a5BkBU;E4BjBV,K5BsBK;E4BrBL;EACA","file":"styles.css"}
+\ No newline at end of file
+diff --git a/pages/club.php b/pages/club.php
+new file mode 100644
+index 0000000..7830298
+--- /dev/null
++++ b/pages/club.php
+@@ -0,0 +1,385 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
++    <link rel="stylesheet" href="../css/styles.css">
++    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
++     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
++     crossorigin=""/>
++    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
++    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
++    crossorigin="">
++    </script>
++    <title>Club</title>
++</head>
++<body>
++
++    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
++    <section id="club_container">
++
++        <?php include __DIR__ . '/../templates/components/layout/menu_club.php'; ?>
++
++        <div class="container_club">
++
++            <section id="club_presentation">
++                <div class="container_presentation">
++                    <div id="title_club">
++                        <h1>Présentation</h1>
++                    </div>
++                    <div class="content_presentation">
++                        <p> 
++                            Implanté au Centre Marcel Baratta depuis des années, l'ACOO bénéficie 
++                            d'installations spacieuses :
++                        </p>
++                        <div class="box color1">
++                            Le club house (avec un espace détente, une terrasse et une table pour les repas, réunion, etc)
++                        </div>
++                        <div class="box color2">
++                            Le garage à bateaux et ses trois travées, abritant 82 bateaux, du skiff au huit
++                        </div>
++                        <div class="box color3">
++                            Le tank à ramer
++                        </div>
++                        <div class="box color4">
++                            La salle de musculation et ergomètres.
++                        </div>
++                        <div class="carousel">
++                            <button class="carousel-button prev">&#10094;</button>
++                            <div class="carousel-window">
++                                <div class="carousel-track">
++                                <img src="../assets/images/champion1.png" alt="1">
++                                <img src="../assets/images/champion1.png" alt="2">
++                                <img src="../assets/images/champion1.png" alt="3">
++                                <img src="../assets/images/champion1.png" alt="4">
++                                <img src="../assets/images/champion1.png" alt="5">
++                                <img src="../assets/images/champion1.png" alt="6">
++                                </div>
++                            </div>
++                            <button class="carousel-button next">&#10095;</button>
++                        </div>
++                    </div>
++                </div>
++            </section>
++    
++            <section id="club_histoire">
++                <div id="title_club">
++                    <h1>Histoire</h1>
++                </div>
++                <div class="timeline-container">
++                    <div class="timeline" id="timeline">
++                        <!-- Cercles des années -->
++                        <div class="cercle">
++                        <div class="year selected" data-year="2000">2000</div>
++                        <div class="year" data-year="2005">2005</div>
++                        <div class="year" data-year="2010">2010</div>
++                        <div class="year" data-year="2015">2015</div>
++                        <div class="year" data-year="2020">2020</div>
++                        <div class="year" data-year="2020">2021</div>
++                        <div class="year" data-year="2020">2022</div>
++                        <div class="year" data-year="2020">2023</div>
++                        <div class="year" data-year="2020">2024</div>
++                        <div class="year" data-year="2020">2025</div>
++                        <div class="year" data-year="2020">2026</div>
++                        <div class="year" data-year="2020">2027</div>
++                        <div class="year" data-year="2020">2028</div>
++                        <div class="year" data-year="2020">2029</div>
++                        <div class="year" data-year="2020">2030</div>
++                        <div class="year" data-year="2020">2031</div>
++                        <div class="line"></div>
++                        </div>
++                    </div>
++
++                    <!-- Contenu associé -->
++                    <div class="content" id="content">
++                        <img src="image2000.jpg" alt="2000">
++                        <p>Description pour l’année 2000.</p>
++                    </div>
++                    </div>
++            </section>
++    
++            <section id="club_equipe">
++                <div id="title_club">
++                    <h1>Equipe</h1>
++                </div>
++                <div class="container_equipe">
++                    <!-- Peut etre faire un composant par la suite -->
++                    <div class="container_card">
++                        <div class="container_img">
++                            <img src="" alt="">
++                        </div>
++                        <div class="container_info">
++                            <h4>
++                                Patrick HENRY
++                            </h4>
++                            <span>
++                                Manager
++                            </span>
++                        </div>
++                        <div class="container_social">
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>                            
++                            </div>
++                    </div>
++
++                    <div class="container_card">
++                        <div class="container_img">
++                            <img src="" alt="">
++                        </div>
++                        <div class="container_info">
++                            <h4>
++                                Patrick HENRY
++                            </h4>
++                            <span>
++                                Manager
++                            </span>
++                        </div>
++                        <div class="container_social">
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>                            
++                            </div>
++                    </div>
++
++                    <div class="container_card">
++                        <div class="container_img">
++                            <img src="" alt="">
++                        </div>
++                        <div class="container_info">
++                            <h4>
++                                Patrick HENRY
++                            </h4>
++                            <span>
++                                Manager
++                            </span>
++                        </div>
++                        <div class="container_social">
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>                            
++                            </div>
++                    </div>
++
++                    <div class="container_card">
++                        <div class="container_img">
++                            <img src="" alt="">
++                        </div>
++                        <div class="container_info">
++                            <h4>
++                                Patrick HENRY
++                            </h4>
++                            <span>
++                                Manager
++                            </span>
++                        </div>
++                        <div class="container_social">
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>                            
++                            </div>
++                    </div>
++
++                    <div class="container_card">
++                        <div class="container_img">
++                            <img src="" alt="">
++                        </div>
++                        <div class="container_info">
++                            <h4>
++                                Patrick HENRY
++                            </h4>
++                            <span>
++                                Manager
++                            </span>
++                        </div>
++                        <div class="container_social">
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>                            
++                            </div>
++                    </div>
++                    
++                    <div class="container_card">
++                        <div class="container_img">
++                            <img src="" alt="">
++                        </div>
++                        <div class="container_info">
++                            <h4>
++                                Patrick HENRY
++                            </h4>
++                            <span>
++                                Manager
++                            </span>
++                        </div>
++                        <div class="container_social">
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>
++                            <a href=""><img src="" alt=""></a>                            
++                            </div>
++                    </div>
++                </div>
++    
++            </section>
++    
++            <section id="club_sports">
++                <div id="title_club">
++                    <h1>Sports</h1>
++                </div>
++
++               <div class="carousel-wrapper">
++                    <button class="carousel-btn left" onclick="scrollCarousel(-1)">‹</button>
++
++                    <div class="carousel" id="carousel">
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Rivière</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Indoor</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Avifit</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Para Aviron</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Santé</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Rivière</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Indoor</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Avifit</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Para Aviron</span></div>
++                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Santé</span></div>
++                        <!-- Ajoute ici d'autres éléments si tu veux tester -->
++                    </div>
++
++                    <button class="carousel-btn right" onclick="scrollCarousel(1)">›</button>
++                </div>
++                    
++            </section>
++    
++            <section id="club_lieux">
++                <div id="title_club">
++                    <h1>Lieux de pratique</h1>
++                </div>
++                <div style="margin-bottom: 10px; padding: 10px;">
++                    <button onclick="afficherParcours(parcours_foret, 'green')">🌲 Forêt</button>
++                    <button onclick="afficherParcours(parcours_camping, 'orange')">🏕️ Camping</button>
++                    <button onclick="afficherParcours(parcour_club, 'blue')">🚣 Club</button>
++                </div>
++                
++                <div id="map" class="map leaflet-container leaflet-touch leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom">
++                    <script>
++                        const map = L.map('map').setView([47.8570, 1.9181], 14);
++
++                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
++                            maxZoom: 19,
++                            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
++                        }).addTo(map);
++
++                        const parcours_foret = [
++                            [47.86806, 1.90457],
++                            [47.86827, 1.90516],
++                            [47.86711, 1.90826],
++                            [47.86299, 1.91342],
++                            [47.85962, 1.91759],
++                            [47.85855, 1.91933],
++                            [47.85829, 1.92023]
++                        ];
++
++                        const parcours_camping = [
++                            [47.86806, 1.90457],
++                            [47.86827, 1.90516],
++                            [47.86711, 1.90826],
++                            [47.86299, 1.91342],
++                            [47.85962, 1.91759],
++                            [47.85855, 1.91933],
++                            [47.85829, 1.92023],
++                            [47.85763, 1.92259],
++                            [47.85725, 1.92343],
++                            [47.85722, 1.92363],
++                            [47.85712, 1.92391],
++                            [47.85654, 1.92447],
++                            [47.85627, 1.92455],
++                            [47.85615, 1.92469],
++                            [47.85606, 1.92487],
++                            [47.85578, 1.92516]
++                        ];
++
++                        const parcour_club = [
++                            [47.86806, 1.90457],
++                            [47.86827, 1.90516],
++                            [47.86711, 1.90826],
++                            [47.86299, 1.91342],
++                            [47.85962, 1.91759],
++                            [47.85855, 1.91933],
++                            [47.85763, 1.92259],
++                            [47.85725, 1.92343],
++                            [47.85695, 1.92366],
++                            [47.85611, 1.92393],
++                            [47.85571, 1.92442],
++                            [47.85559, 1.92480],
++                            [47.85503, 1.92563],
++                            [47.85493, 1.92593],
++                            [47.85267, 1.93045]
++                        ];
++
++                        let currentPolyline = null;
++
++                        function afficherParcours(parcours, color = 'blue') {
++                            if (currentPolyline) {
++                                map.removeLayer(currentPolyline);
++                            }
++
++                            currentPolyline = L.polyline(parcours, {
++                                color: color,
++                                weight: 4,
++                                opacity: 0.8
++                            }).addTo(map);
++
++                            map.fitBounds(currentPolyline.getBounds());
++                        }
++
++                        const pointDepart = L.marker([47.86774, 1.90447]).addTo(map);
++                        pointDepart.bindTooltip("🏁 Départ du parcours", {
++                            permanent: true,
++                            direction: "top",
++                            offset: [0, -10],
++                            className: "custom-tooltip"
++                        });
++
++                        // Afficher parcours forêt par défaut
++                        afficherParcours(parcours_foret, 'green');
++
++                        // Affichage des coordonnées au clic
++                        map.on('click', function (e) {
++                            const lat = e.latlng.lat.toFixed(5);
++                            const lng = e.latlng.lng.toFixed(5);
++                            console.log(`Latitude : ${lat}, Longitude : ${lng}`);
++                            L.popup()
++                                .setLatLng(e.latlng)
++                                .setContent(`📍<strong>Lat :</strong> ${lat}<br><strong>Lng :</strong> ${lng}`)
++                                .openOn(map);
++                        });
++                    </script>
++
++                </div>
++
++            </section>
++    
++            <section id="club_partenaire">
++                <div id="title_club">
++                        <h1>Partenaire</h1>
++                    </div>
++    
++            </section>
++    
++            <section id="club_sponsors">
++                <div id="title_club">
++                        <h1>Sponsors</h1>
++                    </div>
++    
++            </section>
++        </div>
++
++    </section>
++
++    <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
++    <script src="../script/club.js"></script>
++    <script src="../script/histoire.js"></script>
++    <script src="../script/sport.js"></script>
++    
++    
++</body>
++</html>
+\ No newline at end of file
+diff --git a/pages/contact.php b/pages/contact.php
+new file mode 100644
+index 0000000..16e3ede
+--- /dev/null
++++ b/pages/contact.php
+@@ -0,0 +1,14 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
++    <link rel="stylesheet" href="../css/styles.css">
++    <title>Contact</title>
++</head>
++<body>
++    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
++    
++</body>
++</html>
+\ No newline at end of file
+diff --git a/pages/evenement.php b/pages/evenement.php
+new file mode 100644
+index 0000000..e2d69c8
+--- /dev/null
++++ b/pages/evenement.php
+@@ -0,0 +1,14 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
++    <link rel="stylesheet" href="../css/styles.css">
++    <title>Evénements</title>
++</head>
++<body>
++    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
++    
++</body>
++</html>
+\ No newline at end of file
+diff --git a/pages/galerie.php b/pages/galerie.php
+new file mode 100644
+index 0000000..ff734d6
+--- /dev/null
++++ b/pages/galerie.php
+@@ -0,0 +1,14 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
++    <link rel="stylesheet" href="../css/styles.css">
++    <title>Galerie</title>
++</head>
++<body>
++    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
++    
++</body>
++</html>
+\ No newline at end of file
+diff --git a/pages/palmares.php b/pages/palmares.php
+index 930a899..9e92c3f 100644
+--- a/pages/palmares.php
++++ b/pages/palmares.php
+@@ -55,10 +55,7 @@
+   <section class="palmares-champions">
+     <?php include __DIR__ . '/../templates/components/cards/champion_card.php'; ?>
+     <?php include __DIR__ . '/../templates/components/cards/champion_card.php'; ?>
+-
+-
+   
+-
+   </section>
+   
+ <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
+diff --git a/pages/ramerAuClub.php b/pages/ramerAuClub.php
+new file mode 100644
+index 0000000..0fa3341
+--- /dev/null
++++ b/pages/ramerAuClub.php
+@@ -0,0 +1,14 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
++    <link rel="stylesheet" href="../css/styles.css">
++    <title>Ramer au club</title>
++</head>
++<body>
++    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
++    
++</body>
++</html>
+\ No newline at end of file
+diff --git a/script/club.js b/script/club.js
+new file mode 100644
+index 0000000..bbff29f
+--- /dev/null
++++ b/script/club.js
+@@ -0,0 +1,47 @@
++const track = document.querySelector('.carousel-track');
++const prevButton = document.querySelector('.carousel-button.prev');
++const nextButton = document.querySelector('.carousel-button.next');
++const slideWidth = 320;
++let currentIndex = 0;
++
++const totalSlides = track.children.length;
++const visibleSlides = 3;
++const maxIndex = totalSlides - visibleSlides;
++
++function updateCarousel() {
++  track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
++}
++
++nextButton.addEventListener('click', () => {
++  currentIndex = (currentIndex + 1 > maxIndex) ? 0 : currentIndex + 1;
++  updateCarousel();
++});
++
++prevButton.addEventListener('click', () => {
++  currentIndex = (currentIndex - 1 < 0) ? maxIndex : currentIndex - 1;
++  updateCarousel();
++});
++
++document.addEventListener("DOMContentLoaded", () => {
++  const menuItems = document.querySelectorAll('#menu_club .ram');
++  const sections = document.querySelectorAll('#club_container .container_club > section');
++
++  menuItems.forEach(item => {
++    item.addEventListener('click', () => {
++      const targetId = item.getAttribute('data-target');
++
++      sections.forEach(section => {
++        if (section.id === targetId) {
++          section.style.display = 'block';
++        } else {
++          section.style.display = 'none';
++        }
++      });
++    });
++  });
++
++  // Optionnel : afficher par défaut la première section uniquement
++  sections.forEach((section, index) => {
++    section.style.display = (index === 0) ? 'block' : 'none';
++  });
++});
+diff --git a/script/histoire.js b/script/histoire.js
+new file mode 100644
+index 0000000..47d7af2
+--- /dev/null
++++ b/script/histoire.js
+@@ -0,0 +1,55 @@
++const cercleContainer = document.querySelector('.cercle');
++const years = document.querySelectorAll('.year');
++const content = document.getElementById('content');
++
++// Données par année (à adapter avec tes vraies images/textes)
++const data = {
++  2000: { img: "image2000.jpg", text: "Description 2000" },
++  2005: { img: "image2005.jpg", text: "Description 2005" },
++  2010: { img: "image2010.jpg", text: "Description 2010" },
++  2015: { img: "image2015.jpg", text: "Description 2015" },
++  2020: { img: "image2020.jpg", text: "Description 2020" },
++  2021: { img: "image2021.jpg", text: "Description 2021" },
++  2022: { img: "image2022.jpg", text: "Description 2022" },
++  2023: { img: "image2023.jpg", text: "Description 2023" },
++  2024: { img: "image2024.jpg", text: "Description 2024" },
++  2025: { img: "image2025.jpg", text: "Description 2025" },
++  2026: { img: "image2026.jpg", text: "Description 2026" },
++  2027: { img: "image2027.jpg", text: "Description 2027" },
++  2028: { img: "image2028.jpg", text: "Description 2028" },
++  2029: { img: "image2029.jpg", text: "Description 2029" },
++  2030: { img: "image2030.jpg", text: "Description 2030" },
++  2031: { img: "image2031.jpg", text: "Description 2031" }
++};
++
++let selectedIndex = 0;
++
++years.forEach((yearEl, index) => {
++  yearEl.addEventListener('click', () => {
++    const year = yearEl.textContent;
++
++    // Mettre à jour le contenu à chaque clic
++    if (data[year]) {
++      content.innerHTML = `
++        <img src="${data[year].img}" alt="${year}">
++        <p>${data[year].text}</p>
++      `;
++    }
++
++    // Gérer la sélection visuelle
++    document.querySelector('.year.selected')?.classList.remove('selected');
++    yearEl.classList.add('selected');
++
++    // Direction du mouvement (index comparé)
++    const direction = index > selectedIndex ? 1 : -1;
++
++    // Glissement léger par pas fixe (utile même si élément visible)
++    const scrollAmount = 100 * direction;
++    cercleContainer.parentElement.scrollBy({
++      left: scrollAmount,
++      behavior: 'smooth'
++    });
++
++    selectedIndex = index;
++  });
++});
+diff --git a/script/sport.js b/script/sport.js
+new file mode 100644
+index 0000000..4fdf800
+--- /dev/null
++++ b/script/sport.js
+@@ -0,0 +1,24 @@
++
++function scrollCarousel(direction) {
++    const carousel = document.getElementById('carousel');
++    const scrollAmount = 240; // approx width + gap
++    carousel.scrollBy({
++        left: direction * scrollAmount,
++        behavior: 'smooth'
++    });
++}
++
++// function updateArrowVisibility() {
++//     const carousel = document.getElementById('carousel');
++//     const leftBtn = document.querySelector('.carousel-btn.left');
++//     const rightBtn = document.querySelector('.carousel-btn.right');
++
++//     const isScrollable = carousel.scrollWidth > carousel.clientWidth;
++
++//     leftBtn.style.display = isScrollable ? 'block' : 'none';
++//     rightBtn.style.display = isScrollable ? 'block' : 'none';
++// }
++
++window.addEventListener('load', updateArrowVisibility);
++window.addEventListener('resize', updateArrowVisibility);
++
+diff --git a/scss/components/_club_menu.scss b/scss/components/_club_menu.scss
+new file mode 100644
+index 0000000..5a7b33a
+--- /dev/null
++++ b/scss/components/_club_menu.scss
+@@ -0,0 +1,48 @@
++@use '../base/variables' as *;
++
++#menu_club {
++  display: flex;
++  flex-direction: column; // 👉 pour menu vertical
++  align-items: flex-start; // alignement à gauche (peut être center ou autre selon besoin)
++  gap: 20px;
++  padding: 20px;
++  width: 12%;
++  margin: 30px 0px;
++ 
++
++  .ram {
++    position: relative;
++    width: 300px; // 👉 largeur visible de la rame
++    height: 60px; // 👉 hauteur de la zone cliquable
++    cursor: pointer;
++    transition: transform 0.3s ease;
++
++    &:hover {
++      transform: translateX(15px); // 👉 effet de décalage
++    }
++
++    img {
++      position: absolute;
++      top: 50%;
++      left: -60%;
++      width: 200px; // 👉 même taille que .ram
++      transform: translateY(-50%) rotate(90deg);
++      z-index: 0;
++      pointer-events: none;
++    }
++
++    span {
++      position: absolute;
++      top: 50%;
++      left: 38%;
++      transform: translate(-50%, -50%);
++      color: white;
++      font-weight: bold;
++      font-size: 14px;
++      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
++      z-index: 1;
++      white-space: nowrap;
++      pointer-events: none;
++    }
++  }
++}
+diff --git a/scss/layout/_header.scss b/scss/layout/_header.scss
+index 3e38ca4..a2e4457 100644
+--- a/scss/layout/_header.scss
++++ b/scss/layout/_header.scss
+@@ -25,7 +25,7 @@
+   position: fixed; // Fixe en haut de page
+   top: 0;
+   left: 0;
+-  z-index: 100;
++  z-index: 10000;
+   color: #fff;
+   box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+ 
+diff --git a/scss/main.scss b/scss/main.scss
+index f830363..3797168 100644
+--- a/scss/main.scss
++++ b/scss/main.scss
+@@ -19,12 +19,14 @@
+ @use 'components/main_container';
+ @use 'components/loader';
+ @use 'components/notification';
++@use 'components/club_menu';
+ 
+ 
+ //Import des styles des pages personnalisées
+ @use 'pages/accueil';
+ @use 'pages/palmares';
+ @use 'pages/actualites';
++@use 'pages/club';
+ 
+ @use 'pages/admin/dashboard_layout';
+ @use 'pages/admin/event_dashboard';
+diff --git a/scss/pages/_club.scss b/scss/pages/_club.scss
+new file mode 100644
+index 0000000..c70fc8b
+--- /dev/null
++++ b/scss/pages/_club.scss
+@@ -0,0 +1,358 @@
++@use '../base/variables' as *;
++@use '../base/mixins' as *;
++
++
++
++#club_container{
++    margin-top: 6.5%;
++    display: flex;
++    overflow: hidden;
++    
++    
++    #title_club {
++        display: flex;
++        align-items: center;
++        justify-content: center;
++
++        h1{
++            font-size: 1.9em;
++            font-weight: 700;
++            color :black;
++        }
++    
++    }
++    
++    .container_club {
++        width: 100%;
++        overflow:hidden;
++
++        #club_presentation{
++
++            font-size: 18px;
++
++            .box{
++                border-radius:4px;
++                height: 60px;
++                margin-bottom: 10px;
++                padding-left: 80px;
++                display: flex;
++                align-items: center
++            }
++            .color1{
++                background-color: #39496B;
++            }
++            .color2{
++                background-color: #547394;
++            }
++            .color3{
++                background-color: #A8412C;
++            }
++            .color4{
++                background-color: #8A6AC0;
++            }
++
++           .carousel {
++                display: flex;
++                align-items: center;
++                justify-content: center;
++                gap: 10px;
++                margin-top: 50px;
++                margin-bottom: 60px;
++
++                .carousel-window {
++                    width: 940px; 
++                    overflow: hidden;
++                    border-radius: 10px;
++                }
++
++                .carousel-track {
++                    display: flex;
++                    transition: transform 0.5s ease;
++                    gap: 20px;
++                }
++
++                img {
++                    width: 300px;
++                    height: 250px;
++                    object-fit: cover;
++                    flex-shrink: 0;
++                }
++
++                .carousel-button {
++                    color: #39496B;
++                    font-size: 2rem;
++                    border: none;
++                    cursor: pointer;
++                    padding: 10px;
++                    border-radius: 50%;
++                    transition: background 0.3s;
++
++                    &:hover {
++                        transform: scale(1.2);
++                    }
++                }
++            }
++
++        }
++    }
++
++   #club_histoire {
++    
++    color: white;
++    padding: 40px;
++
++    .timeline-container {
++        overflow-x: hidden;
++
++        .timeline {
++        overflow-x: auto;
++        scrollbar-width: none; // Firefox
++        -ms-overflow-style: none; // IE
++        &::-webkit-scrollbar {
++            display: none; // Chrome / Safari
++        }
++
++        .cercle {
++            display: flex;
++            gap: 40px;
++            padding: 20px 40px;
++            position: relative;
++            width: max-content; // s’adapte au nombre d’années
++            transition: transform 0.3s ease;
++        }
++
++        .year {
++            position: relative;
++            background-color: #1c3a6f;
++            border-radius: 50%;
++            width: 70px;
++            height: 70px;
++            display: flex;
++            align-items: center;
++            justify-content: center;
++            font-weight: bold;
++            color: white;
++            cursor: pointer;
++            z-index: 2;
++            transition: all 0.3s ease;
++            flex-shrink: 0;
++
++            &.selected {
++            border-radius: 20px;
++            background-color: #295bb4;
++            transform: scale(1.1);
++            }
++        }
++
++        .line {
++            position: absolute;
++            top: 50%;
++            left: 0;
++            height: 4px;
++            width: 100%;
++            background-color: #A8412C;
++            z-index: 1;
++            transform: translateY(-50%);
++        }
++        }
++
++        .content {
++        display: flex;
++        gap: 20px;
++        align-items: center;
++        margin: 40px 9%;
++        background-color: #1c3a6f;
++        height: 300px;
++        border-radius: 10px;
++        padding: 0px 4%;
++
++        img {
++            width: 200px;
++            height: auto;
++            border-radius: 8px;
++        }
++
++        p {
++            max-width: 600px;
++            font-size: 1.1rem;
++        }
++        }
++    }
++    }
++
++    /* Conteneur global des cartes */
++    .container_equipe {
++        display: grid;
++        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
++        gap: 20px;
++        padding: 40px 20px;
++        justify-items: center;
++    }
++
++    /* Carte individuelle */
++    .container_card {
++        width: 100%;
++        max-width: 250px;
++        background-color: #ffffff;
++        border-radius: 12px;
++        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
++        overflow: hidden;
++        text-align: center;
++        font-family: Arial, sans-serif;
++        display: flex;
++        flex-direction: column;
++        align-items: center;
++        padding: 16px;
++        gap: 12px;
++    }
++
++    /* Image de profil */
++    .container_img img {
++        width: 100px;
++        height: 100px;
++        border-radius: 10px;
++        object-fit: cover;
++        border: 3px solid #0055a5;
++    }
++
++    /* Nom et rôle */
++    .container_info h4 {
++        margin: 8px 0 4px;
++        font-size: 18px;
++        color: #333;
++    }
++
++    .container_info span {
++        font-size: 14px;
++        color: #777;
++    }
++
++    /* Réseaux sociaux en ligne */
++    .container_social {
++        display: flex;
++        gap: 10px;
++        justify-content: center;
++    }
++
++    .container_social img {
++        width: 24px;
++        height: 24px;
++        cursor: pointer;
++        transition: transform 0.2s ease;
++    }
++
++    .container_social img:hover {
++        transform: scale(1.1);
++    }
++
++    #club_lieux{
++
++        button{
++            border: none;
++            background: #0055a5;
++            color: white;
++            height:35px;
++            min-width: 100px;
++            border-radius: 8px;
++        }
++
++        #map { 
++            height: 450px;
++            margin:  10px 60px ;
++
++
++        }
++    }
++
++    #club_sports{
++
++        .carousel-wrapper {
++            position: relative;
++            display: flex;
++            align-items: center;
++            overflow: hidden;
++            padding: 20px;
++            }
++
++            .carousel {
++            display: flex;
++            overflow-x: auto;
++            scroll-behavior: smooth;
++            padding: 10px 10px;
++            }
++
++            .carousel::-webkit-scrollbar {
++            display: none;
++            }
++
++            .aviron-item {
++            flex: 0 0 auto;
++            width: 220px;
++            height: 400px;
++            clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
++            border: 3px solid #0055a5;
++            background-color: #e3e3e3;
++            position: relative;
++            overflow: hidden;
++            transition: transform 0.3s ease;
++            cursor: pointer;
++            }
++
++            .aviron-item img {
++            width: 100%;
++            height: 100%;
++            object-fit: cover;
++            display: block;
++            }
++
++            .aviron-title {
++            position: absolute;
++            bottom: 10px;
++            left: 10px;
++            color: white;
++            font-weight: bold;
++            background-color: rgba(0, 0, 0, 0.6);
++            padding: 6px 10px;
++            border-radius: 5px;
++            opacity: 0;
++            transform: translateY(10px);
++            transition: 0.3s ease;
++            }
++
++            .aviron-item:hover {
++                transform: scale(1.05);
++            }
++
++            .aviron-item:hover .aviron-title {
++            opacity: 1;
++            transform: translateY(0);
++            }
++
++            .carousel-btn {
++            color: #0055a5;
++            font-size: 50px;
++            border: none;
++            width: 40px;
++            height: 40px;
++            border-radius: 50%;
++            cursor: pointer;
++            z-index: 2;
++            transition: background 0.2s ease;
++            }
++
++            .carousel-btn:hover {
++            transform: scale(1.2);
++            }
++
++            .carousel-btn.left {
++            margin-right: 10px;
++            }
++
++            .carousel-btn.right {
++            margin-left: 10px;
++            }
++
++
++    }
++
++}
+\ No newline at end of file
+diff --git a/templates/components/layout/header.php b/templates/components/layout/header.php
+index 9b1d3b5..07abaa6 100644
+--- a/templates/components/layout/header.php
++++ b/templates/components/layout/header.php
+@@ -5,16 +5,15 @@
+   <div class="header__container">
+     <a href="#" class="header__logo">
+   
+-      <img src="/assets/images/Logo.png" alt="Logo ACOO" />
++      <img src="../assets/images/Logo.png" alt="Logo ACOO" />
+     </a>
+     <nav class="header__nav">
+-      <a href="/">ACCUEIL</a>
+-      <a href="#">CLUB</a>
+-      <a href="#">ÉVÉNEMENTS</a>
+-      <a href="/pages/actualites.php">ACTUALITES</a>
++      <a href="accueil.php">ACCUEIL</a>
++      <a href="club.php">CLUB</a>
++      <a href="evenements.php">ÉVÉNEMENTS</a>
++      <a href="actualites.php">ACTUALITES</a>
+       
+       <a href="#">GALERIE</a>
+-      <a href="/pages/palmares.php">PALMARÈS</a>
+       <div class="header__nav-item header__nav-dropdown">
+   <a href="#" class="header__nav-link">RAMER AU CLUB</a>
+   <div class="header__dropdown-menu">
+@@ -33,8 +32,7 @@
+   </div>
+   <div class="header__mobile-menu">
+     <nav>
+-      
+-      <a href="/">ACCUEIL</a>
++      <a href="accueil.php">ACCUEIL</a>
+       <a href="#">CLUB</a>
+       <a href="#">ÉVÉNEMENTS</a>
+       <a href="/pages/actualites.php">ACTUALITES</a>
+diff --git a/templates/components/layout/menu_club.php b/templates/components/layout/menu_club.php
+new file mode 100644
+index 0000000..10da5bb
+--- /dev/null
++++ b/templates/components/layout/menu_club.php
+@@ -0,0 +1,30 @@
++<nav id="menu_club">
++  <div class="ram" data-target="club_presentation">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Présentation</span>
++  </div>
++  <div class="ram" data-target="club_histoire">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Histoire</span>
++  </div>
++  <div class="ram" data-target="club_equipe">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Equipe</span>
++  </div>
++  <div class="ram" data-target="club_sports">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Sport</span>
++  </div>
++  <div class="ram" data-target="club_lieux">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Lieux</span>
++  </div>
++  <div class="ram" data-target="club_partenaire">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Partenaire</span>
++  </div>
++  <div class="ram" data-target="club_sponsors">
++    <img src="../assets/images/rame.png" alt="rame">
++    <span>Sponsors</span>
++  </div>
++</nav>
+-- 
+2.43.0.windows.1
+

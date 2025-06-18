@@ -45,3 +45,35 @@ document.addEventListener("DOMContentLoaded", () => {
     section.style.display = (index === 0) ? 'block' : 'none';
   });
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const galleries = document.querySelectorAll("section");
+
+  galleries.forEach(section => {
+    const logos = section.querySelectorAll(".sponsor-logo");
+    const popup = section.querySelector(".popup-overlay");
+
+    if (!popup) return;
+
+    const title = popup.querySelector(".popup-title");
+    const description = popup.querySelector(".popup-description");
+    const image = popup.querySelector(".popup-logo");
+    const closeBtn = popup.querySelector(".popup-close");
+
+    logos.forEach(logo => {
+      logo.addEventListener("click", () => {
+        title.textContent = logo.dataset.title;
+        description.textContent = logo.dataset.description;
+        image.src = logo.querySelector("img").src;
+        image.alt = logo.dataset.title;
+        popup.style.display = "flex";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+    });
+  });
+});

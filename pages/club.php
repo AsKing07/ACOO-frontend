@@ -362,12 +362,60 @@
                 <div id="title_club">
                         <h1>Partenaire</h1>
                     </div>
+
+                  <div class="sponsors-gallery">
+                    <div class="sponsor-logo" data-title="Nike" data-description="Sponsor officiel du club depuis 2021.">
+                        <img src="http://s3.gomedia.us/wp-content/uploads/2015/05/Nike_Swoosh_Logo_Black_original.jpg" alt="Nike">
+                    </div>
+                    <div class="sponsor-logo" data-title="Red Bull" data-description="Partenaire des événements nationaux.">
+                        <img src="http://www.pixelstalk.net/wp-content/uploads/2016/07/Red-Bull-Logo-Desktop-Wallpaper.jpg" alt="Red Bull">
+                    </div>
+                    <div class="sponsor-logo" data-title="Decathlon" data-description="Fournisseur officiel de matériel.">
+                        <img src="https://www.danstapub.com/wp-content/uploads/2024/03/Wolff_Olins_Decathlon_Press_02_Logo_1920x1280-1536x1024.jpg" alt="Decathlon">
+                    </div>
+                    <!-- Ajoute autant de logos que nécessaire -->
+                    </div>
+
+                    <!-- Popup -->
+                    <div class="popup-overlay">
+                        <div class="popup-content">
+                            <img class="popup-logo" src="" alt="">
+                            <h2 class="popup-title"></h2>
+                            <p class="popup-description"></p>
+                            <button class="popup-close">Fermer</button>
+                        </div>
+                    </div>
+
+
     
             </section>
     
             <section id="club_sponsors">
                 <div id="title_club">
-                        <h1>Sponsors</h1>
+                    <h1>Sponsors</h1>
+                </div>
+
+                <div class="sponsors-gallery">
+                    <div class="sponsor-logo" data-title="Nike" data-description="Sponsor officiel du club depuis 2021.">
+                        <img src="http://s3.gomedia.us/wp-content/uploads/2015/05/Nike_Swoosh_Logo_Black_original.jpg" alt="Nike">
+                    </div>
+                    <div class="sponsor-logo" data-title="Red Bull" data-description="Partenaire des événements nationaux.">
+                        <img src="http://www.pixelstalk.net/wp-content/uploads/2016/07/Red-Bull-Logo-Desktop-Wallpaper.jpg" alt="Red Bull">
+                    </div>
+                    <div class="sponsor-logo" data-title="Decathlon" data-description="Fournisseur officiel de matériel.">
+                        <img src="https://www.danstapub.com/wp-content/uploads/2024/03/Wolff_Olins_Decathlon_Press_02_Logo_1920x1280-1536x1024.jpg" alt="Decathlon">
+                    </div>
+                    <!-- Ajoute autant de logos que nécessaire -->
+                    </div>
+
+                    <!-- Popup -->
+                    <div class="popup-overlay">
+                        <div class="popup-content">
+                            <img class="popup-logo" src="" alt="">
+                            <h2 class="popup-title"></h2>
+                            <p class="popup-description"></p>
+                            <button class="popup-close">Fermer</button>
+                        </div>
                     </div>
     
             </section>
