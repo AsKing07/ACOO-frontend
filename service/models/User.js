@@ -5,9 +5,10 @@
  */
 export class User {
     /**
-     * @param {{ username: string, email: string, role: string[], phone: string, address: string tokenData: { expires_at: string, token: string } }} data
+     * @param {{id:string,  username: string, email: string, role: string[], phone: string, address: string tokenData: { expires_at: string, token: string } }} data
      */
-    constructor({ username, email, roles, tokenData, phone, address }) {
+    constructor({id, username, email, roles, tokenData, phone, address }) {
+        this.id = id;
         this.username = username;
         this.email = email;
         this.roles = roles;

@@ -8,6 +8,14 @@ export async function getStaff() {
     const data = await res.json();
     return Staff.fromApi(data);
 }
+
+export async function getStaffById(id) {
+    const res = await fetch(`${API_BASE_URL}/api/staffs/${id}`);
+    if (!res.ok) throw new Error('Erreur lors du chargement du membre du personnel');
+    const data = await res.json();
+    return Staff.fromApi(data);
+}
+
 export async function addStaff(staff) {
     const staffRequest = new StaffRequest(staff.name, staff.role, staff.phoneNumber, staff.mail, staff.image, staff.team?? null ).toJSON();
     const user = User.getCurrentUser();

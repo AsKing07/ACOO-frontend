@@ -1,18 +1,3 @@
-// [
-//   {
-//     "id": 0,
-//     "name": "John Doe",
-//     "role": "Entraîneur principal",
-//     "phoneNumber": "+33612345678",
-//     "mail": "john.doe@example.com",
-//     "image": [
-//       "data:image/jpeg;base64,..."
-//     ],
-//     "team": [
-// null
-//     ]
-//   }
-// ]
 
 
 /**
@@ -52,7 +37,7 @@ export class StaffRequest {
      * @param {string} role
      * @param {string} phoneNumber
      * @param {string} mail
-     * @param {string} image
+     * @param {string[]} images
      * @param {number[]} team
      */
     constructor(name, role, phoneNumber, mail, images, team) {

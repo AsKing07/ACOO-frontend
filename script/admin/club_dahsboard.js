@@ -2,8 +2,9 @@
  * @fileoverview
  * Ce script initialise la gestion du dashboard du club, permettant de gérer l'organigramme
  * et les sports proposés par le club.
- * @module script/admin/club.js
- * @requires module:service/api/clubApi.js
+ * @module script/admin/club_dashboard.js
+ * @requires module:service/api/staffApi.js
+ * @requires module:service/api/sportApi.js
  * @requires module:showNotification.js
  */
 

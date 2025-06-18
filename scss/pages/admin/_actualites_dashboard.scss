@@ -1,0 +1,166 @@
+@use '../../base/functions' as *;
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+
+.body-actualites-dashboard
+{
+    .main-container{
+        .news
+        {
+            height: 900px;
+            overflow-y: scroll;
+
+            .editing-img-wording-container
+            {
+
+            }
+        }
+    }
+
+    
+  // Modal styles
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-content {
+      background: $white-color;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      min-width: 350px;
+      max-width: 95vw;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      
+      h2 {
+        color: $primary-color;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      
+      p {
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+    
+    .modal-close {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.2rem;
+      font-size: 2rem;
+      color: $gray-color;
+      cursor: pointer;
+      transition: color 0.2s;
+      
+      &:hover {
+        color: darken($gray-color, 15%);
+      }
+    }
+    
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+
+  // Form styles
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    &__input {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+      }
+      
+      &:focus + .form__label,
+      &:not(:placeholder-shown) + .form__label {
+        transform: translateY(-2.5rem);
+        font-size: 0.8rem;
+        color: $primary-color;
+      }
+    }
+    
+    &__textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    &__label {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      background: rgba($white-color, 0.8);
+      padding: 0 0.5rem;
+      color: #777;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    &__cta {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+  }
+    @media (max-width: 768px) {
+        padding: 1rem;
+        .main-container {
+              h1 {
+        font-size: 2.5rem;
+      }
+            .news {
+            height: 600px;
+            }
+        }
+
+         .modal .modal-content {
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 400px;
+    }
+    }
+
+      @media (max-width: 480px) {
+    .modal .modal-content {
+      padding: 1rem;
+    }
+    
+    .modal-actions {
+      flex-direction: column;
+      
+      button {
+        width: 100%;
+      }
+    }
+}
+}
