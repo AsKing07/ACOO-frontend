@@ -1,0 +1,101 @@
+@use '../../base/functions' as *;
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+
+
+.body-information_dashboard {
+  .container-dashboard-profil {
+    // width: 900px;
+    // max-width: 95vw;
+    width: 100%;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(57,73,107,0.10);
+    margin-bottom: 32px;
+    margin-top: 16px;
+    padding-bottom: 32px;
+
+    .dashboard-profil-title {
+      background: #39496B;
+      border-radius: 14px 14px 0 0;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      h2 {
+        color: #fff;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+      }
+    }
+
+    form {
+      padding: 32px 48px 0 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .dashboard-profil-info-display,
+      .dashboard-profil-info-display-solo {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 0;
+        .dashboard-profil-info {
+          flex: 1;
+        }
+      }
+      .dashboard-profil-info-display-solo {
+        margin-top: 0;
+      }
+
+         .dashboard-profil-info {
+        background: #39496B;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        height: 56px;
+        margin-bottom: 0;
+        .profil-info {
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+          label {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+          }
+          input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+          }
+        }
+       i {
+          color: #fff;
+          font-size: 1.3rem;
+          cursor: pointer;
+        }
+      }
+
+     .dashboard-profil-info-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 24px;
+        
+      }
+    }
+  }
+
+  .edit-actions-wording_btns {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}

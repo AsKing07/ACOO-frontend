@@ -50,11 +50,6 @@ const PAGE_MODULES = {
         initFunction: 'initPalmaresDashboard',
         destroyFunction: 'destroyPalmaresDashboard'
     },
-    'partage_documents.php': {
-        path: '/script/admin/partage_documents_dashboard.js',
-        initFunction: 'initPartageDocumentsDashboard',
-        destroyFunction: 'destroyPartageDocumentsDashboard'
-    }
 };
 
 let currentCleanup = null;
@@ -274,21 +269,6 @@ async function loadPage(url) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // Sélection des éléments du menu de la sidebar
     document.querySelectorAll('.container_nav_pages li, .container_nav_system li').forEach(item => {
       item.addEventListener('click', function() {
@@ -302,6 +282,7 @@ async function loadPage(url) {
         switch(page) {
           case 'accueil': url = '/pages/admin/dashboard-accueil.php'; break;
           case 'club': url = '/pages/admin/club.php'; break;
+          case 'informations': url = '/pages/admin/informations.php'; break;
           case 'palmares': url = '/pages/admin/palmares.php'; break;
           case 'partenaires': url = '/pages/admin/partenaires.php'; break;
           case 'actus': url = '/pages/admin/actualites.php'; break;
@@ -310,7 +291,6 @@ async function loadPage(url) {
           case 'faq': url = '/pages/admin/faq.php'; break;
           case 'messagerie': url = '/pages/admin/messagerie.php'; break;
           case 'admin': url = '/pages/admin/admin.php'; break;
-          case 'partage de documents': url = '/pages/admin/partage_documents.php'; break;
           default: url = '/pages/admin/dashboard-accueil.php';
         }
         if(url) loadPage(url);
