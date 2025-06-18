@@ -3029,7 +3029,9 @@
   margin-top: 24px;
 }
 .body-information_dashboard .edit-actions-wording_btns {
+  display: flex;
   justify-content: center;
+  gap: 10px;
 }
 
 .faq-dashboard {
