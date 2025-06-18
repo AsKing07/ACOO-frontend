@@ -362,6 +362,7 @@
                 <div id="title_club">
                         <h1>Partenaire</h1>
                     </div>
+<<<<<<< HEAD
 
                   <div class="sponsors-gallery">
                     <div class="sponsor-logo" data-title="Nike" data-description="Sponsor officiel du club depuis 2021.">
@@ -387,11 +388,14 @@
                     </div>
 
 
+=======
+>>>>>>> 0ea217eb7d76180f51547bcbb5a5f3b922aa4186
     
             </section>
     
             <section id="club_sponsors">
                 <div id="title_club">
+<<<<<<< HEAD
                     <h1>Sponsors</h1>
                 </div>
 
@@ -416,6 +420,9 @@
                             <p class="popup-description"></p>
                             <button class="popup-close">Fermer</button>
                         </div>
+=======
+                        <h1>Sponsors</h1>
+>>>>>>> 0ea217eb7d76180f51547bcbb5a5f3b922aa4186
                     </div>
     
             </section>
