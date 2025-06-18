@@ -36,6 +36,11 @@
         transform: translateY(4px) scale(1.05);
     }
 
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
     
 
 }

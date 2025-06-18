@@ -3,7 +3,7 @@ import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
 
 export async function getSocialMedias() {
-  const res = await fetch(`${API_BASE_URL}/api/social_medias`);
+  const res = await fetch(`${API_BASE_URL}/api/social-media`);
   if (!res.ok) throw new Error('Erreur lors du chargement des réseaux sociaux');
   const data = await res.json();
   return SocialMedias.fromApi(data);
@@ -20,7 +20,7 @@ export async function addSocialMedia(socialMedia) {
     if (!tokenData) {
       throw new Error('Utilisateur non authentifié');
     }
-    const res = await fetch(`${API_BASE_URL}/api/social_medias`, {
+    const res = await fetch(`${API_BASE_URL}/api/social-media`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export async function updateSocialMedia(id, socialMedia) {
     if (!tokenData) {
         throw new Error('Utilisateur non authentifié');
     }
-    const res = await fetch(`${API_BASE_URL}/api/social_medias/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/social-media/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/merge-patch+json',
@@ -64,7 +64,7 @@ export async function deleteSocialMedia(id) {
     if (!tokenData) {
         throw new Error('Utilisateur non authentifié');
     }
-    const res = await fetch(`${API_BASE_URL}/api/social_medias/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/social-media/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

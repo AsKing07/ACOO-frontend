@@ -50,6 +50,12 @@ const PAGE_MODULES = {
         initFunction: 'initPalmaresDashboard',
         destroyFunction: 'destroyPalmaresDashboard'
     },
+    'informations.php': {
+        path: '/script/admin/informations_dashboard.js',
+        initFunction: 'initInformationsDashboard',
+        destroyFunction: 'destroyInformationsDashboard'
+    },
+    
 };
 
 let currentCleanup = null;
