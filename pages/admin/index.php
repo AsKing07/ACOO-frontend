@@ -54,9 +54,7 @@ if (!user) {
   </main>
 </div>
 
-  <script src="/script/admin/dashboard.js" type="module">
-    
-  </script>
+  <script src="/script/admin/dashboard.js" type="module"></script>
 
 </body>
 </html>
