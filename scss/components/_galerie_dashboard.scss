@@ -1,0 +1,50 @@
+// Viez Galerie Dashboard Admin
+
+.galerie {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 100%;
+  margin: 24px;
+  font-family: sans-serif;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+  }
+
+  .folder {
+    margin-bottom: 2rem;
+
+    h3 {
+      font-size: 1.1rem;
+      color: #39496B;
+      margin-bottom: 1rem;
+    }
+
+    .images-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+
+      img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        border: 2px solid #A3B0CA;
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: scale(1.03);
+        }
+      }
+    }
+  }
+}
