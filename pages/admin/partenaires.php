@@ -5,7 +5,7 @@
             <section class="event-table-section">
                 <div class="event-table__container">
                     <div class="event-table__header">
-                        <h2 class="event-table__title">Liste des évènements</h2>
+                        <h2 class="event-table__title">Liste des partenaires</h2>
                     </div>
                     <div class="event-table__wrapper">
                         <table class="event-table">
@@ -13,8 +13,8 @@
                             <tr>
                                 <th>Nom</th>
                                 <th>Description</th>
-                                <th>Type d’évènement</th>
-                                <th>Date</th>
+                                <th>Type de Partenaire</th>
+                                <th>Année du Partenaire</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -23,14 +23,14 @@
                                 <td>
                                 <div class="event-table__name">
                                     <img src="https://placehold.co/40x40" alt="Avatar" class="event-table__avatar">
-                                    <span>Portes Ouvertes</span>
+                                    <span>Région Centre Val de Loire</span>
                                 </div>
                                 </td>
-                                <td>Journée Porte Ouverte</td>
+                                <td>Partenaire</td>
                                 <td>
-                                <span class="event-table__type">Avifit</span>
+                                <span class="event-table__type">Sponsor</span>
                                 </td>
-                                <td>15/07/2025</td>
+                                <td>2008</td>
                                 <td>
                                 <button class="event-table__edit">Modifier</button>
                                 </td>
@@ -39,14 +39,14 @@
                                 <td>
                                 <div class="event-table__name">
                                     <img src="https://placehold.co/40x40" alt="Avatar" class="event-table__avatar">
-                                    <span>Portes Ouvertes</span>
+                                    <span>Région Centre Val de Loire</span>
                                 </div>
                                 </td>
-                                <td>Journée Porte Ouverte</td>
+                                <td>Partenaire</td>
                                 <td>
-                                <span class="event-table__type">Aviron Indoor</span>
+                                <span class="event-table__type">Sponsor</span>
                                 </td>
-                                <td>15/07/2025</td>
+                                <td>2008</td>
                                 <td>
                                 <button class="event-table__edit">Modifier</button>
                                 </td>
@@ -55,14 +55,14 @@
                                 <td>
                                 <div class="event-table__name">
                                     <img src="https://placehold.co/40x40" alt="Avatar" class="event-table__avatar">
-                                    <span>Portes Ouvertes</span>
+                                    <span>Région Centre Val de Loire</span>
                                 </div>
                                 </td>
-                                <td>Journée Porte Ouverte</td>
+                                <td>Partenaire</td>
                                 <td>
-                                <span class="event-table__type">Aviron Indoor</span>
+                                <span class="event-table__type">Sponsor</span>
                                 </td>
-                                <td>15/07/2025</td>
+                                <td>2008</td>
                                 <td>
                                 <button class="event-table__edit">Modifier</button>
                                 </td>
@@ -71,14 +71,14 @@
                                 <td>
                                 <div class="event-table__name">
                                     <img src="https://placehold.co/40x40" alt="Avatar" class="event-table__avatar">
-                                    <span>Portes Ouvertes</span>
+                                    <span>Région Centre Val de Loire</span>
                                 </div>
                                 </td>
-                                <td>Journée Porte Ouverte</td>
+                                <td>Partenaire</td>
                                 <td>
-                                <span class="event-table__type">Aviron Indoor</span>
+                                <span class="event-table__type">Sponsor</span>
                                 </td>
-                                <td>15/07/2025</td>
+                                <td>2008</td>
                                 <td>
                                 <button class="event-table__edit">Modifier</button>
                                 </td>
@@ -87,14 +87,14 @@
                                 <td>
                                 <div class="event-table__name">
                                     <img src="https://placehold.co/40x40" alt="Avatar" class="event-table__avatar">
-                                    <span>Portes Ouvertes</span>
+                                    <span>Région Centre Val de Loire</span>
                                 </div>
                                 </td>
-                                <td>Journée Porte Ouverte</td>
+                                <td>Partenaire</td>
                                 <td>
-                                <span class="event-table__type">Aviron Indoor</span>
+                                <span class="event-table__type">Sponsor</span>
                                 </td>
-                                <td>15/07/2025</td>
+                                <td>2008</td>
                                 <td>
                                 <button class="event-table__edit">Modifier</button>
                                 </td>
@@ -103,14 +103,14 @@
                                 <td>
                                 <div class="event-table__name">
                                     <img src="https://placehold.co/40x40" alt="Avatar" class="event-table__avatar">
-                                    <span>Portes Ouvertes</span>
+                                    <span>Région Centre Val de Loire</span>
                                 </div>
                                 </td>
-                                <td>Journée Porte Ouverte</td>
+                                <td>Partenaire</td>
                                 <td>
-                                <span class="event-table__type">Aviron Indoor</span>
+                                <span class="event-table__type">Sponsor</span>
                                 </td>
-                                <td>15/07/2025</td>
+                                <td>2008</td>
                                 <td>
                                 <button class="event-table__edit">Modifier</button>
                                 </td>
