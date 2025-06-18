@@ -28,8 +28,8 @@
                             Ce document définit les règles de fonctionnement et de conduite au sein du club.
                         </p>
                         <div class="edit-wording_btn">
-                            <button class="btn-primary">Télécharger</button>
-                            <button class="btn-primary">Uploader</button>
+                            <button id="download-reglement-btn" class="btn-primary">Télécharger</button>
+                            <button id="upload-reglement-btn" class="btn-primary">Uploader</button>
                         </div>
                     </div>
                 </div>

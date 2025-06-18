@@ -53,6 +53,14 @@ export function initClub() {
   const cancelDeleteSportBtn = document.getElementById('cancel-delete-sport-btn');
     const sportLoader = document.getElementById('sports-loader');
 
+
+    // Éléments pour le règlement intérieur
+    const uploadWordingBtn = document.getElementById('upload-reglement-btn');
+    const downloadWordingBtn = document.getElementById('download-reglement-btn');
+
+
+
+
   // Variables pour stocker les données
   let staffs = [];
   let sports = [];
@@ -340,12 +348,120 @@ if (staffPhotoInput.files.length > 0) {
     };
   }
 
+  // Fonctions de gestion du upload du règlement du club
+  // Fonction pour uploader le règlement intérieur
+async function uploadWordingFile() {
+    console.log('uploadWordingFile called')
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.pdf,.doc,.docx';
+  input.style.display = 'none';
+
+  input.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('reglement', file);
+
+    try {
+      const res = await fetch('/service/api/upload_reglement.php', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await res.json();
+      if (result.success) {
+        showNotification('Document uploadé avec succès.', 'success');
+      } else {
+        showNotification(result.error || 'Erreur lors de l\'upload.', 'error');
+      }
+    } catch (err) {
+      showNotification('Erreur : ' + err.message, 'error');
+    }
+    finally {
+      input.remove();
+    }
+  });
+
+  document.body.appendChild(input);
+  input.click();
+
+}
+
+// Fonction pour télécharger le règlement intérieur
+function downloadWordingFile() {
+  window.open('/assets/docs/reglement_club.pdf', '_blank');
+}
+
+    // Gestion des événements pour le règlement intérieur
+uploadWordingBtn.removeEventListener('click', uploadWordingFile);
+uploadWordingBtn.addEventListener('click', uploadWordingFile);
+
+downloadWordingBtn.removeEventListener('click', downloadWordingFile);
+downloadWordingBtn.addEventListener('click', downloadWordingFile);
+ 
+
+
+
   // Initialisation du dashboard
   renderStaffs();
   renderSports();
+
 }
 
 // Lancement de l'initialisation
-initClub();
+// initClub();
+
+export function destroyClub() {
+  // Sélection des éléments DOM
+  const addStaffBtn = document.getElementById('add-staff-btn');
+  const addSportBtn = document.getElementById('add-sport-btn');
+  const closeStaffModal = document.getElementById('close-staff-modal');
+  const closeDeleteStaffModal = document.getElementById('close-delete-staff-modal');
+  const cancelDeleteStaffBtn = document.getElementById('cancel-delete-staff-btn');
+  const closeSportModal = document.getElementById('close-sport-modal');
+  const closeDeleteSportModal = document.getElementById('close-delete-sport-modal');
+  const cancelDeleteSportBtn = document.getElementById('cancel-delete-sport-btn');
+  const staffForm = document.getElementById('staff-form');
+  const sportForm = document.getElementById('sport-form');
+  const confirmDeleteStaffBtn = document.getElementById('confirm-delete-staff-btn');
+  const confirmDeleteSportBtn = document.getElementById('confirm-delete-sport-btn');
+  const uploadWordingBtn = document.getElementById('upload-reglement-btn');
+  const downloadWordingBtn = document.getElementById('download-reglement-btn');
+
+  // Retirer les listeners des boutons principaux
+  if (addStaffBtn) addStaffBtn.replaceWith(addStaffBtn.cloneNode(true));
+  if (addSportBtn) addSportBtn.replaceWith(addSportBtn.cloneNode(true));
+  if (closeStaffModal) closeStaffModal.replaceWith(closeStaffModal.cloneNode(true));
+  if (closeDeleteStaffModal) closeDeleteStaffModal.replaceWith(closeDeleteStaffModal.cloneNode(true));
+  if (cancelDeleteStaffBtn) cancelDeleteStaffBtn.replaceWith(cancelDeleteStaffBtn.cloneNode(true));
+  if (closeSportModal) closeSportModal.replaceWith(closeSportModal.cloneNode(true));
+  if (closeDeleteSportModal) closeDeleteSportModal.replaceWith(closeDeleteSportModal.cloneNode(true));
+  if (cancelDeleteSportBtn) cancelDeleteSportBtn.replaceWith(cancelDeleteSportBtn.cloneNode(true));
+  if (staffForm) staffForm.onsubmit = null;
+  if (sportForm) sportForm.onsubmit = null;
+  if (confirmDeleteStaffBtn) confirmDeleteStaffBtn.onclick = null;
+  if (confirmDeleteSportBtn) confirmDeleteSportBtn.onclick = null;
+  if (uploadWordingBtn) uploadWordingBtn.replaceWith(uploadWordingBtn.cloneNode(true));
+  if (downloadWordingBtn) downloadWordingBtn.replaceWith(downloadWordingBtn.cloneNode(true));
+
+  // Retirer les listeners sur les éléments générés dynamiquement (staffs et sports)
+  document.querySelectorAll('.staff .btn-edit').forEach(btn => {
+    btn.replaceWith(btn.cloneNode(true));
+  });
+  document.querySelectorAll('.staff .btn-delete').forEach(btn => {
+    btn.replaceWith(btn.cloneNode(true));
+  });
+  document.querySelectorAll('.btn-edit-sport').forEach(btn => {
+    btn.replaceWith(btn.cloneNode(true));
+  });
+  document.querySelectorAll('.btn-delete-sport').forEach(btn => {
+    btn.replaceWith(btn.cloneNode(true));
+  });
+}
+
+
+
+
 
 

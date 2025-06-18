@@ -1653,8 +1653,8 @@
 .container_sidebar .sidebar-active,
 .container_sidebar .container_nav_pages li.active,
 .container_sidebar .container_nav_system li.active {
-  background: #39496B;
-  color: white;
+  color: #39496B;
+  font-weight: 600;
   border-radius: 8px;
   padding: 2px 4px;
 }
