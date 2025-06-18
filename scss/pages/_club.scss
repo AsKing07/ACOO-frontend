@@ -355,7 +355,7 @@
 
     }
 
-    .sponsors-gallery, .sponsors-gallery2 {
+    .sponsors-gallery {
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
@@ -363,7 +363,7 @@
         justify-content: center;
         }
 
-        .sponsor-logo img, .sponsor-log2 img {
+        .sponsor-logo img {
         width: 120px;
         height: auto;
         object-fit: contain;
@@ -372,13 +372,13 @@
         transition: transform 0.3s, filter 0.3s;
         }
 
-        .sponsor-logo img:hover, .sponsor-logo2 img:hover {
+        .sponsor-logo img:hover {
         transform: scale(1.1);
         filter: grayscale(0%);
         }
 
         /* Popup */
-        .popup-overlay, .popup-overlay2 {
+        .popup-overlay {
         position: fixed;
         top: 0;
         left: 0;
@@ -391,7 +391,7 @@
         z-index: 999;
         }
 
-        .popup-content, .popup-content {
+        .popup-content{
         width: 400px;
         height: 400px;
         background: white;
@@ -402,22 +402,22 @@
         box-shadow: 0 0 30px rgba(0,0,0,0.4);
         }
 
-        .popup-content h2, .popup-content2 h2 {
+        .popup-content h2 {
         margin: 10px 0;
         }
 
-        .popup-content p, .content-content2 p {
+        .popup-content p {
         font-size: 14px;
         color: #444;
         }
 
-        .popup-logo , .popup-logo2 {
+        .popup-logo  {
         max-width: 150px;
         margin: 0 auto 15px;
         display: block;
         }
 
-        .popup-content button, .popup-content2 button {
+        .popup-content button{
         margin-top: 20px;
         padding: 8px 20px;
         background: #0055a5;
