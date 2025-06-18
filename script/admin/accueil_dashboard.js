@@ -28,8 +28,7 @@ export function initDashboardAccueil() {
         visitorsChart: null
     };
 
-    // Gestion du formulaire profil
-    setupProfileForm();
+
     
     // Chargement initial des données analytics
     loadAllAnalyticsData();

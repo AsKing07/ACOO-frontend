@@ -21,7 +21,6 @@
 @use 'components/notification';
 @use 'components/edit_wording_card';
 @use 'components/container_editing';
-@use 'components/organigramme';
 
 
 //Import des styles des pages personnalisées
@@ -34,6 +33,7 @@
 @use 'pages/admin/event_dashboard';
 @use 'pages/admin/faq_dashboard';
 @use 'pages/admin/login';
+@use 'pages/admin/club_dashboard';
 
 //Import des layouts
 @use 'layout/grid';

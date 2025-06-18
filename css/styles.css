@@ -1946,56 +1946,6 @@
   justify-content: flex-start;
 }
 
-.organigramme-container {
-  background: #FFFFFF;
-  border-radius: 1rem;
-  padding: 2rem;
-  max-width: 500px;
-  margin: auto;
-  font-family: "Montserrat", "Arial, sans-serif, roboto";
-  color: #000000;
-}
-.organigramme-container h2 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: #39496B;
-}
-.organigramme-container .members {
-  display: grid;
-  gap: 1.5rem;
-}
-.organigramme-container .member {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 1rem;
-}
-.organigramme-container .member img {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-  object-fit: cover;
-}
-.organigramme-container .member .info .name {
-  font-weight: 700;
-  color: #000000;
-}
-.organigramme-container .member .info .role {
-  font-size: 0.9rem;
-  color: #828282;
-  margin-top: 0.2rem;
-}
-.organigramme-container .member .edit {
-  color: #39496B;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-decoration: none;
-}
-.organigramme-container .member .edit:hover {
-  text-decoration: underline;
-}
-
 .body-accueil .accueil-hero {
   position: relative;
   width: 100%;
@@ -3200,6 +3150,367 @@
 @media (max-width: 500px) {
   .login-body .login-container {
     padding: 1.2rem 0.5rem;
+  }
+}
+
+.body-club-dashboard {
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+.body-club-dashboard .main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.body-club-dashboard .main-container h1 {
+  color: #39496B;
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+.body-club-dashboard .container-editing {
+  height: 600px;
+  overflow-y: scroll;
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.body-club-dashboard .container-editing:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+.body-club-dashboard .container-editing-column {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.body-club-dashboard .container-editing-column:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+.body-club-dashboard .container-editing-column h2 {
+  color: #39496B;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.body-club-dashboard .container-editing-column p {
+  color: #555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+.body-club-dashboard .organigramme-container {
+  width: 100%;
+  font-family: "Montserrat", "Arial, sans-serif, roboto";
+  color: #000000;
+}
+.body-club-dashboard .organigramme-container .organigramme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.body-club-dashboard .organigramme-container .organigramme-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #39496B;
+  margin: 0;
+}
+.body-club-dashboard .organigramme-container .staffs {
+  display: grid;
+  gap: 1.5rem;
+}
+.body-club-dashboard .organigramme-container .staff {
+  background: #FAF9F8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+}
+.body-club-dashboard .organigramme-container .staff:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.body-club-dashboard .organigramme-container .staff img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.body-club-dashboard .organigramme-container .staff img:hover {
+  transform: scale(1.05);
+}
+.body-club-dashboard .organigramme-container .staff .info .name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 0.3rem;
+}
+.body-club-dashboard .organigramme-container .staff .info .role {
+  font-size: 1rem;
+  color: #828282;
+  font-style: italic;
+}
+.body-club-dashboard .organigramme-container .staff .info .email {
+  font-size: 0.9rem;
+  color: #828282;
+  margin-top: 0.2rem;
+}
+.body-club-dashboard .organigramme-container .staff .info .phone {
+  font-size: 0.9rem;
+  color: #828282;
+  margin-top: 0.2rem;
+}
+.body-club-dashboard .organigramme-container .staff .staff-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+.body-club-dashboard .editing-sports-container .sports-dashboard__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.body-club-dashboard .editing-sports-container .sports-dashboard__header h2 {
+  color: #39496B;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+.body-club-dashboard .editing-sports-container .sports-dashboard__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.body-club-dashboard .editing-sports-container .sport-card {
+  background: #FAF9F8;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+.body-club-dashboard .editing-sports-container .sport-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+.body-club-dashboard .editing-sports-container .sport-card img {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+.body-club-dashboard .editing-sports-container .sport-card img:hover {
+  transform: scale(1.05);
+}
+.body-club-dashboard .editing-sports-container .sport-card__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+.body-club-dashboard .editing-sports-container .sport-card__info {
+  flex: 1;
+}
+.body-club-dashboard .editing-sports-container .sport-card__name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #39496B;
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.body-club-dashboard .editing-sports-container .sport-card__description {
+  font-size: 1rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.5;
+  font-style: italic;
+}
+.body-club-dashboard .editing-sports-container .sport-card__actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+.body-club-dashboard .modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.body-club-dashboard .modal .modal-content {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  min-width: 350px;
+  max-width: 95vw;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.body-club-dashboard .modal .modal-content h2 {
+  color: #39496B;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.body-club-dashboard .modal .modal-content p {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+.body-club-dashboard .modal .modal-close {
+  position: absolute;
+  right: 1.2rem;
+  top: 1.2rem;
+  font-size: 2rem;
+  color: #828282;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.body-club-dashboard .modal .modal-close:hover {
+  color: #5c5c5c;
+}
+.body-club-dashboard .modal .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+.body-club-dashboard .form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.body-club-dashboard .form__group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+.body-club-dashboard .form__input {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.body-club-dashboard .form__input:focus {
+  outline: none;
+  border-color: #39496B;
+  box-shadow: 0 0 0 2px rgba(57, 73, 107, 0.1);
+}
+.body-club-dashboard .form__input:focus + .form__label, .body-club-dashboard .form__input:not(:placeholder-shown) + .form__label {
+  transform: translateY(-2.5rem);
+  font-size: 0.8rem;
+  color: #39496B;
+}
+.body-club-dashboard .form__textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.body-club-dashboard .form__label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0 0.5rem;
+  color: #777;
+  transition: all 0.3s;
+  pointer-events: none;
+}
+.body-club-dashboard .form__cta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+@media (max-width: 768px) {
+  .body-club-dashboard {
+    padding: 1rem;
+  }
+  .body-club-dashboard .main-container h1 {
+    font-size: 2.5rem;
+  }
+  .body-club-dashboard .container-editing,
+  .body-club-dashboard .container-editing-column {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .body-club-dashboard .organigramme-container .organigramme-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .body-club-dashboard .organigramme-container .staff {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    text-align: center;
+  }
+  .body-club-dashboard .organigramme-container .staff img {
+    margin: 0 auto;
+  }
+  .body-club-dashboard .organigramme-container .staff .staff-actions {
+    justify-content: center;
+  }
+  .body-club-dashboard .editing-sports-container .sports-dashboard__header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .body-club-dashboard .editing-sports-container .sport-card {
+    padding: 1.5rem;
+  }
+  .body-club-dashboard .editing-sports-container .sport-card__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .body-club-dashboard .editing-sports-container .sport-card__actions {
+    width: 100%;
+    justify-content: center;
+  }
+  .body-club-dashboard .modal .modal-content {
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 400px;
+  }
+}
+@media (max-width: 480px) {
+  .body-club-dashboard .modal .modal-content {
+    padding: 1rem;
+  }
+  .body-club-dashboard .modal-actions {
+    flex-direction: column;
+  }
+  .body-club-dashboard .modal-actions button {
+    width: 100%;
+  }
+  .body-club-dashboard .sport-editing-column .sport-card__actions {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .body-club-dashboard .sport-editing-column .sport-card__actions .btn-primary,
+  .body-club-dashboard .sport-editing-column .sport-card__actions .btn-danger {
+    width: 100%;
   }
 }
 

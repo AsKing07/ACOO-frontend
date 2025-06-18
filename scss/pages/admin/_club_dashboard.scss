@@ -1,8 +1,467 @@
-
 @use '../../base/functions' as *;
 @use '../../base/variables' as *;
 @use '../../base/mixins' as *;
 
-.body-club-dashboard{
+.body-club-dashboard {
+  padding: 2rem;
+  background: #f8f9fa;
+  min-height: 100vh;
 
+  .main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    h1 {
+      color: $primary-color;
+      font-size: 3rem;
+      font-weight: 700;
+      margin: 0 0 2rem 0;
+      text-align: center;
+    }
+  }
+
+  .container-editing {
+        height: 600px;
+   
+    overflow-y: scroll;
+
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
+    
+    background: $white-color;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    }
+  }
+
+  .container-editing-column {
+    background: $white-color;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    h2 {
+      color: $primary-color;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+  }
+
+  // Organigramme styles
+  .organigramme-container {
+    width: 100%;
+
+   
+    font-family: $font-family;
+    color: $black-color;
+
+    .organigramme-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: $primary-color;
+        margin: 0;
+      }
+    }
+
+    .staffs {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .staff {
+      background: #FAF9F8;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+      .info {
+        .name {
+          font-weight: 700;
+          font-size: 1.2rem;
+          color: $black-color;
+          margin-bottom: 0.3rem;
+        }
+
+        .role {
+          font-size: 1rem;
+          color: $gray-color;
+          font-style: italic;
+        }
+        .email {
+          font-size: 0.9rem;
+          color: $gray-color;
+          margin-top: 0.2rem;
+        }
+        .phone {
+          font-size: 0.9rem;
+          color: $gray-color;
+          margin-top: 0.2rem;
+        }
+      }
+
+      .staff-actions {
+        display: flex;
+        gap: 0.8rem;
+     
+      }
+    }
+  }
+
+  // Sports styles
+
+
+  .editing-sports-container {
+
+     // Header redesigné style FAQ
+  .sports-dashboard__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    h2 {
+      color: $primary-color;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+  }
+
+    .sports-dashboard__list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+
+  .sport-card {
+    background: #FAF9F8;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    &__info {
+      flex: 1;
+    }
+
+    &__name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $primary-color;
+      margin: 0 0 0.5rem 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    &__description {
+      font-size: 1rem;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    &__actions {
+      display: flex;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+  }
+
+ 
+
+
+  }
+
+  // Form and modal styles
+
+  // Modal styles
+  .modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-content {
+      background: $white-color;
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      min-width: 350px;
+      max-width: 95vw;
+      position: relative;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      
+      h2 {
+        color: $primary-color;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+      
+      p {
+        color: #555;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+      }
+    }
+    
+    .modal-close {
+      position: absolute;
+      right: 1.2rem;
+      top: 1.2rem;
+      font-size: 2rem;
+      color: $gray-color;
+      cursor: pointer;
+      transition: color 0.2s;
+      
+      &:hover {
+        color: darken($gray-color, 15%);
+      }
+    }
+    
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+
+  // Form styles
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    &__group {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+
+    &__input {
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.1);
+      }
+      
+      &:focus + .form__label,
+      &:not(:placeholder-shown) + .form__label {
+        transform: translateY(-2.5rem);
+        font-size: 0.8rem;
+        color: $primary-color;
+      }
+    }
+    
+    &__textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    &__label {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
+      background: rgba($white-color, 0.8);
+      padding: 0 0.5rem;
+      color: #777;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+
+    &__cta {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    padding: 1rem;
+
+    .main-container {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    .container-editing, 
+    .container-editing-column {
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .organigramme-container {
+      .organigramme-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      
+      .staff {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+        
+        img {
+          margin: 0 auto;
+        }
+        
+        .staff-actions {
+          justify-content: center;
+        }
+      }
+    }
+    
+   
+
+    .editing-sports-container {
+         .sports-dashboard__header {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .sport-card {
+      padding: 1.5rem;
+
+      &__content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+      }
+
+      &__actions {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+   
+    }
+    
+    .modal .modal-content {
+      padding: 1.5rem;
+      width: 90%;
+      max-width: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .modal .modal-content {
+      padding: 1rem;
+    }
+    
+    .modal-actions {
+      flex-direction: column;
+      
+      button {
+        width: 100%;
+      }
+    }
+     .sport-editing-column {
+    .sport-card {
+      &__actions {
+        flex-direction: column;
+        gap: 0.8rem;
+
+        .btn-primary,
+        .btn-danger {
+          width: 100%;
+        }
+      }
+    }
+  }
+  }
 }
