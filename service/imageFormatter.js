@@ -14,4 +14,20 @@ function getImageFromBase64(base64) {
   return base64.startsWith('data:image/') ? base64 : `data:image/jpeg;base64,${base64}`; 
 
 }
-export { fileToBase64, getImageFromBase64 };
+
+
+async function imageUrlToBase64(url) {
+    const response = await fetch(url);
+    const blob = await response.blob();
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+}
+
+// Utilisation :
+
+
+export { fileToBase64, getImageFromBase64 , imageUrlToBase64 };

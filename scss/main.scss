@@ -12,8 +12,6 @@
 @use 'components/form';
 @use 'components/faq';
 @use 'components/events_table';
-@use 'components/upload_galerie';
-@use 'components/galerie_dashboard';
 @use 'components/table';
 @use 'components/menu_dashboard';
 @use 'components/galleryCarousel';
@@ -41,6 +39,7 @@
 @use 'pages/admin/equipes_dashboard';
 @use 'pages/admin/palmares_dashboard';
 @use 'pages/admin/partenaires_dashboard';
+@use 'pages/admin/gallery_dashboard';
 
 //Import des layouts
 @use 'layout/grid';

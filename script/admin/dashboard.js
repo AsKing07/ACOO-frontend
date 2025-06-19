@@ -1,6 +1,6 @@
 // Configuration des modules pour éviter la répétition
 const PAGE_MODULES = {
-    'galerie.php': {
+    'gallerie.php': {
         path: '/script/admin/gallerie_dahsboard.js',
         initFunction: 'initGallery',
         destroyFunction: 'destroyGallery'
