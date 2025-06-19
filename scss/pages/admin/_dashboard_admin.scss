@@ -1,0 +1,80 @@
+@use '../../base/variables' as *;
+#container_admin{
+
+
+    .container_dashboard_admin {
+            max-width: 800px;
+            margin: auto;
+    }
+
+    h2 {
+        margin-top : 2rem;
+    }
+
+    .btn-primary {
+        padding: 10px 20px;
+        border: none !important;
+
+        &:hover {
+            background-color: rgb(21.5487804878, 27.5975609756, 40.4512195122);
+        }
+    }
+
+    input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-bottom: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    }
+
+    form {
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    margin-top: 1rem;
+    }
+
+    .hidden {
+    display: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+        th, td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+
+        th {
+            background: $primary-color;
+            color: white;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+    }
+
+    .modification-section {
+        list-style: none;
+        padding: 0;
+
+        li {
+            margin-bottom: 0.8rem;
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+
+}
