@@ -1,6 +1,7 @@
 import { showNotification } from "../showNotification.js";
 import { getTeams, addTeam, updateTeam, deleteTeam } from "../../service/api/teamApi.js";
 import { getSports } from "../../service/api/sportApi.js";
+import { fileToBase64 } from "../../service/imageFormatter.js";
 
 // Variables globales
 let teams = [];
@@ -17,15 +18,6 @@ let teamForm, sportFilter, searchInput;
 let addTeamBtn, submitTeamBtn, cancelTeamBtn;
 let teamSportSelect, teamNameInput, teamRoleInput, teamImagesInput, teamImagesPreview;
 
-// Fonction utilitaire pour convertir un fichier en base64
-function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = e => resolve(e.target.result);
-        reader.onerror = e => reject(e);
-        reader.readAsDataURL(file);
-    });
-}
 
 // Fonction utilitaire pour formater la taille des fichiers
 function formatFileSize(bytes) {

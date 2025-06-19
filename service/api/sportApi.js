@@ -10,7 +10,7 @@ export async function getSports() {
 }
 
 export async function addSport(sport) {
-    const sportRequest = new SportRequest(sport.name, sport.description, sport.contact, sport.images).toJson();
+    const sportRequest = new SportRequest(sport.name, sport.description, sport.contact, sport.image).toJson();
   
     const user = User.getCurrentUser();
 const tokenData = user ? user.tokenData : null;

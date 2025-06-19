@@ -298,7 +298,7 @@ async function loadPage(url) {
           case 'palmares': url = '/pages/admin/palmares.php'; break;
           case 'partenaires': url = '/pages/admin/partenaires.php'; break;
           case 'actus': url = '/pages/admin/actualites.php'; break;
-          case 'evenements': url = '/pages/admin/events.php'; break;
+          case 'evenements/calendrier': url = '/pages/admin/events.php'; break;
           case 'galerie': url = '/pages/admin/gallerie.php'; break;
           case 'faq': url = '/pages/admin/faq.php'; break;
           case 'messagerie': url = '/pages/admin/messagerie.php'; break;

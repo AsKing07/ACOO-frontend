@@ -1,0 +1,483 @@
+@use '../../base/functions' as *;
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
+
+.body-palmares-dashboard {
+  .main-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  h1 {
+    text-align: center;
+    color: $primary-color;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+
+  // Header dashboard
+  .dashboard-header {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(57,73,107,0.10);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+
+    p {
+      color: $gray-color;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .add-champ_btn {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  // Filtres
+  .filters-container {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(57,73,107,0.10);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+        color: $primary-color;
+        margin-bottom: 0.5rem;
+      }
+
+      select, input {
+        padding: 0.75rem;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  // Liste des palmarès
+  .palmares-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  // Carte de palmarès
+  .editing-img-wording-container {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(57,73,107,0.10);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 32px rgba(57,73,107,0.15);
+    }
+
+    .edit-img {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+
+      // Badge sport
+      .sport-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: rgba(57,73,107,0.9);
+        color: $white-color;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      // Badge année
+      .year-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: rgba(255,255,255,0.9);
+        color: $primary-color;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+    }
+
+    .edit-description {
+      padding: 1.5rem;
+
+      h2 {
+        color: $primary-color;
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        color: $gray-color;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .result-highlight {
+        display: inline-block;
+        background: linear-gradient(135deg, $warning-color, #FFA500);
+        color: #333;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .palmares-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: $gray-color;
+
+        .category-gender {
+          font-weight: 600;
+        }
+      }
+
+      .palmares-actions {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: flex-end;
+
+        .btn-icon {
+          padding: 0.5rem;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-size: 1rem;
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &.btn-view {
+            background: #e3f2fd;
+            color: $primary-color;
+
+            &:hover {
+              background: #bbdefb;
+            }
+          }
+
+          &.btn-edit {
+            background: #fff3e0;
+            color: $warning-color;
+
+            &:hover {
+              background: #ffe0b2;
+            }
+          }
+
+          &.btn-delete {
+            background: #ffebee;
+            color: $danger-color;
+
+            &:hover {
+              background: #ffcdd2;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Image par défaut
+  .default-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, $primary-color, #2a3651);
+    color: $white-color;
+    font-size: 3rem;
+
+    i {
+      opacity: 0.7;
+    }
+  }
+
+  // Pas de résultats
+  .no-results {
+    text-align: center;
+    padding: 3rem;
+    color: $gray-color;
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  // Modales
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+
+    .modal-content {
+      background: $white-color;
+      border-radius: 14px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: modalSlideIn 0.3s ease-out;
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: $gray-color;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #f0f0f0;
+          color: #333;
+        }
+      }
+
+      h2 {
+        background: $primary-color;
+        color: $white-color;
+        margin: 0;
+        padding: 1.5rem 2rem;
+        border-radius: 14px 14px 0 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      .form-section, .view-section {
+        padding: 2rem;
+      }
+
+      // Aperçu des images
+      .images-preview {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
+        margin-top: 1rem;
+
+        .preview-item {
+          position: relative;
+          aspect-ratio: 1;
+          border-radius: 8px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(220, 53, 69, 0.9);
+            color: $white-color;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+
+            &:hover {
+              background: $danger-color;
+            }
+          }
+        }
+      }
+
+      // Galerie de visualisation
+      .view-images-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+
+        img {
+          width: 100%;
+          aspect-ratio: 1;
+          object-fit: cover;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: transform 0.3s ease;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .view-details {
+        .view-detail-item {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.75rem 0;
+          border-bottom: 1px solid #eee;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          strong {
+            color: $primary-color;
+            font-weight: 600;
+          }
+
+          span {
+            color: $gray-color;
+          }
+        }
+      }
+
+      // Actions modales
+      .modal-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        padding: 1.5rem 2rem 2rem;
+
+        button {
+          flex: 1;
+          padding: 0.75rem 1.5rem;
+          font-weight: 600;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+
+  // Responsive
+  @media (max-width: 768px) {
+    .main-container {
+      padding: 0.5rem;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .filters-container {
+      grid-template-columns: 1fr;
+    }
+
+    .palmares-list {
+      grid-template-columns: 1fr;
+    }
+
+    .editing-img-wording-container {
+      .edit-description {
+        .palmares-actions {
+          flex-direction: column;
+        }
+      }
+    }
+
+    .modal .modal-content {
+      width: 95%;
+      margin: 1rem;
+    }
+  }
+
+  // Loader
+  .loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
