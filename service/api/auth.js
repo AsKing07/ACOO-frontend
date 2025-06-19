@@ -42,8 +42,7 @@ export async function register(username, email, password) {
     const errorData = await response.json();
     throw new Error(errorData.message || 'Erreur d\'inscription');
   }
-
-  alert('Inscription réussie ! Vous pouvez maintenant vous connecter.');
+return response.status === 201;
 
 }
 
