@@ -25,6 +25,10 @@
                                 <span>CLUB</span>
                             </li>
                             <li>
+                                <img src="../../assets/images/icons/equipe.svg" alt="equipe">
+                                <span>EQUIPES</span>
+                            </li>
+                            <li>
                                 <img src="../../assets/images/icons/information.png" alt="informations">
                                 <span>INFORMATIONS</span>
                             </li>
@@ -42,7 +46,7 @@
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/calendar.png" alt="evenement">
-                                <span>EVENEMENTS</span>
+                                <span>EVENEMENTS/CALENDRIER</span>
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/galery.png" alt="galerie">

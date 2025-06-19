@@ -55,6 +55,12 @@ const PAGE_MODULES = {
         initFunction: 'initInformationsDashboard',
         destroyFunction: 'destroyInformationsDashboard'
     },
+    'equipes.php': {
+        path: '/script/admin/equipes_dashboard.js',
+        initFunction: 'initEquipesDashboard',
+        destroyFunction: 'destroyEquipesDashboard'
+    },
+
     
 };
 
@@ -297,6 +303,7 @@ async function loadPage(url) {
           case 'faq': url = '/pages/admin/faq.php'; break;
           case 'messagerie': url = '/pages/admin/messagerie.php'; break;
           case 'admin': url = '/pages/admin/admin.php'; break;
+          case 'equipes': url = '/pages/admin/equipes.php'; break;
           default: url = '/pages/admin/dashboard-accueil.php';
         }
         if(url) loadPage(url);
