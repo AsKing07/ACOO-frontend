@@ -23,6 +23,10 @@
 
 .event-table__header {
   margin-bottom: $spacer * 7;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $spacer * 7;
   .event-table__title {
     color: white;
     font-size: $font-size-base * 2.2;
@@ -30,6 +34,11 @@
     font-weight: 700;
     margin: 0;
   }
+  
+        .partners-count {
+            color: rgba(white, 0.8);
+            font-size: $font-size-base * 1.1;
+        }
 }
 
 .event-table__wrapper {
@@ -64,6 +73,39 @@
     background: none;
   }
 }
+.table-actions {
+        display: flex;
+        gap: $spacer * 2;
+        align-items: center;
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: $gray-color;
+            font-size: $font-size-base * 1.2;
+            cursor: pointer;
+            padding: $spacer * 2;
+            border-radius: $spacer * 2;
+            transition: all 0.2s;
+
+            &:hover {
+                background: rgba(white, 0.1);
+                color: white;
+            }
+
+            &.edit-btn:hover {
+                color: $secondary-color;
+            }
+
+            &.delete-btn:hover {
+                color: $danger-color;
+            }
+
+            &.view-btn:hover {
+                color: #4ecdc4;
+            }
+        }
+    }
 
 .event-table__name {
   display: flex;
@@ -73,9 +115,26 @@
     width: $spacer * 20;
     height: $spacer * 20;
     border-radius: $spacer * 6;
-    background: #4FD1C5;
+    // background: #4FD1C5;
     box-shadow: 0 $spacer * 1.75 $spacer * 2.75 rgba(0,0,0,0.02);
     object-fit: cover;
+
+    
+  }
+  .event-table__avatar--icon{
+    width: $spacer * 20;
+    height: $spacer * 20;
+    border-radius: $spacer * 6;
+
+    i{
+      font-size: $font-size-base * 2.5;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+    }
   }
   span {
     color: white;
@@ -137,4 +196,38 @@
     font-size: $font-size-base * 0.9;
     padding: $spacer * 2 $spacer * 1;
   }
+
+ // Animations
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+        from { 
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        to { 
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
+ 
+
+        .event-table__header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: $spacer * 3;
+        }
+
+        .table-actions {
+            flex-direction: column;
+            gap: $spacer * 1;
+        }
+
+    }
+  
 }
