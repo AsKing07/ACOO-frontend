@@ -13,7 +13,7 @@
       <a href="#">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>
       
-      <a href="#">GALERIE</a>
+      <a href="/pages/galerie.php">GALERIE</a>
       <a href="/pages/palmares.php">PALMARÈS</a>
       <div class="header__nav-item header__nav-dropdown">
   <a href="#" class="header__nav-link">RAMER AU CLUB</a>
