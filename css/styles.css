@@ -2105,6 +2105,111 @@
   text-decoration: underline;
 }
 
+.messagerie {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: sans-serif;
+  color: #1a1a1a;
+}
+.messagerie .search-bar {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.messagerie .search-bar input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  padding-right: 2.5rem;
+  border: 1px solid #A3B0CA;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #39496B;
+}
+.messagerie .search-bar i {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #A3B0CA;
+}
+.messagerie .conversation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.messagerie .conversation {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #A3B0CA;
+  border-radius: 0.75rem;
+  background-color: #f8f9fb;
+}
+.messagerie .conversation .avatar {
+  font-size: 2rem;
+  color: #39496B;
+}
+.messagerie .conversation .details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.messagerie .conversation .details .name {
+  font-weight: 700;
+  color: #39496B;
+}
+.messagerie .conversation .details .phone {
+  font-size: 0.9rem;
+  color: #A3B0CA;
+}
+.messagerie .conversation .details .last-msg {
+  font-size: 0.9rem;
+  color: #39496B;
+}
+.messagerie .conversation .details .status {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+.messagerie .conversation .details .status.actif {
+  color: #28a745;
+}
+.messagerie .conversation .details .status.inactif {
+  color: #dc3545;
+}
+.messagerie .conversation .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.messagerie .conversation .actions button {
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.messagerie .conversation .actions .btn-repondre {
+  background-color: #39496B;
+  color: #fff;
+}
+.messagerie .conversation .actions .btn-repondre:hover {
+  background-color: rgb(48.137195122, 61.6493902439, 90.362804878);
+}
+.messagerie .conversation .actions .btn-supprimer {
+  background-color: #A3B0CA;
+  color: #fff;
+}
+.messagerie .conversation .actions .btn-supprimer:hover {
+  background-color: rgb(130.6413793103, 148.2137931034, 183.3586206897);
+}
+
 .body-accueil .accueil-hero {
   position: relative;
   width: 100%;

@@ -1,0 +1,128 @@
+@use '../base/functions' as *;
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+
+.messagerie {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  font-family: sans-serif;
+  color: #1a1a1a;
+
+  .search-bar {
+    position: relative;
+    margin-bottom: 2rem;
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      padding-right: 2.5rem;
+      border: 1px solid #A3B0CA;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      color: #39496B;
+    }
+
+    i {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #A3B0CA;
+    }
+  }
+
+  .conversation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .conversation {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #A3B0CA;
+    border-radius: 0.75rem;
+    background-color: #f8f9fb;
+
+    .avatar {
+      font-size: 2rem;
+      color: #39496B;
+    }
+
+    .details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+
+      .name {
+        font-weight: 700;
+        color: #39496B;
+      }
+
+      .phone {
+        font-size: 0.9rem;
+        color: #A3B0CA;
+      }
+
+      .last-msg {
+        font-size: 0.9rem;
+        color: #39496B;
+      }
+
+      .status {
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-top: 0.3rem;
+
+        &.actif {
+          color: #28a745;
+        }
+
+        &.inactif {
+          color: #dc3545;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      button {
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .btn-repondre {
+        background-color: #39496B;
+        color: #fff;
+
+        &:hover {
+          background-color: darken(#39496B, 5%);
+        }
+      }
+
+      .btn-supprimer {
+        background-color: #A3B0CA;
+        color: #fff;
+
+        &:hover {
+          background-color: darken(#A3B0CA, 10%);
+        }
+      }
+    }
+  }
+}
