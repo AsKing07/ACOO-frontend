@@ -21,6 +21,7 @@
 @use 'components/notification';
 @use 'components/edit_wording_card';
 @use 'components/container_editing';
+@use 'components/club_menu';
 
 
 //Import des styles des pages personnalisées
@@ -28,6 +29,7 @@
 @use 'pages/palmares';
 @use 'pages/actualites';
 @use 'pages/gallery';
+@use 'pages/club';
 
 @use 'pages/admin/dashboard_layout';
 @use 'pages/admin/dashboard_accueil';
