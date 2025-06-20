@@ -13,7 +13,7 @@ if (!user) {
       : null;
     if (
       !userData ||
-      !userData.isAdmin ||
+
       !expiresAt ||
       (new Date() > expiresAt)
     ) {

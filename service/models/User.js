@@ -30,21 +30,38 @@ export class User {
         return new User(data);
     }
 
+    toJSON() {
+        return {
+            id: this.id,
+            username: this.username,
+            email: this.email,
+            roles: this.roles,
+            phone: this.phone,
+            address: this.address,
+            tokenData: this.tokenData
+        };
+    }
+
+
+
 
     static getCurrentUser() {
         const userData = localStorage.getItem('user');
-        console.log('Récupération de l\'utilisateur courant depuis localStorage:', userData);
         if (userData) {
             try {
                 const parsedData = JSON.parse(userData);
                 return User.fromApi(parsedData);
             } catch (error) {
-                console.error('Erreur lors de la récupération de l\'utilisateur courant:', error);
                 return null;
             }
         }
         return null;
     }
+        // Méthode statique pour enregistrer l'utilisateur courant  
+    static setCurrentUser(admin) {
+        localStorage.setItem('user', JSON.stringify(admin));
+    }
+
 
     isTokenValid() {
         if (!this.tokenData) {

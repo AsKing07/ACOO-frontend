@@ -38,8 +38,14 @@ export async function register(username, email, password) {
     },
     body: JSON.stringify({ username, email, password })
   });
-    if (!response.status === 201) {
+    if (!response.ok) {
     const errorData = await response.json();
+   
+    if (response.status === 400) {
+      const errorMessages = errorData.errors || [];
+      throw new Error(errorMessages.join(' '));
+    }
+
     throw new Error(errorData.message || 'Erreur d\'inscription');
   }
 return response.status === 201;
