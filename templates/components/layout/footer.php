@@ -45,6 +45,9 @@
 <script type="module">
   import { getContactClub } from '/service/api/contactClubApi.js';
   import { getSocialMedias} from '/service/api/socialMediasApi.js';
+  import { getIntroductionByTitle} from '/service/api/introductionApi.js';
+
+
 
   getContactClub().then(data => {
           console.log("Contact club Data fetched from API:", data);
@@ -52,6 +55,7 @@
     document.getElementById('footer-phone').textContent = data.telephone;
     document.getElementById('footer-email').textContent = data.email;
     document.getElementById('footer-address').textContent = data.adresse;
+
 
   });
   getSocialMedias().then(data => {
@@ -98,4 +102,13 @@ data.forEach(socialMedia =>{
 
   });
 
+
+getIntroductionByTitle('A propos de nous').then(data => {
+  console.log("Introduction Data fetched from API:", data);
+
+  const footerClubBlock = document.querySelector('.footer__block-desc');
+  footerClubBlock.textContent = data[0].description;
+}).catch(error => {
+  console.error("Error fetching introduction data:", error);
+});
 </script>

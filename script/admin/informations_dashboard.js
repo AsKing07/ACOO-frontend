@@ -438,6 +438,10 @@ let existingImages = []; // Pour stocker les images existantes lors de l'éditio
     if (introduction) {
         contentIdInput.value = introduction.id;
         contentDescriptionInput.value = introduction.description || '';
+
+        if(title === 'A propos de nous') {
+            contentDescriptionInput.maxLength = 400;
+        }
         
         // Gérer les images existantes
         if (introduction.images && Array.isArray(introduction.images)) {

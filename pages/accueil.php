@@ -34,8 +34,8 @@
     <h2 class="section-title">A PROPOS DU CLUB</h2>
     <div class="about-section__content">
       <img src="../assets/images/Logo.png" alt="Logo ACOO" class="about-section__image">
-      <div class="about-section__text">
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+      <div class="about-section__description">
+        <p class="about-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
         <a href="#" class="btn-primary">EN SAVOIR +</a>
       </div>
     </div>
@@ -59,15 +59,13 @@
 
 </section>
 
-  <!-- GALERIE PHOTOS -->
-  <?php include __DIR__ . '/../templates/components/gallery_carousel.php'; ?>
 
 
-
-
-
+<!-- GALERIE PHOTOS -->
+<?php include __DIR__ . '/../templates/components/gallery_carousel.php'; ?>
+<!-- Formulaire de contact -->
 <?php include __DIR__ . '/../templates/components/formulaire/formContact.php'; ?>
-
+<!-- Footer -->
 <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
 
 
@@ -76,5 +74,6 @@
 </body>
 <script src="../script/navbar.js"></script>
 <script src="../script/formContact.js"></script>
-<script src="../script/galleryCarrousel.js"></script>
+<script type="module" src="../script/galleryCarrousel.js"></script>
+<script type="module" src="../script/pages/accueil.js"></script>
 </html>

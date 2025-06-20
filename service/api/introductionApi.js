@@ -18,7 +18,7 @@ export async function updateIntroduction(id, data) {
     }
     
     const response = await fetch(`${API_BASE_URL}/api/introduction/${id}`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${tokenData.token}`, // Correction: cohérence

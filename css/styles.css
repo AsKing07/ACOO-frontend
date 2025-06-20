@@ -2188,15 +2188,15 @@
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
-.body-accueil .about-section__text {
+.body-accueil .about-section__description {
   flex: 1;
   font-size: 1.2rem;
   line-height: 1.5;
 }
-.body-accueil .about-section__text p {
+.body-accueil .about-section__description p {
   margin-bottom: 1.5rem;
 }
-.body-accueil .about-section__text .btn-primary {
+.body-accueil .about-section__description .btn-primary {
   width: fit-content;
   text-decoration: none;
 }
@@ -3733,6 +3733,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  width: 100%;
 }
 .body-information_dashboard .container-dashboard-profil form .dashboard-profil-info .profil-info label {
   color: #fff;
