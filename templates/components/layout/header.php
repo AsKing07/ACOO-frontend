@@ -9,8 +9,8 @@
     </a>
     <nav class="header__nav">
       <a href="accueil.php">ACCUEIL</a>
-      <a href="club.php">CLUB</a>
-      <a href="evenements.php">ÉVÉNEMENTS</a>
+      <a href="/pages/club.php">CLUB</a>
+      <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
       <a href="actualites.php">ACTUALITES</a>
       
       <a href="/pages/galerie.php">GALERIE</a>
@@ -23,7 +23,7 @@
     <a href="#">Règlement intérieur</a>
   </div>
 </div>
-      <a href="#">CONTACT</a>
+      <a href="/pages/contact.php">CONTACT</a>
     </nav>
     <button class="header__burger" aria-label="Menu" aria-expanded="false">
       <span></span>
@@ -34,8 +34,8 @@
   <div class="header__mobile-menu">
     <nav>
       <a href="accueil.php">ACCUEIL</a>
-      <a href="#">CLUB</a>
-      <a href="#">ÉVÉNEMENTS</a>
+      <a href="/pages/club.php">CLUB</a>
+      <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>
 
       <a href="/pages/galerie.php">GALERIE</a>
@@ -48,7 +48,7 @@
     <a href="#">Règlement intérieur</a>
   </div>
 </div>
-      <a href="#">CONTACT</a>
+      <a href="/pages/contact.php">CONTACT</a>
     </nav>
   </div>
 </header>
