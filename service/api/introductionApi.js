@@ -88,5 +88,5 @@ export async function getIntroductionById(id) {
 export async function getIntroductionByTitle(title) {
     const introductions = await getIntroductions();
     const introArray = Array.isArray(introductions) ? introductions : [introductions];
-    return introArray.filter(intro => intro.title === title);
+    return introArray.filter(intro => intro.title.trim().toLowerCase() === title.trim().toLowerCase());
 }
