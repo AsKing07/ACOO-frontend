@@ -6,6 +6,8 @@
     
     <link rel="stylesheet" href="../css/styles.css">
     <title>ACOO: Contact</title>
+    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+
 </head>
 <body class="body-contact">
     <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>

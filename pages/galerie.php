@@ -6,6 +6,8 @@
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <title>ACOO: Aviron Orléans - Galerie</title>
+    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+
 </head>
 
 <body class="body-gallery">

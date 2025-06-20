@@ -6,6 +6,8 @@
     
     <link rel="stylesheet" href="../css/styles.css">
     <title>ACOO: Evenenement</title>
+    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+
 </head>
 
 <body class="body-palmares">
