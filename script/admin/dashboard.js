@@ -36,7 +36,7 @@ const PAGE_MODULES = {
         destroyFunction: 'destroyDashboardAccueil'
     },
     'events.php': {
-        path: '/script/admin/events_dashboard.js',
+        path: '/script/admin/event_dashboard.js',
         initFunction: 'initEventsDashboard',
         destroyFunction: 'destroyEventsDashboard'
     },
