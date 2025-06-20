@@ -1,7 +1,7 @@
 import { showNotification } from "../showNotification.js";
 import { addGallery, updateGallery, deleteGallery, getGalleries } from "../../service/api/galleryApi.js";
 import { addPicture, updatePicture, deletePicture, getPictures } from "../../service/api/pictureApi.js";
-import { fileToBase64, imageUrlToBase64 } from "../../service/imageFormatter.js";
+import { fileToBase64} from "../../service/imageFormatter.js";
 
 // Variables globales
 let allGalleries = [];
