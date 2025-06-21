@@ -14,7 +14,10 @@ export class Gallery {
     constructor({ id, theme, pictures }) {
         this.id = id;
         this.theme = theme;
-        this.pictures = pictures ? pictures.map(picture => Picture.fromApi(picture)) : [];
+        this.pictures = pictures ? pictures.map(picture => Picture.fromApi({
+            ...picture,
+            gallery:  this.id ,
+            images: picture.images? picture.images : picture.image       })) : [];
     }
 
     static fromApi(data) {

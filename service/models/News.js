@@ -14,11 +14,11 @@ export class News {
     /**
      * @param {{id: number, title: string, content: string, image: string, event: string|null, created_at: string, updated_at: string, id_admin: string|null}} data
      */
-    constructor({ id, title, content, image, event, created_at, updated_at, id_admin }) {
+    constructor({ id, title, content, images, event, created_at, updated_at, id_admin }) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.image = image; // Assuming image is a URL string
+        this.image = Array.isArray(images) ? images[0] : images; // Assuming images is an array, we take the first image
         this.eventId = event; //This should be the ID of the event, or null if no event is associated
         this.createdAt = created_at; // Assuming this is a date string
         this.updatedAt = updated_at; // Assuming this is a date string

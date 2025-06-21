@@ -3,12 +3,12 @@ export class SocialMedias {
   /**
    * @param {{id: number, platform: string, url: string, iconUrl: string, image: string}} data
    */
-  constructor({id, platform, url, iconUrl, image}) {
+  constructor({id, platform, url, iconUrl, images}) {
     this.id = id;
     this.platform = platform;
     this.url = url;
     this.iconUrl = iconUrl;
-    this.image = image;
+    this.image = images ?(Array.isArray(images) ? images[0] : images) : null; // Assuming images is an array and we take the first one
   }
     static fromApi(data) {
     if (Array.isArray(data)) {

@@ -7,15 +7,15 @@ export class Picture {
      * @param {string} id - The unique identifier of the picture.
      * @param {string} description - The description of the picture.
      * @param {Object} gallery - The gallery object containing id and theme.
-     * @param {string} image - The URL of the picture's image.
+     * @param {string} images
      * @param {string} createdAt - The creation date of the picture.
      * @param {string} updatedAt - The last update date of the picture.
      */
-    constructor({ id, description, gallery, image, created_at, updated_at }) {
+    constructor({ id, description, gallery, images, created_at, updated_at }) {
         this.id = id;
         this.description = description;
         this.gallery = gallery;
-        this.image = image;
+        this.image = Array.isArray(images) ? images[0] : images; // Assuming images is an array, we take the first image
         this.createdAt = created_at;
         this.updatedAt = updated_at;
     }
