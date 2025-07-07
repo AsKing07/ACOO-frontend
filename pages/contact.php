@@ -97,10 +97,10 @@
         <a href="https://twitter.com/ton-compte" target="_blank" aria-label="Twitter">
           <img src="../assets/images/icons/x.png" alt="Icône X (Twitter)" />
         </a>
-        <a href="https://www.facebook.com/ton-club" target="_blank" aria-label="Facebook">
+        <a href="https://www.facebook.com/avironorleans/" target="_blank" aria-label="Facebook">
           <img src="../assets/images/icons/f.png" alt="Icône Facebook" />
         </a>
-        <a href="https://www.instagram.com/ton-compte" target="_blank" aria-label="Instagram">
+        <a href="https://www.instagram.com/aviron_club_orleans_olivet/" target="_blank" aria-label="Instagram">
           <img src="../assets/images/icons/i.png" alt="Icône Instagram" />
         </a>
       </div>

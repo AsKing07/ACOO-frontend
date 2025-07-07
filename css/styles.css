@@ -5473,6 +5473,24 @@ body.body-accueil {
 }
 
 /* Main contact section */
+
+
+body.body-accueil {
+  margin: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: #f6f8fa; /* Couleur unie de base */
+  color: #222;
+
+  background:
+    linear-gradient(rgba(246,248,250,0.7), rgba(246,248,250,0.7)), /* voile pour la lisibilité */
+    url('../assets/images/Back.png') center center/cover no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
 .division-contact {
   display: flex;
   flex-wrap: wrap;
@@ -5481,7 +5499,7 @@ body.body-accueil {
   gap: 40px;
   max-width: 1200px;
   margin: 40px auto;
-  background: #fff;
+  background: transparent;
   border-radius: 16px;
   box-shadow: 0 4px 24px rgba(57, 73, 107, 0.08);
   padding: 40px 20px;
