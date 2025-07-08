@@ -4094,10 +4094,9 @@
 }
 
 #evenement_page {
-  margin-top: 4%;
+  margin-top: 6.5%;
   padding: 8px;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
 #evenement_page .calendar-loader {
   position: fixed;
@@ -4410,7 +4409,6 @@
   gap: 4px;
 }
 #evenement_page .calendar .grid-calendar .day {
-  aspect-ratio: 1;
   display: flex;
   flex-direction: column;
   align-items: center;

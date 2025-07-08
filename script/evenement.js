@@ -317,8 +317,8 @@ class OptimizedCalendar {
 
     getItemTitle(item) {
         if (item.itemType === 'exception') {
-            const recurringSchedule = this.allRecurringSchedules.find(r => r.id == item.recurring_schedule);
-            return `Exception: ${recurringSchedule ? recurringSchedule.title : 'Horaire inconnu'}`;
+           
+            return `Exception: ${item.recurring_schedule ? item.recurring_schedule.title : 'Horaire inconnu'}`;
         }
         return item.title || 'Sans titre';
     }
@@ -710,7 +710,7 @@ class OptimizedCalendar {
                 }
                 html += `<p><strong>Statut :</strong> ${item.is_cancelled ? 'Séance annulée' : 'Horaire modifié'}</p>`;
                 if (!item.is_cancelled && item.startTime) {
-                    html += `<p><strong>Nouvel horaire :</strong> ${item.startTime} - ${item.endTime}</p>`;
+                    html += `<p><strong>Nouvel horaire :</strong> ${this.extractTime( item.startTime)} - ${this.extractTime( item.endTime)}</p>`;
                 }
                 break;
         }
