@@ -3480,7 +3480,7 @@
   border-radius: 4px;
   height: 60px;
   margin-bottom: 10px;
-  padding-left: 80px;
+  padding: 12px;
   display: flex;
   align-items: center;
 }
@@ -3746,12 +3746,24 @@
 #club_container #club_sports .carousel-btn.right {
   margin-left: 10px;
 }
-#club_container .sponsors-gallery {
+#club_container .sponsors-gallery,
+#club_container .partenaire-gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
   padding: 40px;
   justify-content: center;
+}
+#club_container .sponsors-gallery img.logo,
+#club_container .partenaire-gallery img.logo {
+  width: 200px;
+  height: 120px;
+  transition: ease-in-out 0.5s;
+  border-radius: 10px;
+}
+#club_container .sponsors-gallery img.logo:hover,
+#club_container .partenaire-gallery img.logo:hover {
+  transform: scale(1.1);
 }
 #club_container .sponsor-logo img {
   width: 120px;
@@ -7087,7 +7099,7 @@
   border-radius: 12px;
   width: 90%;
   max-width: 650px;
-  max-height: 90vh;
+  max-height: 110vh;
   overflow: hidden;
   text-align: center;
   padding: 16px;

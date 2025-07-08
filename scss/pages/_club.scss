@@ -34,7 +34,7 @@
                 border-radius:4px;
                 height: 60px;
                 margin-bottom: 10px;
-                padding-left: 80px;
+                padding: 12px;
                 display: flex;
                 align-items: center
             }
@@ -359,12 +359,24 @@
 
     }
 
-    .sponsors-gallery {
+    .sponsors-gallery,
+    .partenaire-gallery {
         display: flex;
         flex-wrap: wrap;
         gap: 30px;
         padding: 40px;
         justify-content: center;
+
+            img.logo {
+                width: 200px;
+                height: 120px;
+                transition: ease-in-out 0.5s;
+                border-radius: 10px;
+
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
         }
 
         .sponsor-logo img {
