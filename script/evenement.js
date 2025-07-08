@@ -1,157 +1,212 @@
-import { showNotification } from "../showNotification.js";
-import { getEvents, addEvent, updateEvent, deleteEvent } from "../../service/api/eventApi.js";
-import { getSports } from "../../service/api/sportApi.js";
-import { getTeams } from "../../service/api/teamApi.js";
+// Import des services API
+import { getEvents } from '../service/api/eventsApi.js';
+import { getRecurringSchedules } from '../service/api/recurringScheduleApi.js';
+import { getScheduleExceptions } from '../service/api/scheduleExceptionApi.js';
+import { getSports } from '../service/api/sportApi.js';
 
-class EventsCalendarManager {
+/**
+ * Gestionnaire de calendrier frontend optimisé
+ */
+class OptimizedCalendar {
     constructor() {
         this.monthNames = [
             'JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN',
             'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'
         ];
         
-        this.allEvents = [];
-        this.filteredEvents = [];
-        this.allSports = [];
-        this.allTeams = [];
-        this.currentDate = new Date();
-        this.currentEventId = null;
-        this.currentImages = [];
-        this.deleteEventId = null;
-        this.viewMode = 'calendar'; // 'calendar' ou 'table'
+        this.dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
         
-        this.elements = {};
+        // Données
+        this.allEvents = [];
+        this.allRecurringSchedules = [];
+        this.allScheduleExceptions = [];
+        this.allSports = [];
+        this.filteredItems = [];
+        
+        // État
+        this.currentDate = new Date();
+        this.viewMode = 'calendar';
+        this.filters = { sport: '', type: '' };
+        this.sortMode = 'date';
+        
+        // Cache optimisé
+        this.itemsCache = new Map();
+        this.lastCacheUpdate = 0;
+        
         this.init();
     }
 
     async init() {
         try {
+            console.log('🚀 Initialisation du calendrier optimisé...');
             this.initElements();
             this.attachEventListeners();
-            await this.loadData();
-            this.renderCalendar(this.currentDate);
-            this.renderEventsTable();
+            await this.loadAllData();
+            this.renderCalendar();
+            this.updateStats();
+            console.log('✅ Calendrier optimisé initialisé avec succès');
         } catch (error) {
-            console.error('Erreur lors de l\'initialisation:', error);
-            showNotification('Erreur lors de l\'initialisation de l\'interface', 'error');
+            console.error('❌ Erreur initialisation:', error);
+            this.showError('Erreur lors de l\'initialisation du calendrier');
         }
     }
 
     initElements() {
         this.elements = {
-            // Calendrier
-            monthDisplay: document.getElementById('month-display'),
+            // Navigation
             calendarGrid: document.getElementById('calendar-grid'),
-            prevBtn: document.getElementById('prev-month-btn'),
-            nextBtn: document.getElementById('next-month-btn'),
+            monthDisplay: document.getElementById('month-display'),
+            prevBtn: document.getElementById('prev-btn'),
+            nextBtn: document.getElementById('next-btn'),
             todayBtn: document.getElementById('today-btn'),
+            refreshBtn: document.getElementById('refresh-btn'),
             
-            // Contrôles
-            addEventBtn: document.getElementById('add-event-btn'),
+            // Vues
             toggleViewBtn: document.getElementById('toggle-view-btn'),
-            eventTypeFilter: document.getElementById('event-type-filter'),
+            calendarView: document.getElementById('calendar-view'),
+            listView: document.getElementById('list-view'),
+            listViewContent: document.getElementById('list-view-content'),
+            listCount: document.getElementById('list-count'),
+            listSort: document.getElementById('list-sort'),
+            noListEvents: document.getElementById('no-list-events'),
             
-            // Tableau
-            eventsTableSection: document.getElementById('events-table-section'),
-            eventsTableBody: document.getElementById('events-table-body'),
+            // Filtres
+            sportFilter: document.getElementById('sport-filter'),
+            typeFilter: document.getElementById('type-filter'),
+            
+            // Statistiques
             eventsCount: document.getElementById('events-count'),
-            noEventsMessage: document.getElementById('no-events-message'),
+            recurringCount: document.getElementById('recurring-count'),
+            exceptionsCount: document.getElementById('exceptions-count'),
+            filteredCount: document.getElementById('filtered-count'),
             
-            // Modales
+            // Modals
             eventModal: document.getElementById('event-modal'),
-            eventViewModal: document.getElementById('event-view-modal'),
-            deleteEventModal: document.getElementById('delete-event-modal'),
+            dayEventsModal: document.getElementById('day-events-modal'),
+            modalTitle: document.getElementById('modal-title'),
+            modalBody: document.getElementById('modal-body'),
+            eventTypeBadge: document.getElementById('event-type-badge'),
             
-            // Formulaire
-            eventForm: document.getElementById('event-form'),
-            eventModalTitle: document.getElementById('event-modal-title'),
-            eventSubmitBtn: document.getElementById('event-submit-btn'),
-            
-            // Loader
-            eventsLoader: document.getElementById('events-loader'),
-            
-            // Labels
-            labels: document.querySelectorAll('.labels-container > div')
+            // Messages
+            loader: document.getElementById('calendar-loader'),
+            errorMessage: document.getElementById('error-message'),
+            retryBtn: document.getElementById('retry-btn')
         };
     }
 
-    async loadData() {
+    async loadAllData() {
         try {
-            this.toggleLoader(true);
+            this.showLoader(true);
+            this.hideError();
             
-            // Chargement parallèle des données
-            const [events, sports, teams] = await Promise.all([
+            console.log('📥 Chargement des données...');
+            
+            const results = await Promise.allSettled([
                 getEvents(),
-                getSports(),
-                getTeams()
+                getRecurringSchedules(),
+                getScheduleExceptions(),
+                getSports()
             ]);
             
-            this.allEvents = events;
-            this.filteredEvents = [...events];
-            this.allSports = sports;
-            this.allTeams = teams;
+            this.allEvents = results[0].status === 'fulfilled' ? results[0].value : [];
+            this.allRecurringSchedules = results[1].status === 'fulfilled' ? results[1].value : [];
+            this.allScheduleExceptions = results[2].status === 'fulfilled' ? results[2].value : [];
+            this.allSports = results[3].status === 'fulfilled' ? results[3].value : [];
             
-            this.populateFormSelects();
-            this.updateEventsCount();
+            console.log('📊 Données chargées:', {
+                events: this.allEvents.length,
+                recurring: this.allRecurringSchedules.length,
+                exceptions: this.allScheduleExceptions.length,
+                sports: this.allSports.length
+            });
+            
+            this.populateFilters();
+            this.applyFilters();
+            this.lastCacheUpdate = Date.now();
             
         } catch (error) {
-            console.error('Erreur lors du chargement des données:', error);
-            showNotification('Erreur lors du chargement des données', 'error');
+            console.error('❌ Erreur chargement données:', error);
+            this.showError('Erreur lors du chargement des données');
         } finally {
-            this.toggleLoader(false);
+            this.showLoader(false);
         }
     }
 
-    populateFormSelects() {
-        // Remplir le select des sports
-        const sportSelect = document.getElementById('event-sport');
-        if (sportSelect) {
-            sportSelect.innerHTML = '<option value="">Sélectionner un sport</option>';
+    populateFilters() {
+        if (this.elements.sportFilter) {
+            this.elements.sportFilter.innerHTML = '<option value="">Tous les sports</option>';
             this.allSports.forEach(sport => {
                 const option = document.createElement('option');
                 option.value = sport.id;
                 option.textContent = sport.name;
-                sportSelect.appendChild(option);
-            });
-        }
-
-        // Remplir le sélecteur d'équipes
-        const teamsSelector = document.getElementById('teams-selector');
-        if (teamsSelector) {
-            teamsSelector.innerHTML = '';
-            this.allTeams.forEach(team => {
-                const teamCheckbox = document.createElement('div');
-                teamCheckbox.className = 'team-checkbox';
-                teamCheckbox.innerHTML = `
-                    <input type="checkbox" id="team-${team.id}" value="${team.id}">
-                    <label for="team-${team.id}">${team.name}</label>
-                `;
-                teamsSelector.appendChild(teamCheckbox);
+                this.elements.sportFilter.appendChild(option);
             });
         }
     }
 
-    renderCalendar(date) {
+    applyFilters() {
+        this.filteredItems = [];
+        
+        // Événements ponctuels
+        if (!this.filters.type || this.filters.type === 'event') {
+            let events = this.allEvents;
+            if (this.filters.sport) {
+                events = events.filter(event => event.sport == this.filters.sport);
+            }
+            this.filteredItems.push(...events.map(item => ({...item, itemType: 'event'})));
+        }
+        
+        // Horaires récurrents
+        if (!this.filters.type || this.filters.type === 'recurring') {
+            let recurring = this.allRecurringSchedules;
+            if (this.filters.sport) {
+                recurring = recurring.filter(schedule => schedule.sport == this.filters.sport);
+            }
+            this.filteredItems.push(...recurring.map(item => ({...item, itemType: 'recurring'})));
+        }
+        
+        // Exceptions
+        if (!this.filters.type || this.filters.type === 'exception') {
+            let exceptions = this.allScheduleExceptions;
+            if (this.filters.sport) {
+                exceptions = exceptions.filter(exception => {
+                    const schedule = this.allRecurringSchedules.find(s => s.id == exception.recurring_schedule);
+                    return schedule && schedule.sport == this.filters.sport;
+                });
+            }
+            this.filteredItems.push(...exceptions.map(item => ({...item, itemType: 'exception'})));
+        }
+        
+        this.clearCache();
+        this.updateStats();
+        
+        // Redessiner la vue active
+        if (this.viewMode === 'calendar') {
+            this.renderCalendar();
+        } else {
+            this.renderListView();
+        }
+    }
+
+    renderCalendar() {
         if (!this.elements.calendarGrid || !this.elements.monthDisplay) return;
 
-        const year = date.getFullYear();
-        const month = date.getMonth();
+        const year = this.currentDate.getFullYear();
+        const month = this.currentDate.getMonth();
 
-        const firstDayOfMonth = new Date(year, month, 1);
-        const lastDayOfMonth = new Date(year, month + 1, 0);
-        const lastDayOfPreviousMonth = new Date(year, month, 0);
-
-        const startDay = (firstDayOfMonth.getDay() + 6) % 7; // Lundi = 0
-        const totalDays = lastDayOfMonth.getDate();
-        const prevMonthDays = lastDayOfPreviousMonth.getDate();
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const startDay = (firstDay.getDay() + 6) % 7; // Lundi = 0
+        const totalDays = lastDay.getDate();
 
         this.elements.calendarGrid.innerHTML = '';
 
         // Jours du mois précédent
+        const prevMonth = new Date(year, month, 0);
         for (let i = startDay - 1; i >= 0; i--) {
-            const day = prevMonthDays - i;
-            const dayElement = this.createDayElement(day, true, new Date(year, month - 1, day));
-            this.elements.calendarGrid.appendChild(dayElement);
+            const day = prevMonth.getDate() - i;
+            const date = new Date(year, month - 1, day);
+            this.elements.calendarGrid.appendChild(this.createDayElement(day, true, date));
         }
 
         // Jours du mois courant
@@ -159,22 +214,20 @@ class EventsCalendarManager {
         const isCurrentMonth = today.getMonth() === month && today.getFullYear() === year;
 
         for (let i = 1; i <= totalDays; i++) {
-            const currentDay = new Date(year, month, i);
+            const date = new Date(year, month, i);
             const isToday = isCurrentMonth && i === today.getDate();
-            const dayElement = this.createDayElement(i, false, currentDay, isToday);
-            this.elements.calendarGrid.appendChild(dayElement);
+            this.elements.calendarGrid.appendChild(this.createDayElement(i, false, date, isToday));
         }
 
         // Jours du mois suivant
         const totalDisplayed = startDay + totalDays;
-        const remaining = 42 - totalDisplayed;
+        const remaining = Math.ceil(totalDisplayed / 7) * 7 - totalDisplayed;
 
         for (let i = 1; i <= remaining; i++) {
-            const dayElement = this.createDayElement(i, true, new Date(year, month + 1, i));
-            this.elements.calendarGrid.appendChild(dayElement);
+            const date = new Date(year, month + 1, i);
+            this.elements.calendarGrid.appendChild(this.createDayElement(i, true, date));
         }
 
-        // Mise à jour du mois + année
         this.elements.monthDisplay.innerHTML = `${this.monthNames[month]}<br>${year}`;
     }
 
@@ -182,656 +235,829 @@ class EventsCalendarManager {
         const dayElement = document.createElement('div');
         dayElement.className = `day ${isAdjacent ? 'adjacent' : ''} ${isToday ? 'today' : ''}`;
         
-        // Numéro du jour
-        const dayNumberElement = document.createElement('div');
-        dayNumberElement.className = 'day-number';
-        dayNumberElement.textContent = dayNumber;
-        dayElement.appendChild(dayNumberElement);
+        const dayNumberEl = document.createElement('div');
+        dayNumberEl.className = 'day-number';
+        dayNumberEl.textContent = dayNumber;
+        dayElement.appendChild(dayNumberEl);
 
         if (!isAdjacent) {
-            // Rechercher les événements de ce jour
-            const dayEvents = this.getEventsForDate(date);
+            const dayItems = this.getItemsForDate(date);
             
-            if (dayEvents.length > 0) {
-                dayElement.classList.add('has-events');
+            if (dayItems.length > 0) {
+                dayElement.classList.add('has-items');
                 
-                const eventsListElement = document.createElement('div');
-                eventsListElement.className = 'events-list';
+                const itemsContainer = document.createElement('div');
+                itemsContainer.className = 'items-list';
                 
                 // Afficher jusqu'à 3 événements
-                const visibleEvents = dayEvents.slice(0, 3);
-                visibleEvents.forEach(event => {
-                    const eventDot = document.createElement('div');
-                    eventDot.className = 'event-dot';
-                    eventDot.style.backgroundColor = event.getEventTypeColor();
-                    eventDot.textContent = event.title.length > 12 ? 
-                        event.title.substring(0, 12) + '...' : event.title;
-                    eventDot.title = `${event.title} - ${event.getFormattedStartTime()}`;
-                    eventDot.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        this.viewEvent(event.id);
-                    });
-                    eventsListElement.appendChild(eventDot);
+                const visibleItems = dayItems.slice(0, 3);
+                visibleItems.forEach(item => {
+                    const itemEl = this.createItemElement(item);
+                    itemsContainer.appendChild(itemEl);
                 });
 
-                // Afficher "+X autres" si il y a plus de 3 événements
-                if (dayEvents.length > 3) {
-                    const moreEvents = document.createElement('div');
-                    moreEvents.className = 'more-events';
-                    moreEvents.textContent = `+${dayEvents.length - 3} autres`;
-                    moreEvents.addEventListener('click', (e) => {
+                // "+X autres" si nécessaire
+                if (dayItems.length > 3) {
+                    const moreEl = document.createElement('div');
+                    moreEl.className = 'more-items';
+                    moreEl.textContent = `+${dayItems.length - 3} autres`;
+                    moreEl.addEventListener('click', (e) => {
                         e.stopPropagation();
-                        this.showDayEvents(date, dayEvents);
+                        this.showDayEvents(date, dayItems);
                     });
-                    eventsListElement.appendChild(moreEvents);
+                    itemsContainer.appendChild(moreEl);
                 }
 
-                dayElement.appendChild(eventsListElement);
+                dayElement.appendChild(itemsContainer);
             }
 
-            // Clic sur le jour pour ajouter un événement
+            // Clic sur le jour
             dayElement.addEventListener('click', () => {
-                this.openAddEventModal(date);
+                const dayItems = this.getItemsForDate(date);
+                if (dayItems.length > 0) {
+                    this.showDayEvents(date, dayItems);
+                }
             });
         }
 
         return dayElement;
     }
 
-    getEventsForDate(date) {
-        return this.filteredEvents.filter(event => {
-            const eventDate = event.getStartDate();
-            return eventDate.toDateString() === date.toDateString();
-        });
-    }
-
-    renderEventsTable() {
-        if (!this.elements.eventsTableBody) return;
-
-        if (this.filteredEvents.length === 0) {
-            this.elements.eventsTableBody.innerHTML = '';
-            if (this.elements.noEventsMessage) {
-                this.elements.noEventsMessage.style.display = 'block';
-            }
-        } else {
-            if (this.elements.noEventsMessage) {
-                this.elements.noEventsMessage.style.display = 'none';
-            }
-            
-            this.elements.eventsTableBody.innerHTML = this.filteredEvents.map(event => 
-                this.createEventRow(event)
-            ).join('');
+    createItemElement(item) {
+        const itemEl = document.createElement('div');
+        itemEl.className = `item-event ${item.itemType}-item`;
+        
+        // Titre
+        const titleEl = document.createElement('div');
+        titleEl.className = 'item-title';
+        const title = this.getItemTitle(item);
+        titleEl.textContent = title.length > 20 ? title.substring(0, 20) + '...' : title;
+        
+        // Heure
+        const timeEl = document.createElement('div');
+        timeEl.className = 'item-time';
+        timeEl.textContent = this.getItemDisplayTime(item);
+        
+        itemEl.appendChild(titleEl);
+        if (timeEl.textContent) {
+            itemEl.appendChild(timeEl);
         }
         
-        this.updateEventsCount();
+        // Tooltip
+        itemEl.title = this.generateTooltip(item);
+        
+        // Event listener pour afficher le modal
+        itemEl.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.showEventModal(item);
+        });
+        
+        return itemEl;
     }
 
-    createEventRow(event) {
-        const startDate = event.getFormattedStartDate();
-        const startTime = event.getFormattedStartTime();
-        const endTime = event.getFormattedEndTime();
-        const mainImage = event.getMainImage();
+    getItemTitle(item) {
+        if (item.itemType === 'exception') {
+            const recurringSchedule = this.allRecurringSchedules.find(r => r.id == item.recurring_schedule);
+            return `Exception: ${recurringSchedule ? recurringSchedule.title : 'Horaire inconnu'}`;
+        }
+        return item.title || 'Sans titre';
+    }
 
+    getItemsForDate(date) {
+        const dateKey = date.toDateString();
+        
+        if (this.itemsCache.has(dateKey)) {
+            return this.itemsCache.get(dateKey);
+        }
+        
+        const items = [];
+
+        // Événements ponctuels
+        this.filteredItems.filter(item => item.itemType === 'event').forEach(event => {
+            const eventDate = this.parseDateTime(event.startDatetime);
+            if (eventDate && eventDate.toDateString() === dateKey) {
+                items.push(event);
+            }
+        });
+
+        // Horaires récurrents
+        this.filteredItems.filter(item => item.itemType === 'recurring').forEach(schedule => {
+            if (this.isRecurringOnDate(schedule, date)) {
+                const hasException = this.allScheduleExceptions.some(exception => {
+                    const exceptionDate = this.parseDate(exception.date);
+                    return exception.recurring_schedule == schedule.id && 
+                           exceptionDate && exceptionDate.toDateString() === dateKey;
+                });
+                
+                if (!hasException) {
+                    items.push(schedule);
+                }
+            }
+        });
+
+        // Exceptions
+        this.filteredItems.filter(item => item.itemType === 'exception').forEach(exception => {
+            const exceptionDate = this.parseDate(exception.date);
+            if (exceptionDate && exceptionDate.toDateString() === dateKey) {
+                items.push(exception);
+            }
+        });
+
+        // Trier par heure
+        items.sort((a, b) => {
+            const timeA = this.getItemSortTime(a);
+            const timeB = this.getItemSortTime(b);
+            return timeA.localeCompare(timeB);
+        });
+        
+        this.itemsCache.set(dateKey, items);
+        return items;
+    }
+
+    isRecurringOnDate(schedule, date) {
+        const scheduleDayName = schedule.day_of_week;
+        const dateDayName = this.dayNames[date.getDay()];
+        
+        if (scheduleDayName !== dateDayName) {
+            return false;
+        }
+        
+        // Vérifier la date de fin si elle existe
+        if (schedule.end_date) {
+            const endDate = this.parseDate(schedule.end_date);
+            if (endDate && date > endDate) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+
+    getItemDisplayTime(item) {
+        switch (item.itemType) {
+            case 'event':
+                const startDate = this.parseDateTime(item.startDatetime);
+                const endDate = this.parseDateTime(item.endDatetime);
+                if (startDate && endDate) {
+                    return `${this.formatTime(startDate)}-${this.formatTime(endDate)}`;
+                }
+                return startDate ? this.formatTime(startDate) : '';
+                
+            case 'recurring':
+                const startTime = this.extractTime(item.start_time);
+                const endTime = this.getFormattedEndTimeForRecurring(item);
+                return endTime ? `${startTime}-${endTime}` : startTime;
+                
+            case 'exception':
+                if (item.is_cancelled) {
+                    return 'Annulé';
+                } else if ( item.startTime && item.endTime) {
+                    return `${this.extractTime( item.startTime)}-${this.extractTime( item.endTime)}`;
+                }
+                return 'Modifié';
+                
+            default:
+                return '';
+        }
+    }
+
+    getItemSortTime(item) {
+        const displayTime = this.getItemDisplayTime(item);
+        if (displayTime.includes('-')) {
+            return displayTime.split('-')[0];
+        }
+        return displayTime || '00:00';
+    }
+
+    renderListView() {
+        if (!this.elements.listViewContent) return;
+        
+        const allItems = this.getAllItemsForListView();
+        
+        if (allItems.length === 0) {
+            this.elements.listViewContent.innerHTML = '';
+            if (this.elements.noListEvents) {
+                this.elements.noListEvents.style.display = 'block';
+            }
+            return;
+        }
+        
+        if (this.elements.noListEvents) {
+            this.elements.noListEvents.style.display = 'none';
+        }
+        
+        // Trier les éléments
+        this.sortItems(allItems);
+        
+        let html = '';
+        allItems.forEach(item => {
+            html += this.createListItemHTML(item);
+        });
+        
+        this.elements.listViewContent.innerHTML = html;
+        this.attachListItemListeners();
+    }
+
+    getAllItemsForListView() {
+        const items = [];
+        const startDate = new Date();
+        startDate.setDate(startDate.getDate() - 30); // 30 jours dans le passé
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 90); // 90 jours dans le futur
+        
+        // Événements ponctuels
+        this.filteredItems.filter(item => item.itemType === 'event').forEach(event => {
+            const eventDate = this.parseDateTime(event.startDatetime);
+            if (eventDate && eventDate >= startDate && eventDate <= endDate) {
+                items.push({
+                    ...event,
+                    sortDate: eventDate,
+                    displayDate: this.formatDate(eventDate)
+                });
+            }
+        });
+        
+        // Horaires récurrents - générer des instances
+        this.filteredItems.filter(item => item.itemType === 'recurring').forEach(schedule => {
+            const instances = this.generateRecurringInstances(schedule, startDate, endDate);
+            items.push(...instances);
+        });
+        
+        // Exceptions
+        this.filteredItems.filter(item => item.itemType === 'exception').forEach(exception => {
+            const exceptionDate = this.parseDate(exception.date);
+            if (exceptionDate && exceptionDate >= startDate && exceptionDate <= endDate) {
+                items.push({
+                    ...exception,
+                    sortDate: exceptionDate,
+                    displayDate: this.formatDate(exceptionDate)
+                });
+            }
+        });
+        
+        return items;
+    }
+
+    generateRecurringInstances(schedule, startDate, endDate) {
+        const instances = [];
+        const targetDay = this.dayNames.indexOf(schedule.day_of_week);
+        
+        if (targetDay === -1) return instances;
+        
+        let currentDate = new Date(startDate);
+        while (currentDate.getDay() !== targetDay && currentDate <= endDate) {
+            currentDate.setDate(currentDate.getDate() + 1);
+        }
+        
+        while (currentDate <= endDate) {
+            // Vérifier s'il n'y a pas d'exception
+            const hasException = this.allScheduleExceptions.some(exception => {
+                const exceptionDate = this.parseDate(exception.date);
+                return exception.recurring_schedule == schedule.id && 
+                       exceptionDate && exceptionDate.toDateString() === currentDate.toDateString();
+            });
+            
+            if (!hasException) {
+                instances.push({
+                    ...schedule,
+                    sortDate: new Date(currentDate),
+                    displayDate: this.formatDate(currentDate)
+                });
+            }
+            
+            currentDate.setDate(currentDate.getDate() + 7);
+        }
+        
+        return instances;
+    }
+
+    sortItems(items) {
+        switch (this.sortMode) {
+            case 'date':
+                items.sort((a, b) => a.sortDate - b.sortDate);
+                break;
+            case 'title':
+                items.sort((a, b) => this.getItemTitle(a).localeCompare(this.getItemTitle(b)));
+                break;
+            case 'type':
+                items.sort((a, b) => a.itemType.localeCompare(b.itemType));
+                break;
+        }
+    }
+
+    createListItemHTML(item) {
+        const sport = this.allSports.find(s => s.id == item.sport);
+        const sportName = sport ? sport.name : 'Sport inconnu';
+        
+        const typeLabels = {
+            'event': 'Événement',
+            'recurring': 'Entraînement',
+            'exception': item.is_cancelled ? 'Annulation' : 'Modification'
+        };
+        
         return `
-            <tr data-event-id="${event.id}">
-                <td>
-                    <div class="event-table__name">
-                        <img src="${mainImage || 'https://via.placeholder.com/40x40?text=E'}" 
-                             alt="${event.title}" class="event-table__avatar">
-                        <span>${event.title}</span>
+            <div class="list-event-item ${item.itemType}-item" data-item='${JSON.stringify(item)}'>
+                <div class="list-item-header">
+                    <div class="list-item-title">${this.getItemTitle(item)}</div>
+                    <div class="list-item-type ${item.itemType}-badge">${typeLabels[item.itemType]}</div>
+                </div>
+                <div class="list-item-meta">
+                    <div class="list-item-date">
+                        <i class="fas fa-calendar"></i>
+                        ${item.displayDate}
                     </div>
-                </td>
-                <td title="${event.content}">${event.content ? 
-                    (event.content.length > 50 ? event.content.substring(0, 50) + '...' : event.content) : 
-                    'Aucune description'}</td>
-                <td>
-                    <span class="event-table__type" data-type="${event.eventType}">${event.eventType}</span>
-                </td>
-                <td>
-                    <div>${startDate}</div>
-                    <small>${startTime} - ${endTime}</small>
-                </td>
-                <td>${event.location}</td>
-                <td>
-                    <div class="table-actions">
-                        <button class="action-btn view-btn" onclick="eventsManager.viewEvent(${event.id})" title="Voir">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="action-btn edit-btn" onclick="eventsManager.editEvent(${event.id})" title="Modifier">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="action-btn delete-btn" onclick="eventsManager.confirmDeleteEvent(${event.id})" title="Supprimer">
-                            <i class="fas fa-trash"></i>
-                        </button>
+                    <div class="list-item-time">
+                        <i class="fas fa-clock"></i>
+                        ${this.getItemDisplayTime(item)}
                     </div>
-                </td>
-            </tr>
+                </div>
+                ${item.location ? `
+                    <div class="list-item-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ${item.location}
+                    </div>
+                ` : ''}
+                <div class="list-item-sport">
+                    <i class="fas fa-trophy"></i>
+                    ${sportName}
+                </div>
+                ${item.description || item.content || item.reason ? `
+                    <div class="list-item-description">
+                        ${item.description || item.content || item.reason}
+                    </div>
+                ` : ''}
+            </div>
         `;
     }
 
-    // Utilitaire pour la conversion d'image en base64
-    fileToBase64(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = e => resolve(e.target.result);
-            reader.onerror = e => reject(e);
-            reader.readAsDataURL(file);
+    attachListItemListeners() {
+        const listItems = this.elements.listViewContent.querySelectorAll('.list-event-item');
+        listItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const itemData = JSON.parse(item.dataset.item);
+                this.showEventModal(itemData);
+            });
         });
     }
 
-    toggleLoader(show) {
-        if (this.elements.eventsLoader) {
-            this.elements.eventsLoader.style.display = show ? 'flex' : 'none';
+    showEventModal(item) {
+        if (!this.elements.eventModal) return;
+        
+        if (this.elements.modalTitle) {
+            this.elements.modalTitle.textContent = this.getItemTitle(item);
         }
+        
+        if (this.elements.eventTypeBadge) {
+            this.elements.eventTypeBadge.textContent = this.getTypeLabel(item.itemType);
+            this.elements.eventTypeBadge.className = `event-type-badge ${item.itemType}-badge`;
+        }
+        
+        if (this.elements.modalBody) {
+            this.elements.modalBody.innerHTML = this.generateEventDetailsHTML(item);
+        }
+        
+        this.elements.eventModal.style.display = 'flex';
+        this.elements.eventModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
-    updateEventsCount() {
-        if (this.elements.eventsCount) {
-            this.elements.eventsCount.textContent = `${this.filteredEvents.length} événement(s)`;
-        }
+    showDayEvents(date, events) {
+        if (!this.elements.dayEventsModal) return;
+        
+        const dateString = this.formatDate(date, { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+
+        document.getElementById('day-modal-title').textContent = `Événements du ${dateString}`;
+
+        let html = '';
+        events.forEach(event => {
+            html += `
+                <div class="day-event-item ${event.itemType}-item" data-event='${JSON.stringify(event)}'>
+                    <div class="day-event-header">
+                        <h4>${this.getItemTitle(event)}</h4>
+                        <span class="event-type-mini-badge ${event.itemType}-badge">${this.getTypeLabel(event.itemType)}</span>
+                    </div>
+                    <div class="day-event-details">
+                        <p><i class="fas fa-clock"></i> ${this.getItemDisplayTime(event)}</p>
+                        ${event.location ? `<p><i class="fas fa-map-marker-alt"></i> ${event.location}</p>` : ''}
+                        ${event.itemType === 'exception' && event.is_cancelled ? '<p class="cancellation-notice"><i class="fas fa-ban"></i> Séance annulée</p>' : ''}
+                    </div>
+                </div>
+            `;
+        });
+
+        document.getElementById('day-modal-body').innerHTML = html;
+        
+        setTimeout(() => {
+            document.querySelectorAll('.day-event-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const eventData = JSON.parse(item.dataset.event);
+                    this.closeDayModal();
+                    this.showEventModal(eventData);
+                });
+            });
+        }, 100);
+        
+        this.elements.dayEventsModal.style.display = 'flex';
+        this.elements.dayEventsModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
     }
 
-    openAddEventModal(date = null) {
-        this.currentEventId = null;
-        this.currentImages = [];
+    generateEventDetailsHTML(item) {
+        let html = `<div class="event-details">`;
         
-        if (this.elements.eventModalTitle) {
-            this.elements.eventModalTitle.textContent = 'Ajouter un Événement';
+        // Badge de statut
+        html += `<div class="status-section">`;
+        html += `<span class="status-badge ${item.itemType}-status">${this.getTypeLabel(item.itemType)}</span>`;
+        html += `</div>`;
+        
+        // Section date/heure
+        html += `<div class="detail-section">`;
+        html += `<h4><i class="fas fa-calendar"></i> Date et horaire</h4>`;
+        
+        switch (item.itemType) {
+            case 'event':
+                const startDate = this.parseDateTime(item.startDatetime);
+                const endDate = this.parseDateTime(item.endDatetime);
+                if (startDate) {
+                    html += `<p><strong>Date :</strong> ${this.formatDate(startDate, { 
+                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+                    })}</p>`;
+                    if (endDate) {
+                        html += `<p><strong>Horaire :</strong> ${this.formatTime(startDate)} - ${this.formatTime(endDate)}</p>`;
+                    }
+                }
+                break;
+                
+            case 'recurring':
+                html += `<p><strong>Récurrence :</strong> Tous les ${item.day_of_week}</p>`;
+                html += `<p><strong>Horaire :</strong> ${this.getItemDisplayTime(item)}</p>`;
+                if (item.duration) {
+                    html += `<p><strong>Durée :</strong> ${item.duration} minutes</p>`;
+                }
+                break;
+                
+            case 'exception':
+                const exceptionDate = this.parseDate(item.date);
+                if (exceptionDate) {
+                    html += `<p><strong>Date :</strong> ${this.formatDate(exceptionDate, { 
+                        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' 
+                    })}</p>`;
+                }
+                html += `<p><strong>Statut :</strong> ${item.is_cancelled ? 'Séance annulée' : 'Horaire modifié'}</p>`;
+                if (!item.is_cancelled && item.startTime) {
+                    html += `<p><strong>Nouvel horaire :</strong> ${item.startTime} - ${item.endTime}</p>`;
+                }
+                break;
         }
-        if (this.elements.eventSubmitBtn) {
-            this.elements.eventSubmitBtn.querySelector('.btn-text').textContent = 'Ajouter';
+        html += `</div>`;
+        
+        // Section lieu
+        if (item.location) {
+            html += `<div class="detail-section">`;
+            html += `<h4><i class="fas fa-map-marker-alt"></i> Lieu</h4>`;
+            html += `<p>${item.location}</p>`;
+            html += `</div>`;
         }
         
-        this.elements.eventForm.reset();
-        document.getElementById('event-images-preview').innerHTML = '';
+        // Section sport
+        const sport = this.allSports.find(s => s.id == item.sport);
+        if (sport) {
+            html += `<div class="detail-section">`;
+            html += `<h4><i class="fas fa-dumbbell"></i> Sport</h4>`;
+            html += `<p>${sport.name}</p>`;
+            html += `</div>`;
+        }
         
-        // Pré-remplir la date si fournie
-        if (date) {
-            const dateTimeString = this.formatDateTimeForInput(date);
-            const startInput = document.getElementById('event-start');
-            if (startInput) {
-                startInput.value = dateTimeString;
+        // Section description
+        if (item.description || item.content || item.reason) {
+            html += `<div class="detail-section">`;
+            html += `<h4><i class="fas fa-info-circle"></i> ${item.itemType === 'exception' ? 'Raison' : 'Description'}</h4>`;
+            html += `<p>${item.description || item.content || item.reason}</p>`;
+            html += `</div>`;
+        }
+        
+        html += `</div>`;
+        return html;
+    }
+
+    generateTooltip(item) {
+        let tooltip = `${this.getItemTitle(item)}\n`;
+        
+        switch (item.itemType) {
+            case 'event':
+                const startDate = this.parseDateTime(item.startDatetime);
+                const endDate = this.parseDateTime(item.endDatetime);
+                if (startDate) {
+                    tooltip += `📅 ${this.formatDate(startDate)}\n`;
+                    if (endDate) {
+                        tooltip += `🕐 ${this.formatTime(startDate)} - ${this.formatTime(endDate)}\n`;
+                    }
+                }
+                break;
+                
+            case 'recurring':
+                tooltip += `🔄 Tous les ${item.day_of_week}\n`;
+                tooltip += `🕐 ${this.getItemDisplayTime(item)}\n`;
+                if (item.duration) {
+                    tooltip += `⏱️ Durée: ${item.duration} min\n`;
+                }
+                break;
+                
+            case 'exception':
+                const excDate = this.parseDate(item.date);
+                if (excDate) {
+                    tooltip += `📅 ${this.formatDate(excDate)}\n`;
+                }
+                tooltip += `⚠️ ${item.is_cancelled ? 'Séance annulée' : 'Horaire modifié'}\n`;
+                break;
+        }
+        
+        if (item.location) tooltip += `📍 ${item.location}\n`;
+        if (item.description || item.content || item.reason) {
+            tooltip += `\n${item.description || item.content || item.reason}`;
+        }
+        
+        return tooltip;
+    }
+
+    getTypeLabel(itemType) {
+        const labels = {
+            'event': 'Événement',
+            'recurring': 'Récurrent',
+            'exception': 'Exception'
+        };
+        return labels[itemType] || itemType;
+    }
+
+    // Méthodes utilitaires optimisées
+    formatDate(date, options = {}) {
+        const defaultOptions = { 
+            day: '2-digit', 
+            month: '2-digit', 
+            year: 'numeric' 
+        };
+        return date.toLocaleDateString('fr-FR', { ...defaultOptions, ...options });
+    }
+
+    formatTime(date) {
+        return date.toLocaleTimeString('fr-FR', { 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: false 
+        });
+    }
+
+    parseDate(dateString) {
+        if (!dateString) return null;
+        try {
+            if (dateString.includes('/')) {
+                const [day, month, year] = dateString.split('/').map(Number);
+                return new Date(year, month - 1, day);
             }
+            return new Date(dateString);
+        } catch {
+            return null;
         }
-        
-        this.showModal(this.elements.eventModal);
     }
 
-    formatDateTimeForInput(date) {
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const day = String(date.getDate()).padStart(2, '0');
-        const hours = String(date.getHours()).padStart(2, '0');
-        const minutes = String(date.getMinutes()).padStart(2, '0');
-        
-        return `${year}-${month}-${day}T${hours}:${minutes}`;
+    parseDateTime(dateTimeString) {
+        if (!dateTimeString) return null;
+        try {
+            if (dateTimeString.includes('/')) {
+                const [datePart, timePart] = dateTimeString.split(' ');
+                const [day, month, year] = datePart.split('/').map(Number);
+                if (timePart) {
+                    const [hours, minutes] = timePart.split(':').map(Number);
+                    return new Date(year, month - 1, day, hours, minutes);
+                }
+                return new Date(year, month - 1, day);
+            }
+            return new Date(dateTimeString);
+        } catch {
+            return null;
+        }
     }
 
-    viewEvent(eventId) {
-        const event = this.allEvents.find(e => e.id == eventId);
-        if (!event) return;
+    extractTime(timeString) {
+        if (!timeString) return '';
         
-        // Remplir la modal de visualisation
-        document.getElementById('view-event-title').textContent = event.title;
-        document.getElementById('view-event-type').textContent = event.eventType;
-        document.getElementById('view-event-type').style.backgroundColor = event.getEventTypeColor();
-        document.getElementById('view-event-date').textContent = event.getFormattedStartDate();
-        document.getElementById('view-event-time').textContent = `${event.getFormattedStartTime()} - ${event.getFormattedEndTime()}`;
-        document.getElementById('view-event-location').textContent = event.location;
-        document.getElementById('view-event-description').textContent = event.content || 'Aucune description';
-        
-        const statusBadge = document.getElementById('view-event-status');
-        if (statusBadge) {
-            statusBadge.textContent = event.isCancelled ? 'Annulé' : 'Programmé';
-            statusBadge.className = `event-status-badge ${event.isCancelled ? 'cancelled' : 'scheduled'}`;
+        try {
+            if (/^\d{2}:\d{2}$/.test(timeString)) {
+                return timeString;
+            }
+            
+            if (timeString.includes(' ')) {
+                const timePart = timeString.split(' ')[1];
+                return timePart ? timePart.substring(0, 5) : '';
+            }
+            
+            if (timeString.includes('T')) {
+                const timePart = timeString.split('T')[1];
+                return timePart ? timePart.substring(0, 5) : '';
+            }
+            
+            return timeString.substring(0, 5);
+        } catch {
+            return '';
         }
-        
-        // Image principale
-        const imageContainer = document.getElementById('view-event-image-container');
-        const eventImage = document.getElementById('view-event-image');
-        if (event.getMainImage()) {
-            imageContainer.style.display = 'block';
-            eventImage.src = event.getMainImage();
-            eventImage.alt = event.title;
-        } else {
-            imageContainer.style.display = 'none';
-        }
-        
-        // Configurer les boutons d'action
-        document.getElementById('edit-event-from-view-btn').onclick = () => {
-            this.closeModal(this.elements.eventViewModal);
-            this.editEvent(eventId);
-        };
-        
-        document.getElementById('delete-event-from-view-btn').onclick = () => {
-            this.closeModal(this.elements.eventViewModal);
-            this.confirmDeleteEvent(eventId);
-        };
-        
-        this.showModal(this.elements.eventViewModal);
     }
 
-    editEvent(eventId) {
-        const event = this.allEvents.find(e => e.id == eventId);
-        if (!event) return;
+    getFormattedEndTimeForRecurring(item) {
+        if (!item.start_time || !item.duration) return '';
         
-        this.currentEventId = eventId;
-        this.currentImages = [...event.images];
-        
-        if (this.elements.eventModalTitle) {
-            this.elements.eventModalTitle.textContent = 'Modifier l\'Événement';
+        try {
+            const startTime = this.extractTime(item.start_time);
+            if (!startTime) return '';
+            
+            const [hours, minutes] = startTime.split(':').map(Number);
+            const startMinutes = hours * 60 + minutes;
+            const endMinutes = startMinutes + parseInt(item.duration);
+            
+            const endHours = Math.floor(endMinutes / 60) % 24;
+            const endMins = endMinutes % 60;
+            
+            return `${endHours.toString().padStart(2, '0')}:${endMins.toString().padStart(2, '0')}`;
+        } catch {
+            return '';
         }
-        if (this.elements.eventSubmitBtn) {
-            this.elements.eventSubmitBtn.querySelector('.btn-text').textContent = 'Modifier';
-        }
-        
-        // Remplir le formulaire
-        document.getElementById('event-id').value = event.id;
-        document.getElementById('event-title').value = event.title;
-        document.getElementById('event-content').value = event.content || '';
-        document.getElementById('event-type').value = event.eventType;
-        document.getElementById('event-location').value = event.location;
-        document.getElementById('event-sport').value = event.sport || '';
-        document.getElementById('event-cancelled').checked = event.isCancelled;
-        
-        // Dates
-        const startDate = new Date(event.startDatetime);
-        const endDate = new Date(event.endDatetime);
-        document.getElementById('event-start').value = this.formatDateTimeForInput(startDate);
-        document.getElementById('event-end').value = this.formatDateTimeForInput(endDate);
-        
-        // Équipes
-        const teamCheckboxes = document.querySelectorAll('#teams-selector input[type="checkbox"]');
-        teamCheckboxes.forEach(checkbox => {
-            checkbox.checked = event.teams.includes(parseInt(checkbox.value));
-        });
-        
-        // Images
-        this.displayImagePreviews();
-        
-        this.showModal(this.elements.eventModal);
     }
 
-    confirmDeleteEvent(eventId) {
-        const event = this.allEvents.find(e => e.id == eventId);
-        if (!event) return;
-        
-        this.deleteEventId = eventId;
-        document.getElementById('delete-event-name').textContent = event.title;
-        this.showModal(this.elements.deleteEventModal);
-    }
-
-    filterEvents(eventType = '') {
-        if (eventType) {
-            this.filteredEvents = this.allEvents.filter(event => event.eventType === eventType);
-        } else {
-            this.filteredEvents = [...this.allEvents];
-        }
-        
-        this.renderCalendar(this.currentDate);
-        this.renderEventsTable();
-    }
-
+    // Méthodes de contrôle
     toggleView() {
-        this.viewMode = this.viewMode === 'calendar' ? 'table' : 'calendar';
-        
-        const calendarContainer = document.querySelector('.calendar-container');
-        const tableSection = this.elements.eventsTableSection;
-        const toggleBtn = this.elements.toggleViewBtn;
+        this.viewMode = this.viewMode === 'calendar' ? 'list' : 'calendar';
         
         if (this.viewMode === 'calendar') {
-            calendarContainer.style.display = 'block';
-            tableSection.style.display = 'none';
-            toggleBtn.innerHTML = '<i class="fas fa-list"></i> Vue liste';
+            this.elements.calendarView.style.display = 'block';
+            this.elements.listView.style.display = 'none';
+            this.elements.toggleViewBtn.innerHTML = '<i class="fas fa-list"></i>';
+            this.elements.toggleViewBtn.title = 'Basculer vers la vue liste';
+            this.renderCalendar();
         } else {
-            calendarContainer.style.display = 'none';
-            tableSection.style.display = 'block';
-            toggleBtn.innerHTML = '<i class="fas fa-calendar"></i> Vue calendrier';
+            this.elements.calendarView.style.display = 'none';
+            this.elements.listView.style.display = 'block';
+            this.elements.toggleViewBtn.innerHTML = '<i class="fas fa-calendar"></i>';
+            this.elements.toggleViewBtn.title = 'Basculer vers la vue calendrier';
+            this.renderListView();
         }
     }
 
-    showModal(modal) {
-        if (modal) {
-            modal.classList.add('show');
-            modal.style.display = 'flex';
-        }
-    }
-
-    closeModal(modal) {
-        if (modal) {
-            modal.classList.remove('show');
+    closeEventModal() {
+        if (this.elements.eventModal) {
+            this.elements.eventModal.classList.remove('show');
             setTimeout(() => {
-                modal.style.display = 'none';
+                this.elements.eventModal.style.display = 'none';
+                document.body.style.overflow = '';
             }, 300);
         }
     }
 
-    displayImagePreviews() {
-        const previewContainer = document.getElementById('event-images-preview');
-        if (!previewContainer) return;
-        
-        previewContainer.innerHTML = '';
-        this.currentImages.forEach((image, index) => {
-            const previewItem = document.createElement('div');
-            previewItem.className = 'image-preview-item';
-            previewItem.innerHTML = `
-                <img src="${image}" alt="Aperçu ${index + 1}">
-                <button type="button" class="remove-image-btn" onclick="eventsManager.removeImage(${index})">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
-            previewContainer.appendChild(previewItem);
-        });
+    closeDayModal() {
+        if (this.elements.dayEventsModal) {
+            this.elements.dayEventsModal.classList.remove('show');
+            setTimeout(() => {
+                this.elements.dayEventsModal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300);
+        }
     }
 
-    removeImage(index) {
-        this.currentImages.splice(index, 1);
-        this.displayImagePreviews();
+    updateStats() {
+        if (this.elements.eventsCount) {
+            this.elements.eventsCount.textContent = this.allEvents.length;
+        }
+        if (this.elements.recurringCount) {
+            this.elements.recurringCount.textContent = this.allRecurringSchedules.length;
+        }
+        if (this.elements.exceptionsCount) {
+            this.elements.exceptionsCount.textContent = this.allScheduleExceptions.length;
+        }
+        if (this.elements.filteredCount) {
+            this.elements.filteredCount.textContent = this.filteredItems.length;
+        }
+        if (this.elements.listCount) {
+            this.elements.listCount.textContent = `${this.filteredItems.length} événement(s)`;
+        }
+    }
+
+    showLoader(show) {
+        if (this.elements.loader) {
+            this.elements.loader.style.display = show ? 'flex' : 'none';
+        }
+    }
+
+    showError(message) {
+        if (this.elements.errorMessage) {
+            this.elements.errorMessage.querySelector('p').textContent = message;
+            this.elements.errorMessage.style.display = 'block';
+        }
+    }
+
+    hideError() {
+        if (this.elements.errorMessage) {
+            this.elements.errorMessage.style.display = 'none';
+        }
+    }
+
+    clearCache() {
+        this.itemsCache.clear();
     }
 
     attachEventListeners() {
         // Navigation calendrier
-        if (this.elements.prevBtn) {
-            this.elements.prevBtn.addEventListener('click', () => {
-                this.currentDate.setMonth(this.currentDate.getMonth() - 1);
-                this.renderCalendar(this.currentDate);
-            });
-        }
-
-        if (this.elements.nextBtn) {
-            this.elements.nextBtn.addEventListener('click', () => {
-                this.currentDate.setMonth(this.currentDate.getMonth() + 1);
-                this.renderCalendar(this.currentDate);
-            });
-        }
-
-        if (this.elements.todayBtn) {
-            this.elements.todayBtn.addEventListener('click', () => {
-                this.currentDate = new Date();
-                this.renderCalendar(this.currentDate);
-            });
-        }
-
-        // Boutons de contrôle
-        if (this.elements.addEventBtn) {
-            this.elements.addEventBtn.addEventListener('click', () => this.openAddEventModal());
-        }
-
-        if (this.elements.toggleViewBtn) {
-            this.elements.toggleViewBtn.addEventListener('click', () => this.toggleView());
-        }
-
-        // Filtre par type
-        if (this.elements.eventTypeFilter) {
-            this.elements.eventTypeFilter.addEventListener('change', (e) => {
-                this.filterEvents(e.target.value);
-            });
-        }
-
-        // Labels de filtre
-        this.elements.labels.forEach(label => {
-            label.addEventListener('click', () => {
-                const eventType = label.dataset.type;
-                
-                // Toggle active state
-                if (label.classList.contains('active')) {
-                    label.classList.remove('active');
-                    this.filterEvents('');
-                    if (this.elements.eventTypeFilter) {
-                        this.elements.eventTypeFilter.value = '';
-                    }
-                } else {
-                    this.elements.labels.forEach(l => l.classList.remove('active'));
-                    label.classList.add('active');
-                    this.filterEvents(eventType);
-                    if (this.elements.eventTypeFilter) {
-                        this.elements.eventTypeFilter.value = eventType;
-                    }
-                }
-            });
+        this.elements.prevBtn?.addEventListener('click', () => {
+            this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+            this.clearCache();
+            this.renderCalendar();
         });
 
-        // Upload d'images
-        const imagesInput = document.getElementById('event-images');
-        if (imagesInput) {
-            imagesInput.addEventListener('change', async (e) => {
-                const files = Array.from(e.target.files);
-                
-                for (const file of files) {
-                    try {
-                        const base64 = await this.fileToBase64(file);
-                        this.currentImages.push(base64);
-                    } catch (error) {
-                        console.error('Erreur lors du chargement de l\'image:', error);
-                        showNotification('Erreur lors du chargement d\'une image', 'error');
-                    }
-                }
-                
-                this.displayImagePreviews();
-            });
-        }
+        this.elements.nextBtn?.addEventListener('click', () => {
+            this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+            this.clearCache();
+            this.renderCalendar();
+        });
 
-        // Soumission du formulaire
-        if (this.elements.eventForm) {
-            this.elements.eventForm.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                await this.handleFormSubmit();
-            });
-        }
+        this.elements.todayBtn?.addEventListener('click', () => {
+            this.currentDate = new Date();
+            this.clearCache();
+            this.renderCalendar();
+        });
 
-        // Fermeture des modales
-        this.setupModalClosing();
-    }
+        this.elements.refreshBtn?.addEventListener('click', async () => {
+            await this.loadAllData();
+        });
 
-    setupModalClosing() {
-        // Boutons de fermeture
-        const closeButtons = [
-            { id: 'close-event-modal', modal: this.elements.eventModal },
-            { id: 'close-event-view-modal', modal: this.elements.eventViewModal },
-            { id: 'close-delete-event-modal', modal: this.elements.deleteEventModal },
-            { id: 'cancel-event-btn', modal: this.elements.eventModal },
-            { id: 'cancel-delete-event-btn', modal: this.elements.deleteEventModal }
-        ];
+        // Filtres
+        this.elements.sportFilter?.addEventListener('change', (e) => {
+            this.filters.sport = e.target.value;
+            this.applyFilters();
+        });
 
-        closeButtons.forEach(({ id, modal }) => {
-            const button = document.getElementById(id);
-            if (button && modal) {
-                button.addEventListener('click', () => this.closeModal(modal));
+        this.elements.typeFilter?.addEventListener('change', (e) => {
+            this.filters.type = e.target.value;
+            this.applyFilters();
+        });
+
+        this.elements.listSort?.addEventListener('change', (e) => {
+            this.sortMode = e.target.value;
+            if (this.viewMode === 'list') {
+                this.renderListView();
             }
         });
 
-        // Clic à l'extérieur des modales
-        [this.elements.eventModal, this.elements.eventViewModal, this.elements.deleteEventModal].forEach(modal => {
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        this.closeModal(modal);
-                    }
-                });
+        // Basculement de vue
+        this.elements.toggleViewBtn?.addEventListener('click', () => {
+            this.toggleView();
+        });
+
+        // Fermeture des modals
+        document.getElementById('close-modal')?.addEventListener('click', () => {
+            this.closeEventModal();
+        });
+
+        document.getElementById('close-day-modal')?.addEventListener('click', () => {
+            this.closeDayModal();
+        });
+
+        // Clic à l'extérieur des modals
+        this.elements.eventModal?.addEventListener('click', (e) => {
+            if (e.target === this.elements.eventModal) {
+                this.closeEventModal();
             }
         });
 
-        // Confirmation de suppression
-        const confirmDeleteBtn = document.getElementById('confirm-delete-event-btn');
-        if (confirmDeleteBtn) {
-            confirmDeleteBtn.addEventListener('click', async () => {
-                await this.handleDeleteEvent();
-            });
-        }
+        this.elements.dayEventsModal?.addEventListener('click', (e) => {
+            if (e.target === this.elements.dayEventsModal) {
+                this.closeDayModal();
+            }
+        });
 
-        // Fermeture avec Escape
+        // Bouton retry
+        this.elements.retryBtn?.addEventListener('click', () => {
+            this.loadAllData();
+        });
+
+        // Touche Escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                [this.elements.eventModal, this.elements.eventViewModal, this.elements.deleteEventModal].forEach(modal => {
-                    if (modal && modal.classList.contains('show')) {
-                        this.closeModal(modal);
-                    }
-                });
+                this.closeEventModal();
+                this.closeDayModal();
             }
         });
-    }
-
-    async handleFormSubmit() {
-        const formData = this.collectFormData();
-        
-        if (!this.validateFormData(formData)) {
-            return;
-        }
-
-        try {
-            const submitBtn = this.elements.eventSubmitBtn;
-            if (submitBtn) {
-                submitBtn.disabled = true;
-                submitBtn.querySelector('.btn-text').textContent = 'Enregistrement...';
-            }
-
-            if (this.currentEventId) {
-                await updateEvent(this.currentEventId, formData);
-                showNotification('Événement modifié avec succès', 'success');
-            } else {
-                await addEvent(formData);
-                showNotification('Événement ajouté avec succès', 'success');
-            }
-
-            this.closeModal(this.elements.eventModal);
-            await this.loadData();
-            this.renderCalendar(this.currentDate);
-            this.renderEventsTable();
-
-        } catch (error) {
-            console.error('Erreur lors de l\'enregistrement:', error);
-            showNotification(error.message, 'error');
-        } finally {
-            const submitBtn = this.elements.eventSubmitBtn;
-            if (submitBtn) {
-                submitBtn.disabled = false;
-                submitBtn.querySelector('.btn-text').textContent = this.currentEventId ? 'Modifier' : 'Ajouter';
-            }
-        }
-    }
-
-    collectFormData() {
-        // Collecter les équipes sélectionnées
-        const selectedTeams = [];
-        const teamCheckboxes = document.querySelectorAll('#teams-selector input[type="checkbox"]:checked');
-        teamCheckboxes.forEach(checkbox => {
-            selectedTeams.push(parseInt(checkbox.value));
-        });
-
-        // Formater les dates pour l'API
-        const startDateTime = new Date(document.getElementById('event-start').value);
-        const endDateTime = new Date(document.getElementById('event-end').value);
-
-        const formatDateTimeForAPI = (date) => {
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = date.getFullYear();
-            const hours = String(date.getHours()).padStart(2, '0');
-            const minutes = String(date.getMinutes()).padStart(2, '0');
-            return `${day}/${month}/${year} ${hours}:${minutes}`;
-        };
-
-        return {
-            title: document.getElementById('event-title').value.trim(),
-            content: document.getElementById('event-content').value.trim(),
-            eventType: document.getElementById('event-type').value,
-            location: document.getElementById('event-location').value.trim(),
-            isCancelled: document.getElementById('event-cancelled').checked,
-            startDatetime: formatDateTimeForAPI(startDateTime),
-            endDatetime: formatDateTimeForAPI(endDateTime),
-            sport: document.getElementById('event-sport').value || null,
-            teams: selectedTeams,
-            images: this.currentImages
-        };
-    }
-
-    validateFormData(data) {
-        if (!data.title) {
-            showNotification('Le titre est obligatoire', 'error');
-            return false;
-        }
-
-        if (!data.eventType) {
-            showNotification('Le type d\'événement est obligatoire', 'error');
-            return false;
-        }
-
-        if (!data.location) {
-            showNotification('Le lieu est obligatoire', 'error');
-            return false;
-        }
-
-        if (!data.startDatetime || !data.endDatetime) {
-            showNotification('Les dates de début et de fin sont obligatoires', 'error');
-            return false;
-        }
-
-        const startDate = new Date(document.getElementById('event-start').value);
-        const endDate = new Date(document.getElementById('event-end').value);
-
-        if (endDate <= startDate) {
-            showNotification('La date de fin doit être postérieure à la date de début', 'error');
-            return false;
-        }
-
-        return true;
-    }
-
-    async handleDeleteEvent() {
-        if (!this.deleteEventId) return;
-
-        try {
-            const confirmBtn = document.getElementById('confirm-delete-event-btn');
-            if (confirmBtn) {
-                confirmBtn.disabled = true;
-                confirmBtn.textContent = 'Suppression...';
-            }
-
-            await deleteEvent(this.deleteEventId);
-            showNotification('Événement supprimé avec succès', 'success');
-
-            this.closeModal(this.elements.deleteEventModal);
-            await this.loadData();
-            this.renderCalendar(this.currentDate);
-            this.renderEventsTable();
-
-        } catch (error) {
-            console.error('Erreur lors de la suppression:', error);
-            showNotification(error.message, 'error');
-        } finally {
-            const confirmBtn = document.getElementById('confirm-delete-event-btn');
-            if (confirmBtn) {
-                confirmBtn.disabled = false;
-                confirmBtn.textContent = 'Supprimer';
-            }
-            this.deleteEventId = null;
-        }
-    }
-
-    // Méthodes globales pour les onclick
-    viewEvent(eventId) {
-        this.viewEvent(eventId);
-    }
-
-    editEvent(eventId) {
-        this.editEvent(eventId);
-    }
-
-    confirmDeleteEvent(eventId) {
-        this.confirmDeleteEvent(eventId);
-    }
-
-    removeImage(index) {
-        this.removeImage(index);
     }
 }
 
-// Initialisation globale
-let eventsManager;
+// Initialisation
+let optimizedCalendar;
 
 document.addEventListener('DOMContentLoaded', () => {
-    eventsManager = new EventsCalendarManager();
-    
-    // Exposer les méthodes globalement pour les onclick dans le HTML
-    window.eventsManager = eventsManager;
+    console.log('🚀 Initialisation du calendrier optimisé...');
+    optimizedCalendar = new OptimizedCalendar();
+    window.optimizedCalendar = optimizedCalendar;
 });
+
+export { OptimizedCalendar };

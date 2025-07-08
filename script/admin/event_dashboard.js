@@ -491,7 +491,7 @@ class UnifiedCalendarManager {
             case 'event':
                 return `Événement: ${item.title}`;
             case 'recurring':
-                return `Horaire récurrent: ${item.title} - ${item.start_time}`;
+                return `Horaire récurrent: ${item.title} - ${this.extractTimeFromDateTime(item.start_time)}`;
             case 'exception':
                 const status = item.is_cancelled ? 'Annulé' : 'Modifié';
                 return `Exception: ${status} - ${item.reason || 'Aucune raison'}`;
@@ -1894,8 +1894,8 @@ class UnifiedCalendarManager {
                 </div>
             </div>
         `;
-
-        document.body.appendChild(popup);
+document.getElementById("body-event-dashboard").appendChild(popup);
+   
         
         // Positionner la popup
         setTimeout(() => {

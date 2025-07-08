@@ -1,4 +1,4 @@
-<main class="body-event-dashboard">
+<main class="body-event-dashboard" id="body-event-dashboard">
     <div class="main-container">
         <!-- En-tête principal avec stats -->
         <div class="page-header">
