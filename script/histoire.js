@@ -4,22 +4,17 @@ const content = document.getElementById('content');
 
 // Données par année (à adapter avec tes vraies images/textes)
 const data = {
-  2000: { img: "image2000.jpg", text: "Description 2000" },
-  2005: { img: "image2005.jpg", text: "Description 2005" },
-  2010: { img: "image2010.jpg", text: "Description 2010" },
-  2015: { img: "image2015.jpg", text: "Description 2015" },
-  2020: { img: "image2020.jpg", text: "Description 2020" },
-  2021: { img: "image2021.jpg", text: "Description 2021" },
-  2022: { img: "image2022.jpg", text: "Description 2022" },
-  2023: { img: "image2023.jpg", text: "Description 2023" },
-  2024: { img: "image2024.jpg", text: "Description 2024" },
-  2025: { img: "image2025.jpg", text: "Description 2025" },
-  2026: { img: "image2026.jpg", text: "Description 2026" },
-  2027: { img: "image2027.jpg", text: "Description 2027" },
-  2028: { img: "image2028.jpg", text: "Description 2028" },
-  2029: { img: "image2029.jpg", text: "Description 2029" },
-  2030: { img: "image2030.jpg", text: "Description 2030" },
-  2031: { img: "image2031.jpg", text: "Description 2031" }
+  1882: { img: "image2000.jpg", text: "Création de la Société Nautique du Loiret (SNL), sur les bords du Loiret, au niveau du bassin du Saint-Samson." },
+  1900: { img: "image2005.jpg", text: "La SNL quitte Olivet pour Orléans. L'aviron orléannais se pratique alors sur la Loire, au niveau du quai Barentin, à côté du Pont Joffre (emplacem" },
+  1920: { img: "image2010.jpg", text: "Création du club omnisports, garage Paul Besnard, sur le quai Saint-Laurent." },
+  1926: { img: "image2015.jpg", text: "Scission entre le club omnisports et la SNL Section aviron. Celle-ci retrouve son autonomie et prend le nom de la Société Nautique d'Orléans (SNO)." },
+  1955: { img: "image2020.jpg", text: "Arrivée de Marcel Baratta au sein de la SNO." },
+  1958: { img: "image2021.jpg", text: "La SNO reprend ses quartiers sur le Loiret et déménage ses locaux au Parc du Poutyl à Olivet." },
+  1970 : { img: "image2022.jpg", text: "Inauguration du Centre Marcel Baratta (actuels locaux du club). La SNO devient la Société Nautique Orléans Olivet." },
+  1982: { img: "image2023.jpg", text: "Centenaire du club." },
+  1992: { img: "image2024.jpg", text: "Fusion entre la Section USO Aviron et la SNOO." },
+  1994: { img: "image2025.jpg", text: "Création de l'association au titre de l'Aviron Club d'Orléans Olivet (ACOO)." },
+ 
 };
 
 let selectedIndex = 0;

@@ -1,3 +1,5 @@
+
+
 const track = document.querySelector('.carousel-track');
 const prevButton = document.querySelector('.carousel-button.prev');
 const nextButton = document.querySelector('.carousel-button.next');
@@ -24,27 +26,45 @@ prevButton.addEventListener('click', () => {
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuItems = document.querySelectorAll('#menu_club .ram');
+  const selectMenu = document.getElementById('select_nav');
   const sections = document.querySelectorAll('#club_container .container_club > section');
 
+  // Fonction pour afficher la section ciblée
+  function showSection(targetId) {
+    sections.forEach(section => {
+      section.style.display = (section.id === targetId) ? 'block' : 'none';
+    });
+
+    // Optionnel : si tu veux remettre la valeur du select à vide après clic
+    if (selectMenu) {
+      selectMenu.value = targetId;
+    }
+  }
+
+  // Clic sur les rames
   menuItems.forEach(item => {
     item.addEventListener('click', () => {
       const targetId = item.getAttribute('data-target');
-
-      sections.forEach(section => {
-        if (section.id === targetId) {
-          section.style.display = 'block';
-        } else {
-          section.style.display = 'none';
-        }
-      });
+      showSection(targetId);
     });
   });
 
-  // Optionnel : afficher par défaut la première section uniquement
+  // Changement dans le menu select
+  if (selectMenu) {
+    selectMenu.addEventListener('change', () => {
+      const targetId = selectMenu.value;
+      if (targetId) {
+        showSection(targetId);
+      }
+    });
+  }
+
+  // Par défaut : afficher la première section
   sections.forEach((section, index) => {
     section.style.display = (index === 0) ? 'block' : 'none';
   });
 });
+
 
 
 

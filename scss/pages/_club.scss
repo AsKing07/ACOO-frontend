@@ -99,7 +99,7 @@
    #club_histoire {
     
     color: white;
-    padding: 40px;
+    padding:  0 40px;
 
     .timeline-container {
         overflow-x: hidden;
@@ -191,7 +191,6 @@
 
     /* Carte individuelle */
     .container_card {
-        width: 100%;
         max-width: 250px;
         background-color: #ffffff;
         border-radius: 12px;
@@ -204,6 +203,11 @@
         align-items: center;
         padding: 16px;
         gap: 12px;
+
+        .container_info {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     /* Image de profil */

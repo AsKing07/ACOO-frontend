@@ -63,3 +63,14 @@ export async function deleteGallery(id) {
     if (!res.ok) throw new Error('Erreur lors de la suppression de la galerie');
     return  res.status === 204; // Return true if deletion was successful
 }
+
+export async function getGalleryByName(name) {
+  const galleries = await getGalleries();
+  
+  
+  const matched = galleries.filter(gallery =>
+    gallery.theme.toLowerCase().includes(name.toLowerCase())
+  );
+
+  return matched;
+}
