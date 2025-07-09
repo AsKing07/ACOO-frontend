@@ -1,10 +1,10 @@
 //Traitement des introductions récupérées
 
-import { getGalleryByName } from "../../service/api/galleryApi.js";
-import { getIntroductionByTitle } from "../../service/api/introductionApi.js";
-import{ getStaff } from '../../service/api/staffApi.js';
-import { getSports } from "../../service/api/sportApi.js";
-import { getPartenaires } from "../../service/api/partenairesApi.js";
+import { getGalleryByName } from "../../../service/api/galleryApi.js";
+import { getIntroductionByTitle } from "../../../service/api/introductionApi.js";
+import{ getStaff } from '../../../service/api/staffApi.js';
+import { getSports } from "../../../service/api/sportApi.js";
+import { getPartenaires } from "../../../service/api/partenairesApi.js";
 
 //console.log("Bonjour club");
 

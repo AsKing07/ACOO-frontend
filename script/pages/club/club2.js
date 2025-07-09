@@ -97,3 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+
+//Carrousel pour les sports

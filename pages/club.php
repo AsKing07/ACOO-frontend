@@ -235,16 +235,16 @@
                     <button class="carousel-btn left" onclick="scrollCarousel(-1)">‹</button>
 
                     <div class="carousel" id="carousel">
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Rivière</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Indoor</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Avifit</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Para Aviron</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Santé</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Rivière</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Indoor</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Avifit</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Para Aviron</span></div>
-                        <div class="aviron-item"><img src="../assets/images/Galerie1.png"><span class="aviron-title">Aviron Santé</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Aviron Rivière</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Aviron Indoor</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Avifit</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Para Aviron</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Aviron Santé</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Aviron Rivière</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Aviron Indoor</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Avifit</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Para Aviron</span></div>
+                        <div class="aviron-item"><img src="/assets/images/Galerie1.png"><span class="aviron-title">Aviron Santé</span></div>
                         <!-- Ajoute ici d'autres éléments si tu veux tester -->
                     </div>
 
@@ -425,10 +425,10 @@
     </section>
 
     <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
-    <script type="module" src="../script/pages/club.js"></script>
-    <script src="../script/club.js"></script>
-    <script src="../script/histoire.js"></script>
-    <script src="../script/sport.js"></script>
+    <script type="module" src="../script/pages/club/club.js"></script>
+    <script src="../script/pages/club/club2.js"></script>
+    <script src="../script/pages/club/histoire.js"></script>
+    <script src="../script/pages/club/sport.js"></script>
     <script src="../script/navbar.js"></script>
    
     

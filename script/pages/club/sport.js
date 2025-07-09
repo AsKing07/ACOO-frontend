@@ -1,4 +1,6 @@
 
+
+
 function scrollCarousel(direction) {
     const carousel = document.getElementById('carousel');
     const scrollAmount = 240; // approx width + gap
@@ -21,4 +23,3 @@ function updateArrowVisibility() {
 
 window.addEventListener('load', updateArrowVisibility);
 window.addEventListener('resize', updateArrowVisibility);
-
