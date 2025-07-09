@@ -24,43 +24,54 @@ export function initVideos() {
     async function renderVideos() {
         loader.style.display = 'block';
         videoList.innerHTML = '';
+        const header = document.createElement('div');
+        header.className = 'video-header';
+        header.innerHTML = `
+          <div class="video-header-preview"></div>
+          <div class="video-header-name">Nom</div>
+          <div class="video-header-featured">Vidéo mise en avant</div>
+          <div class="video-header-btns"></div>
+        `;
+        videoList.appendChild(header);
         try {
             videos = await getVideos();
             videos.forEach(item => {
                 const videoEl = document.createElement('div');
-                videoEl.className = 'editing-img-wording-container newItem';
-                // Aperçu vidéo
+                videoEl.className = 'video-item';
+                
                 const preview = document.createElement('div');
-                preview.className = 'edit-img';
+                preview.className = 'video-preview';
                 preview.innerHTML = `<iframe width="180" height="100" src="https://www.youtube.com/embed/${extractYoutubeId(item.videoUrl)}" frameborder="0" allowfullscreen></iframe>`;
-                // Description
-                const descContainer = document.createElement('div');
-                descContainer.className = 'edit-description';
-                const title = document.createElement('h2');
-                title.textContent = item.name || '';
-                // Boutons
-                const btnContainer = document.createElement('div');
-                btnContainer.className = 'edit-btnS';
-                const editBtn = document.createElement('button');
-                editBtn.className = 'btn-primary btn-edit';
-                editBtn.textContent = 'Modifier';
-                editBtn.dataset.id = item.id;
-                const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'btn-danger btn-delete';
-                deleteBtn.textContent = 'Supprimer';
-                deleteBtn.dataset.id = item.id;
-                btnContainer.appendChild(editBtn);
-                btnContainer.appendChild(deleteBtn);
-                // Radio highlighting
+                
+                const infoContainer = document.createElement('div');
+                infoContainer.className = 'video-info';
+                
+                const nameRow = document.createElement('div');
+                nameRow.className = 'video-name-row';
+                const nameLabel = document.createElement('span');
+                nameLabel.className = 'video-name-label';
+                nameLabel.textContent = 'Nom:';
+                const name = document.createElement('span');
+                name.className = 'video-name';
+                name.textContent = item.name || '';
+                nameRow.appendChild(nameLabel);
+                nameRow.appendChild(name);
+                infoContainer.appendChild(nameRow);
+                
+                const featuredRow = document.createElement('div');
+                featuredRow.className = 'video-featured-row';
+                const featuredLabel = document.createElement('span');
+                featuredLabel.className = 'video-featured-label';
+                featuredLabel.textContent = 'Vidéo mise en avant:';
+                const featuredContainer = document.createElement('div');
+                featuredContainer.className = 'video-featured';
                 const radio = document.createElement('input');
                 radio.type = 'radio';
                 radio.name = 'highlighting';
                 radio.checked = !!item.highlighting;
                 radio.className = 'highlighting-radio';
-                radio.title = 'Mettre en avant';
-                radio.style.marginRight = '8px';
+                radio.title = 'Sélectionner la vidéo mise en avant';
                 radio.addEventListener('change', async () => {
-                    // Trouver l'ancienne vidéo mise en avant
                     const old = videos.find(v => v.highlighting);
                     if (old && old.id !== item.id) {
                         await updateVideo(old.id, { ...old, highlighting: false });
@@ -69,13 +80,52 @@ export function initVideos() {
                     showNotification('Vidéo mise en avant !', 'success');
                     renderVideos();
                 });
-                // Assemble description
-                descContainer.appendChild(radio);
-                descContainer.appendChild(title);
-                descContainer.appendChild(btnContainer);
-                // Assemble main container
+                featuredContainer.appendChild(radio);
+                featuredRow.appendChild(featuredLabel);
+                featuredRow.appendChild(featuredContainer);
+                infoContainer.appendChild(featuredRow);
+                
+                const nameDesktop = document.createElement('span');
+                nameDesktop.className = 'video-name';
+                nameDesktop.textContent = item.name || '';
+                
+                const featuredDesktop = document.createElement('div');
+                featuredDesktop.className = 'video-featured';
+                const radioDesktop = document.createElement('input');
+                radioDesktop.type = 'radio';
+                radioDesktop.name = 'highlighting';
+                radioDesktop.checked = !!item.highlighting;
+                radioDesktop.className = 'highlighting-radio';
+                radioDesktop.title = 'Sélectionner la vidéo mise en avant';
+                radioDesktop.addEventListener('change', async () => {
+                    const old = videos.find(v => v.highlighting);
+                    if (old && old.id !== item.id) {
+                        await updateVideo(old.id, { ...old, highlighting: false });
+                    }
+                    await updateVideo(item.id, { ...item, highlighting: true });
+                    showNotification('Vidéo mise en avant !', 'success');
+                    renderVideos();
+                });
+                featuredDesktop.appendChild(radioDesktop);
+                
+                const btnContainer = document.createElement('div');
+                btnContainer.className = 'edit-btnS';
+                const editBtn = document.createElement('button');
+                editBtn.className = 'btn-primary btn-edit';
+                editBtn.innerHTML = '<i class="fas fa-edit" aria-hidden="true"></i>';
+                editBtn.dataset.id = item.id;
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn-danger btn-delete';
+                deleteBtn.innerHTML = '<i class="fas fa-trash" aria-hidden="true"></i>';
+                deleteBtn.dataset.id = item.id;
+                btnContainer.appendChild(editBtn);
+                btnContainer.appendChild(deleteBtn);
+                
                 videoEl.appendChild(preview);
-                videoEl.appendChild(descContainer);
+                videoEl.appendChild(infoContainer);
+                videoEl.appendChild(nameDesktop);
+                videoEl.appendChild(featuredDesktop);
+                videoEl.appendChild(btnContainer);
                 videoList.appendChild(videoEl);
             });
             attachVideoEventListeners();

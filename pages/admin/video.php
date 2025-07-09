@@ -14,7 +14,7 @@
     <!-- Modal pour ajouter/modifier une vidéo -->
     <div class="modal" id="video-modal" style="display: none;">
         <div class="modal-content">
-            <span class="modal-close" id="close-video-modal">&times;</span>
+            <span class="modal-close modal-close--video" id="close-video-modal">&times;</span>
             <h2 id="video-modal-title">Ajouter une vidéo</h2>
             <div class="form-section">
                 <form id="video-form" class="form">
