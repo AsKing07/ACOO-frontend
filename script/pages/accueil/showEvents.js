@@ -1,4 +1,4 @@
-import { getEvents } from '../service/api/eventsApi.js';
+import { getEvents } from '../../../service/api/eventsApi.js';
 
 function formatDate(datetimeStr) {
   const date = new Date(datetimeStr);

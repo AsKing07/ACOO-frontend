@@ -66,9 +66,8 @@
 
 
 </body>
-<script type="module" src="../script/showEvents.js"></script>
 <script src="../script/navbar.js"></script>
-<script src="../script/formContact.js"></script>
+<script type="module" src="../script/formContact.js"></script>
 <script type="module" src="../script/galleryCarrousel.js"></script>
 <script type="module">
 import { getVideos } from '../service/api/videoApi.js';
@@ -92,5 +91,6 @@ function extractYoutubeId(url) {
     }
 })();
 </script>
-<script type="module" src="../script/pages/accueil.js"></script>
+<script type="module" src="../script/pages/accueil/accueil.js"></script>
+<script type="module" src="../script/pages/accueil/showEvents.js"></script>
 </html>

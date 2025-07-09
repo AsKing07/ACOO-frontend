@@ -1,4 +1,4 @@
-import { getIntroductionByTitle } from "../../service/api/introductionApi.js";
+import { getIntroductionByTitle } from "../../../service/api/introductionApi.js";
 
 getIntroductionByTitle('A propos de nous').then(data => {
     console.log("Introduction Data fetched from API:", data);;
