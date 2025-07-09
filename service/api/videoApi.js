@@ -12,7 +12,7 @@ export async function getVideos() {
 export async function addVideo(video) {
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
-    const res = await fetch(`${API_BASE_URL}/api/video`, {
+    const res = await fetch(`${API_BASE_URL}/api/videos`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export async function updateVideo(id, video) {
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) throw new Error('Aucun utilisateur connecté');
-    const res = await fetch(`${API_BASE_URL}/api/video/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/videos/${id}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ export async function deleteVideo(id) {
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) throw new Error('Aucun utilisateur connecté');
-    const res = await fetch(`${API_BASE_URL}/api/video/${id}`, {
+    const res = await fetch(`${API_BASE_URL}/api/videos/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

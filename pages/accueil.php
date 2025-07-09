@@ -83,7 +83,7 @@ function extractYoutubeId(url) {
         if (featured) {
             const id = extractYoutubeId(featured.videoUrl);
             if (id) {
-                document.getElementById('hero-video').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+                document.getElementById('hero-video').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&color=white&wmode=transparent&disablekb=1&playsinline=1&enablejsapi=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>`;
             }
         }
     } catch (e) {
