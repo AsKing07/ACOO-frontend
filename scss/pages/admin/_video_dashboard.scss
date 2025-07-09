@@ -1,6 +1,9 @@
 @use '../../base/variables' as *;
 
-.video-list {
+
+
+.body-video-dashboard{
+  .video-list {
   width: 100%;
   
   .video-header {
@@ -217,3 +220,6 @@
   justify-content: center;
 }
 #video-modal .modal-content { overflow: visible; } 
+
+}
+
