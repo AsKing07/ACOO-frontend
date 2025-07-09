@@ -232,7 +232,7 @@ function createPalmaresCard(palmares) {
     }
 
     // Trouver le nom du sport
-    const sport = sportsData.find(s => s.id === palmares.sport);
+    const sport = sportsData.find(s => s.id == palmares.sport);
     const sportName = sport ? sport.name : palmares.sport;
 
     // Construire le HTML de la carte
@@ -342,7 +342,7 @@ async function openViewPalmaresModal(palmaresId) {
         const palmares = await getPalmaresById(palmaresId);
 
         // Trouver le nom du sport
-        const sport = sportsData.find(s => s.id === palmares.sport);
+        const sport = sportsData.find(s => s.id == palmares.sport);
         const sportName = sport ? sport.name : palmares.sport;
 
         // Remplir les détails
