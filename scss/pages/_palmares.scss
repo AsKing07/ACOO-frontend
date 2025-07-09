@@ -171,3 +171,140 @@
 
   }
   }
+
+  /* Conteneur global */
+/* Conteneur de toutes les cartes (déjà présent, mais on le renforce) */
+.palmares-champions__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Carte individuelle du champion */
+.champion-card {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.champion-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Conteneur d’image fixe avec ratio carré (ou tu peux changer pour 4/3 ou 16/9) */
+.champion-card__img-wrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3; /* fixe la hauteur automatiquement */
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+/* Image forcée à remplir le conteneur */
+.champion-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Infos de la carte */
+.champion-card__info {
+  padding: 16px;
+  text-align: center;
+}
+
+.champion-card__name {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 10px 0 5px;
+}
+
+.champion-card__meta,
+.champion-card__result {
+  font-size: 0.9em;
+  margin-bottom: 6px;
+  color: #555;
+}
+
+.champion-card__badge {
+  display: inline-block;
+  background-color: #0069ed;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+}
+
+
+/* Modale */
+.palmares-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.palmares-modal__content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  text-align: center;
+}
+
+.palmares-modal__close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.modal-img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+/* Bouton Coup d’œil */
+.champion-card__btn {
+  margin-top: 10px;
+  background: #0069ed;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.champion-card__btn:hover {
+  background: #004bb5;
+}
+
+.champion-card__info p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Responsive (mobile) */
+@media (max-width: 600px) {
+  .champion-card {
+    width: 100%;
+  }
+}

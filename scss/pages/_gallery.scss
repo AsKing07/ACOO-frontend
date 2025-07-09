@@ -3,29 +3,82 @@
 @use '../base/mixins' as *;
 
 
+.body-gallery .highlighted-image__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         // remplir tout le conteneur
+    object-position: top;      // afficher le haut
+    background-color: #000;
+    transition: transform 0.4s ease-in-out;
+    filter: brightness(0.85);
+  }
+  
+  .body-gallery .highlighted-image__img:hover {
+    transform: scale(1.05);
+  }
+  
+
+  .body-gallery .highlighted-image #featured-image-container {
+    position: relative;
+    width: 100%;
+   
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
 
 .body-gallery {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     min-height: 100vh;
 
+    
     // ===== IMAGE EN VEDETTE =====
  .highlighted-image {
   position: relative;
-  height: 60vh;
-  max-height: 480px;
+  height: 700px;
   overflow: hidden;
   margin-bottom: $spacer * 8;
+  
 
   #featured-image-container {
     position: relative;
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: flex-end;     // ou center selon ton besoin
     justify-content: center;
-    // align-items: center;
   }
+  
 
+  .overlay-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .go-down-btn {
+    font-size: 2rem; /* Agrandit la flèche */
+    padding: 1rem 2rem;
+    background-color: #005fa3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+  
+    &:hover {
+      background-color: #003f6d;
+    }
+  
+    i {
+      vertical-align: middle;
+    }
+  }
+  
   &__img {
     width: 100%;
     height: 100%;
@@ -67,9 +120,14 @@
 
   .featured-loader {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255,255,255,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -246,7 +304,7 @@
 
   .gallery-images {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: $spacer * 6;
     flex: 1;
     max-width: 1200px;
@@ -735,3 +793,4 @@
   }
 }
 }
+

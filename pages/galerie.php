@@ -8,6 +8,12 @@
     <title>ACOO: Aviron Orléans - Galerie</title>
     <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
+    <style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
 </head>
 
 <body class="body-gallery">
@@ -15,21 +21,74 @@
 
     <!-- Section image en vedette -->
     <section class="highlighted-image">
-        <div id="featured-image-container">
-            <img src="../assets/images/Galerie1.png" alt="Image en vedette" class="highlighted-image__img" id="featured-image">
-            <div class="highlighted-image__overlay-box">
-                <h1>L'image en vedette de la semaine</h1>
-                <p class="featured-description" id="featured-description">Découvrez les moments forts de notre club d'aviron</p>
-            </div>
-        </div>
-        <div class="featured-loader" id="featured-loader" style="display: none;">
-            <div class="loader-spinner"></div>
-        </div>
-    </section>
+  <div id="featured-image-container">
+    <img src="../assets/images/Galerie1.png" alt="Image en vedette" class="highlighted-image__img" id="featured-img">
+    <div class="highlighted-image__overlay-box">
+  <div class="overlay-header">
+    <h1>L'image en vedette de la semaine</h1>
+    <a href="#gallery-section" class="go-down-btn" aria-label="Aller à la galerie">
+      <i class="fas fa-arrow-down"></i>
+    </a>
+  </div>
+  <p class="featured-description" id="featured-description">
+    Découvrez les moments forts de notre club d'aviron
+  </p>
+</div>
+
+  </div>
+  <div class="featured-loader" id="featured-loader" style="display: none;">
+    <div class="loader-spinner"></div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const images = [
+    {
+      src: "../assets/images/Galerie1.png",
+      desc: "Découvrez les moments forts de notre club d'aviron"
+    },
+    {
+      src: "../assets/images/Galerie2.png",
+      desc: "Un paysage paisible au lever du soleil"
+    },
+    {
+      src: "../assets/images/Galerie3.png",
+      desc: "Nos champions célébrant leur victoire"
+    }
+  ];
+
+  const imgElement = document.getElementById("featured-img");
+  const descElement = document.getElementById("featured-description");
+  const loader = document.getElementById("featured-loader");
+
+  let currentIndex = 0;
+
+  function changeImage() {
+    setTimeout(() => {
+      currentIndex = (currentIndex + 1) % images.length;
+      imgElement.classList.add("fade-out");
+
+      setTimeout(() => {
+        imgElement.src = images[currentIndex].src;
+        descElement.textContent = images[currentIndex].desc;
+        imgElement.classList.remove("fade-out");
+        imgElement.classList.add("fade-in");
+        loader.style.display = "none";
+
+        setTimeout(() => imgElement.classList.remove("fade-in"), 500);
+      }, 500);
+    }, 300);
+  }
+
+  setInterval(changeImage, 5000); 
+});
+</script>
+
 
     <!-- Section galerie principale -->
-    <section class="gallery-section">
-        <div class="gallery-header">
+    <section class="gallery-section" id="gallery-section">
+       <div class="gallery-header">
             <h2>Découvrez Notre Galerie</h2>
             <p class="gallery-subtitle">Explorez les moments mémorables de notre club d'aviron</p>
         </div>
@@ -144,6 +203,9 @@
 
     <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
 
+    <script>
+      
+    </script>
     <!-- Scripts -->
     <script type="module" src="../script/pages/gallery.js"></script>
     <script src="../script/navbar.js"></script>
