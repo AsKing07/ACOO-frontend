@@ -1,6 +1,7 @@
 
 <!-- Vérifier si user existe dans le localStorage sinon rediriger vers login -->
-<script>
+<script type="module">
+  import { verifyTokenValidity } from '/service/api/auth.js';
 const user = localStorage.getItem('user');
 
 if (!user) {
@@ -8,21 +9,26 @@ if (!user) {
 } else {
   try {
     const userData = JSON.parse(user);
-    const expiresAt = userData.tokenData && userData.tokenData.expires_at
-      ? new Date(userData.tokenData.expires_at * 1000) // conversion secondes -> ms
-      : null;
+    const token = userData.tokenData.token;
+   
     if (
-      !userData ||
-
-      !expiresAt ||
-      (new Date() > expiresAt)
+      !token 
     ) {
-// Alert vous alert('Session expirée ou utilisateur non autorisé.'); et lorsque confirme on redirige
+
 
     alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
     // Redirection vers la page de connexion
     localStorage.removeItem('user'); // Nettoyer le localStorage
       window.location.href = '/pages/admin/auth/login.php';
+    }
+    else{
+     const isValid = await verifyTokenValidity(token);
+      if (!isValid) {
+        alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
+        // Redirection vers la page de connexion
+        localStorage.removeItem('user'); // Nettoyer le localStorage
+        window.location.href = '/pages/admin/auth/login.php';
+      }
     }
   } catch (e) {
     window.location.href = '/pages/admin/auth/login.php';
@@ -50,7 +56,6 @@ if (!user) {
     <!-- contenu dynamique -->
     <h1>Bienvenue dans le Dashboard Admin</h1>
     <p>Utilisez le menu à gauche pour naviguer entre les différentes sections.</p>
-    <!-- <button class="btn btn-primary">Déconnexion</button> -->
   </main>
 </div>
 

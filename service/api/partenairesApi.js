@@ -1,6 +1,7 @@
-import { Partenaire,PartnerRequest } from '../models/Partenaires.js';
+﻿import { Partenaire,PartnerRequest } from '../models/Partenaires.js';
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getPartenaires() {
     const res = await fetch(`${API_BASE_URL}/api/partners`);
@@ -10,6 +11,8 @@ export async function getPartenaires() {
 }
 
 export async function addPartenaire(partenaire) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
 
@@ -31,6 +34,8 @@ export async function addPartenaire(partenaire) {
 }
 
 export async function updatePartenaire(id, partenaire) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
 if (!tokenData) {
@@ -49,6 +54,8 @@ if (!tokenData) {
     return await res.json();
 }
 export async function deletePartenaire(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
 if (!tokenData)
@@ -65,6 +72,7 @@ if (!tokenData)
     if (!res.ok) throw new Error('Erreur lors de la suppression du partenaire');
     return  res.status === 204; // Return true if deletion was successful
 }
+
 
 
 

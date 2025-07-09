@@ -11,9 +11,9 @@ export class User {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.roles = roles;
+   
         this.tokenData = tokenData;
-        this.isAdmin = roles.includes('ROLE_ADMIN') || this.roles.includes('ROLE_SUPER_ADMIN');
+       
         this.phone = phone || 'Non renseigné';
         this.address = address || 'Non renseigné';
 

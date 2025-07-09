@@ -1,11 +1,3 @@
-// 'id' => $item->getId(),
-//                 'title' => $item->getTitle(),
-//                 'content' => $item->getContent(),
-//                 'image' => $imageUrl,
-//                 'event' => $item->getEvent() ? '/events/' . $item->getEvent()->getId() : null,
-//                 'created_at' => $item->getCreatedAt(),
-//                 'updated_at' => $item->getUpdatedAt(),
-//                 'id_admin' => $item->getIdAdmin() ? '/admin/' . $item->getIdAdmin()->getId() : null
 /**
  * @class
  * Represents a news article.

@@ -1,6 +1,7 @@
-import { Introduction, IntroductionRequest } from "../models/Introduction.js";
+﻿import { Introduction, IntroductionRequest } from "../models/Introduction.js";
 import { User } from "../models/User.js";
 import { API_BASE_URL } from "../config.js";
+import { ensureAuthenticated } from './auth.js';
 
 export async function getIntroductions() {
     const response = await fetch(`${API_BASE_URL}/api/introduction`);
@@ -11,6 +12,8 @@ export async function getIntroductions() {
 }
 
 export async function updateIntroduction(id, data) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null; // Correction: cohérence
     if (!tokenData) {
@@ -32,6 +35,8 @@ export async function updateIntroduction(id, data) {
 }
 
 export async function addIntroduction(introduction) {
+    await ensureAuthenticated();
+
     const introductionRequest = new IntroductionRequest(
         introduction.title,
         introduction.images,
@@ -59,6 +64,8 @@ export async function addIntroduction(introduction) {
 }
 
 export async function deleteIntroduction(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -90,3 +97,4 @@ export async function getIntroductionByTitle(title) {
     const introArray = Array.isArray(introductions) ? introductions : [introductions];
     return introArray.filter(intro => intro.title.trim().toLowerCase() === title.trim().toLowerCase());
 }
+

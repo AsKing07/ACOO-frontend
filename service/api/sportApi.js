@@ -1,6 +1,7 @@
-import { Sport, SportRequest } from "../models/Sport.js";
+﻿import { Sport, SportRequest } from "../models/Sport.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getSports() {
     const res = await fetch(`${API_BASE_URL}/api/sports`);
@@ -10,6 +11,8 @@ export async function getSports() {
 }
 
 export async function addSport(sport) {
+    await ensureAuthenticated();
+
     const sportRequest = new SportRequest(sport.name, sport.description, sport.contact, sport.image).toJson();
   
     const user = User.getCurrentUser();
@@ -33,6 +36,8 @@ if (!tokenData)
 }
 
 export async function updateSport(id, sport) {
+    await ensureAuthenticated();
+
     const sportRequest = new SportRequest(sport.name, sport.description, sport.contact, sport.image).toJson();
     
       const user = User.getCurrentUser();
@@ -54,6 +59,8 @@ if (!tokenData)
 }
 
 export async function deleteSport(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     
 const tokenData = user ? user.tokenData : null;

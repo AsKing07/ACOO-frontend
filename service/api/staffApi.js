@@ -1,6 +1,7 @@
-import { Staff, StaffRequest } from "../models/Staff.js";
+﻿import { Staff, StaffRequest } from "../models/Staff.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getStaff() {
     const res = await fetch(`${API_BASE_URL}/api/staffs`);
@@ -17,6 +18,10 @@ export async function getStaffById(id) {
 }
 
 export async function addStaff(staff) {
+    await ensureAuthenticated();
+
+
+    
     const staffRequest = new StaffRequest(staff.name, staff.role, staff.phoneNumber, staff.mail, staff.image, staff.team?? null ).toJSON();
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
@@ -34,6 +39,9 @@ export async function addStaff(staff) {
 }
 
 export async function updateStaff(id, staff) {
+    await ensureAuthenticated();
+
+    
     const staffRequest = new StaffRequest(staff.name, staff.role, staff.phoneNumber, staff.mail, staff.image, staff.team).toJSON();
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
@@ -54,6 +62,10 @@ export async function updateStaff(id, staff) {
 }
 
 export async function deleteStaff(id) {
+    await ensureAuthenticated();
+
+    await ensureAuthenticated();
+    
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
