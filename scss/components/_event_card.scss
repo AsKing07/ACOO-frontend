@@ -180,14 +180,17 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    justify-content: center;
+    padding-left: 39px;
 
     .event-mini-card__day {
-      font-size: $font-size-base * 6.4;
+      font-size: $font-size-base * 4.8;
       font-family: $font-family;
       font-weight: 700;
       color: white;
       line-height: 1;
-      margin-top: $spacer * 23; // 46px
+      text-align: center;
+      margin: 24px;
     }
     .event-mini-card__month {
       font-size: $font-size-base * 3.2;

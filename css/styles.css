@@ -1008,14 +1008,17 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  justify-content: center;
+  padding-left: 39px;
 }
 .event-mini-card__date .event-mini-card__day {
-  font-size: 64px;
+  font-size: 48px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
   font-weight: 700;
   color: white;
   line-height: 1;
-  margin-top: 46px;
+  text-align: center;
+  margin: 24px;
 }
 .event-mini-card__date .event-mini-card__month {
   font-size: 32px;
@@ -1371,6 +1374,101 @@
     padding: 12px 10px;
   }
 }
+.formulaire-contact {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.formulaire-contact .text-wrapper-2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: #222;
+  margin-bottom: 1rem;
+}
+.formulaire-contact .input-field,
+.formulaire-contact .textarea-field {
+  display: flex;
+  flex-direction: column;
+}
+.formulaire-contact .input-field input,
+.formulaire-contact .input-field textarea,
+.formulaire-contact .textarea-field input,
+.formulaire-contact .textarea-field textarea {
+  padding: 0.9rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+.formulaire-contact .input-field input:focus,
+.formulaire-contact .input-field textarea:focus,
+.formulaire-contact .textarea-field input:focus,
+.formulaire-contact .textarea-field textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+.formulaire-contact .input-field textarea,
+.formulaire-contact .textarea-field textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+.formulaire-contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+}
+.formulaire-contact .frame {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.formulaire-contact .frame a {
+  display: inline-block;
+}
+.formulaire-contact .frame a img {
+  width: 32px;
+  height: 32px;
+  transition: transform 0.3s ease;
+}
+.formulaire-contact .frame a img:hover {
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .formulaire-contact {
+    padding: 1.5rem;
+  }
+  .formulaire-contact .text-wrapper-2 {
+    font-size: 1.5rem;
+  }
+  .formulaire-contact .bouton {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .formulaire-contact {
+    padding: 1rem;
+  }
+  .formulaire-contact .frame {
+    gap: 1rem;
+  }
+  .formulaire-contact .frame img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 .faq-section {
   background: #EBEEF8;
   padding: 30px 80px;
@@ -4086,196 +4184,6 @@
   background: transparent;
   border: none;
   padding: 0;
-}
-.body-contact .division-contact .formulaire-contact {
-  display: flex;
-  flex-direction: column;
-  width: 470px;
-  align-items: center;
-  gap: 18px;
-  padding: 49px 103px;
-  position: relative;
-  background-color: #eaedf7;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0px 4px 10.6px rgba(0, 0, 0, 0.2509803922);
-}
-.body-contact .division-contact .text-wrapper-2 {
-  position: relative;
-  width: fit-content;
-  margin-top: -1px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #000000;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-.body-contact .division-contact .input-field {
-  display: flex;
-  flex-direction: column;
-  width: 396px;
-  align-items: center;
-  justify-content: center;
-  gap: var(--size-space-200);
-  position: relative;
-  flex: 0 0 auto;
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.body-contact .division-contact .input {
-  display: flex;
-  min-width: 240px;
-  align-items: center;
-  justify-content: center;
-  padding: var(--size-space-300) var(--size-space-400) var(--size-space-300) var(--size-space-400);
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  flex: 0 0 auto;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  background-color: var(--color-background-default-default);
-  border-radius: var(--size-radius-200);
-  overflow: hidden;
-  border: 1px solid;
-  border-color: var(--color-border-default-default);
-}
-.body-contact .division-contact .input {
-  height: 48px;
-  min-height: 48px;
-  /* pour forcer la hauteur même si le contenu change */
-  display: flex;
-  align-items: center;
-}
-.body-contact .division-contact .value-wrapper {
-  height: 48px;
-  min-height: 48px;
-  line-height: 48px;
-  box-sizing: border-box;
-}
-.body-contact .division-contact .value {
-  position: relative;
-  flex: 1;
-  margin-top: -0.5px;
-  font-family: var(--single-line-body-base-font-family);
-  font-weight: var(--single-line-body-base-font-weight);
-  color: var(--color-text-default-default);
-  font-size: var(--single-line-body-base-font-size);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  font-style: var(--single-line-body-base-font-style);
-}
-.body-contact .division-contact .value-wrapper {
-  min-width: 240px;
-  padding: var(--size-space-300) var(--size-space-400) var(--size-space-300) var(--size-space-400);
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  background-color: var(--color-background-default-default);
-  border-radius: var(--size-radius-200);
-  overflow: hidden;
-  border: 1px solid;
-  border-color: var(--color-border-default-default);
-  flex: 1;
-  font-family: var(--single-line-body-base-font-family);
-  font-weight: var(--single-line-body-base-font-weight);
-  color: var(--color-text-default-default);
-  font-size: var(--single-line-body-base-font-size);
-  letter-spacing: var(--single-line-body-base-letter-spacing);
-  line-height: var(--single-line-body-base-line-height);
-  font-style: var(--single-line-body-base-font-style);
-}
-.body-contact .division-contact .textarea-field {
-  display: flex;
-  flex-direction: column;
-  width: 396px;
-  height: 124px;
-  align-items: flex-start;
-  gap: 12px;
-  position: relative;
-  margin-left: 0px;
-  margin-right: 0px;
-}
-.body-contact .division-contact .textarea {
-  display: flex;
-  min-width: 240px;
-  min-height: 80px;
-  align-items: flex-start;
-  padding: var(--size-space-300) var(--size-space-400) var(--size-space-300) var(--size-space-400);
-  position: relative;
-  flex: 1;
-  align-self: stretch;
-  width: 100%;
-  flex-grow: 1;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  background-color: var(--color-background-default-default);
-  border-radius: var(--size-radius-200);
-  overflow: hidden;
-  border: 1px solid;
-  border-color: var(--color-border-default-default);
-}
-.body-contact .division-contact .value-2 {
-  position: relative;
-  flex: 1;
-  margin-top: 0px;
-  font-family: var(--body-base-font-family);
-  font-weight: var(--body-base-font-weight);
-  color: var(--color-text-default-default);
-  font-size: var(--body-base-font-size);
-  letter-spacing: var(--body-base-letter-spacing);
-  line-height: var(--body-base-line-height);
-  font-style: var(--body-base-font-style);
-}
-.body-contact .division-contact .drag {
-  position: absolute;
-  width: 7px;
-  height: 7px;
-  top: 111px;
-  left: 384px;
-}
-.body-contact .division-contact .bouton {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 24px 52px;
-  position: relative;
-  flex: 0 0 auto;
-  background-color: #39496a;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0px 4px 18.3px rgba(0, 0, 0, 0.2509803922);
-}
-.body-contact .division-contact .text-wrapper-3 {
-  position: relative;
-  width: fit-content;
-  margin-top: 0px;
-  font-family: "Montserrat-Bold", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: normal;
-}
-.body-contact .division-contact .frame {
-  display: flex;
-  height: 56px;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  position: relative;
-  align-self: stretch;
-  width: 100%;
 }
 .body-contact .division-contact .ig-instagram-media {
   position: relative;
