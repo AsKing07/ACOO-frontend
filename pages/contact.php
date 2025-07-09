@@ -11,7 +11,8 @@
 </head>
 <body class="body-contact">
     <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
-
+    <?php include __DIR__ . '/../templates/components/faq.php'; ?>
+    
     <div class="division-contact">
       <div class="section-information">
         <div class="information">
@@ -79,7 +80,8 @@
 
 
 <script src="../script/navbar.js"></script>
-<script src="../script/formContact.js"></script>
+<script type="module" src="../script/faq.js"></script>
+<script type="module" src="../script/formContact.js"></script>
 <script src="../script/galleryCarrousel.js"></script>
 </body>
 </html>
