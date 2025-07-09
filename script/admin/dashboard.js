@@ -60,6 +60,11 @@ const PAGE_MODULES = {
         initFunction: 'initEquipesDashboard',
         destroyFunction: 'destroyEquipesDashboard'
     },
+    'video.php': {
+        path: '/script/admin/video_dashboard.js',
+        initFunction: 'initVideos',
+        destroyFunction: null
+    },
 
     
 };
@@ -300,6 +305,7 @@ async function loadPage(url) {
           case 'actus': url = '/pages/admin/actualites.php'; break;
           case 'evenements': url = '/pages/admin/events.php'; break;
           case 'galerie': url = '/pages/admin/gallerie.php'; break;
+          case 'vidéo': url = '/pages/admin/video.php'; break;
           case 'faq': url = '/pages/admin/faq.php'; break;
           case 'messagerie': url = '/pages/admin/messagerie.php'; break;
           case 'admin': url = '/pages/admin/admin.php'; break;
