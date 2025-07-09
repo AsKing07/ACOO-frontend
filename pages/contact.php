@@ -44,30 +44,33 @@
       </div>
       <div class="formulaire-contact">
         <div class="text-wrapper-2">CONTACTEZ-NOUS</div>
-        <div class="input-field">
-          <div class="input-field"><input class="value-wrapper" placeholder="Nom" type="nom" /></div>
-        </div>
-        <div class="input-field"><input class="value-wrapper" placeholder="Email" type="email" /></div>
-        <div class="textarea-field">
-          <div class="textarea">
-            <div class="value-2">Message</div>
-            <img class="drag" src="img/drag.svg" />
+          <form class="contact-form">
+            <div class="input-field">
+              <div class="input-field"><input class="value-wrapper" name="name" placeholder="Nom" type="text" /></div>
+            </div>
+            <div class="input-field"><input class="value-wrapper" name="mail" placeholder="Email" type="email" /></div>
+            <div class="textarea-field">
+              <textarea class="value-wrapper" name="subject" placeholder="Sujet" required></textarea>
+            </div>
+            <div class="textarea-field">
+              <textarea class="value-wrapper" name="message" placeholder="Message" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">ENVOYER</button>
+           </form>
+          <div class="frame">
+            <a href="https://twitter.com/ton-compte" target="_blank">
+            <img src="../assets/images/icons/x.png" alt="Icône X (Twitter)">
+            </a>
+
+            <a href="https://www.facebook.com/ton-club" target="_blank">
+            <img src="../assets/images/icons/f.png" alt="Icône Facebook">
+            </a>
+
+            <a href="https://www.instagram.com/ton-compte" target="_blank">
+            <img src="../assets/images/icons/i.png" alt="Icône Instagram">
+            </a>
           </div>
-        </div>
-        <div class="bouton"><div class="text-wrapper-3">ENVOYER</div></div>
-        <div class="frame">
-          <a href="https://twitter.com/ton-compte" target="_blank">
-          <img src="../assets/images/icons/x.png" alt="Icône X (Twitter)">
-          </a>
-
-          <a href="https://www.facebook.com/ton-club" target="_blank">
-          <img src="../assets/images/icons/f.png" alt="Icône Facebook">
-          </a>
-
-          <a href="https://www.instagram.com/ton-compte" target="_blank">
-          <img src="../assets/images/icons/i.png" alt="Icône Instagram">
-          </a>
-        </div>
+        </div> 
       </div>
     </div>
 </body>
