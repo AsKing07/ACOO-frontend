@@ -31,32 +31,40 @@
                         <h1>Présentation</h1>
                     </div>
                     <div class="content_presentation">
-                        <p> 
-                            Implanté au Centre Marcel Baratta depuis des années, l'ACOO bénéficie 
-                            d'installations spacieuses :
-                        </p>
-                        <div class="box color1">
-                            Le club house (avec un espace détente, une terrasse et une table pour les repas, réunion, etc)
-                        </div>
-                        <div class="box color2">
-                            Le garage à bateaux et ses trois travées, abritant 82 bateaux, du skiff au huit
-                        </div>
-                        <div class="box color3">
-                            Le tank à ramer
-                        </div>
-                        <div class="box color4">
-                            La salle de musculation et ergomètres.
+                        <div id="presentation">
+                            <p> 
+                                Implanté au Centre Marcel Baratta depuis des années, l'ACOO bénéficie 
+                                d'installations spacieuses :
+                            </p>
+                            <div class="box color1">
+                                Le club house (avec un espace détente, une terrasse et une table pour les repas, réunion, etc)
+                            </div>
+                            <div class="box color2">
+                                Le garage à bateaux et ses trois travées, abritant 82 bateaux, du skiff au huit
+                            </div>
+                            <div class="box color3">
+                                Le tank à ramer
+                            </div>
+                            <div class="box color4">
+                                La salle de musculation et ergomètres.
+                            </div>
                         </div>
                         <div class="carousel">
                             <button class="carousel-button prev">&#10094;</button>
                             <div class="carousel-window">
                                 <div class="carousel-track">
-                                <img src="../assets/images/champion1.png" alt="1">
-                                <img src="../assets/images/champion1.png" alt="2">
-                                <img src="../assets/images/champion1.png" alt="3">
-                                <img src="../assets/images/champion1.png" alt="4">
-                                <img src="../assets/images/champion1.png" alt="5">
-                                <img src="../assets/images/champion1.png" alt="6">
+                                <img src="" alt="1">
+                                <img src="" alt="2">
+                                <img src="" alt="3">
+                                <img src="" alt="4">
+                                <img src="" alt="5">
+                                <img src="" alt="6">
+                                <img src="" alt="6">
+                                <img src="" alt="6">
+                                <img src="" alt="6">
+                                <img src="" alt="6">
+                                <img src="" alt="6">
+                                <img src="" alt="6">
                                 </div>
                             </div>
                             <button class="carousel-button next">&#10095;</button>
@@ -73,22 +81,17 @@
                     <div class="timeline" id="timeline">
                         <!-- Cercles des années -->
                         <div class="cercle">
-                        <div class="year selected" data-year="2000">2000</div>
-                        <div class="year" data-year="2005">2005</div>
-                        <div class="year" data-year="2010">2010</div>
-                        <div class="year" data-year="2015">2015</div>
-                        <div class="year" data-year="2020">2020</div>
-                        <div class="year" data-year="2020">2021</div>
-                        <div class="year" data-year="2020">2022</div>
-                        <div class="year" data-year="2020">2023</div>
-                        <div class="year" data-year="2020">2024</div>
-                        <div class="year" data-year="2020">2025</div>
-                        <div class="year" data-year="2020">2026</div>
-                        <div class="year" data-year="2020">2027</div>
-                        <div class="year" data-year="2020">2028</div>
-                        <div class="year" data-year="2020">2029</div>
-                        <div class="year" data-year="2020">2030</div>
-                        <div class="year" data-year="2020">2031</div>
+                        <div class="year selected" data-year="1882">1882</div>
+                        <div class="year" data-year="1900">1900</div>
+                        <div class="year" data-year="1920">1920</div>
+                        <div class="year" data-year="1926">1926</div>
+                        <div class="year" data-year="1955">1955</div>
+                        <div class="year" data-year="1958">1958</div>
+                        <div class="year" data-year="1970">1970</div>
+                        <div class="year" data-year="1982">1982</div>
+                        <div class="year" data-year="1992">1992</div>
+                        <div class="year" data-year="1994">1994</div>
+                        <div class="year" data-year="2025">2025</div>
                         <div class="line"></div>
                         </div>
                     </div>
@@ -137,12 +140,11 @@
                             <span>
                                 Manager
                             </span>
+                            <span>
+                                email
+                            </span>
                         </div>
-                        <div class="container_social">
-                            <a href=""><img src="" alt=""></a>
-                            <a href=""><img src="" alt=""></a>
-                            <a href=""><img src="" alt=""></a>                            
-                            </div>
+                       
                     </div>
 
                     <div class="container_card">
@@ -362,10 +364,10 @@
     
             <section id="club_partenaire">
                 <div id="title_club">
-                        <h1>Partenaire</h1>
-                    </div>
+                    <h1>Partenaire</h1>
+                </div>
 
-                  <div class="sponsors-gallery">
+                <div class="partenaire-gallery">
                     <div class="sponsor-logo" data-title="Nike" data-description="Sponsor officiel du club depuis 2021.">
                         <img src="http://s3.gomedia.us/wp-content/uploads/2015/05/Nike_Swoosh_Logo_Black_original.jpg" alt="Nike">
                     </div>
@@ -375,21 +377,18 @@
                     <div class="sponsor-logo" data-title="Decathlon" data-description="Fournisseur officiel de matériel.">
                         <img src="https://www.danstapub.com/wp-content/uploads/2024/03/Wolff_Olins_Decathlon_Press_02_Logo_1920x1280-1536x1024.jpg" alt="Decathlon">
                     </div>
-                    <!-- Ajoute autant de logos que nécessaire -->
+                    
+                </div>
+
+                <!-- Popup -->
+                <div class="popup-overlay">
+                    <div class="popup-content">
+                        <img class="popup-logo" src="" alt="">
+                        <h2 class="popup-title"></h2>
+                        <p class="popup-description"></p>
+                        <button class="popup-close">Fermer</button>
                     </div>
-
-                    <!-- Popup -->
-                    <div class="popup-overlay">
-                        <div class="popup-content">
-                            <img class="popup-logo" src="" alt="">
-                            <h2 class="popup-title"></h2>
-                            <p class="popup-description"></p>
-                            <button class="popup-close">Fermer</button>
-                        </div>
-                    </div>
-
-
-    
+                </div>
             </section>
     
             <section id="club_sponsors">
@@ -407,18 +406,18 @@
                     <div class="sponsor-logo" data-title="Decathlon" data-description="Fournisseur officiel de matériel.">
                         <img src="https://www.danstapub.com/wp-content/uploads/2024/03/Wolff_Olins_Decathlon_Press_02_Logo_1920x1280-1536x1024.jpg" alt="Decathlon">
                     </div>
-                    <!-- Ajoute autant de logos que nécessaire -->
-                    </div>
+                    
+                </div>
 
-                    <!-- Popup -->
-                    <div class="popup-overlay">
-                        <div class="popup-content">
-                            <img class="popup-logo" src="" alt="">
-                            <h2 class="popup-title"></h2>
-                            <p class="popup-description"></p>
-                            <button class="popup-close">Fermer</button>
-                        </div>
+                <!-- Popup -->
+                <div class="popup-overlay">
+                    <div class="popup-content">
+                        <img class="popup-logo" src="" alt="">
+                        <h2 class="popup-title"></h2>
+                        <p class="popup-description"></p>
+                        <button class="popup-close">Fermer</button>
                     </div>
+                </div>
     
             </section>
         </div>
@@ -426,9 +425,12 @@
     </section>
 
     <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
+    <script type="module" src="../script/pages/club.js"></script>
     <script src="../script/club.js"></script>
     <script src="../script/histoire.js"></script>
     <script src="../script/sport.js"></script>
+    <script src="../script/navbar.js"></script>
+   
     
     
 </body>

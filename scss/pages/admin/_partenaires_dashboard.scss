@@ -63,16 +63,30 @@
         }
     }
 
+    // .modal-content {
+    //     background: white;
+    //     border-radius: $spacer * 6;
+    //     width: 90%;
+    //     max-width: 650px;
+    //     max-height: 110vh;
+    //     overflow: hidden;
+    //     // position: relative;
+    //     text-align: center;
+    //     padding: $spacer * 8;
+    //     animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    //     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    // }
     .modal-content {
         background: white;
         border-radius: $spacer * 6;
         width: 90%;
         max-width: 650px;
-        max-height: 90vh;
+        max-height: 95vh;
+        display: flex;
+        flex-direction: column;
         overflow: hidden;
-        // position: relative;
         text-align: center;
-        padding: $spacer * 8;
+        padding: 0; // On le gère ailleurs maintenant
         animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
     }
@@ -88,6 +102,7 @@
         background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
         padding: $spacer * 6 $spacer * 8;
         position: relative;
+        flex-shrink: 0;
         
         h2 {
             margin: 0;
@@ -122,9 +137,17 @@
     }
 
     // ===== FORMULAIRE MODERNE =====
+    // .modern-form {
+    //     padding: $spacer * 8;
+    //     background: #fafbfc;
+    // }
     .modern-form {
+        flex-grow: 1;
+        overflow-y: auto;
         padding: $spacer * 8;
         background: #fafbfc;
+        max-height: calc(95vh - #{$spacer * 24}); // hauteur header + footer estimée
+        box-sizing: border-box;
     }
 
     .form-row {
@@ -355,6 +378,8 @@
         margin-top: $spacer * 10;
         padding-top: $spacer * 6;
         border-top: 2px solid #e1e8ed;
+        flex-shrink: 0;
+        background: white;
     }
 
 
