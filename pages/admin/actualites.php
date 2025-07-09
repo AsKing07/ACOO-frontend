@@ -16,35 +16,6 @@
 
         <div id="news-list" class="news">
             <!-- Les actualités seront affichées ici. -->
-               <div class="editing-img-wording-container newItem ">
-            <div class="edit-img">
-                <img src="" alt="actualité">
-            </div>
-
-            <div class="edit-description">
-            <h2>Sur tous les fronts : l’aviron en pleine accélération</h2>
-
-            <div class="desc-wording">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                    Excepteur sint occaecat cupidatat non proident, 
-                    sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div>
-
-            <div class="edit-btnS">
-                
-                <button class="btn-primary btn-edit">Modifier</button>
-               
-
-                
-                <button class="btn-danger btn-delete">Supprimer</button>
-               
-            </div>
-            </div>
-        </div>
-
         </div>
 
       

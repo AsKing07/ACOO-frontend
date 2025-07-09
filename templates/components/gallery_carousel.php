@@ -6,6 +6,6 @@
       <button class="gallery-section__nav gallery-section__nav--next" aria-label="Suivant"></button>
     </div>
     <div class="gallery-section__cta">
-      <a href="#" class="btn-primary">VOIR +</a>
+      <a href="../../pages/galerie.php" class="btn-primary">VOIR +</a>
     </div>
 </section>
