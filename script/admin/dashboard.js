@@ -498,6 +498,7 @@ document.querySelectorAll('.container_nav_pages li, .container_nav_system li').f
     // Déterminer URL
     const page = this.querySelector('span').textContent.trim().toLowerCase();
     let url = '';
+<<<<<<< HEAD
     switch (page) {
       case 'accueil': url = '/pages/admin/dashboard-accueil.php'; break;
       case 'club': url = '/pages/admin/club.php'; break;
@@ -523,6 +524,27 @@ document.querySelectorAll('.container_nav_pages li, .container_nav_system li').f
     }
   });
 });
+=======
+        switch(page) {
+          case 'accueil': url = '/pages/admin/dashboard-accueil.php'; break;
+          case 'club': url = '/pages/admin/club.php'; break;
+          case 'informations': url = '/pages/admin/informations.php'; break;
+          case 'palmares': url = '/pages/admin/palmares.php'; break;
+          case 'partenaires': url = '/pages/admin/partenaires.php'; break;
+          case 'actus': url = '/pages/admin/actualites.php'; break;
+          case 'evenements': url = '/pages/admin/events.php'; break;
+          case 'galerie': url = '/pages/admin/gallerie.php'; break;
+          case 'vidéo': url = '/pages/admin/video.php'; break;
+          case 'faq': url = '/pages/admin/faq.php'; break;
+          case 'messagerie': url = '/pages/admin/messagerie.php'; break;
+          case 'admin': url = '/pages/admin/admin.php'; break;
+          case 'equipes': url = '/pages/admin/equipes.php'; break;
+          default: url = '/pages/admin/dashboard-accueil.php';
+        }
+        if(url) loadPage(url);
+      });
+    });
+>>>>>>> d499baf4839f89027cc532aff37c41205adab6ae
 
 
 // === DÉCONNEXION ===
