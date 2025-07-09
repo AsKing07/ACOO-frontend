@@ -60,4 +60,55 @@ export async function getUser() {
   return null;
 }
 
+export async function forgotPassword(email)
+{
+  const response = await fetch(`${API_BASE_URL}/admin/forgot-password`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email })
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Erreur lors de la demande de réinitialisation du mot de passe');
+  }
+  
+  // Le backend se charge d'envoyer l'email avec le token
+  return data.message || 'Un lien de réinitialisation a été envoyé à votre adresse email';
+}
 
+export async function resetPassword(token, password) {
+  const response = await fetch(`${API_BASE_URL}/admin/reset-password`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ token, password })
+  });
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Erreur lors de la réinitialisation du mot de passe');
+  }
+  return data.message || 'Mot de passe réinitialisé avec succès';
+
+}
+
+export async function verifyTokenValidity(token) {
+  const response = await fetch(`${API_BASE_URL}/api/contact`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+  const data = await response.json();
+
+  if(!response.ok || data.code === 401) {
+    return false; // Token invalide ou expiré
+  }
+  return true; // Token valide
+
+}

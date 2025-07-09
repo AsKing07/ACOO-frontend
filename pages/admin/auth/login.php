@@ -27,6 +27,10 @@
       <button type="submit" class="login-btn">Se connecter</button>
     </form>
    
+    <div class="cta-container" style="margin-top:1.2rem;font-size:0.98rem;text-align:center;">
+      <a href="/pages/admin/auth/forgot-password.php" style="color:#39496B;text-decoration:underline;">Mot de passe oublié ?</a>
+    </div>
+   
    
     <!-- <div class="cta-container" style="margin-top:1.2rem;font-size:0.98rem;">
       <a href="/pages/admin/auth/register.php" style="color:#39496B;text-decoration:underline;">Créer un compte</a>

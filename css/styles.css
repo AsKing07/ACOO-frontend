@@ -8349,6 +8349,16 @@
   text-align: center;
   display: none;
 }
+.login-body .login-success {
+  color: #00d876;
+  background: #e8f5e8;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.98rem;
+  text-align: center;
+  display: none;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
