@@ -21,7 +21,7 @@
   </div>
   <div class="accueil-hero__content">
     <h1 class="accueil-hero__title">ACOO</h1>
-    <p class="accueil-hero__subtitle">Unis par l’aviron, portés par la passion.</p>
+    <p class="accueil-hero__subtitle">Unis par l'aviron, portés par la passion.</p>
     <a href="#" class="btn-primary">EN SAVOIR +</a>
   </div>
 </section>
@@ -86,7 +86,7 @@ function extractYoutubeId(url) {
         if (featured) {
             const id = extractYoutubeId(featured.videoUrl);
             if (id) {
-                document.getElementById('hero-video').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+                document.getElementById('hero-video').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&color=white&wmode=transparent" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
             }
         }
     } catch (e) {
