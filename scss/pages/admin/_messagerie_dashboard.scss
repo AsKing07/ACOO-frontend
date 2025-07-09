@@ -1,9 +1,16 @@
-@use '../base/functions' as *;
-@use '../base/variables' as *;
-@use '../base/mixins' as *;
+@use '../../base/functions' as *;
+@use '../../base/variables' as *;
+@use '../../base/mixins' as *;
 
+.body-messagerie_dashboard{
+    .conversation-list p {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 2rem;
+  }
 
-.messagerie {
+  .messagerie {
   background: #fff;
   border-radius: 1rem;
   padding: 2rem;
@@ -125,4 +132,7 @@
       }
     }
   }
+}
+
+
 }

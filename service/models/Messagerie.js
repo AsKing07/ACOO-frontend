@@ -1,14 +1,3 @@
-[
-  {
-    "id": 0,
-    "name": "John Doe",
-    "mail": "john.doe@example.com",
-    "subject": "Demande d'information",
-    "description": "Je souhaiterais obtenir des informations sur...",
-    "created_at": "2025-07-09T02:36:28.337Z"
-  }
-]
-
 /**
  * @class
  * Represents a message in the messaging system.

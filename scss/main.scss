@@ -22,7 +22,6 @@
 @use 'components/edit_wording_card';
 @use 'components/container_editing';
 @use 'components/club_menu';
-@use 'components/messagerie_dashboard';
 
 
 //Import des styles des pages personnalisées
@@ -47,6 +46,8 @@
 @use 'pages/admin/palmares_dashboard';
 @use 'pages/admin/partenaires_dashboard';
 @use 'pages/admin/gallery_dashboard';
+@use 'pages/admin/messagerie_dashboard';
+
 
 //Import des layouts
 @use 'layout/grid';
