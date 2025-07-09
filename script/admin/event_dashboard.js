@@ -415,10 +415,20 @@ class UnifiedCalendarManager {
                     const timeElement = document.createElement('div');
                     timeElement.className = 'item-time';
                     if (item.itemType === 'event' && item.startDatetime) {
-                        const eventDate = new Date(item.startDatetime);
-                        timeElement.textContent = eventDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                        const eventDate = this.parseApiDateTime(item.startDatetime);
+                        const endDate = this.parseApiDateTime(item.endDatetime);
+                        if (eventDate) {
+                            timeElement.textContent = eventDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                        }
+                        if (endDate) {
+                            timeElement.textContent += ` - ${endDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })}`;
+                        }
                     } else if (item.itemType === 'recurring' && item.start_time) {
                         timeElement.textContent = this.extractTimeFromDateTime(item.start_time);
+                        if(item.duration)
+                        {
+                            timeElement.textContent += ` - ${this.getFormattedEndTimeForRecurring(item)}`;
+                        }
                     } else if (item.itemType === 'exception') {
                         timeElement.textContent = item.is_cancelled ? 'Annulé' : 'Modifié';
                     }
@@ -478,9 +488,14 @@ class UnifiedCalendarManager {
         
         // Vérifier les exceptions pour cette date
         const hasException = this.allScheduleExceptions.some(exception => {
-            const exceptionDate = new Date(exception.date);
+            let exceptionDate;
+            if (exception.date.includes(' ')) {
+                exceptionDate = this.parseApiDateTime(exception.date);
+            } else {
+                exceptionDate = this.parseApiDateTime(exception.date + ' 00:00');
+            }
             return exception.recurring_schedule == schedule.id && 
-                   exceptionDate.toDateString() === date.toDateString();
+                   exceptionDate && exceptionDate.toDateString() === date.toDateString();
         });
         
         return !hasException;
@@ -544,14 +559,23 @@ class UnifiedCalendarManager {
                 ).filter(Boolean).join(', ') || '';
                 sportTeamInfo = [sportName, teamNames].filter(Boolean).join(' - ');
                 
-                const startDate = new Date(item.startDatetime);
-                const endDate = new Date(item.endDatetime);
-                scheduleInfo = `
-                    <div class="schedule-info">
-                        <div class="schedule-date">${startDate.toLocaleDateString('fr-FR')}</div>
-                        <div class="schedule-time">${startDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})} - ${endDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}</div>
-                    </div>
-                `;
+                const startDate = this.parseApiDateTime(item.startDatetime);
+                const endDate = this.parseApiDateTime(item.endDatetime);
+                if (startDate && endDate) {
+                    scheduleInfo = `
+                        <div class="schedule-info">
+                            <div class="schedule-date">${startDate.toLocaleDateString('fr-FR')}</div>
+                            <div class="schedule-time">${startDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})} - ${endDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}</div>
+                        </div>
+                    `;
+                } else {
+                    scheduleInfo = `
+                        <div class="schedule-info">
+                            <div class="schedule-date">Date invalide</div>
+                            <div class="schedule-time">-</div>
+                        </div>
+                    `;
+                }
                 
                 statusInfo = item.isCancelled ? 
                     '<span class="badge badge-status status-cancelled"><i class="fas fa-ban"></i> Annulé</span>' : 
@@ -582,16 +606,29 @@ class UnifiedCalendarManager {
                     sportTeamInfo = exceptSport;
                 }
                 
-                const exceptionDate = new Date(item.date);
-                scheduleInfo = item.is_cancelled ? 
-                    `<div class="schedule-info">
-                        <div class="schedule-date">${exceptionDate.toLocaleDateString('fr-FR')}</div>
-                        <div class="schedule-time">Séance annulée</div>
-                    </div>` :
-                    `<div class="schedule-info">
-                        <div class="schedule-date">${exceptionDate.toLocaleDateString('fr-FR')}</div>
-                        <div class="schedule-time">${this.extractTimeFromDateTime(item.startTime)} - ${this.extractTimeFromDateTime(item.endTime)}</div>
+                let exceptionDate;
+                if (item.date.includes(' ')) {
+                    exceptionDate = this.parseApiDateTime(item.date);
+                } else {
+                    exceptionDate = this.parseApiDateTime(item.date + ' 00:00');
+                }
+                
+                if (exceptionDate) {
+                    scheduleInfo = item.is_cancelled ? 
+                        `<div class="schedule-info">
+                            <div class="schedule-date">${exceptionDate.toLocaleDateString('fr-FR')}</div>
+                            <div class="schedule-time">Séance annulée</div>
+                        </div>` :
+                        `<div class="schedule-info">
+                            <div class="schedule-date">${exceptionDate.toLocaleDateString('fr-FR')}</div>
+                            <div class="schedule-time">${this.extractTimeFromDateTime(item.startTime)} - ${this.extractTimeFromDateTime(item.endTime)}</div>
+                        </div>`;
+                } else {
+                    scheduleInfo = `<div class="schedule-info">
+                        <div class="schedule-date">Date invalide</div>
+                        <div class="schedule-time">-</div>
                     </div>`;
+                }
                 
                 statusInfo = item.is_cancelled ? 
                     '<span class="badge badge-status status-cancelled"><i class="fas fa-ban"></i> Annulé</span>' : 
@@ -904,21 +941,26 @@ class UnifiedCalendarManager {
     updateDateTimeInfo(dateElement, timeElement, itemData, itemType) {
         switch (itemType) {
             case 'event':
-                const startDate = new Date(itemData.startDatetime);
-                const endDate = new Date(itemData.endDatetime);
+                const startDate = this.parseApiDateTime(itemData.startDatetime);
+                const endDate = this.parseApiDateTime(itemData.endDatetime);
                 
-                if (startDate.toDateString() === endDate.toDateString()) {
-                    dateElement.textContent = startDate.toLocaleDateString('fr-FR', {
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                    });
+                if (startDate && endDate) {
+                    if (startDate.toDateString() === endDate.toDateString()) {
+                        dateElement.textContent = startDate.toLocaleDateString('fr-FR', {
+                            weekday: 'long',
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric'
+                        });
+                    } else {
+                        dateElement.innerHTML = `Du ${startDate.toLocaleDateString('fr-FR')} au ${endDate.toLocaleDateString('fr-FR')}`;
+                    }
+                    
+                    timeElement.textContent = `${startDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})} - ${endDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}`;
                 } else {
-                    dateElement.innerHTML = `Du ${startDate.toLocaleDateString('fr-FR')} au ${endDate.toLocaleDateString('fr-FR')}`;
+                    dateElement.textContent = 'Date invalide';
+                    timeElement.textContent = '-';
                 }
-                
-                timeElement.textContent = `${startDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})} - ${endDate.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'})}`;
                 break;
                 
             case 'recurring':
@@ -929,18 +971,31 @@ class UnifiedCalendarManager {
                 break;
                 
             case 'exception':
-                const exceptionDate = new Date(itemData.date);
-                dateElement.textContent = exceptionDate.toLocaleDateString('fr-FR', {
-                    weekday: 'long',
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-                });
+                // Pour les exceptions, la date peut être au format d/m/Y ou d/m/Y H:i
+                let exceptionDate;
+                if (itemData.date.includes(' ')) {
+                    // Format avec heure
+                    exceptionDate = this.parseApiDateTime(itemData.date);
+                } else {
+                    // Format date seule, ajouter une heure par défaut
+                    exceptionDate = this.parseApiDateTime(itemData.date + ' 00:00');
+                }
+                
+                if (exceptionDate) {
+                    dateElement.textContent = exceptionDate.toLocaleDateString('fr-FR', {
+                        weekday: 'long',
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                } else {
+                    dateElement.textContent = 'Date invalide';
+                }
                 
                 if (itemData.is_cancelled) {
                     timeElement.innerHTML = '<em>Séance annulée</em>';
                 } else {
-                    timeElement.textContent = `${itemData.startTime} - ${itemData.endTime}`;
+                    timeElement.textContent = `${itemData.startTime || '-'} - ${itemData.endTime || '-'}`;
                 }
                 break;
         }
@@ -1342,13 +1397,24 @@ class UnifiedCalendarManager {
         };
     }
 
-    formatDateTimeForApi(date, time) {
-        if (!date || !time) return '';
-        
-        // Convertir de YYYY-MM-DD HH:mm vers DD/MM/YYYY HH:mm
-        const [year, month, day] = date.split('-');
-        return `${day}/${month}/${year} ${time}`;
-    }
+   formatDateTimeForApi(date, time) {
+    if (!date || !time) return '';
+    
+    // Convertir de YYYY-MM-DD HH:mm vers d/m/Y H:i
+    const [year, month, day] = date.split('-');
+    
+    // Retirer les zéros de tête pour le jour et le mois
+    const dayFormatted = parseInt(day).toString();
+    const monthFormatted = parseInt(month).toString();
+    
+    // Retirer les zéros de tête pour l'heure
+    const [hour, minute] = time.split(':');
+    const hourFormatted = parseInt(hour).toString();
+    const minuteFormatted = minute; // Garder les minutes avec zéro si nécessaire
+    
+    return `${dayFormatted}/${monthFormatted}/${year} ${hourFormatted}:${minuteFormatted}`;
+}
+
 
     collectEventImages() {
         // Collecte des images si elles existent dans le formulaire
@@ -1411,14 +1477,37 @@ class UnifiedCalendarManager {
         return true;
     }
 
-    parseApiDateTime(dateTimeString) {
-        // Convertir DD/MM/YYYY HH:mm vers objet Date
-        const [datePart, timePart] = dateTimeString.split(' ');
-        const [day, month, year] = datePart.split('/');
-        const [hour, minute] = timePart.split(':');
-        
-        return new Date(parseInt(year), parseInt(month) - 1, parseInt(day), parseInt(hour), parseInt(minute));
+parseApiDateTime(dateTimeString) {
+    if (!dateTimeString || typeof dateTimeString !== 'string') {
+        return null;
     }
+    
+    // Convertir d/m/Y H:i vers objet Date
+    const [datePart, timePart] = dateTimeString.split(' ');
+    
+    if (!datePart || !timePart) {
+        console.warn('Format de date invalide:', dateTimeString);
+        return null;
+    }
+    
+    const [day, month, year] = datePart.split('/');
+    const [hour, minute] = timePart.split(':');
+    
+    // Validation des composants
+    if (!day || !month || !year || !hour || !minute) {
+        console.warn('Composants de date manquants:', dateTimeString);
+        return null;
+    }
+    
+    return new Date(
+        parseInt(year), 
+        parseInt(month) - 1, // Les mois sont indexés à partir de 0
+        parseInt(day), 
+        parseInt(hour), 
+        parseInt(minute)
+    );
+}
+
 
     async handleRecurringFormSubmit() {
         const formData = this.collectRecurringFormData();
@@ -1577,17 +1666,11 @@ class UnifiedCalendarManager {
         const isCancelled = document.getElementById('exception-cancelled').checked;
         const exceptionDate = document.getElementById('exception-date').value;
         
-        // Convertir la date du format YYYY-MM-DD vers DD/MM/YYYY
+        // Convertir la date du format YYYY-MM-DD vers DD/MM/YYYY HH:mm
         let formattedDate = '';
-        if (exceptionDate) {
-            const [year, month, day] = exceptionDate.split('-');
-            formattedDate = `${day}/${month}/${year}`;
-            
-            // Validation du format de date
-            if (!day || !month || !year || day.length !== 2 || month.length !== 2 || year.length !== 4) {
-                console.error('❌ Format de date invalide:', { exceptionDate, formattedDate });
-            }
-        }
+formattedDate =  this.formatDateTimeForApi(exceptionDate, document.getElementById('exception-start-time').value);
+
+    
         
         const formData = {
             recurring_schedule: document.getElementById('exception-recurring').value,
@@ -1791,43 +1874,49 @@ class UnifiedCalendarManager {
     }
 
     // Ouvrir le modal d'édition d'une exception d'horaire
-    editScheduleException(exceptionId) {
-        const exception = this.allScheduleExceptions.find(se => se.id == exceptionId);
-        if (!exception) return;
-        
-        this.currentItemType = 'exception';
-        this.currentItemId = exceptionId;
-        
-        // Remplir le formulaire
-        document.getElementById('exception-id').value = exception.id;
-        document.getElementById('exception-recurring').value = exception.recurring_schedule;
-        
-        const exceptionDate = new Date(exception.date);
-        const year = exceptionDate.getFullYear();
-        const month = String(exceptionDate.getMonth() + 1).padStart(2, '0');
-        const day = String(exceptionDate.getDate()).padStart(2, '0');
-        document.getElementById('exception-date').value = `${year}-${month}-${day}`;
-        
-        document.getElementById('exception-cancelled').checked = exception.is_cancelled;
-        document.getElementById('exception-start-time').value = exception.startTime || '';
-        document.getElementById('exception-end-time').value = exception.endTime || '';
-        document.getElementById('exception-location').value = exception.location || '';
-        document.getElementById('exception-reason').value = exception.reason || '';
-        
-        // Gérer l'affichage des champs selon l'état annulé
-        const modificationFields = document.getElementById('exception-modification-fields');
-        if (modificationFields) {
-            modificationFields.style.display = exception.is_cancelled ? 'none' : 'block';
+   editScheduleException(exceptionId) {
+    const exception = this.allScheduleExceptions.find(se => se.id == exceptionId);
+    if (!exception) return;
+    
+    this.currentItemType = 'exception';
+    this.currentItemId = exceptionId;
+    
+    // Remplir le formulaire
+    document.getElementById('exception-id').value = exception.id;
+    document.getElementById('exception-recurring').value = exception.recurring_schedule;
+    
+    // Convertir la date du format d/m/Y vers YYYY-MM-DD pour l'input date
+    if (exception.date) {
+        const dateObj = this.parseApiDateTime(exception.date + ' 00:00'); // Ajouter une heure fictive
+        if (dateObj) {
+            const year = dateObj.getFullYear();
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+            const day = String(dateObj.getDate()).padStart(2, '0');
+            document.getElementById('exception-date').value = `${year}-${month}-${day}`;
         }
-        
-        const modalTitle = document.getElementById('exception-modal-title');
-        if (modalTitle) modalTitle.textContent = 'Modifier l\'Exception d\'Horaire';
-        
-        const submitBtn = document.getElementById('exception-submit-btn');
-        if (submitBtn) submitBtn.querySelector('.btn-text').textContent = 'Modifier';
-        
-        this.showModal(this.elements.exceptionModal);
     }
+    
+    document.getElementById('exception-cancelled').checked = exception.is_cancelled;
+    document.getElementById('exception-start-time').value = exception.startTime || '';
+    document.getElementById('exception-end-time').value = exception.endTime || '';
+    document.getElementById('exception-location').value = exception.location || '';
+    document.getElementById('exception-reason').value = exception.reason || '';
+    
+    // Gérer l'affichage des champs selon l'état annulé
+    const modificationFields = document.getElementById('exception-modification-fields');
+    if (modificationFields) {
+        modificationFields.style.display = exception.is_cancelled ? 'none' : 'block';
+    }
+    
+    const modalTitle = document.getElementById('exception-modal-title');
+    if (modalTitle) modalTitle.textContent = 'Modifier l\'Exception d\'Horaire';
+    
+    const submitBtn = document.getElementById('exception-submit-btn');
+    if (submitBtn) submitBtn.querySelector('.btn-text').textContent = 'Modifier';
+    
+    this.showModal(this.elements.exceptionModal);
+}
+
 
     initializeTooltips() {
         // Initialiser les tooltips pour une meilleure UX
@@ -1929,15 +2018,21 @@ document.getElementById("body-event-dashboard").appendChild(popup);
     getItemDetailsText(item) {
         switch (item.itemType) {
             case 'event':
-                const startTime = new Date(item.startDatetime).toLocaleTimeString('fr-FR', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-                const endTime = new Date(item.endDatetime).toLocaleTimeString('fr-FR', {
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-                return `${startTime} - ${endTime} • ${item.location || 'Lieu non défini'}`;
+                const startDate = this.parseApiDateTime(item.startDatetime);
+                const endDate = this.parseApiDateTime(item.endDatetime);
+                if (startDate && endDate) {
+                    const startTime = startDate.toLocaleTimeString('fr-FR', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    const endTime = endDate.toLocaleTimeString('fr-FR', {
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    });
+                    return `${startTime} - ${endTime} • ${item.location || 'Lieu non défini'}`;
+                } else {
+                    return `Heure invalide • ${item.location || 'Lieu non défini'}`;
+                }
             case 'recurring':
                 return `${item.start_time} (${item.duration}min) • ${item.location || 'Lieu non défini'}`;
             case 'exception':
@@ -2052,8 +2147,8 @@ document.getElementById("body-event-dashboard").appendChild(popup);
         // Événements ponctuels
         this.filteredItems.filter(item => item.itemType === 'event').forEach(event => {
             if (event.startDatetime) {
-                const eventDate = new Date(event.startDatetime);
-                if (eventDate.toDateString() === date.toDateString()) {
+                const eventDate = this.parseApiDateTime(event.startDatetime);
+                if (eventDate && eventDate.toDateString() === date.toDateString()) {
                     items.push(event);
                 }
             }
@@ -2083,8 +2178,13 @@ document.getElementById("body-event-dashboard").appendChild(popup);
         // Exceptions d'horaires
         this.filteredItems.filter(item => item.itemType === 'exception').forEach(exception => {
             if (exception.date) {
-                const exceptionDate = new Date(exception.date);
-                if (exceptionDate.toDateString() === date.toDateString()) {
+                let exceptionDate;
+                if (exception.date.includes(' ')) {
+                    exceptionDate = this.parseApiDateTime(exception.date);
+                } else {
+                    exceptionDate = this.parseApiDateTime(exception.date + ' 00:00');
+                }
+                if (exceptionDate && exceptionDate.toDateString() === date.toDateString()) {
                     items.push(exception);
                 }
             }
@@ -2121,68 +2221,113 @@ document.getElementById("body-event-dashboard").appendChild(popup);
     }
 
     // Fonction utilitaire pour extraire l'heure du format DD/MM/YYYY HH:mm, ISO ou HH:mm
-    extractTimeFromDateTime(dateTimeString) {
-        if (!dateTimeString || typeof dateTimeString !== 'string') {
-            return null;
-        }
-        
-        // Format HH:mm direct
-        if (dateTimeString.match(/^\d{1,2}:\d{2}$/)) {
-            return dateTimeString;
-        }
-        
-        // Format ISO: "2025-07-22T19:49:00+00:00" ou similaire
-        if (dateTimeString.includes('T')) {
-            try {
-                // Extraire directement l'heure de la chaîne ISO sans conversion timezone
-                const timePart = dateTimeString.split('T')[1];
-                if (timePart) {
-                    const timeOnly = timePart.split(':').slice(0, 2).join(':');
-                    if (timeOnly.match(/^\d{1,2}:\d{2}$/)) {
-                        return timeOnly;
-                    }
-                }
-            } catch (e) {
-                console.warn('Erreur lors du parsing de la date ISO:', e);
-            }
-        }
-        
-        // Format DD/MM/YYYY HH:mm
-        const parts = dateTimeString.split(' ');
-        if (parts.length === 2) {
-            const timePart = parts[1]; // Récupérer la partie HH:mm
-            if (timePart.match(/^\d{1,2}:\d{2}$/)) {
-                return timePart;
-            }
-        }
-        
+ extractTimeFromDateTime(dateTimeString) {
+    if (!dateTimeString || typeof dateTimeString !== 'string') {
         return null;
     }
+    
+    // Format H:i direct (ex: "9:30" ou "14:45")
+    if (dateTimeString.match(/^\d{1,2}:\d{2}$/)) {
+        return dateTimeString;
+    }
+    
+    // Format d/m/Y H:i (ex: "15/7/2025 9:30")
+    const parts = dateTimeString.split(' ');
+    if (parts.length === 2) {
+        const timePart = parts[1]; // Récupérer la partie H:i
+        if (timePart.match(/^\d{1,2}:\d{2}$/)) {
+            return timePart;
+        }
+    }
+    
+    // Format ISO pour compatibilité (si encore présent)
+    if (dateTimeString.includes('T')) {
+        try {
+            const timePart = dateTimeString.split('T')[1];
+            if (timePart) {
+                const timeOnly = timePart.split(':').slice(0, 2).join(':');
+                if (timeOnly.match(/^\d{1,2}:\d{2}$/)) {
+                    return timeOnly;
+                }
+            }
+        } catch (e) {
+            console.warn('Erreur lors du parsing de la date ISO:', e);
+        }
+    }
+    
+    console.warn('Format de date/heure non reconnu:', dateTimeString);
+    return null;
+}
+
 
     // Fonction utilitaire pour calculer l'heure de fin formatée pour les horaires récurrents
-    getFormattedEndTimeForRecurring(item) {
-        if (!item.start_time || !item.duration) return '';
-        
-        const timeString = this.extractTimeFromDateTime(item.start_time);
-        if (!timeString) return '';
-        
-        // Parser l'heure de début
-        const timeParts = timeString.split(':');
-        if (timeParts.length !== 2) return '';
-        
-        const hours = parseInt(timeParts[0]);
-        const minutes = parseInt(timeParts[1]);
-        
-        if (isNaN(hours) || isNaN(minutes)) return '';
-        
-        const startMinutes = hours * 60 + minutes;
-        const endMinutes = startMinutes + (item.duration || 0);
-        
-        const endHours = Math.floor(endMinutes / 60);
-        const endMins = endMinutes % 60;
-        
-        return `${String(endHours).padStart(2, '0')}:${String(endMins).padStart(2, '0')}`;
+getFormattedEndTimeForRecurring(item) {
+    if (!item.start_time || !item.duration) return '';
+    
+    const timeString = this.extractTimeFromDateTime(item.start_time);
+    if (!timeString) return '';
+    
+    // Parser l'heure de début
+    const timeParts = timeString.split(':');
+    if (timeParts.length !== 2) return '';
+    
+    const hours = parseInt(timeParts[0]);
+    const minutes = parseInt(timeParts[1]);
+    
+    if (isNaN(hours) || isNaN(minutes)) return '';
+    
+    const startMinutes = hours * 60 + minutes;
+    const endMinutes = startMinutes + (item.duration || 0);
+    
+    const endHours = Math.floor(endMinutes / 60);
+    const endMins = endMinutes % 60;
+    
+    // Formatter selon le format H:i (sans zéros de tête pour les heures)
+    return `${endHours}:${String(endMins).padStart(2, '0')}`;
+}
+
+/**
+ * Valide si une chaîne correspond au format d/m/Y H:i
+ */
+isValidBackendDateFormat(dateString) {
+    if (!dateString || typeof dateString !== 'string') return false;
+    
+    // Regex pour d/m/Y H:i (ex: "5/7/2025 9:30" ou "15/12/2025 14:45")
+    const regex = /^\d{1,2}\/\d{1,2}\/\d{4} \d{1,2}:\d{2}$/;
+    return regex.test(dateString);
+}
+
+/**
+ * Formate une date du backend (d/m/Y H:i) pour l'affichage français
+ */
+formatBackendDateForDisplay(backendDateString) {
+    if (!this.isValidBackendDateFormat(backendDateString)) {
+        return 'Date invalide';
     }
+    
+    const dateObj = this.parseApiDateTime(backendDateString);
+    if (!dateObj) return 'Date invalide';
+    
+    return {
+        date: dateObj.toLocaleDateString('fr-FR', {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }),
+        time: dateObj.toLocaleTimeString('fr-FR', {
+            hour: '2-digit',
+            minute: '2-digit'
+        }),
+        dateOnly: dateObj.toLocaleDateString('fr-FR'),
+        timeOnly: dateObj.toLocaleTimeString('fr-FR', {
+            hour: '2-digit',
+            minute: '2-digit'
+        })
+    };
+}
+
+
 
     // Méthode pour exporter le calendrier
     exportCalendar(format = 'ics') {
@@ -2213,8 +2358,8 @@ document.getElementById("body-event-dashboard").appendChild(popup);
         
         // Événements ponctuels dans la plage
         this.allEvents.forEach(event => {
-            const eventDate = new Date(event.startDatetime);
-            if (eventDate >= startDate && eventDate <= endDate) {
+            const eventDate = this.parseApiDateTime(event.startDatetime);
+            if (eventDate && eventDate >= startDate && eventDate <= endDate) {
                 items.push({ ...event, itemType: 'event' });
             }
         });
@@ -2227,13 +2372,22 @@ document.getElementById("body-event-dashboard").appendChild(popup);
 
         // Exceptions dans la plage
         this.allScheduleExceptions.forEach(exception => {
-            const exceptionDate = new Date(exception.date);
-            if (exceptionDate >= startDate && exceptionDate <= endDate) {
+            let exceptionDate;
+            if (exception.date.includes(' ')) {
+                exceptionDate = this.parseApiDateTime(exception.date);
+            } else {
+                exceptionDate = this.parseApiDateTime(exception.date + ' 00:00');
+            }
+            if (exceptionDate && exceptionDate >= startDate && exceptionDate <= endDate) {
                 items.push({ ...exception, itemType: 'exception' });
             }
         });
 
-        return items.sort((a, b) => new Date(a.startDatetime) - new Date(b.startDatetime));
+        return items.sort((a, b) => {
+            const dateA = this.parseApiDateTime(a.startDatetime) || new Date(0);
+            const dateB = this.parseApiDateTime(b.startDatetime) || new Date(0);
+            return dateA - dateB;
+        });
     }
 
     generateICSContent(items) {

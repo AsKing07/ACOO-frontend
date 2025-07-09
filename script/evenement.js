@@ -120,6 +120,11 @@ class OptimizedCalendar {
                 sports: this.allSports.length
             });
             
+            // Debug des données récurrentes
+            if (this.allRecurringSchedules.length > 0) {
+                console.log('🔄 Premier horaire récurrent:', this.allRecurringSchedules[0]);
+            }
+            
             this.populateFilters();
             this.applyFilters();
             this.lastCacheUpdate = Date.now();
@@ -162,7 +167,9 @@ class OptimizedCalendar {
             if (this.filters.sport) {
                 recurring = recurring.filter(schedule => schedule.sport == this.filters.sport);
             }
-            this.filteredItems.push(...recurring.map(item => ({...item, itemType: 'recurring'})));
+            const recurringItems = recurring.map(item => ({...item, itemType: 'recurring'}));
+            console.log('🔄 Horaires récurrents filtrés:', recurringItems);
+            this.filteredItems.push(...recurringItems);
         }
         
         // Exceptions
@@ -176,6 +183,13 @@ class OptimizedCalendar {
             }
             this.filteredItems.push(...exceptions.map(item => ({...item, itemType: 'exception'})));
         }
+        
+        console.log('📊 Filtres appliqués:', {
+            total: this.filteredItems.length,
+            events: this.filteredItems.filter(i => i.itemType === 'event').length,
+            recurring: this.filteredItems.filter(i => i.itemType === 'recurring').length,
+            exceptions: this.filteredItems.filter(i => i.itemType === 'exception').length
+        });
         
         this.clearCache();
         this.updateStats();
@@ -229,6 +243,13 @@ class OptimizedCalendar {
         }
 
         this.elements.monthDisplay.innerHTML = `${this.monthNames[month]}<br>${year}`;
+        
+        // Diagnostic temporaire
+        console.log('📅 Calendrier rendu pour:', `${this.monthNames[month]} ${year}`);
+        setTimeout(() => {
+            this.diagnoseRecurringIssues();
+            this.testMondaySchedules();
+        }, 100);
     }
 
     createDayElement(dayNumber, isAdjacent, date, isToday = false) {
@@ -331,6 +352,10 @@ class OptimizedCalendar {
         }
         
         const items = [];
+        
+        console.log('📅 Recherche d\'événements pour:', dateKey, {
+            recurringCount: this.filteredItems.filter(item => item.itemType === 'recurring').length
+        });
 
         // Événements ponctuels
         this.filteredItems.filter(item => item.itemType === 'event').forEach(event => {
@@ -345,8 +370,14 @@ class OptimizedCalendar {
             if (this.isRecurringOnDate(schedule, date)) {
                 const hasException = this.allScheduleExceptions.some(exception => {
                     const exceptionDate = this.parseDate(exception.date);
-                    return exception.recurring_schedule == schedule.id && 
+                    return String(exception.recurring_schedule) === String(schedule.id) && 
                            exceptionDate && exceptionDate.toDateString() === dateKey;
+                });
+                
+                console.log('✅ Horaire récurrent trouvé:', {
+                    schedule: schedule.title || schedule.id,
+                    hasException,
+                    date: dateKey
                 });
                 
                 if (!hasException) {
@@ -370,6 +401,8 @@ class OptimizedCalendar {
             return timeA.localeCompare(timeB);
         });
         
+        console.log('📊 Items trouvés pour', dateKey, ':', items.length, items);
+        
         this.itemsCache.set(dateKey, items);
         return items;
     }
@@ -378,14 +411,46 @@ class OptimizedCalendar {
         const scheduleDayName = schedule.day_of_week;
         const dateDayName = this.dayNames[date.getDay()];
         
+        console.log('🔍 Vérification récurrence:', {
+            schedule: schedule.title || schedule.id,
+            scheduleDayName,
+            dateDayName,
+            date: date.toDateString(),
+            match: scheduleDayName === dateDayName,
+            rawEndDate: schedule.end_date
+        });
+        
         if (scheduleDayName !== dateDayName) {
             return false;
         }
         
         // Vérifier la date de fin si elle existe
         if (schedule.end_date) {
+            // Ignorer les dates de fin invalides ou vides
+            if (schedule.end_date === '0000-00-00' || 
+                schedule.end_date === '0000-00-00 00:00:00' || 
+                schedule.end_date === '' || 
+                schedule.end_date === null || 
+                schedule.end_date === undefined ||
+                schedule.end_date.startsWith('0000-00-00')) {
+                console.log('🔄 Date de fin ignorée (invalide):', schedule.end_date);
+                return true;
+            }
+            
             const endDate = this.parseDate(schedule.end_date);
-            if (endDate && date > endDate) {
+            console.log('📅 Date de fin parsée:', {
+                raw: schedule.end_date,
+                parsed: endDate ? endDate.toDateString() : 'null',
+                currentDate: date.toDateString(),
+                isValid: endDate && !isNaN(endDate.getTime())
+            });
+            
+            if (endDate && !isNaN(endDate.getTime()) && date > endDate) {
+                console.log('⏰ Horaire récurrent expiré:', {
+                    schedule: schedule.title || schedule.id,
+                    endDate: endDate.toDateString(),
+                    currentDate: date.toDateString()
+                });
                 return false;
             }
         }
@@ -411,8 +476,8 @@ class OptimizedCalendar {
             case 'exception':
                 if (item.is_cancelled) {
                     return 'Annulé';
-                } else if ( item.startTime && item.endTime) {
-                    return `${this.extractTime( item.startTime)}-${this.extractTime( item.endTime)}`;
+                } else if (item.startTime && item.endTime) {
+                    return `${this.extractTime(item.startTime)}-${this.extractTime(item.endTime)}`;
                 }
                 return 'Modifié';
                 
@@ -513,7 +578,7 @@ class OptimizedCalendar {
             // Vérifier s'il n'y a pas d'exception
             const hasException = this.allScheduleExceptions.some(exception => {
                 const exceptionDate = this.parseDate(exception.date);
-                return exception.recurring_schedule == schedule.id && 
+                return String(exception.recurring_schedule) === String(schedule.id) && 
                        exceptionDate && exceptionDate.toDateString() === currentDate.toDateString();
             });
             
@@ -710,7 +775,7 @@ class OptimizedCalendar {
                 }
                 html += `<p><strong>Statut :</strong> ${item.is_cancelled ? 'Séance annulée' : 'Horaire modifié'}</p>`;
                 if (!item.is_cancelled && item.startTime) {
-                    html += `<p><strong>Nouvel horaire :</strong> ${this.extractTime( item.startTime)} - ${this.extractTime( item.endTime)}</p>`;
+                    html += `<p><strong>Nouvel horaire :</strong> ${this.extractTime(item.startTime)} - ${this.extractTime(item.endTime)}</p>`;
                 }
                 break;
         }
@@ -796,6 +861,11 @@ class OptimizedCalendar {
 
     // Méthodes utilitaires optimisées
     formatDate(date, options = {}) {
+        if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+            console.warn('Date invalide fournie à formatDate:', date);
+            return 'Date invalide';
+        }
+        
         const defaultOptions = { 
             day: '2-digit', 
             month: '2-digit', 
@@ -805,6 +875,11 @@ class OptimizedCalendar {
     }
 
     formatTime(date) {
+        if (!date || !(date instanceof Date) || isNaN(date.getTime())) {
+            console.warn('Date invalide fournie à formatTime:', date);
+            return '';
+        }
+        
         return date.toLocaleTimeString('fr-FR', { 
             hour: '2-digit', 
             minute: '2-digit',
@@ -814,13 +889,52 @@ class OptimizedCalendar {
 
     parseDate(dateString) {
         if (!dateString) return null;
+        
+        // Ignorer les dates invalides communes
+        if (dateString === '0000-00-00' || 
+            dateString === '0000-00-00 00:00:00' || 
+            dateString === '' || 
+            dateString === null ||
+            dateString.startsWith('0000-00-00')) {
+            return null;
+        }
+        
         try {
+            // Format d/m/Y ou dd/mm/yyyy
             if (dateString.includes('/')) {
-                const [day, month, year] = dateString.split('/').map(Number);
-                return new Date(year, month - 1, day);
+                const [datePart] = dateString.split(' ');
+                const parts = datePart.split('/');
+                if (parts.length === 3) {
+                    const [day, month, year] = parts.map(Number);
+                    // Vérifier que l'année est valide
+                    if (year > 1900 && year < 3000 && month > 0 && month <= 12 && day > 0 && day <= 31) {
+                        return new Date(year, month - 1, day);
+                    }
+                }
             }
-            return new Date(dateString);
-        } catch {
+            
+            // Format YYYY-MM-DD (ISO)
+            if (dateString.includes('-')) {
+                const parts = dateString.split(' ')[0].split('-'); // Ignore time part
+                if (parts.length === 3) {
+                    const [year, month, day] = parts.map(Number);
+                    // Vérifier que l'année est valide
+                    if (year > 1900 && year < 3000 && month > 0 && month <= 12 && day > 0 && day <= 31) {
+                        return new Date(year, month - 1, day);
+                    }
+                }
+            }
+            
+            // Essayer le parsing par défaut
+            const date = new Date(dateString);
+            if (!isNaN(date.getTime()) && date.getFullYear() > 1900 && date.getFullYear() < 3000) {
+                return date;
+            }
+            
+            console.warn('Format de date non supporté:', dateString);
+            return null;
+        } catch (error) {
+            console.warn('Erreur de parsing de date:', dateString, error);
             return null;
         }
     }
@@ -829,16 +943,22 @@ class OptimizedCalendar {
         if (!dateTimeString) return null;
         try {
             if (dateTimeString.includes('/')) {
+                // Format d/m/Y H:i
                 const [datePart, timePart] = dateTimeString.split(' ');
+                if (!datePart) return null;
+                
                 const [day, month, year] = datePart.split('/').map(Number);
+                if (!day || !month || !year) return null;
+                
                 if (timePart) {
                     const [hours, minutes] = timePart.split(':').map(Number);
-                    return new Date(year, month - 1, day, hours, minutes);
+                    return new Date(year, month - 1, day, hours || 0, minutes || 0);
                 }
                 return new Date(year, month - 1, day);
             }
             return new Date(dateTimeString);
         } catch {
+            console.warn('Erreur de parsing de date/heure:', dateTimeString);
             return null;
         }
     }
@@ -847,22 +967,38 @@ class OptimizedCalendar {
         if (!timeString) return '';
         
         try {
-            if (/^\d{2}:\d{2}$/.test(timeString)) {
-                return timeString;
+            // Si c'est déjà au format HH:mm
+            if (/^\d{1,2}:\d{2}$/.test(timeString)) {
+                const [hours, minutes] = timeString.split(':');
+                return `${hours.padStart(2, '0')}:${minutes}`;
             }
             
-            if (timeString.includes(' ')) {
-                const timePart = timeString.split(' ')[1];
-                return timePart ? timePart.substring(0, 5) : '';
+            // Si c'est au format d/m/Y H:i
+            if (timeString.includes('/') && timeString.includes(' ')) {
+                const [, timePart] = timeString.split(' ');
+                if (timePart && timePart.includes(':')) {
+                    const [hours, minutes] = timePart.split(':');
+                    return `${hours.padStart(2, '0')}:${minutes}`;
+                }
             }
             
+            // Si c'est au format ISO (avec T)
             if (timeString.includes('T')) {
                 const timePart = timeString.split('T')[1];
-                return timePart ? timePart.substring(0, 5) : '';
+                if (timePart) {
+                    const [hours, minutes] = timePart.split(':');
+                    return `${hours.padStart(2, '0')}:${minutes}`;
+                }
             }
             
-            return timeString.substring(0, 5);
+            // Fallback : prendre les 5 premiers caractères si ça ressemble à une heure
+            if (timeString.length >= 5) {
+                return timeString.substring(0, 5);
+            }
+            
+            return timeString;
         } catch {
+            console.warn('Erreur d\'extraction de l\'heure:', timeString);
             return '';
         }
     }
@@ -886,6 +1022,7 @@ class OptimizedCalendar {
             return '';
         }
     }
+
 
     // Méthodes de contrôle
     toggleView() {
@@ -1048,6 +1185,82 @@ class OptimizedCalendar {
                 this.closeDayModal();
             }
         });
+    }
+
+    // Méthode de diagnostic temporaire
+    diagnoseRecurringIssues() {
+        console.log('🔬 === DIAGNOSTIC DES ÉLÉMENTS RÉCURRENTS ===');
+        
+        console.log('📊 Données brutes:', {
+            allRecurringSchedules: this.allRecurringSchedules.length,
+            filteredRecurring: this.filteredItems.filter(i => i.itemType === 'recurring').length
+        });
+        
+        // Tester quelques dates spécifiques
+        const testDates = [
+            new Date(), // Aujourd'hui
+            new Date(Date.now() + 24 * 60 * 60 * 1000), // Demain
+            new Date(Date.now() + 2 * 24 * 60 * 60 * 1000), // Après-demain
+        ];
+        
+        testDates.forEach(date => {
+            console.log(`\n📅 Test pour ${date.toDateString()} (${this.dayNames[date.getDay()]}):`);
+            
+            this.filteredItems.filter(i => i.itemType === 'recurring').forEach(schedule => {
+                const isOnDate = this.isRecurringOnDate(schedule, date);
+                console.log(`  - ${schedule.title || schedule.id}: ${isOnDate ? '✅' : '❌'} (${schedule.day_of_week})`);
+            });
+            
+            const items = this.getItemsForDate(date);
+            console.log(`  → Résultat final: ${items.length} item(s)`);
+        });
+        
+        // Vérifier si le calendrier affiche ces jours
+        const calendarGrid = this.elements.calendarGrid;
+        if (calendarGrid) {
+            const days = calendarGrid.querySelectorAll('.day:not(.adjacent)');
+            console.log(`📋 Jours visibles dans le calendrier: ${days.length}`);
+            days.forEach((day, index) => {
+                const hasItems = day.classList.contains('has-items');
+                const dayNumber = day.querySelector('.day-number')?.textContent;
+                if (hasItems) {
+                    console.log(`  Jour ${dayNumber}: a des événements`);
+                }
+            });
+        }
+    }
+
+    // Test temporaire pour diagnostiquer le problème
+    testMondaySchedules() {
+        console.log('🧪 === TEST SPÉCIFIQUE DES LUNDIS ===');
+        
+        if (this.allRecurringSchedules.length === 0) {
+            console.log('❌ Aucun horaire récurrent trouvé');
+            return;
+        }
+        
+        const mondaySchedule = this.allRecurringSchedules.find(s => s.day_of_week === 'Lundi');
+        if (!mondaySchedule) {
+            console.log('❌ Aucun horaire récurrent pour lundi trouvé');
+            return;
+        }
+        
+        console.log('📋 Horaire du lundi trouvé:', mondaySchedule);
+        
+        // Tester les prochains lundis
+        const today = new Date();
+        for (let i = 0; i < 4; i++) {
+            const testDate = new Date(today);
+            testDate.setDate(today.getDate() + (7 * i));
+            
+            // Trouver le prochain lundi
+            while (testDate.getDay() !== 1) { // 1 = lundi
+                testDate.setDate(testDate.getDate() + 1);
+            }
+            
+            const shouldShow = this.isRecurringOnDate(mondaySchedule, testDate);
+            console.log(`📅 Lundi ${testDate.toDateString()}: ${shouldShow ? '✅ DOIT APPARAÎTRE' : '❌ NE DOIT PAS APPARAÎTRE'}`);
+        }
     }
 }
 
