@@ -1,10 +1,12 @@
 import { getPalmares } from "../../service/api/palmaresApi.js";
+import { getSports } from "../../service/api/sportApi.js";
 import { Palmares } from "../../service/models/Palmares.js";
 import { showNotification } from "../showNotification.js";
 
 class PalmaresPage {
   constructor() {
     this.athletes = [];
+    this.sports = [];
     this.container = document.getElementById("palmares-container");
     this.loader = document.getElementById("palmares-loader");
     this.message = document.getElementById("palmares-message");
@@ -19,6 +21,7 @@ class PalmaresPage {
       this.showLoader(true);
       const data = await getPalmares();
       this.athletes = Palmares.fromApi(data);
+      this.sports = await getSports();
       this.displayAthletes();
       this.initModalEvents();
     } catch (error) {
@@ -72,6 +75,8 @@ class PalmaresPage {
 
   createAthleteCard(athlete, index) {
     const mainImage = athlete.image || (athlete.images?.length > 0 ? athlete.images[0] : "");
+    let sport = this.sports.find(s => s.id == athlete.sport);
+    let sportName = sport ? sport.name : athlete.sport ;
 
     return `
       <div class="champion-card">
@@ -81,7 +86,7 @@ class PalmaresPage {
         <div class="champion-card__info">
           <h3 class="champion-card__name">${athlete.athleteName}</h3>
           <p class="champion-card__meta">${athlete.competition} - ${athlete.year}</p>
-          <p class="champion-card__result">${athlete.category} | ${athlete.sport} | ${athlete.gender}</p>
+          <p class="champion-card__result">${athlete.category} | ${sportName} | ${athlete.gender}</p>
           <span class="champion-card__badge">${athlete.result}</span>
           <button 
   title="Voir" 
@@ -128,6 +133,8 @@ class PalmaresPage {
     if (!this.modalContent) return;
 
     const image = athlete.image || (athlete.images?.length > 0 ? athlete.images[0] : "");
+       let sport = this.sports.find(s => s.id == athlete.sport);
+    let sportName = sport ? sport.name : athlete.sport ;
 
     this.modalContent.innerHTML = `
       <img src="${image}" alt="${athlete.athleteName}" class="modal-img">
@@ -135,7 +142,7 @@ class PalmaresPage {
       <p><strong>Année :</strong> ${athlete.year}</p>
       <p><strong>Compétition :</strong> ${athlete.competition}</p>
       <p><strong>Résultat :</strong> ${athlete.result}</p>
-      <p><strong>Sport :</strong> ${athlete.sport}</p>
+      <p><strong>Sport :</strong> ${sportName}</p>
       <p><strong>Catégorie :</strong> ${athlete.category}</p>
       <p><strong>Sexe :</strong> ${athlete.gender}</p>
     `;

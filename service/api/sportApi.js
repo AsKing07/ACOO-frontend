@@ -10,6 +10,14 @@ export async function getSports() {
     return Sport.fromApi(data);
 }
 
+export async function getSportById(id) {
+    const res = await fetch(`${API_BASE_URL}/api/sports/${id}`);
+    if (!res.ok) throw new Error('Erreur lors du chargement du sport');
+    const data = await res.json();
+    return Sport.fromApi(data);
+}
+
+
 export async function addSport(sport) {
     await ensureAuthenticated();
 

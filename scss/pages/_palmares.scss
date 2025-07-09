@@ -5,6 +5,7 @@
 
 .body-palmares {
   background: #fff;
+  margin-top: 10%;
 
   .palmares-hero {
     position: relative;
@@ -234,7 +235,7 @@
 
 .champion-card__badge {
   display: inline-block;
-  background-color: #0069ed;
+  background-color: $primary-color;
   color: white;
   padding: 4px 8px;
   border-radius: 4px;
@@ -283,7 +284,7 @@
 /* Bouton Coup d’œil */
 .champion-card__btn {
   margin-top: 10px;
-  background: #0069ed;
+  background: $primary-color;
   color: white;
   border: none;
   padding: 8px 12px;
@@ -293,7 +294,7 @@
 }
 
 .champion-card__btn:hover {
-  background: #004bb5;
+  background: $primary-color;
 }
 
 .champion-card__info p {
