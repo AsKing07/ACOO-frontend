@@ -1,6 +1,7 @@
-import { Palmares, PalmaresRequest } from "../models/Palmares.js";
+﻿import { Palmares, PalmaresRequest } from "../models/Palmares.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getPalmares() {
   const res = await fetch(`${API_BASE_URL}/api/prize-list`);
@@ -10,6 +11,8 @@ export async function getPalmares() {
 }
 
 export async function addPalmares(palmares) {
+    await ensureAuthenticated();
+
   const palmaresRequest = new PalmaresRequest(
     palmares.athleteName,
     palmares.competition,
@@ -40,6 +43,8 @@ export async function addPalmares(palmares) {
 }
 
 export async function updatePalmares(id, palmares) {
+    await ensureAuthenticated();
+
   const palmaresRequest = new PalmaresRequest(
     palmares.athleteName,
     palmares.competition,
@@ -70,6 +75,8 @@ export async function updatePalmares(id, palmares) {
 }
 
 export async function deletePalmares(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {

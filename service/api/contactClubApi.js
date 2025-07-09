@@ -1,6 +1,7 @@
-import {ContactClub, ContactClubRequest} from '../models/ContactClub.js';
+﻿import {ContactClub, ContactClubRequest} from '../models/ContactClub.js';
 import {User} from '../models/User.js';
 import {API_BASE_URL} from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getContactClub() {
   const response = await fetch(`${API_BASE_URL}/api/contact_clubs`);
@@ -11,6 +12,8 @@ export async function getContactClub() {
 }
 
 export async function addContactClub(contactClub) {
+    await ensureAuthenticated();
+
   const contactClubRequest = new ContactClubRequest(
     contactClub.phoneNumber,
     contactClub.mail, 
@@ -38,6 +41,8 @@ export async function addContactClub(contactClub) {
 }
 
 export async function updateContactClub(id, data) {
+    await ensureAuthenticated();
+
   const user = User.getCurrentUser();
   const tokenData = user ? user.tokenData : null; // Correction: cohérence avec les autres
   if (!tokenData) {
@@ -59,6 +64,8 @@ export async function updateContactClub(id, data) {
 }
 
 export async function deleteContactClub(id) {
+    await ensureAuthenticated();
+
   const user = User.getCurrentUser();
   const tokenData = user ? user.tokenData : null;
   if (!tokenData) {
@@ -76,3 +83,4 @@ export async function deleteContactClub(id) {
   if (!response.ok) throw new Error('Erreur lors de la suppression');
   return response.status === 204;
 }
+

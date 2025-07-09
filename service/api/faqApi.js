@@ -1,7 +1,8 @@
-import { Faq } from "../models/Faq.js";
+﻿import { Faq } from "../models/Faq.js";
 import { FaqRequest } from "../models/Faq.js";
 import {User} from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getFaqs() {
   const res = await fetch(`${API_BASE_URL}/api/questions`);
@@ -11,6 +12,8 @@ export async function getFaqs() {
 }
 
 export async function addFaq(faq) {
+    await ensureAuthenticated();
+
 
   const faqRequest = new FaqRequest(faq.question, faq.answer, faq.category).toJSON();
 
@@ -33,6 +36,8 @@ if (!tokenData)
 }
 
 export async function updateFaq(id, faq) {
+    await ensureAuthenticated();
+
     const faqRequest = new FaqRequest(faq.question, faq.answer, faq.category).toJSON();
 
         const user = User.getCurrentUser();
@@ -53,6 +58,8 @@ if (!tokenData)
 }
 
 export async function deleteFaq(id) {
+    await ensureAuthenticated();
+
         const user = User.getCurrentUser();
 const tokenData = user ? user.tokenData : null;
 if (!tokenData)

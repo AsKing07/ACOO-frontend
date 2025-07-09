@@ -1,6 +1,7 @@
-import { SocialMedias, SocialMediaRequest } from "../models/SocialMedias.js";
+﻿import { SocialMedias, SocialMediaRequest } from "../models/SocialMedias.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getSocialMedias() {
   const res = await fetch(`${API_BASE_URL}/api/social-media`);
@@ -9,6 +10,8 @@ export async function getSocialMedias() {
   return SocialMedias.fromApi(data);
 }
 export async function addSocialMedia(socialMedia) {
+    await ensureAuthenticated();
+
   const socialMediaRequest = new SocialMediaRequest(
     socialMedia.platform,
     socialMedia.url,
@@ -34,6 +37,8 @@ export async function addSocialMedia(socialMedia) {
   }
 
 export async function updateSocialMedia(id, socialMedia) {
+    await ensureAuthenticated();
+
   const socialMediaRequest = new SocialMediaRequest(
     socialMedia.platform,
     socialMedia.url,
@@ -59,6 +64,8 @@ export async function updateSocialMedia(id, socialMedia) {
 }
 
 export async function deleteSocialMedia(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser(); 
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {

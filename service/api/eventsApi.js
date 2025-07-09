@@ -1,6 +1,7 @@
 import { Event, EventRequest } from "../models/Events.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getEvents() {
     const res = await fetch(`${API_BASE_URL}/api/events`);
@@ -10,6 +11,8 @@ export async function getEvents() {
 }
 
 export async function addEvent(event) {
+    await ensureAuthenticated();
+    
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -44,6 +47,8 @@ export async function addEvent(event) {
 }
 
 export async function updateEvent(id, event) {
+    await ensureAuthenticated();
+    
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {

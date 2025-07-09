@@ -1,6 +1,7 @@
-import { Gallery, GalleryRequest } from '../models/Gallery.js';
+﻿import { Gallery, GalleryRequest } from '../models/Gallery.js';
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getGalleries() {
     const res = await fetch(`${API_BASE_URL}/api/gallery`);
@@ -10,6 +11,8 @@ export async function getGalleries() {
 
 }
 export async function addGallery(gallery) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -30,6 +33,8 @@ export async function addGallery(gallery) {
 }
 
 export async function updateGallery(id, gallery) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -48,6 +53,8 @@ export async function updateGallery(id, gallery) {
     return await res.json();
 }
 export async function deleteGallery(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {

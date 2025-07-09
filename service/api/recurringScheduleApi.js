@@ -1,6 +1,7 @@
-import { RecurringSchedule, RecurringScheduleRequest } from "../models/RecurringSchedule.js";
+﻿import { RecurringSchedule, RecurringScheduleRequest } from "../models/RecurringSchedule.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getRecurringSchedules() {
     const res = await fetch(`${API_BASE_URL}/api/recurring-schedules`);
@@ -10,6 +11,8 @@ export async function getRecurringSchedules() {
 }
 
 export async function addRecurringSchedule(schedule) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -44,6 +47,8 @@ export async function addRecurringSchedule(schedule) {
 }
 
 export async function updateRecurringSchedule(id, schedule) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -78,6 +83,8 @@ export async function updateRecurringSchedule(id, schedule) {
 }
 
 export async function deleteRecurringSchedule(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -102,3 +109,4 @@ export async function getRecurringScheduleById(id) {
     const data = await res.json();
     return RecurringSchedule.fromApi(data);
 }
+

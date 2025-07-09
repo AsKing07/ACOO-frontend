@@ -1,6 +1,7 @@
-import { Admin, AdminRequest } from "../models/Admin.js"; // Ajout .js
+﻿import { Admin, AdminRequest } from "../models/Admin.js"; // Ajout .js
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 import { register } from "./auth.js";
 
 export async function getAdmins() {
@@ -11,6 +12,8 @@ export async function getAdmins() {
 }
 
 export async function addAdmin(admin) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     const token = tokenData ? tokenData.token : null;
@@ -27,6 +30,8 @@ export async function addAdmin(admin) {
 }
 
 export async function updateAdmin(id, admin) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     const token = tokenData ? tokenData.token : null;
@@ -74,6 +79,8 @@ export async function updateAdmin(id, admin) {
 }
 
 export async function deleteAdmin(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     const token = tokenData ? tokenData.token : null;
@@ -116,3 +123,4 @@ console.log('Admin courant:', admin);
 
     return admin;
 }
+

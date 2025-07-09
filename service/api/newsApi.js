@@ -1,6 +1,7 @@
 import { News, NewsRequest } from "../models/News.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getNews() {
     const res = await fetch(`${API_BASE_URL}/api/news`);
@@ -17,6 +18,8 @@ export async function getNewsById(id) {
 }
 
 export async function addNews(news) {
+    await ensureAuthenticated();
+    
     console.log(`dans addNews, news: ${JSON.stringify(news)}`);
       const user = User.getCurrentUser();
     const newsRequest = new NewsRequest(news.title, news.description, news.images, user.id,).toJSON();
@@ -36,6 +39,8 @@ export async function addNews(news) {
 }
 
 export async function updateNews(id, news) {
+    await ensureAuthenticated();
+    
         const user = User.getCurrentUser();
 
     const newsRequest = new NewsRequest(news.title, news.description, news.images, user.id).toJSON();
@@ -55,6 +60,8 @@ export async function updateNews(id, news) {
     return await res.json();
 }
 export async function deleteNews(id) {
+    await ensureAuthenticated();
+    
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {

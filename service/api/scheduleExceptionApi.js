@@ -1,6 +1,7 @@
-import { ScheduleException, ScheduleExceptionRequest } from "../models/ScheduleException.js";
+﻿import { ScheduleException, ScheduleExceptionRequest } from "../models/ScheduleException.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getScheduleExceptions() {
     const res = await fetch(`${API_BASE_URL}/api/schedule-exeptions`);
@@ -10,6 +11,8 @@ export async function getScheduleExceptions() {
 }
 
 export async function addScheduleException(exception) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -41,6 +44,8 @@ export async function addScheduleException(exception) {
 }
 
 export async function updateScheduleException(id, exception) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -72,6 +77,8 @@ export async function updateScheduleException(id, exception) {
 }
 
 export async function deleteScheduleException(id) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -96,3 +103,4 @@ export async function getScheduleExceptionById(id) {
     const data = await res.json();
     return ScheduleException.fromApi(data);
 }
+

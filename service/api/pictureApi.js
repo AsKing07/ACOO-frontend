@@ -1,6 +1,7 @@
-import { Picture, PictureRequest } from "../models/Pictures.js";
+﻿import { Picture, PictureRequest } from "../models/Pictures.js";
 import { User } from '../models/User.js';
 import { API_BASE_URL } from '../config.js';
+import { ensureAuthenticated } from './auth.js';
 
 export async function getPictures() {
     const res = await fetch(`${API_BASE_URL}/api/pictures`);
@@ -12,6 +13,8 @@ export async function getPictures() {
 
    
 export async function addPicture(picture) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
@@ -33,6 +36,8 @@ export async function addPicture(picture) {
 }
 
 export async function updatePicture(id, picture) {
+    await ensureAuthenticated();
+
     const user = User.getCurrentUser();
     const tokenData = user ? user.tokenData : null;
     if (!tokenData) {
