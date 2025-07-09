@@ -43,11 +43,9 @@
   <section class="event-section-accueil">
   <div class="event-section-accueils__header">
     <h2>PROCHAINS ÉVÉNEMENTS</h2>
+    <div id="event-list"></div>
   </div>
-  <div class="event-section-accueil__cards">
-
-  <?php include __DIR__ . '/../templates/components/cards/mini_event_card.php'; ?>
-  <?php include __DIR__ . '/../templates/components/cards/mini_event_card.php'; ?>
+  <div class="event-section-accueil__cards" id="event-section-accueil__cards">
   </div>
   <div class="event-section-accueil__cta">
     <a href="evenement.php" class="btn-primary">VOIR LE CALENDRIER</a>
@@ -68,6 +66,7 @@
 
 
 </body>
+<script type="module" src="../script/showEvents.js"></script>
 <script src="../script/navbar.js"></script>
 <script src="../script/formContact.js"></script>
 <script type="module" src="../script/galleryCarrousel.js"></script>

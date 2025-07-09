@@ -2316,14 +2316,14 @@
   color: #fff;
 }
 .messagerie .conversation .actions .btn-repondre:hover {
-  background-color: #303e5a;
+  background-color: rgb(48.137195122, 61.6493902439, 90.362804878);
 }
 .messagerie .conversation .actions .btn-supprimer {
   background-color: #A3B0CA;
   color: #fff;
 }
 .messagerie .conversation .actions .btn-supprimer:hover {
-  background-color: #8394b7;
+  background-color: rgb(130.6413793103, 148.2137931034, 183.3586206897);
 }
 
 .body-accueil .accueil-hero {
@@ -4221,7 +4221,7 @@
 }
 #evenement_page .calendar-controls .controls-left .btn-today,
 #evenement_page .calendar-controls .controls-left .btn-refresh {
-  background: linear-gradient(135deg, #39496B 0%, #27324a 100%);
+  background: linear-gradient(135deg, #39496B 0%, rgb(39.2743902439, 50.2987804878, 73.7256097561) 100%);
   color: white;
   border: none;
   padding: 6px 8px;
@@ -4243,7 +4243,7 @@
   transform: translateY(0);
 }
 #evenement_page .calendar-controls .controls-left .btn-refresh {
-  background: linear-gradient(135deg, #00d876 0%, #00a55a 100%);
+  background: linear-gradient(135deg, #00d876 0%, rgb(0, 165, 90.1388888889) 100%);
 }
 #evenement_page .calendar-controls .controls-left .btn-refresh:hover {
   box-shadow: 0 4px 12px rgba(0, 216, 118, 0.3);
@@ -4384,7 +4384,7 @@
   font-weight: bold;
 }
 #evenement_page .calendar .header-calendar .nav-btn:hover {
-  background: #27324a;
+  background: rgb(39.2743902439, 50.2987804878, 73.7256097561);
   transform: scale(1.1);
   box-shadow: 0 4px 15px rgba(57, 73, 107, 0.3);
 }
@@ -4443,21 +4443,21 @@
   background: #dee2e6;
 }
 #evenement_page .calendar .grid-calendar .day:hover:not(.adjacent) {
-  background: #a2b0ce;
+  background: rgb(162.3536585366, 176.2073170732, 205.6463414634);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 #evenement_page .calendar .grid-calendar .day.today {
   border-color: #39496B;
-  background: #b3bed7;
+  background: rgb(178.9908536585, 190.3567073171, 214.5091463415);
   font-weight: 700;
   box-shadow: 0 0 15px rgba(57, 73, 107, 0.3);
 }
 #evenement_page .calendar .grid-calendar .day.has-items {
-  background: #dbeef9;
+  background: rgb(219.1463414634, 238.0975609756, 248.8536585366);
 }
 #evenement_page .calendar .grid-calendar .day.has-items:hover {
-  background: #c5e4f5;
+  background: rgb(197.3780487805, 227.8353658537, 245.1219512195);
 }
 #evenement_page .calendar .grid-calendar .day .day-number {
   font-weight: 600;
@@ -4495,14 +4495,14 @@
   border-left-color: #2D9CDB;
 }
 #evenement_page .calendar .grid-calendar .day .items-list .item-event.event-item .item-title {
-  color: #18618a;
+  color: rgb(23.7073170732, 96.8048780488, 138.2926829268);
   font-weight: 600;
 }
 #evenement_page .calendar .grid-calendar .day .items-list .item-event.recurring-item {
   border-left-color: #00d876;
 }
 #evenement_page .calendar .grid-calendar .day .items-list .item-event.recurring-item .item-title {
-  color: #00723e;
+  color: rgb(0, 114, 62.2777777778);
   font-weight: 600;
 }
 #evenement_page .calendar .grid-calendar .day .items-list .item-event.exception-item {
@@ -4537,7 +4537,7 @@
   font-weight: 600;
 }
 #evenement_page .calendar .grid-calendar .day .items-list .more-items:hover {
-  background: #27324a;
+  background: rgb(39.2743902439, 50.2987804878, 73.7256097561);
   transform: scale(1.05);
 }
 #evenement_page .list-view-container {
@@ -4620,19 +4620,19 @@
   border-left-color: #2D9CDB;
 }
 #evenement_page .list-view-container .list-event-item.event-item:hover {
-  background: #f1f8fd;
+  background: rgb(240.9146341463, 248.3597560976, 252.5853658537);
 }
 #evenement_page .list-view-container .list-event-item.recurring-item {
   border-left-color: #00d876;
 }
 #evenement_page .list-view-container .list-event-item.recurring-item:hover {
-  background: #bfffe2;
+  background: rgb(190.5, 255, 225.7361111111);
 }
 #evenement_page .list-view-container .list-event-item.exception-item {
   border-left-color: #FFA500;
 }
 #evenement_page .list-view-container .list-event-item.exception-item:hover {
-  background: #fff6e6;
+  background: rgb(255, 246, 229.5);
 }
 #evenement_page .list-view-container .list-event-item .list-item-header {
   display: flex;
@@ -5576,7 +5576,7 @@
   font-weight: 400;
 }
 .body-event-dashboard .stat-card {
-  background: linear-gradient(135deg, #39496B 0%, #27324a 100%);
+  background: linear-gradient(135deg, #39496B 0%, rgb(39.2743902439, 50.2987804878, 73.7256097561) 100%);
   color: white;
   padding: 10px;
   border-radius: 8px;
@@ -5648,7 +5648,7 @@
   white-space: nowrap;
 }
 .body-event-dashboard .event-type-container .btn-add-type:hover {
-  background: #c5ceeb;
+  background: rgb(197.2222222222, 205.8888888889, 234.7777777778);
   transform: translateY(-1px);
 }
 .body-event-dashboard .custom-type-input {
@@ -5680,14 +5680,14 @@
   color: white;
 }
 .body-event-dashboard .custom-type-input .custom-type-actions .btn-confirm-type:hover {
-  background: #27324a;
+  background: rgb(39.2743902439, 50.2987804878, 73.7256097561);
 }
 .body-event-dashboard .custom-type-input .custom-type-actions .btn-cancel-type {
   background: #dc3545;
   color: white;
 }
 .body-event-dashboard .custom-type-input .custom-type-actions .btn-cancel-type:hover {
-  background: #bd2130;
+  background: rgb(189.2151898734, 32.7848101266, 47.7721518987);
 }
 .body-event-dashboard .calendar-container {
   background: white;
@@ -5721,7 +5721,7 @@
   font-size: 10px;
 }
 .body-event-dashboard .calendar .header-calendar .nav-btn:hover {
-  background: #27324a;
+  background: rgb(39.2743902439, 50.2987804878, 73.7256097561);
   transform: scale(1.1);
   box-shadow: 0 4px 15px rgba(57, 73, 107, 0.3);
 }
@@ -5748,7 +5748,7 @@
   transition: all 0.3s ease;
 }
 .body-event-dashboard .calendar .calendar-legend .btn-today:hover {
-  background: #c5ceeb;
+  background: rgb(197.2222222222, 205.8888888889, 234.7777777778);
   transform: translateY(-2px);
 }
 .body-event-dashboard .calendar .day-names {
@@ -5793,13 +5793,13 @@
   pointer-events: none;
 }
 .body-event-dashboard .calendar .grid-calendar .day:hover:not(.empty-day) {
-  background: #a2b0ce;
+  background: rgb(162.3536585366, 176.2073170732, 205.6463414634);
   transform: translateY(-2px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 .body-event-dashboard .calendar .grid-calendar .day.today {
   border-color: #39496B;
-  background: #b3bed7;
+  background: rgb(178.9908536585, 190.3567073171, 214.5091463415);
   font-weight: 700;
 }
 .body-event-dashboard .calendar .grid-calendar .day.has-items {
@@ -5966,7 +5966,7 @@
   color: white;
 }
 .body-event-dashboard .btn-action.btn-export:hover {
-  background: #0c8a60;
+  background: rgb(11.9402985075, 138.0597014925, 96.2686567164);
   transform: translateY(-1px);
 }
 .body-event-dashboard .btn-action.btn-refresh {
@@ -5974,7 +5974,7 @@
   color: white;
 }
 .body-event-dashboard .btn-action.btn-refresh:hover {
-  background: #3438ed;
+  background: rgb(52.2, 56.1, 236.8);
   transform: translateY(-1px);
 }
 .body-event-dashboard .table-container {
@@ -6129,7 +6129,7 @@
   max-width: 900px;
 }
 .body-event-dashboard .modal-header {
-  background: linear-gradient(135deg, #39496B, #27324a);
+  background: linear-gradient(135deg, #39496B, rgb(39.2743902439, 50.2987804878, 73.7256097561));
   padding: 12px 16px;
   position: relative;
 }
@@ -6226,7 +6226,7 @@
   left: 0;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, #39496B, #6078aa);
+  background: linear-gradient(90deg, #39496B, rgb(95.8048780488, 119.6097560976, 170.1951219512));
   transform: scaleX(0);
   transition: transform 0.3s ease;
   border-radius: 0 0 6px 6px;
@@ -6300,7 +6300,7 @@
   display: none;
 }
 .body-event-dashboard .checkbox-label input[type=checkbox]:checked + .checkbox-custom {
-  background: linear-gradient(135deg, #39496B, #27324a);
+  background: linear-gradient(135deg, #39496B, rgb(39.2743902439, 50.2987804878, 73.7256097561));
   border-color: #39496B;
   transform: scale(1.05);
 }
@@ -6467,7 +6467,7 @@
   transform: none;
 }
 .body-event-dashboard .btn-primary {
-  background: linear-gradient(135deg, #39496B, #27324a);
+  background: linear-gradient(135deg, #39496B, rgb(39.2743902439, 50.2987804878, 73.7256097561));
   color: white;
   box-shadow: 0 4px 15px rgba(57, 73, 107, 0.3);
 }
@@ -6476,7 +6476,7 @@
   box-shadow: 0 8px 25px rgba(57, 73, 107, 0.4);
 }
 .body-event-dashboard .btn-secondary {
-  background: linear-gradient(135deg, #6c757d, #545b62);
+  background: linear-gradient(135deg, #6c757d, rgb(84.3605150215, 91.3905579399, 97.6394849785));
   color: white;
   box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
 }
@@ -6485,7 +6485,7 @@
   box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
 }
 .body-event-dashboard .btn-danger {
-  background: linear-gradient(135deg, #dc3545, #bd2130);
+  background: linear-gradient(135deg, #dc3545, rgb(189.2151898734, 32.7848101266, 47.7721518987));
   color: white;
   box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
 }
@@ -6786,7 +6786,7 @@
 .body-event-dashboard .labels-container .label-default:hover {
   transition: all ease-in-out 0.3s;
   transform: scale(1.03);
-  background-color: #9faede;
+  background-color: rgb(159.4444444444, 173.7777777778, 221.5555555556);
   color: white;
 }
 .body-event-dashboard .labels-container .label-default:active {
@@ -6811,7 +6811,7 @@
 .body-event-dashboard .labels-container .label-competition:hover {
   transition: all ease-in-out 0.3s;
   transform: scale(1.03);
-  background-color: #921925;
+  background-color: rgb(145.746835443, 25.253164557, 36.7974683544);
   color: white;
 }
 .body-event-dashboard .labels-container .label-competition:active {
@@ -6836,7 +6836,7 @@
 .body-event-dashboard .labels-container .label-formation:hover {
   transition: all ease-in-out 0.3s;
   transform: scale(1.03);
-  background-color: #145523;
+  background-color: rgb(20.2898550725, 84.7101449275, 35);
   color: white;
 }
 .body-event-dashboard .labels-container .label-formation:active {
@@ -6861,7 +6861,7 @@
 .body-event-dashboard .labels-container .label-social:hover {
   transition: all ease-in-out 0.3s;
   transform: scale(1.03);
-  background-color: #0c525d;
+  background-color: rgb(11.6666666667, 82.1739130435, 93.3333333333);
   color: white;
 }
 .body-event-dashboard .labels-container .label-social:active {
@@ -6886,7 +6886,7 @@
 .body-event-dashboard .labels-container .label-assemblage:hover {
   transition: all ease-in-out 0.3s;
   transform: scale(1.03);
-  background-color: #432776;
+  background-color: rgb(66.9282868526, 38.780876494, 118.219123506);
   color: white;
 }
 .body-event-dashboard .labels-container .label-assemblage:active {
@@ -7173,7 +7173,7 @@
   transform: translateY(0) scale(1);
 }
 .body-event-dashboard .day-items-popup .popup-header {
-  background: linear-gradient(135deg, #39496B, #27324a);
+  background: linear-gradient(135deg, #39496B, rgb(39.2743902439, 50.2987804878, 73.7256097561));
   color: white;
   padding: 12px;
   border-radius: 8px 8px 0 0;
@@ -7299,7 +7299,7 @@
   color: white;
 }
 .body-event-dashboard .day-items-popup .popup-content .popup-item .item-actions .btn-small.btn-view:hover {
-  background: #117a8b;
+  background: rgb(17.3333333333, 122.0869565217, 138.6666666667);
   transform: translateY(-2px);
 }
 .body-event-dashboard .day-items-popup .popup-content .popup-item .item-actions .btn-small.btn-edit {
@@ -7307,7 +7307,7 @@
   color: #333;
 }
 .body-event-dashboard .day-items-popup .popup-content .popup-item .item-actions .btn-small.btn-edit:hover {
-  background: #d39e00;
+  background: rgb(211, 158.25, 0);
   transform: translateY(-2px);
 }
 .body-event-dashboard .day-items-popup .popup-content .popup-item .item-actions .btn-small i {
