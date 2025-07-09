@@ -2,6 +2,12 @@
     <div class="container_sidebar">
          <div class="container_navigation">
 
+        <button class="burger-toggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
         <nav class="container_nav_first">
 
             <div class="container_nav_logo">
@@ -46,7 +52,7 @@
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/calendar.png" alt="evenement">
-                                <span>EVENEMENTS/CALENDRIER</span>
+                                <span>EVENEMENTS</span>
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/galery.png" alt="galerie">
