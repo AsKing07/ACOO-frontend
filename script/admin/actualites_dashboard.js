@@ -38,7 +38,7 @@ export function initActualites() {
         news = await getNews();
         news.forEach(item =>{
             const newsEl = document.createElement('div');
-            newsEl.className = 'editing-img-wording-container newItem';
+            newsEl.className = 'editing-img-wording-container-col newItem';
 
             // Image container
             const imgContainer = document.createElement('div');

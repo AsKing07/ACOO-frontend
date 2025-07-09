@@ -232,8 +232,11 @@ function createPalmaresCard(palmares) {
     }
 
     // Trouver le nom du sport
-    const sport = sportsData.find(s => s.id === palmares.sport);
-    const sportName = sport ? sport.name : palmares.sport;
+    const sport = sportsData.find(s => s.id == palmares.sport);
+    const sportName = sport.name;
+    console.log(`sportdata: `, sportsData)
+    console.log(`sport: `, sport)
+    console.log(`sportname: `, sportName)
 
     // Construire le HTML de la carte
     palmaresElement.innerHTML = `
@@ -342,7 +345,7 @@ async function openViewPalmaresModal(palmaresId) {
         const palmares = await getPalmaresById(palmaresId);
 
         // Trouver le nom du sport
-        const sport = sportsData.find(s => s.id === palmares.sport);
+        const sport = sportsData.find(s => s.id == palmares.sport);
         const sportName = sport ? sport.name : palmares.sport;
 
         // Remplir les détails

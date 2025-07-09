@@ -8,3 +8,4 @@ if (contactForm) {
     contactForm.reset();
   });
 }
+

@@ -1,9 +1,34 @@
 import { showNotification } from "../showNotification.js";
 
 export function initMessagerieDashboard() {
-    // Ici sera le code JavaScript pour gérer le tableau de bord de la messagerie
-    showNotification("Le tableau de bord de la messagerie est en cours de développement.", "info");
-}
-initMessagerieDashboard();
+  // Supprimer une conversation
+  document.querySelectorAll('.btn-supprimer').forEach(button => {
+    button.addEventListener('click', () => {
+      const conversation = button.closest('.conversation');
+      const name = conversation.querySelector('.name')?.textContent || "cet utilisateur";
 
-// Remarque: Le code ci-dessus est un espace réservé pour la fonctionnalité du tableau de bord de la messagerie.
+      if (confirm(`Supprimer la conversation avec ${name} ?`)) {
+        conversation.remove();
+        showNotification(`Conversation avec ${name} supprimée.`, "success");
+      }
+    });
+  });
+
+  // Répondre à une conversation
+  document.querySelectorAll('.btn-repondre').forEach(button => {
+    button.addEventListener('click', () => {
+      const conversation = button.closest('.conversation');
+      const name = conversation.querySelector('.name')?.textContent || "utilisateur inconnu";
+      const lastMsg = conversation.querySelector('.last-msg');
+
+      const response = prompt(`Répondre à ${name} :`);
+      if (response) {
+        lastMsg.textContent = response;
+        showNotification(`Réponse envoyée à ${name}.`, "success");
+
+        // Tu peux ici envoyer la réponse à un backend via fetch/ajax si besoin
+      }
+    });
+  });
+}
+// initMessagerieDashboard();

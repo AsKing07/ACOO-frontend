@@ -46,7 +46,7 @@
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/calendar.png" alt="evenement">
-                                <span>EVENEMENTS/CALENDRIER</span>
+                                <span>EVENEMENTS</span>
                             </li>
                             <li>
                                 <img src="../../assets/images/icons/galery.png" alt="galerie">

@@ -33,8 +33,21 @@
     padding: 24px;
 }
 
+.editing-img-wording-container-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 24px;
+    background-color: $light-gray-color;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    padding: 24px;
+    width: 30%;
+}
+
 .edit-img {
-    width: 40%;
+    width: 100%;
 
     img{
         width: 90%;
@@ -46,10 +59,9 @@
 .edit-description {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    width: 50%;
+    justify-content: center;
 }
 
 .edit-description .edit-btnS {
-    justify-content: flex-start;
+    justify-content: center;
 }

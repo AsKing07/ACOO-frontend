@@ -1,6 +1,11 @@
 <main class="body-event-dashboard">
     <div class="main-container">
         <h1>ÉVÈNEMENTS</h1>
+
+        <div class="responsive cta-container">
+            <a class="btn-primary" href="#">Ajouter un évènement</a>
+        </div>
+
         <div class="calendar-container">
             <div class="calendar">
                 <div class="header-calendar">
@@ -192,10 +197,6 @@
                     </div>
                 </div>
             </section>
-        </div>
-       
-        <div class="responsive cta-container">
-            <a class="btn-primary" href="#">Ajouter un évènement</a>
         </div>
     </div>
 </main>
