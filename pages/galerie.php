@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Galerie Photos ACOO - Images et Moments du Club | Aviron Orléans</title>
+    <meta name="description" content="Découvrez la galerie photos de l'ACOO : compétitions, entraînements, événements et moments forts du club d'aviron d'Orléans. Images haute qualité.">
+    <meta name="keywords" content="galerie photos ACOO, photos aviron Orléans, images compétitions aviron, galerie club aviron, photos Loire aviron">
+    <meta name="author" content="ACOO - Aviron Club Orléans">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/galerie.php">
+    <meta property="og:title" content="Galerie Photos ACOO - Images et Moments du Club | Aviron Orléans">
+    <meta property="og:description" content="Découvrez la galerie photos de l'ACOO : compétitions, entraînements, événements et moments forts du club.">
+    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Galerie1.png">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/galerie.php">
+    <meta name="twitter:title" content="Galerie Photos ACOO - Images du Club">
+    <meta name="twitter:description" content="Découvrez la galerie photos de l'ACOO : compétitions, entraînements et moments forts du club.">
+    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Galerie1.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/galerie.php">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" href="../assets/images/Logo.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Galerie Photos ACOO",
+      "description": "Galerie photos du club d'aviron ACOO d'Orléans",
+      "url": "https://acoo.charbelsnn.com/pages/galerie.php",
+      "mainEntity": {
+        "@type": "SportsClub",
+        "name": "ACOO - Aviron Club Orléans"
+      }
+    }
+    </script>
+    
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <title>ACOO: Aviron Orléans - Galerie</title>
     <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
     <style>
