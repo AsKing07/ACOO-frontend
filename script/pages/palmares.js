@@ -8,6 +8,7 @@ class PalmaresPage {
     this.athletes = [];
     this.sports = [];
     this.container = document.getElementById("palmares-container");
+    this.lastTrophiesContainer = document.getElementById("last-trophies-container");
     this.loader = document.getElementById("palmares-loader");
     this.message = document.getElementById("palmares-message");
     this.modal = document.getElementById("palmares-modal");
@@ -22,6 +23,7 @@ class PalmaresPage {
       const data = await getPalmares();
       this.athletes = Palmares.fromApi(data);
       this.sports = await getSports();
+      this.displayLastTrophies();
       this.displayAthletes();
       this.initModalEvents();
     } catch (error) {
@@ -152,6 +154,43 @@ class PalmaresPage {
 
   closeModal() {
     this.modal.style.display = "none";
+  }
+
+  displayLastTrophies() {
+    if (!this.lastTrophiesContainer) return;
+
+    if (this.athletes.length === 0) {
+      this.lastTrophiesContainer.innerHTML = '<p>Aucun trophée à afficher.</p>';
+      return;
+    }
+
+    // Trier par année décroissante puis par date de création pour avoir les plus récents
+    const sortedAthletes = [...this.athletes].sort((a, b) => {
+      if (b.year !== a.year) {
+        return b.year - a.year;
+      }
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
+    // Prendre les 3 premiers (plus récents)
+    const lastThreeTrophies = sortedAthletes.slice(0, 3);
+
+    this.lastTrophiesContainer.innerHTML = lastThreeTrophies
+      .map((athlete) => this.createTrophyCard(athlete))
+      .join("");
+  }
+
+  createTrophyCard(athlete) {
+    const mainImage = athlete.image || (athlete.images?.length > 0 ? athlete.images[0] : "../assets/images/trophees.png");
+    let sport = this.sports.find(s => s.id == athlete.sport);
+    let sportName = sport ? sport.name : athlete.sport;
+
+    return `
+      <div class="card">
+        <img src="${mainImage}" alt="${athlete.athleteName}">
+        <div class="card__head">${athlete.result}</div>
+      </div>
+    `;
   }
 }
 

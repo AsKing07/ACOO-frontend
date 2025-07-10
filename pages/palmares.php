@@ -23,6 +23,14 @@
         </div>
     </section>
 
+
+    <section class="latest-trophies">
+  <h2>Nos derniers trophés</h2>
+  <div class="container" id="last-trophies-container">
+    <!-- Les 3 derniers trophées seront insérés ici dynamiquement -->
+  </div>
+</section>
+
  
 
     <!-- Section Champions -->
