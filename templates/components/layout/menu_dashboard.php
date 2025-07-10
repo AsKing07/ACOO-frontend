@@ -59,7 +59,7 @@
                                 <span>GALERIE</span>
                             </li>
                             <li>
-                                <img src="../../assets/images/icons/video.png" alt="video">
+                                <img src="../../assets/images/icons/icon-video.png" alt="video">
                                 <span>VIDÉO</span>
                             </li>
                         </ul>
