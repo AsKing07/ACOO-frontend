@@ -2,9 +2,20 @@
 
 
 body{
-    background-color: $background-color;
     font-family: $font-family;
     gap: $spacer;
     padding: 0px;
     margin: 0px;
+
+    font-family: "Signika";
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings:
+        "GRAD" 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Good Times'!important;
+  color: $primary-color;
 }

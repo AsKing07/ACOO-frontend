@@ -75,20 +75,44 @@
 
       .select-menu {
         display: block;
-        position: absolute;
-        top: 17%;
-        left: 40%;
-        background: #39496b;
+        position: sticky;
+        top: 100px;
+        left: 300px;
+        border: 1px solid $primary-color;
         width: 110px;
         border-radius: 8px;
 
         #select_nav{
           border: none;
           background: none;
-          
           padding: 4px;
         }
       }
     }
   }
 }
+
+// @media screen and (max-width: 640px) {
+//     #club_container #menu_club .select-menu {
+//         top: 18%;
+       
+//     }
+// }
+// @media screen and (max-width: 320px) {
+//     #club_container #menu_club .select-menu {
+//         top: 20%;
+       
+//     }
+// }
+// @media screen and (max-width: 425px) {
+//     #club_container #menu_club .select-menu {
+//         top: 18%;
+       
+//     }
+// }
+// @media screen and (max-width: 568px) {
+//     #club_container #menu_club .select-menu {
+//         top: 17%;
+       
+//     }
+// }

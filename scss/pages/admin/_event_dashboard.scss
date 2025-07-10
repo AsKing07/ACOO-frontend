@@ -38,7 +38,7 @@
 
 
 .body-event-dashboard {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    
     min-height: 100vh;
     padding: $spacer * 4;
 
@@ -96,7 +96,7 @@
     }
 
     .stat-card {
-        background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 10%) 100%);
+        background: linear-gradient(to top right, $primary-color, $secondary-color);
         color: white;
         padding: $spacer * 5;
         border-radius: $spacer * 4;
@@ -287,7 +287,7 @@
             margin-bottom: $spacer * 6;
 
             .btn-today {
-                background: $secondary-color;
+                background: $primary-color;
                 color: white;
                 border: none;
                 padding: $spacer * 2 $spacer * 6;
@@ -1154,7 +1154,7 @@
     }
 
     .btn-primary {
-        background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+        // background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
         color: white;
         box-shadow: 0 4px 15px rgba($primary-color, 0.3);
 
