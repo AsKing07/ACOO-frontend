@@ -1,0 +1,408 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+@use '../base/functions' as *;
+
+// ========================================
+// PAGE INSCRIPTION
+// ========================================
+
+.body-inscription {
+  background-color: $tertiary-color;
+
+ main{
+     padding: $spacer * 5;
+ }
+  
+// ========================================
+// HERO SECTION
+// ========================================
+
+.inscription-hero {
+  background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 15%) 100%);
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../assets/images/rame.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.25rem;
+    font-weight: 300;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+  }
+}
+
+// ========================================
+// INTRODUCTION
+// ========================================
+
+.inscription-intro {
+  padding: 4rem 0;
+  background: white;
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $color-text;
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// ========================================
+// ÉQUIPES
+// ========================================
+
+.inscription-teams {
+  padding: 4rem 0;
+  background: $color-background;
+}
+
+.teams-grid {
+  margin-top: 3rem;
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+}
+
+.team-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  &__image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+          background: linear-gradient(135deg, $primary-color, #5a6b8a);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+
+    &:hover img {
+      transform: scale(1.05);
+    }
+
+     .team-placeholder {
+        color: #fff;
+        font-size: 3rem;
+        z-index: 1;
+      }
+  }
+
+  &__content {
+    padding: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-primary;
+    margin-bottom: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: $color-text-light;
+
+    i {
+      color: $color-accent;
+      width: 16px;
+    }
+  }
+
+  &__description {
+    color: $color-text;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  &__coach,
+  &__gallery {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: $color-primary;
+    font-weight: 500;
+
+    i {
+      color: $color-accent;
+    }
+  }
+
+  &__gallery {
+    margin-top: 0.5rem;
+    color: $color-text-light;
+    font-weight: 400;
+  }
+}
+
+// ========================================
+// STATES (NO TEAMS, ERROR, LOADER)
+// ========================================
+
+.no-teams,
+.error-teams {
+  text-align: center;
+  padding: 3rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+
+  &__icon {
+    font-size: 4rem;
+    color: $color-text-light;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-text;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: $color-text-light;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+}
+
+.error-teams {
+  &__icon {
+    color: $color-error;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+// ========================================
+// GUIDE D'INSCRIPTION
+// ========================================
+
+.inscription-guide {
+  padding: 4rem 0;
+  background: white;
+  margin-top: $spacer * 5;
+  border-radius: 12px;
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $color-text;
+    margin-bottom: 2rem;
+  }
+
+  &__cta {
+    .btn-primary {
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// ========================================
+// CONTACT
+// ========================================
+
+.inscription-contact {
+  padding: 4rem 0;
+  background: $color-background;
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $color-text;
+    margin-bottom: 2rem;
+  }
+
+  &__cta {
+    .btn-secondary {
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// ========================================
+// LOADER
+// ========================================
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $tertiary-color;
+    border-top: 4px solid $primary-color;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $color-text-light;
+    font-size: 1rem;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 768px) {
+  .inscription-hero {
+    padding: 6rem 0 3rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  .inscription-intro,
+  .inscription-guide,
+  .inscription-contact {
+    padding: 3rem 0;
+  }
+
+  .inscription-teams {
+    padding: 3rem 0;
+  }
+
+  .team-card {
+    &__content {
+      padding: 1rem;
+    }
+
+    &__info {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .error-teams__actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+}

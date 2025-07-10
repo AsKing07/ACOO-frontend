@@ -14,6 +14,7 @@ export class Teams {
         this.recurringSchedulesIds = data.recurringSchedules || [];
         this.role = data.role;
         this.images = data.images || []; // Ajout du champ images
+        this.image= data.images[0] || null; // Ajout de l'image principale
     }
 
     static fromApi(data) {

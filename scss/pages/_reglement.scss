@@ -1,0 +1,299 @@
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+@use '../base/functions' as *;
+
+// ========================================
+// PAGE RÈGLEMENT INTÉRIEUR
+// ========================================
+
+.body-reglement {
+  background-color: $color-background;
+
+  // ========================================
+// HERO SECTION
+// ========================================
+
+.reglement-hero {
+  background: linear-gradient(135deg, $color-primary 0%, darken($color-primary, 15%) 100%);
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../assets/images/rame.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 2rem;
+    font-weight: 300;
+    opacity: 0.9;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+// ========================================
+// CONTENU PRINCIPAL
+// ========================================
+
+.reglement-content {
+  padding: 4rem 0;
+}
+
+// ========================================
+// SECTION VIE DU CLUB
+// ========================================
+
+.reglement-introduction {
+  margin-bottom: 4rem;
+}
+
+.club-life {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+
+  &__image {
+    margin-bottom: 2rem;
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__content {
+    .section-title {
+      color: $color-primary;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $color-text;
+
+    p {
+      margin-bottom: 1.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// ========================================
+// SECTION TÉLÉCHARGEMENT
+// ========================================
+
+.reglement-download {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+
+  &__content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  &__text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: $color-text;
+    margin-bottom: 2rem;
+  }
+
+  &__cta {
+    .btn-primary {
+      font-size: 1.1rem;
+      padding: 1rem 2rem;
+
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// ========================================
+// ÉTATS (NO INFO, ERROR, LOADER)
+// ========================================
+
+.no-info,
+.error-message {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &__icon {
+    font-size: 4rem;
+    color: $color-text-light;
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-text;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    color: $color-text-light;
+    line-height: 1.6;
+    font-size: 1.1rem;
+  }
+}
+
+.error-message {
+  &__icon {
+    color: $color-error;
+  }
+}
+
+// ========================================
+// LOADER
+// ========================================
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  &__spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid $color-background;
+    border-top: 4px solid $color-primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: $color-text-light;
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
+
+// ========================================
+// RESPONSIVE
+// ========================================
+
+@media (max-width: 768px) {
+  .reglement-hero {
+    padding: 6rem 0 3rem;
+
+    &__title {
+      font-size: 2rem;
+    }
+
+    &__subtitle {
+      font-size: 1.2rem;
+    }
+  }
+
+  .reglement-content {
+    padding: 3rem 0;
+  }
+
+  .club-life,
+  .reglement-download {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .reglement-introduction {
+    margin-bottom: 3rem;
+  }
+
+  .club-life {
+    &__description {
+      font-size: 1rem;
+    }
+  }
+
+  .reglement-download {
+    &__text {
+      font-size: 1rem;
+    }
+
+    &__cta .btn-primary {
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .club-life,
+  .reglement-download {
+    padding: 1.5rem;
+  }
+
+  .reglement-hero {
+    &__title {
+      font-size: 1.8rem;
+    }
+
+    &__subtitle {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+}
+

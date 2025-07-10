@@ -23,6 +23,17 @@ $black-color: #000000;
 
 $violet-color: #9B51E0;
 
+// Semantic colors
+$color-primary: $primary-color;
+$color-secondary: $secondary-color;
+$color-accent: $background-color;
+$color-background: $tertiary-color;
+$color-text: $quaternary-color;
+$color-text-light: $gray-color;
+$color-error: $danger-color;
+$color-success: $success-color;
+$color-warning: $warning-color;
+
 // Fonts
 $font-family: 'Montserrat', 'Arial, sans-serif, roboto';
 

@@ -33,6 +33,38 @@
                         </div>
                     </div>
                 </div>
+                
+           <!-- Section Guide d'Inscription -->
+            
+                <div class="edit-wording-card">
+                    <div class="edit-wording_content">
+                        <h2 class="edit-wording_title">Guide d'Inscription</h2>
+                        <p class="edit-wording_description">
+                            Gérez le guide d'inscription destiné aux nouveaux membres. 
+                            Ce document contient toutes les informations nécessaires pour rejoindre le club.
+                        </p>
+                        <div class="edit-wording_btn">
+                            <button id="download-guide-btn" class="btn-primary">Télécharger</button>
+                            <button id="upload-guide-btn" class="btn-primary">Uploader</button>
+                        </div>
+                    </div>
+                </div>
+                
+           <!-- Section Conditions Générales d'Utilisation -->
+            
+                <div class="edit-wording-card">
+                    <div class="edit-wording_content">
+                        <h2 class="edit-wording_title">Conditions Générales d'Utilisation</h2>
+                        <p class="edit-wording_description">
+                            Gérez les conditions générales d'utilisation du site web et des services du club. 
+                            Ce document définit les conditions d'usage et les responsabilités.
+                        </p>
+                        <div class="edit-wording_btn">
+                            <button id="download-cgu-btn" class="btn-primary">Télécharger</button>
+                            <button id="upload-cgu-btn" class="btn-primary">Uploader</button>
+                        </div>
+                    </div>
+                </div>
            
         <!-- Section Sports Proposés -->
        <div class="container-editing-column editing-sports-container">

@@ -36,6 +36,30 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Page inscription -->
+  <url>
+    <loc>https://acoo.charbelsnn.com/pages/inscription.php</loc>
+    <lastmod>2025-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Page règlement intérieur -->
+  <url>
+    <loc>https://acoo.charbelsnn.com/pages/reglement_interieur.php</loc>
+    <lastmod>2025-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Page découverte -->
+  <url>
+    <loc>https://acoo.charbelsnn.com/pages/decouverte.php</loc>
+    <lastmod>2025-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Page galerie -->
   <url>
     <loc>https://acoo.charbelsnn.com/pages/galerie.php</loc>

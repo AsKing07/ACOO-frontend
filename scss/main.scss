@@ -34,7 +34,11 @@
 @use 'pages/club';
 @use 'pages/contact';
 @use 'pages/evenement';
-
+@use 'pages/inscription';
+@use 'pages/reglement';
+@use 'pages/decouverte';
+@use 'pages/cookiesPage';
+ 
 @use 'pages/admin/dashboard_layout';
 @use 'pages/admin/dashboard_accueil';
 @use 'pages/admin/event_dashboard';

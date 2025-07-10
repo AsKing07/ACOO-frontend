@@ -154,7 +154,7 @@
     
             <section id="club_equipe">
                 <div id="title_club">
-                    <h1>Equipe</h1>
+                    <h1>Organigramme</h1>
                 </div>
                 <div class="container_equipe">
                     <!-- Peut etre faire un composant par la suite -->

@@ -59,6 +59,14 @@ export function initClub() {
     const uploadWordingBtn = document.getElementById('upload-reglement-btn');
     const downloadWordingBtn = document.getElementById('download-reglement-btn');
 
+    // Éléments pour le guide d'inscription
+    const uploadGuideBtn = document.getElementById('upload-guide-btn');
+    const downloadGuideBtn = document.getElementById('download-guide-btn');
+
+    // Éléments pour les CGU
+    const uploadCguBtn = document.getElementById('upload-cgu-btn');
+    const downloadCguBtn = document.getElementById('download-cgu-btn');
+
 
 
 
@@ -394,12 +402,112 @@ function downloadWordingFile() {
   window.open('/assets/docs/reglement_club.pdf', '_blank');
 }
 
+// Fonction pour uploader le guide d'inscription
+async function uploadGuideFile() {
+    console.log('uploadGuideFile called')
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.pdf,.doc,.docx';
+  input.style.display = 'none';
+
+  input.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('guide', file);
+
+    try {
+      const res = await fetch('/service/api/upload_guide.php', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await res.json();
+      if (result.success) {
+        showNotification('Guide d\'inscription uploadé avec succès.', 'success');
+      } else {
+        showNotification(result.error || 'Erreur lors de l\'upload du guide.', 'error');
+      }
+    } catch (err) {
+      showNotification('Erreur : ' + err.message, 'error');
+    }
+    finally {
+      input.remove();
+    }
+  });
+
+  document.body.appendChild(input);
+  input.click();
+}
+
+// Fonction pour télécharger le guide d'inscription
+function downloadGuideFile() {
+  window.open('/assets/docs/guide_inscription.pdf', '_blank');
+}
+
+// Fonction pour uploader les CGU
+async function uploadCguFile() {
+    console.log('uploadCguFile called')
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.pdf,.doc,.docx';
+  input.style.display = 'none';
+
+  input.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append('cgu', file);
+
+    try {
+      const res = await fetch('/service/api/upload_cgu.php', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await res.json();
+      if (result.success) {
+        showNotification('CGU uploadées avec succès.', 'success');
+      } else {
+        showNotification(result.error || 'Erreur lors de l\'upload des CGU.', 'error');
+      }
+    } catch (err) {
+      showNotification('Erreur : ' + err.message, 'error');
+    }
+    finally {
+      input.remove();
+    }
+  });
+
+  document.body.appendChild(input);
+  input.click();
+}
+
+// Fonction pour télécharger les CGU
+function downloadCguFile() {
+  window.open('/assets/docs/CGU.pdf', '_blank');
+}
+
     // Gestion des événements pour le règlement intérieur
 uploadWordingBtn.removeEventListener('click', uploadWordingFile);
 uploadWordingBtn.addEventListener('click', uploadWordingFile);
 
 downloadWordingBtn.removeEventListener('click', downloadWordingFile);
 downloadWordingBtn.addEventListener('click', downloadWordingFile);
+
+    // Gestion des événements pour le guide d'inscription
+uploadGuideBtn.removeEventListener('click', uploadGuideFile);
+uploadGuideBtn.addEventListener('click', uploadGuideFile);
+
+downloadGuideBtn.removeEventListener('click', downloadGuideFile);
+downloadGuideBtn.addEventListener('click', downloadGuideFile);
+
+    // Gestion des événements pour les CGU
+uploadCguBtn.removeEventListener('click', uploadCguFile);
+uploadCguBtn.addEventListener('click', uploadCguFile);
+
+downloadCguBtn.removeEventListener('click', downloadCguFile);
+downloadCguBtn.addEventListener('click', downloadCguFile);
  
 
 
@@ -429,6 +537,10 @@ export function destroyClub() {
   const confirmDeleteSportBtn = document.getElementById('confirm-delete-sport-btn');
   const uploadWordingBtn = document.getElementById('upload-reglement-btn');
   const downloadWordingBtn = document.getElementById('download-reglement-btn');
+  const uploadGuideBtn = document.getElementById('upload-guide-btn');
+  const downloadGuideBtn = document.getElementById('download-guide-btn');
+  const uploadCguBtn = document.getElementById('upload-cgu-btn');
+  const downloadCguBtn = document.getElementById('download-cgu-btn');
 
   // Retirer les listeners des boutons principaux
   if (addStaffBtn) addStaffBtn.replaceWith(addStaffBtn.cloneNode(true));
@@ -445,6 +557,10 @@ export function destroyClub() {
   if (confirmDeleteSportBtn) confirmDeleteSportBtn.onclick = null;
   if (uploadWordingBtn) uploadWordingBtn.replaceWith(uploadWordingBtn.cloneNode(true));
   if (downloadWordingBtn) downloadWordingBtn.replaceWith(downloadWordingBtn.cloneNode(true));
+  if (uploadGuideBtn) uploadGuideBtn.replaceWith(uploadGuideBtn.cloneNode(true));
+  if (downloadGuideBtn) downloadGuideBtn.replaceWith(downloadGuideBtn.cloneNode(true));
+  if (uploadCguBtn) uploadCguBtn.replaceWith(uploadCguBtn.cloneNode(true));
+  if (downloadCguBtn) downloadCguBtn.replaceWith(downloadCguBtn.cloneNode(true));
 
   // Retirer les listeners sur les éléments générés dynamiquement (staffs et sports)
   document.querySelectorAll('.staff .btn-edit').forEach(btn => {
