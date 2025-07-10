@@ -69,30 +69,34 @@
 
     <section class="formulaire-contact">
       <h2 class="text-wrapper-2">CONTACTEZ-NOUS</h2>
-      <form class="contact-form" action="traitement.php" method="POST" autocomplete="off">
-        <div class="input-field">
-          <label for="nom" class="sr-only">Nom</label>
-          <input id="nom" class="value-wrapper" placeholder="Nom" name="nom" type="text" required />
-        </div>
-        <div class="input-field">
-          <label for="email" class="sr-only">Email</label>
-          <input id="email" class="value-wrapper" placeholder="Email" name="email" type="email" required />
-        </div>
-        <div class="textarea-field">
-          <label for="message" class="sr-only">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            class="value-wrapper"
-            placeholder="Message"
-            required
-          ></textarea>
-        
-        </div>
-        <button type="submit" class="bouton">
-          <div class="text-wrapper-3">ENVOYER</div>
-        </button>
-      </form>
+<form class="contact-form" action="traitement.php" method="POST" autocomplete="off">
+  <div class="input-field">
+    <label for="nom" class="sr-only">Nom</label>
+    <input id="nom" class="value-wrapper" placeholder="Nom" name="nom" type="text" required />
+  </div>
+  <div class="input-field">
+    <label for="email" class="sr-only">Email</label>
+    <input id="email" class="value-wrapper" placeholder="Email" name="email" type="email" required />
+  </div>
+  <div class="input-field">
+    <label for="sujet" class="sr-only">Sujet</label>
+    <input id="sujet" class="value-wrapper" placeholder="Sujet" name="sujet" type="text" required />
+  </div>
+  <div class="textarea-field">
+    <label for="message" class="sr-only">Message</label>
+    <textarea
+      id="message"
+      name="message"
+      class="value-wrapper"
+      placeholder="Message"
+      required
+    ></textarea>
+  </div>
+  <button type="submit" class="bouton">
+    <div class="text-wrapper-3">ENVOYER</div>
+  </button>
+</form>
+
       <div class="frame">
         <a href="https://twitter.com/ton-compte" target="_blank" aria-label="Twitter">
           <img src="../assets/images/icons/x.png" alt="Icône X (Twitter)" />

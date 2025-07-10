@@ -14,14 +14,15 @@ burger.addEventListener('click', () => {
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const nom = contactForm.querySelector('input[name="nom"]').value.trim();
     const email = contactForm.querySelector('input[name="email"]').value.trim();
+    const sujet = contactForm.querySelector('input[name="sujet"]').value.trim();
     const message = contactForm.querySelector('textarea[name="message"]').value.trim();
 
-    if (!nom || !email || !message) {
+    if (!nom || !email || !sujet || !message) {
       alert('Merci de remplir tous les champs.');
       return;
     }
@@ -32,10 +33,12 @@ if (contactForm) {
       return;
     }
 
+    // Ici, ajoute ton envoi AJAX ou fetch selon ta logique
     alert('Votre message a été envoyé !');
     contactForm.reset();
   });
 }
+
 
 // Scroll animation for sections
 const observer = new IntersectionObserver(
