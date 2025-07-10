@@ -1,32 +1,4 @@
-// Sport request:
-// {
-//   "name": "Athlétisme",
-//   "description": "L'athlétisme est un sport qui regroupe plusieurs disciplines...",
-//   "contact": "string",
-//   "image": [
-//     "data:image/jpeg;base64,..."
-//   ]
-// }
 
-// Sport model:
-// {
-//   "id": 0,
-//   "name": "Athlétisme",
-//   "description": "L'athlétisme est un sport qui regroupe plusieurs disciplines...",
-//   "contact": "string",
-//   "teams": [
-//     "https://example.com/"
-//   ],
-//   "events": [
-//     "https://example.com/"
-//   ],
-//   "recurringSchedules": [
-//     "https://example.com/"
-//   ],
-//   "image": [
-//     "data:image/jpeg;base64,..."
-//   ]
-// }
 
 
 export class Sport {

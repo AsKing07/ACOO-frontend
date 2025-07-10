@@ -3,11 +3,12 @@
  */
 export class Teams {
     /**
-     * @param {{id: number, sport: string, name: string, events: Array<string>, recurringSchedules: Array<string>, role: string, images: Array<string>}} data
+     * @param {{id: number, sport: object, name: string, events: Array<string>, recurringSchedules: Array<string>, role: string, images: Array<string>}} data
      */
     constructor(data) {
         this.id = data.id;
-        this.sportId = data.sport;
+   
+        this.sport = data.sport; // Ajout du sport complet
         this.name = data.name;
         this.eventsIds = data.events || [];
         this.recurringSchedulesIds = data.recurringSchedules || [];
