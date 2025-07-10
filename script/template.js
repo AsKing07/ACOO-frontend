@@ -14,13 +14,13 @@
 
             // Charger dynamiquement le script associé
             if (value.includes('formContact.php')) {
-                import('../script/formContact.js');
+                import('../script/pages/contact/formContact.js');
             }
             if (value.includes('gallery_carousel.php')) {
                 import('../script/galleryCarrousel.js');
             }
             if (value.includes('faq.php')) {
-                import('../script/faq.js');
+                import('../script/pages/contact/faq.js');
             }
             // Ajoute d'autres conditions selon tes besoins
         })

@@ -5,6 +5,7 @@ import { getIntroductionByTitle } from "../../../service/api/introductionApi.js"
 import{ getStaff } from '../../../service/api/staffApi.js';
 import { getSports } from "../../../service/api/sportApi.js";
 import { getPartenaires } from "../../../service/api/partenairesApi.js";
+import { cookiesChecker } from "../../cookies.js";
 
 //console.log("Bonjour club");
 
@@ -175,3 +176,7 @@ getPartenaires()
   .catch(error => {
     console.error("Erreur lors de la récupération des données :", error);
   });
+
+
+  // Initialisation du gestionnaire de cookies
+cookiesChecker();

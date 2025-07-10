@@ -1,5 +1,5 @@
 // Import des services API
-import { addMessagerie } from '../service/api/messagerieApi.js';
+import { addMessagerie } from '../../../service/api/messagerieApi.js';
 
 // Form validation
 const contactForm = document.querySelector('.contact-form');

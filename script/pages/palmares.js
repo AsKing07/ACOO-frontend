@@ -2,6 +2,7 @@ import { getPalmares } from "../../service/api/palmaresApi.js";
 import { getSports } from "../../service/api/sportApi.js";
 import { Palmares } from "../../service/models/Palmares.js";
 import { showNotification } from "../showNotification.js";
+import { cookiesChecker } from "../cookies.js";
 
 class PalmaresPage {
   constructor() {
@@ -26,6 +27,12 @@ class PalmaresPage {
       this.displayLastTrophies();
       this.displayAthletes();
       this.initModalEvents();
+
+
+      // Initialisation du gestionnaire de cookies
+      cookiesChecker();
+
+
     } catch (error) {
       console.error("Erreur lors du chargement des palmarès:", error);
       this.showMessage("Erreur lors du chargement du palmarès.");

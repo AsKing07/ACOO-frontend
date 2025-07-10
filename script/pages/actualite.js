@@ -1,4 +1,5 @@
 import { getNews } from "../../service/api/newsApi.js";
+import { cookiesChecker } from "../cookies.js";
 
 /**
  * Gestionnaire de la page actualités
@@ -25,8 +26,9 @@ class ActualitesManager {
             this.initElements();
             this.attachEventListeners();
             await this.loadNews();
-            console.log(this.allNews[0])
             console.log('✅ Page actualités initialisée avec succès');
+            // Initialisation du gestionnaire de cookies
+            cookiesChecker();
         } catch (error) {
             console.error('❌ Erreur lors de l\'initialisation:', error);
             this.showError();

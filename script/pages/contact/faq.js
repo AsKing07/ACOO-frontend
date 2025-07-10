@@ -1,5 +1,5 @@
-import { getFaqs } from '../service/api/faqApi.js';
-import { showNotification } from './showNotification.js';
+import { getFaqs } from '../../../service/api/faqApi.js';
+import { showNotification } from '../../showNotification.js';
 
 class FaqManager {
   constructor() {
