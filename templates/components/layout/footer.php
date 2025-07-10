@@ -13,12 +13,13 @@
     <div class="footer__block footer__block--links">
       <div class="footer__block-title">LIENS</div>
       <nav class="footer__links">
-        <a href="../../pages/accueil.php">ACCUEIL</a>
-        <a href="../../pages/club.php#">CLUB</a>
-        <a href="../../pages/evenement.php">ÉVÉNEMENTS</a>
-        <a href="../../pages/galerie.php">GALERIE</a>
-        <a href="../../pages/palmares.php">PALMARÈS</a>
-        <a href="../../pages/contact.php">CONTACT</a>
+        <a href="/pages/accueil.php">ACCUEIL</a>
+        <a href="/pages/club.php#">CLUB</a>
+        <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
+        <a href="/pages/galerie.php">GALERIE</a>
+        <a href="/pages/palmares.php">PALMARÈS</a>
+        <a href="/pages/contact.php">CONTACT</a>
+        <a href="/assets/docs/CGU.pdf" target="_blank" rel="noopener noreferrer">CONDITIONS GÉNÉRALES</a>
       </nav>
     </div>
     <div class="footer__divider"></div>

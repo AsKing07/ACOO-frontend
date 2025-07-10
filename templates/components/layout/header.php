@@ -8,10 +8,10 @@
       <img src="../assets/images/Logo.png" alt="Logo ACOO" />
     </a>
     <nav class="header__nav">
-      <a href="accueil.php">ACCUEIL</a>
+      <a href="/pages/accueil.php">ACCUEIL</a>
       <a href="/pages/club.php">CLUB</a>
       <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
-      <a href="actualites.php">ACTUALITES</a>
+      <a href="/pages/actualites.php">ACTUALITES</a>
       
       <a href="/pages/galerie.php">GALERIE</a>
       <a href="/pages/palmares.php">PALMARÈS</a>
@@ -33,7 +33,7 @@
   </div>
   <div class="header__mobile-menu">
     <nav>
-      <a href="accueil.php">ACCUEIL</a>
+      <a href="/pages/accueil.php">ACCUEIL</a>
       <a href="/pages/club.php">CLUB</a>
       <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>
