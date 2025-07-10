@@ -1,6 +1,7 @@
 import { getGalleries } from "../../service/api/galleryApi.js";
 import { getPictures } from '../../service/api/pictureApi.js';
 import { showNotification } from "../showNotification.js";
+import { cookiesChecker } from "../cookies.js";
 
 class ModernGallery {
     constructor() {
@@ -25,6 +26,9 @@ class ModernGallery {
             this.attachEventListeners();
             await this.loadData();
             this.setupLightbox();
+
+            // Initialisation du gestionnaire de cookies
+            cookiesChecker();
         } catch (error) {
             console.error('Erreur lors de l\'initialisation de la galerie:', error);
             this.showError('Erreur lors du chargement de la galerie');

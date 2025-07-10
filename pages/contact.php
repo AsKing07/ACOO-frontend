@@ -1,17 +1,70 @@
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     
+    <!-- SEO Meta Tags -->
+    <title>Contact ACOO - Nous Contacter | Aviron Club Orléans</title>
+    <meta name="description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans. Adresse, téléphone, email, horaires. FAQ et formulaire de contact disponibles.">
+    <meta name="keywords" content="contact ACOO, contacter club aviron Orléans, adresse ACOO, téléphone aviron, email club, FAQ aviron">
+    <meta name="author" content="ACOO - Aviron Club Orléans">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/contact.php">
+    <meta property="og:title" content="Contact ACOO - Nous Contacter | Aviron Club Orléans">
+    <meta property="og:description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans. Formulaire de contact et coordonnées disponibles.">
+    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/contact.php">
+    <meta name="twitter:title" content="Contact ACOO - Nous Contacter">
+    <meta name="twitter:description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans. Formulaire de contact et coordonnées.">
+    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/contact.php">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" href="../assets/images/Logo.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact ACOO",
+      "description": "Page de contact du club d'aviron ACOO d'Orléans",
+      "url": "https://acoo.charbelsnn.com/pages/contact.php",
+      "mainEntity": {
+        "@type": "SportsClub",
+        "name": "ACOO - Aviron Club Orléans",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2575 Rue de la Source",
+          "addressLocality": "Orléans",
+          "postalCode": "45160",
+          "addressCountry": "FR"
+        }
+      }
+    }
+    </script>
+    
+    <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <title>ACOO: Contact</title>
     <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
 </head>
 <body class="body-contact">
     <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
-
+    
+    <?php include __DIR__ . '/../templates/components/faq.php'; ?>
+    
     <div class="division-contact">
       <div class="section-information">
         <div class="information">
@@ -25,20 +78,20 @@
             <p class="p">
                 <img src="../assets/images/icons/ad.png" alt="adresse">
             </p>
-            <input class="acoo-acoo-fr" placeholder="2575 Rue de la Source, 45010 Orléans" type="adresse" />
+            <p class="acoo-acoo-fr" id="p-address"></p>
           </div>
           <div class="div">
             <p class="p">
                <img src="../assets/images/icons/ph.png" alt="Icône phone">
             </p>
-            <input class="acoo-acoo-fr" placeholder="06 27 37 26 34" type="telephone" />
+            <a class="acoo-acoo-fr" href="" id="p-phone"></a>
           </div>
           <div class="div">
             <p class="p">
                 <img src="../assets/images/icons/mail2.png" alt="Icône mail">
                
             </p>
-            <input class="acoo-acoo-fr" placeholder="acoo@acoo.fr" type="email" />
+            <a class="acoo-acoo-fr" href="" id="p-email"></a>
           </div>
         </div>
       </div>
@@ -46,29 +99,31 @@
         <div class="text-wrapper-2">CONTACTEZ-NOUS</div>
           <form class="contact-form">
             <div class="input-field">
-              <div class="input-field"><input class="value-wrapper" name="name" placeholder="Nom" type="text" /></div>
+              <label for="nom" class="sr-only">Nom</label>
+              <input id="nom" class="value-wrapper" placeholder="Nom" name="name" type="text" required />
             </div>
-            <div class="input-field"><input class="value-wrapper" name="mail" placeholder="Email" type="email" /></div>
-            <div class="textarea-field">
-              <textarea class="value-wrapper" name="subject" placeholder="Sujet" required></textarea>
+            <div class="input-field">
+              <label for="email" class="sr-only">Email</label>
+              <input id="email" class="value-wrapper" placeholder="Email" name="mail" type="email" required />
+            </div>
+            <div class="input-field">
+              <label for="sujet" class="sr-only">Sujet</label>
+              <input id="sujet" class="value-wrapper" placeholder="Sujet" name="subject" type="text" required />
             </div>
             <div class="textarea-field">
-              <textarea class="value-wrapper" name="message" placeholder="Message" required></textarea>
+              <label for="message" class="sr-only">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="value-wrapper"
+                placeholder="Message"
+                required
+              ></textarea>
             </div>
             <button type="submit" class="btn-primary">ENVOYER</button>
-           </form>
-          <div class="frame">
-            <a href="https://twitter.com/ton-compte" target="_blank">
-            <img src="../assets/images/icons/x.png" alt="Icône X (Twitter)">
-            </a>
+          </form>
 
-            <a href="https://www.facebook.com/ton-club" target="_blank">
-            <img src="../assets/images/icons/f.png" alt="Icône Facebook">
-            </a>
-
-            <a href="https://www.instagram.com/ton-compte" target="_blank">
-            <img src="../assets/images/icons/i.png" alt="Icône Instagram">
-            </a>
+          <div class="frame" id="frame-socials">           
           </div>
         </div> 
       </div>
@@ -79,7 +134,10 @@
 
 
 <script src="../script/navbar.js"></script>
-<script src="../script/formContact.js"></script>
-<script src="../script/galleryCarrousel.js"></script>
+<script type="module" src="../script/pages/contact/faq.js"></script>
+<script type="module" src="../script/pages/contact/formContact.js"></script>
+<script type="module" src="../script/pages/contact/contact.js">
+
+</script>
 </body>
 </html>

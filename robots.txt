@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://acoo.charbelsnn.com/sitemap.xml
+
+# Répertoires à ne pas indexer
+Disallow: /script/admin/
+Disallow: /pages/admin/
+Disallow: /service/
+Disallow: /scss/
+Disallow: /templates/
+
+# Fichiers temporaires
+Disallow: *.tmp
+Disallow: *.log
+
+# Amélioration du crawling
+Crawl-delay: 1

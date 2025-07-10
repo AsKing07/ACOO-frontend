@@ -1,7 +1,62 @@
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>ACOO - Aviron Club Orléans | Club d'Aviron de Loire</title>
+    <meta name="description" content="Découvrez l'ACOO, le club d'aviron d'Orléans. Rejoignez-nous pour pratiquer l'aviron sur la Loire dans une ambiance conviviale. Cours pour tous niveaux, compétitions et événements.">
+    <meta name="keywords" content="aviron, club aviron, Orléans, Loire, sport nautique, rame, compétition aviron, ACOO, club sportif">
+    <meta name="author" content="ACOO - Aviron Club Orléans">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://acoo.charbelsnn.com/">
+    <meta property="og:title" content="ACOO - Aviron Club Orléans | Club d'Aviron de Loire">
+    <meta property="og:description" content="Découvrez l'ACOO, le club d'aviron d'Orléans. Rejoignez-nous pour pratiquer l'aviron sur la Loire dans une ambiance conviviale.">
+    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://acoo.charbelsnn.com/">
+    <meta name="twitter:title" content="ACOO - Aviron Club Orléans | Club d'Aviron de Loire">
+    <meta name="twitter:description" content="Découvrez l'ACOO, le club d'aviron d'Orléans. Rejoignez-nous pour pratiquer l'aviron sur la Loire dans une ambiance conviviale.">
+    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://acoo.charbelsnn.com/">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" href="../assets/images/Logo.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsClub",
+      "name": "ACOO - Aviron Club Orléans",
+      "description": "Club d'aviron situé à Orléans, pratique de l'aviron sur la Loire",
+      "url": "https://acoo.charbelsnn.com/",
+      "logo": "https://acoo.charbelsnn.com/assets/images/Logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2575 Rue de la Source",
+        "addressLocality": "Orléans",
+        "postalCode": "45160",
+        "addressCountry": "FR"
+      },
+      "sport": "Aviron",
+      "sameAs": [
+        "https://www.facebook.com/acoo.orleans",
+        "https://www.instagram.com/acoo.orleans"
+      ]
+    }
+    </script>
+    
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,30 +125,8 @@
 
 </body>
 <script src="../script/navbar.js"></script>
-<script type="module" src="../script/formContact.js"></script>
+<script type="module" src="../script/pages/contact/formContact.js"></script>
 <script type="module" src="../script/galleryCarrousel.js"></script>
-<script type="module">
-import { getVideos } from '../service/api/videoApi.js';
-function extractYoutubeId(url) {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return (match && match[2].length === 11) ? match[2] : null;
-}
-(async function() {
-    try {
-        const videos = await getVideos();
-        const featured = videos.find(v => v.highlighting);
-        if (featured) {
-            const id = extractYoutubeId(featured.videoUrl);
-            if (id) {
-                document.getElementById('hero-video').innerHTML = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&fs=0&color=white&wmode=transparent&disablekb=1&playsinline=1&enablejsapi=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="pointer-events: none;"></iframe>`;
-            }
-        }
-    } catch (e) {
-        document.getElementById('hero-video').innerHTML = '<p>Vidéo non disponible</p>';
-    }
-})();
-</script>
 <script type="module" src="../script/pages/accueil/accueil.js"></script>
 <script type="module" src="../script/pages/accueil/showEvents.js"></script>
 </html>

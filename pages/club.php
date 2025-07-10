@@ -1,8 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>Club ACOO - Présentation, Histoire et Équipe | Aviron Orléans</title>
+    <meta name="description" content="Découvrez l'histoire, l'équipe, les sports pratiqués et les lieux d'entraînement de l'ACOO. Plus de 140 ans d'aviron à Orléans sur les bords de Loire.">
+    <meta name="keywords" content="club aviron Orléans, histoire ACOO, équipe aviron, sports nautiques Loire, présentation club aviron, partenaires ACOO">
+    <meta name="author" content="ACOO - Aviron Club Orléans">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/club.php">
+    <meta property="og:title" content="Club ACOO - Présentation, Histoire et Équipe | Aviron Orléans">
+    <meta property="og:description" content="Découvrez l'histoire, l'équipe, les sports pratiqués et les lieux d'entraînement de l'ACOO. Plus de 140 ans d'aviron à Orléans.">
+    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/club.php">
+    <meta name="twitter:title" content="Club ACOO - Présentation, Histoire et Équipe">
+    <meta name="twitter:description" content="Découvrez l'histoire, l'équipe et les activités de l'ACOO. Plus de 140 ans d'aviron à Orléans.">
+    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/club.php">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" href="../assets/images/Logo.png">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SportsClub",
+      "name": "ACOO - Aviron Club Orléans",
+      "description": "Club d'aviron fondé en 1882, situé à Orléans sur les bords de Loire",
+      "url": "https://acoo.charbelsnn.com/pages/club.php",
+      "foundingDate": "1882",
+      "sport": "Aviron",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2575 Rue de la Source",
+        "addressLocality": "Orléans",
+        "postalCode": "45160",
+        "addressCountry": "FR"
+      }
+    }
+    </script>
+    
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -13,8 +64,6 @@
     crossorigin="">
     </script>
     <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
-
-    <title>Club</title>
 </head>
 <body>
 

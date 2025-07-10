@@ -4,7 +4,7 @@
 
 
 .faq-section {
-  background: $secondary-color;
+  margin-top: 64px;
   padding: $spacer * 15 $spacer * 40;
   display: flex;
   flex-direction: column;
@@ -16,6 +16,90 @@
     font-weight: 700;
     color: $primary-color;
     margin-bottom: $spacer * 10;
+    text-align: center;
+  }
+}
+
+// Filtres
+.faq-filters {
+  width: 100%;
+  max-width: 700px;
+  margin-bottom: $spacer * 8;
+  display: flex;
+  justify-content: center;
+  gap: $spacer * 5;
+
+  .faq-filter-group {
+    display: flex;
+    align-items: center;
+    gap: $spacer * 3;
+    
+    label {
+      font-family: $font-family;
+      font-size: $font-size-base * 1.4;
+      font-weight: 600;
+      color: $primary-color;
+      white-space: nowrap;
+    }
+    
+    .faq-filter-select {
+      min-width: 200px;
+      padding: $spacer * 3 $spacer * 4;
+      border: 2px solid #e0e0e0;
+      border-radius: $spacer * 2;
+      font-family: $font-family;
+      font-size: $font-size-base * 1.4;
+      background: white;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+      
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+      }
+    }
+  }
+}
+
+// Pagination
+.faq-pagination {
+  width: 100%;
+  max-width: 700px;
+  margin-top: $spacer * 8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacer * 4;
+
+  .pagination-btn {
+    padding: $spacer * 3 $spacer * 6;
+    background: $primary-color;
+    color: white;
+    border: none;
+    border-radius: $spacer * 2;
+    font-family: $font-family;
+    font-size: $font-size-base * 1.4;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: darken($primary-color, 10%);
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+  }
+
+  .page-info {
+    font-family: $font-family;
+    font-size: $font-size-base * 1.4;
+    font-weight: 600;
+    color: $primary-color;
     text-align: center;
   }
 }
@@ -81,8 +165,50 @@
 @media (max-width: 700px) {
   .faq-section {
     padding: $spacer * 10 $spacer * 3;
+    
+    &__title {
+      font-size: $font-size-base * 3;
+    }
   }
+  
   .faq {
     max-width: 100%;
   }
+  
+  .faq-filters {
+    .faq-filter-group {
+      flex-direction: column;
+      align-items: stretch;
+      gap: $spacer * 2;
+      
+      .faq-filter-select {
+        min-width: auto;
+        width: 100%;
+      }
+    }
+  }
+  
+  .faq-pagination {
+    flex-direction: column;
+    gap: $spacer * 3;
+    
+    .pagination-btn {
+      width: 100%;
+      padding: $spacer * 4 $spacer * 6;
+    }
+  }
+}
+
+// Message d'erreur et d'information
+.error, .no-faqs {
+  text-align: center;
+  padding: $spacer * 8;
+  color: #666;
+  font-family: $font-family;
+  font-size: $font-size-base * 1.6;
+  font-style: italic;
+}
+
+.error {
+  color: #e74c3c;
 }

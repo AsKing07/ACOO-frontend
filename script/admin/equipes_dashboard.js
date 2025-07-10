@@ -19,14 +19,7 @@ let addTeamBtn, submitTeamBtn, cancelTeamBtn;
 let teamSportSelect, teamNameInput, teamRoleInput, teamImagesInput, teamImagesPreview;
 
 
-// Fonction utilitaire pour formater la taille des fichiers
-function formatFileSize(bytes) {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-}
+
 
 // Fonction pour afficher/masquer les loaders
 function toggleLoader(element, show) {
@@ -134,11 +127,7 @@ async function loadTeams() {
     }
 }
 
-// Fonction pour obtenir le nom d'un sport par son ID
-function getSportName(sportId) {
-    const sport = sports.find(s => s.id == sportId);
-    return sport ? sport.name : 'Sport inconnu';
-}
+
 
 // Fonction pour rendre les équipes
 function renderTeams() {
@@ -165,7 +154,7 @@ function createTeamCard(team) {
     card.className = 'team-card';
     card.setAttribute('data-team-id', team.id);
     
-    const sportName = getSportName(team.sportId);
+   
     const hasImages = team.images && team.images.length > 0;
     const firstImage = hasImages ? team.images[0] : null;
     const description = team.role || 'Aucune description disponible';
@@ -177,11 +166,11 @@ function createTeamCard(team) {
                  <div class="team-image-overlay"></div>` :
                 `<i class="fas fa-users team-placeholder"></i>`
             }
-            <div class="team-badge">${sportName}</div>
+            <div class="team-badge">${team.sport.name}</div>
         </div>
         <div class="team-card-body">
             <h3 class="team-name">${team.name}</h3>
-            <p class="team-sport">${sportName}</p>
+            <p class="team-sport">${team.sport.name}</p>
             <p class="team-description">${description}</p>
             <div class="team-actions">
                 <button class="btn-icon btn-view" onclick="viewTeam(${team.id})" title="Voir les détails">
@@ -272,7 +261,7 @@ async function viewTeam(teamId) {
     
     // Remplir les détails
     document.getElementById('view-team-title').textContent = `Détails de ${team.name}`;
-    document.getElementById('view-team-sport').textContent = getSportName(team.sportId);
+    document.getElementById('view-team-sport').textContent = team.sport.name;
     document.getElementById('view-team-name').textContent = team.name;
     document.getElementById('view-team-role').textContent = team.role || 'Aucune description disponible';
     
@@ -442,16 +431,18 @@ async function saveTeam(event) {
             savedTeam = await updateTeam(currentEditingTeamId, teamData);
             
             // Mettre à jour dans la liste locale
-            const index = teams.findIndex(t => t.id == currentEditingTeamId);
-            if (index !== -1) {
-                teams[index] = savedTeam;
-            }
-            
+            // const index = teams.findIndex(t => t.id == currentEditingTeamId);
+            // if (index !== -1) {
+            //     teams[index] = savedTeam;
+            // }
+
+        await    loadTeams();
             showNotification('Équipe modifiée avec succès', 'success');
         } else {
             // Ajout
             savedTeam = await addTeam(teamData);
-            teams.push(savedTeam);
+            // teams.push(savedTeam);
+            await loadTeams();
             showNotification('Équipe ajoutée avec succès', 'success');
         }
         
@@ -542,7 +533,7 @@ export async function initEquipesDashboard() {
             loadTeams()
         ]);
         
-        showNotification('Dashboard des équipes initialisé avec succès', 'success');
+    
         
     } catch (error) {
         console.error('Erreur lors de l\'initialisation du dashboard des équipes:', error);
