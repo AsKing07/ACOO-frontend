@@ -7,8 +7,12 @@ import { cookiesChecker } from "../../cookies.js";
   getContactClub().then(data => {
           console.log("Contact club Data fetched from API:", data);
 
-    document.getElementById('p-phone').textContent = data.telephone;
-    document.getElementById('p-email').textContent = data.email;
+    const telEl = document.getElementById('p-phone');
+    telEl.textContent = data.telephone;
+    telEl.href = `tel:${data.telephone}`;
+    const email = document.getElementById('p-email');
+    email.textContent = data.email;
+    email.href = `mailto:${data.email}`;
     document.getElementById('p-address').textContent = data.adresse;
   });
   getSocialMedias().then(data => {

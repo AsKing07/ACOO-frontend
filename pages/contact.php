@@ -84,14 +84,14 @@
             <p class="p">
                <img src="../assets/images/icons/ph.png" alt="Icône phone">
             </p>
-            <p class="acoo-acoo-fr" id="p-phone"></p>
+            <a class="acoo-acoo-fr" href="" id="p-phone"></a>
           </div>
           <div class="div">
             <p class="p">
                 <img src="../assets/images/icons/mail2.png" alt="Icône mail">
                
             </p>
-            <p class="acoo-acoo-fr" id="p-email"></p>
+            <a class="acoo-acoo-fr" href="" id="p-email"></a>
           </div>
         </div>
       </div>

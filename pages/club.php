@@ -147,8 +147,7 @@
 
                     <!-- Contenu associé -->
                     <div class="content" id="content">
-                        <img src="image2000.jpg" alt="2000">
-                        <p>Description pour l’année 2000.</p>
+                        <p>Création de la Société Nautique du Loiret (SNL), sur les bords du Loiret, au niveau du bassin du Saint-Samson.</p>
                     </div>
                     </div>
             </section>

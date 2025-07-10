@@ -38,7 +38,7 @@
 
 
 .body-event-dashboard {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    
     min-height: 100vh;
     padding: $spacer * 4;
 
@@ -96,7 +96,7 @@
     }
 
     .stat-card {
-        background: linear-gradient(135deg, $primary-color 0%, darken($primary-color, 10%) 100%);
+        background: linear-gradient(to top right, $primary-color, $secondary-color);
         color: white;
         padding: $spacer * 5;
         border-radius: $spacer * 4;
@@ -144,7 +144,7 @@
                 border: 2px solid #e1e8ed;
                 border-radius: $spacer * 3;
                 font-size: $font-size-base * 1.1;
-                min-width: 200px;
+            
                 
                 &:focus {
                     outline: none;
@@ -287,7 +287,7 @@
             margin-bottom: $spacer * 6;
 
             .btn-today {
-                background: $secondary-color;
+                background: $primary-color;
                 color: white;
                 border: none;
                 padding: $spacer * 2 $spacer * 6;
@@ -327,7 +327,6 @@
             gap: $spacer * 2;
 
             .day {
-                aspect-ratio: 1;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
@@ -1154,7 +1153,7 @@
     }
 
     .btn-primary {
-        background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
+        // background: linear-gradient(135deg, $primary-color, darken($primary-color, 10%));
         color: white;
         box-shadow: 0 4px 15px rgba($primary-color, 0.3);
 
@@ -1339,6 +1338,7 @@
     .labels-container {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap; // ✅ permet de passer à la ligne en petit écran
         gap: $spacer * 3;
         justify-content: center;
         margin-bottom: $spacer * 8;
@@ -1346,16 +1346,20 @@
         > div {
             cursor: pointer;
             transition: all 0.3s ease;
-            
+
             &:hover {
-                transform: scale(1.05);
+            transform: scale(1.05);
             }
 
             &.active {
-                transform: scale(1.1);
-                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             }
         }
+
+        // =============================
+        // === LABELS PAR TYPE (FIXES)
+        // =============================
 
         .label-para {
             @include common-style-label($blue-color);
@@ -1374,31 +1378,59 @@
         }
 
         .label-sante {
-            @include common-style_label($violet-color);
+            @include common-style-label($violet-color);
         }
 
         .label-default {
             @include common-style-label($secondary-color);
         }
 
-        // Classes supplémentaires pour d'autres types d'événements
         .label-competition {
-            @include common-style-label(#dc3545); // Rouge pour compétition
+            @include common-style-label(#dc3545); // Rouge vif
         }
 
         .label-formation {
-            @include common-style-label(#28a745); // Vert pour formation
+            @include common-style-label(#28a745); // Vert
         }
 
         .label-social {
-            @include common-style_label(#17a2b8); // Cyan pour événement social
+            @include common-style-label(#17a2b8); // Bleu cyan
         }
 
         .label-assemblage {
-            @include common-style-label(#6f42c1); // Violet pour assemblée
+            @include common-style-label(#6f42c1); // Violet foncé
         }
-    }
 
+        // =============================
+        // === RESPONSIVE ADAPTÉ
+        // =============================
+
+        @media (max-width: 768px) {
+            justify-content: center;
+            gap: $spacer * 2;
+
+            > div {
+            width: 100%;
+            max-width: 280px;
+            text-align: center;
+            }
+
+            // Réduction padding & taille en mobile
+            .label-para,
+            .label-avifit,
+            .label-indoor,
+            .label-riviere,
+            .label-sante,
+            .label-default,
+            .label-competition,
+            .label-formation,
+            .label-social,
+            .label-assemblage {
+            padding: $spacer * 6 $spacer * 10 !important;
+            font-size: $font-size-base * 0.95;
+            }
+        }
+        }
     // ===== BADGES DE STATUT DES ÉVÉNEMENTS =====
     .event-status-badge {
         padding: $spacer * 1 $spacer * 3;
@@ -1466,6 +1498,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.5px;
+        display: flex;
 
         &.badge-primary {
             background: rgba($primary-color, 0.1);

@@ -83,12 +83,13 @@
 
 
       .footer__contact-list {
-        div {
+        a {
           color: white;
           font-size: $font-size-base * 1.6;
           font-family: $font-family;
           font-weight: 700;
           text-align: center;
+          text-decoration: none;
         }
       }
     }

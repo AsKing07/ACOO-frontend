@@ -5,58 +5,49 @@ let galleryImages = [
   '../assets/images/Galerie2.png',
   '../assets/images/Galerie3.png'
 ];
-let currentIndex = 0;
 
 const container = document.querySelector('.gallery-section__container');
+const track = container.querySelector('.gallery-section__track');
 const prevBtn = container.querySelector('.gallery-section__nav--prev');
 const nextBtn = container.querySelector('.gallery-section__nav--next');
 
 function renderImages() {
-  // Supprime les anciennes images
-  container.querySelectorAll('.gallery-section__image').forEach(img => img.remove());
+  track.innerHTML = ''; // Nettoie le track avant d’injecter
 
   galleryImages.forEach((src, i) => {
     const img = document.createElement('img');
     img.className = 'gallery-section__image';
     img.alt = `Photo ${i + 1}`;
     img.src = src;
-    // Insère juste avant le bouton "next"
-    container.insertBefore(img, nextBtn);
+    track.appendChild(img);
   });
 }
 
-function updateGallery() {
-  // Décale les images selon currentIndex
-  const imagesToShow = [];
-  for (let i = 0; i < galleryImages.length; i++) {
-    const idx = (currentIndex + i) % galleryImages.length;
-    imagesToShow.push(galleryImages[idx]);
+// Fonction pour défiler horizontalement
+function scrollTrack(direction = 'next') {
+  const scrollAmount = 250; // adapte selon taille image
+  if (direction === 'next') {
+    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  } else {
+    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
   }
-  // Met à jour le DOM
-  galleryImages = imagesToShow;
-  renderImages();
 }
 
 async function loadCarouselImages() {
   try {
     const pictures = await getPictures();
-    galleryImages = pictures.slice(0, 5).map(pic => pic.image);
-    updateGallery();
+    galleryImages = pictures.slice(0, 10).map(pic => pic.image);
+    renderImages();
   } catch (e) {
     console.error('Erreur lors du chargement des images du carrousel', e);
-    updateGallery();
+    renderImages(); // fallback en local
   }
 }
 
+// Écouteurs sur les flèches
 if (prevBtn && nextBtn) {
-  prevBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    updateGallery();
-  });
-  nextBtn.addEventListener('click', () => {
-    currentIndex = (currentIndex + 1) % galleryImages.length;
-    updateGallery();
-  });
+  prevBtn.addEventListener('click', () => scrollTrack('prev'));
+  nextBtn.addEventListener('click', () => scrollTrack('next'));
 }
 
 document.addEventListener('DOMContentLoaded', loadCarouselImages);

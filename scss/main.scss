@@ -64,3 +64,11 @@
 @use 'base/reset';
 // @use 'base/theme';
 // @use 'base/animation';
+
+
+@font-face {
+  font-family: 'Good Times';
+  src: url('../assets/font/Good Times Rg.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}

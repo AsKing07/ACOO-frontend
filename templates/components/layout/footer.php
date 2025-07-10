@@ -26,8 +26,8 @@
     <div class="footer__block footer__block--contact">
   <div class="footer__block-title">CONTACT</div>
   <div class="footer__contact-list">
-    <div>Téléphone : <span id="footer-phone"></span></div>
-    <div>Email : <span id="footer-email"></span></div>
+    <a id="footer-phone" href=""></a>
+    <a id="footer-email" href=""></a>
   </div>
   <div class="footer__socials" id="footer-socials"></div>
   <div class="footer__contact-address">
@@ -45,71 +45,77 @@
 
 <script type="module">
   import { getContactClub } from '/service/api/contactClubApi.js';
-  import { getSocialMedias} from '/service/api/socialMediasApi.js';
-  import { getIntroductionByTitle} from '/service/api/introductionApi.js';
+  import { getSocialMedias } from '/service/api/socialMediasApi.js';
+  import { getIntroductionByTitle } from '/service/api/introductionApi.js';
 
-
-
+  // 📞 Chargement des infos de contact
   getContactClub().then(data => {
-          console.log("Contact club Data fetched from API:", data);
+    console.log("Contact club Data fetched from API:", data);
 
-    document.getElementById('footer-phone').textContent = data.telephone;
-    document.getElementById('footer-email').textContent = data.email;
-    document.getElementById('footer-address').textContent = data.adresse;
+    const phoneEl = document.getElementById('footer-phone');
+    const emailEl = document.getElementById('footer-email');
+    const addressEl = document.getElementById('footer-address');
 
+    // Téléphone cliquable
+    phoneEl.href = `tel:${data.telephone}`;
+    phoneEl.textContent = data.telephone;
 
+    // Email cliquable
+    emailEl.href = `mailto:${data.email}`;
+    emailEl.textContent = data.email;
+
+    // Adresse
+    addressEl.textContent = data.adresse;
   });
+
+  // 🌐 Chargement des réseaux sociaux
   getSocialMedias().then(data => {
     console.log("Social Media Data fetched from API:", data);
 
-const socialMediaList = document.getElementById('footer-socials');
+    const socialMediaList = document.getElementById('footer-socials');
 
-data.forEach(socialMedia =>{
-  const a = document.createElement('a');
-  a.href = socialMedia.url;
-  a.target = '_blank';
-  a.rel = 'noopener';
-  a.ariaLabel = socialMedia.platform;
-  a.classList.add('footer__social-link');
+    data.forEach(socialMedia => {
+      const a = document.createElement('a');
+      a.href = socialMedia.url;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.ariaLabel = socialMedia.platform;
+      a.classList.add('footer__social-link');
 
-  const icon = document.createElement('i');
-  icon.src = socialMedia.iconUrl;
+      const icon = document.createElement('i');
+      icon.classList.add('fa-brands', 'footer__social-icon');
 
-  icon.classList.add('fa-brands');
-  switch (socialMedia.platform.toLowerCase()) {
-    case 'facebook':
-      icon.classList.add('fa-facebook');
-      break;
-    case 'instagram':
-      icon.classList.add('fa-square-instagram');
-      break;
-    case 'x':
-      icon.classList.add('fa-x');
-      break;
-    default:
-      icon.classList.add('fa-globe'); // Default icon for other platforms
-      break;
-  }
+      // Détection de la plateforme
+      switch (socialMedia.platform.toLowerCase()) {
+        case 'facebook':
+          icon.classList.add('fa-facebook');
+          break;
+        case 'instagram':
+          icon.classList.add('fa-square-instagram');
+          break;
+        case 'x':
+        case 'twitter':
+          icon.classList.add('fa-x-twitter');
+          break;
+        default:
+          icon.classList.add('fa-globe'); // Fallback icon
+          break;
+      }
 
-
-
-  icon.alt = socialMedia.platform;
-  icon.classList.add('footer__social-icon');
-
-  a.appendChild(icon);
-  socialMediaList.appendChild(a);
-
-})
-
+      a.appendChild(icon);
+      socialMediaList.appendChild(a);
+    });
   });
 
+  // 📝 Chargement de l’introduction "À propos de nous"
+  getIntroductionByTitle('A propos de nous').then(data => {
+    console.log("Introduction Data fetched from API:", data);
 
-getIntroductionByTitle('A propos de nous').then(data => {
-  console.log("Introduction Data fetched from API:", data);
-
-  const footerClubBlock = document.querySelector('.footer__block-desc');
-  footerClubBlock.textContent = data[0].description;
-}).catch(error => {
-  console.error("Error fetching introduction data:", error);
-});
+    const footerClubBlock = document.querySelector('.footer__block-desc');
+    if (data.length > 0) {
+      footerClubBlock.textContent = data[0].description;
+    }
+  }).catch(error => {
+    console.error("Error fetching introduction data:", error);
+  });
 </script>

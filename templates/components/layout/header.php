@@ -5,7 +5,7 @@
   <div class="header__container">
     <a href="#" class="header__logo">
   
-      <img src="../assets/images/Logo.png" alt="Logo ACOO" />
+      <img src="../assets/images/Logo-sombre.png" alt="Logo ACOO" />
     </a>
     <nav class="header__nav">
       <a href="/pages/accueil.php">ACCUEIL</a>

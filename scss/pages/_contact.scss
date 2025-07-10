@@ -3,7 +3,7 @@
 
 .body-contact{
     background:
-    linear-gradient(rgba(246,248,250,0.7), rgba(246,248,250,0.7)), /* voile pour la lisibilité */
+    linear-gradient(rgba(246,248,250,0.7), rgba(246,248,250,0.7)), /* voile pour la lisibilitÃ© */
     url('../assets/images/back-contact.png') center center/cover no-repeat;
 
 .division-contact {
@@ -68,6 +68,7 @@
   font-weight: 600;
   outline: none;
   cursor: default;
+  text-decoration: none;
 }
 
 /* Formulaire */
