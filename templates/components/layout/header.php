@@ -17,11 +17,11 @@
       <a href="/pages/palmares.php">PALMARÈS</a>
       <div class="header__nav-item header__nav-dropdown">
   <a href="#" class="header__nav-link">RAMER AU CLUB</a>
-  <div class="header__dropdown-menu">
+  <!-- <div class="header__dropdown-menu">
     <a href="#">S'inscrire au club</a>
     <a href="#">Stage découverte/initiation</a>
     <a href="#">Règlement intérieur</a>
-  </div>
+  </div> -->
 </div>
       <a href="/pages/contact.php">CONTACT</a>
     </nav>
@@ -42,11 +42,11 @@
       <a href="/pages/palmares.php">PALMARÈS</a>
       <div class="header__nav-item header__nav-dropdown">
   <span  class="header__nav-link">RAMER AU CLUB</span>
-  <div class="header__dropdown-menu">
+  <!-- <div class="header__dropdown-menu">
     <a href="#">S'inscrire au club</a>
     <a href="#">Stage découverte/initiation</a>
     <a href="#">Règlement intérieur</a>
-  </div>
+  </div> -->
 </div>
       <a href="/pages/contact.php">CONTACT</a>
     </nav>

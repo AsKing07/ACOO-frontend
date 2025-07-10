@@ -185,7 +185,7 @@
         </div>
     </section>
 
-    <script type="module" src="../script/evenement.js"></script>
+    <script type="module" src="../script/pages/evenement.js"></script>
     <script type="module" src="../script/navbar.js"></script>
     <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
 </body>

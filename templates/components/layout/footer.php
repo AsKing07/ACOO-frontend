@@ -97,8 +97,16 @@
         case 'twitter':
           icon.classList.add('fa-x-twitter');
           break;
+        case 'linkedin':
+          icon.classList.add('fa-linkedin');
+          break;
+        case 'youtube':
+          icon.classList.add('fa-youtube');
+          break;
         default:
-          icon.classList.add('fa-globe'); // Fallback icon
+          icon.classList.remove('fa-brands');
+          
+          icon.classList.add( 'fa-solid',  'fa-globe'); // Fallback icon
           break;
       }
 

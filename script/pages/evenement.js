@@ -1,8 +1,8 @@
 // Import des services API
-import { getEvents } from '../service/api/eventsApi.js';
-import { getRecurringSchedules } from '../service/api/recurringScheduleApi.js';
-import { getScheduleExceptions } from '../service/api/scheduleExceptionApi.js';
-import { getSports } from '../service/api/sportApi.js';
+import { getEvents } from '../../../service/api/eventsApi.js';
+import { getRecurringSchedules } from '../../../service/api/recurringScheduleApi.js';
+import { getScheduleExceptions } from '../../../service/api/scheduleExceptionApi.js';
+import { getSports } from '../../../service/api/sportApi.js';
 
 /**
  * Gestionnaire de calendrier frontend optimisé
