@@ -11,7 +11,9 @@
 </head>
 <body class="body-contact">
     <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
-
+    
+    <?php include __DIR__ . '/../templates/components/faq.php'; ?>
+    
     <div class="division-contact">
       <div class="section-information">
         <div class="information">
@@ -25,20 +27,20 @@
             <p class="p">
                 <img src="../assets/images/icons/ad.png" alt="adresse">
             </p>
-            <input class="acoo-acoo-fr" placeholder="2575 Rue de la Source, 45010 Orléans" type="adresse" />
+            <p class="acoo-acoo-fr" id="p-address"></p>
           </div>
           <div class="div">
             <p class="p">
                <img src="../assets/images/icons/ph.png" alt="Icône phone">
             </p>
-            <input class="acoo-acoo-fr" placeholder="06 27 37 26 34" type="telephone" />
+            <p class="acoo-acoo-fr" id="p-phone"></p>
           </div>
           <div class="div">
             <p class="p">
                 <img src="../assets/images/icons/mail2.png" alt="Icône mail">
                
             </p>
-            <input class="acoo-acoo-fr" placeholder="acoo@acoo.fr" type="email" />
+            <p class="acoo-acoo-fr" id="p-email"></p>
           </div>
         </div>
       </div>
@@ -46,29 +48,31 @@
         <div class="text-wrapper-2">CONTACTEZ-NOUS</div>
           <form class="contact-form">
             <div class="input-field">
-              <div class="input-field"><input class="value-wrapper" name="name" placeholder="Nom" type="text" /></div>
+              <label for="nom" class="sr-only">Nom</label>
+              <input id="nom" class="value-wrapper" placeholder="Nom" name="name" type="text" required />
             </div>
-            <div class="input-field"><input class="value-wrapper" name="mail" placeholder="Email" type="email" /></div>
-            <div class="textarea-field">
-              <textarea class="value-wrapper" name="subject" placeholder="Sujet" required></textarea>
+            <div class="input-field">
+              <label for="email" class="sr-only">Email</label>
+              <input id="email" class="value-wrapper" placeholder="Email" name="mail" type="email" required />
+            </div>
+            <div class="input-field">
+              <label for="sujet" class="sr-only">Sujet</label>
+              <input id="sujet" class="value-wrapper" placeholder="Sujet" name="subject" type="text" required />
             </div>
             <div class="textarea-field">
-              <textarea class="value-wrapper" name="message" placeholder="Message" required></textarea>
+              <label for="message" class="sr-only">Message</label>
+              <textarea
+                id="message"
+                name="message"
+                class="value-wrapper"
+                placeholder="Message"
+                required
+              ></textarea>
             </div>
             <button type="submit" class="btn-primary">ENVOYER</button>
-           </form>
-          <div class="frame">
-            <a href="https://twitter.com/ton-compte" target="_blank">
-            <img src="../assets/images/icons/x.png" alt="Icône X (Twitter)">
-            </a>
+          </form>
 
-            <a href="https://www.facebook.com/ton-club" target="_blank">
-            <img src="../assets/images/icons/f.png" alt="Icône Facebook">
-            </a>
-
-            <a href="https://www.instagram.com/ton-compte" target="_blank">
-            <img src="../assets/images/icons/i.png" alt="Icône Instagram">
-            </a>
+          <div class="frame" id="frame-socials">           
           </div>
         </div> 
       </div>
@@ -79,7 +83,61 @@
 
 
 <script src="../script/navbar.js"></script>
-<script src="../script/formContact.js"></script>
-<script src="../script/galleryCarrousel.js"></script>
+<script type="module" src="../script/faq.js"></script>
+<script type="module" src="../script/formContact.js"></script>
+<script type="module">
+  import { getContactClub } from '../service/api/contactClubApi.js';
+  import { getSocialMedias} from '../service/api/socialMediasApi.js';
+
+  getContactClub().then(data => {
+          console.log("Contact club Data fetched from API:", data);
+
+    document.getElementById('p-phone').textContent = data.telephone;
+    document.getElementById('p-email').textContent = data.email;
+    document.getElementById('p-address').textContent = data.adresse;
+  });
+  getSocialMedias().then(data => {
+    console.log("Social Media Data fetched from API:", data);
+
+  const socialMediaList = document.getElementById('frame-socials');
+
+data.forEach(socialMedia =>{
+  const a = document.createElement('a');
+  a.href = socialMedia.url;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.ariaLabel = socialMedia.platform;
+  a.classList.add('footer__social-link');
+
+  const icon = document.createElement('i');
+  icon.src = socialMedia.iconUrl;
+
+  icon.classList.add('fa-brands');
+  switch (socialMedia.platform.toLowerCase()) {
+    case 'facebook':
+      icon.classList.add('fa-facebook');
+      break;
+    case 'instagram':
+      icon.classList.add('fa-square-instagram');
+      break;
+    case 'x':
+      icon.classList.add('fa-x');
+      break;
+    default:
+      icon.classList.add('fa-globe'); // Default icon for other platforms
+      break;
+  }
+
+
+
+  icon.alt = socialMedia.platform;
+  icon.classList.add('footer__social-icon');
+
+  a.appendChild(icon);
+  socialMediaList.appendChild(a);
+
+})
+  });
+</script>
 </body>
 </html>
