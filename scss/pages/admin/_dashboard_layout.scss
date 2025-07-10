@@ -7,22 +7,17 @@
 .dashboard-layout {
   display: flex;
   min-height: 100vh;
-  background: $background-color;
   min-width: 100% ;
+
+  .dashboard-main {
+    flex: 1;
+    padding: 2rem;
+    min-width: 80% ;
+    background-color: $tertiary-color;
+    align-items: center;
+    justify-content: center; 
+  
+  }
 }
 
 
-.dashboard-sidebar {
-  width: 20%;
-
-}
-
-.dashboard-main {
-  flex: 1;
-  padding: 2rem;
-  min-width: 80% ;
-  background-color: $tertiary-color;
-  align-items: center;
-  justify-content: center; 
-
-}
