@@ -3,7 +3,7 @@
 
         <header class="header">
   <div class="header__container">
-    <a href="#" class="header__logo">
+    <a href="/" class="header__logo">
   
       <img src="../assets/images/Logo-sombre.png" alt="Logo ACOO" />
     </a>
