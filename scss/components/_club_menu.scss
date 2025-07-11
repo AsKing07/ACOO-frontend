@@ -66,6 +66,18 @@
     display: flex;
     overflow: hidden;
 
+    #club_histoire{
+
+      #content{
+        flex-direction: column;
+
+        img{
+          width:200px;
+          height: 129px;
+        }
+      }
+    }
+
     #menu_club {
       
       width: auto;
@@ -76,7 +88,7 @@
       .select-menu {
         display: block;
         position: absolute;
-        top: 20%;
+        top:20%;
         left: 40%;
         border: 1px solid $primary-color;
         width: 110px;
