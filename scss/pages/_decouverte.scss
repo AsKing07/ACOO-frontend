@@ -7,9 +7,7 @@
 
 .body-decouverte {
   background-color: $color-background;
-}
-
-// ========================================
+  // ========================================
 // HERO SECTION
 // ========================================
 
@@ -44,6 +42,7 @@
     font-weight: 700;
     margin-bottom: 1rem;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
 
     @media (max-width: 768px) {
       font-size: 2.5rem;
@@ -388,38 +387,38 @@
   }
 }
 
-.loader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem;
-  text-align: center;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+// .loader {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 3rem;
+//   text-align: center;
+//   background: white;
+//   border-radius: 12px;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-  &__spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid $color-background;
-    border-top: 4px solid $color-primary;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin-bottom: 1rem;
-  }
+//   &__spinner {
+//     width: 40px;
+//     height: 40px;
+//     border: 4px solid $color-background;
+//     border-top: 4px solid $color-primary;
+//     border-radius: 50%;
+//     animation: spin 1s linear infinite;
+//     margin-bottom: 1rem;
+//   }
 
-  p {
-    color: $color-text-light;
-    font-size: 1rem;
-    margin: 0;
-  }
+//   p {
+//     color: $color-text-light;
+//     font-size: 1rem;
+//     margin: 0;
+//   }
 
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-}
+//   @keyframes spin {
+//     0% { transform: rotate(0deg); }
+//     100% { transform: rotate(360deg); }
+//   }
+// }
 
 // ========================================
 // RESPONSIVE
@@ -484,3 +483,5 @@
     }
   }
 }
+}
+

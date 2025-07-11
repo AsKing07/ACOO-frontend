@@ -39,8 +39,8 @@
 }
 
 .card__head {
-  color: black;
-  background: rgba(255, 30, 173, 0.75);
+  color: $primary-color;
+  background: $tertiary-color;
   padding: 0.5em;
   transform: rotate(-90deg);
   transform-origin: 0% 0%;
@@ -122,10 +122,10 @@
       margin-bottom: 20px;
     }
     &__text {
-      background: rgba(57,73,107,0.8);
+      background: white;
       border-radius: 12px;
       padding: 20px 28px;
-      color: #fff;
+      color: $primary-color;
       text-align: center;
       h1 {
         font-size: 2rem;

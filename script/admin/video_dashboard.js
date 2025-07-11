@@ -69,7 +69,13 @@ export function initVideos() {
                 radio.type = 'radio';
                 radio.name = 'highlighting';
                 radio.checked = !!item.highlighting;
-                radio.className = 'highlighting-radio';
+          
+                                radio.classList.add('highlighting-radio');
+                                if (item.highlighting) {
+                                    radio.classList.add('checked');
+                                }
+
+
                 radio.title = 'Sélectionner la vidéo mise en avant';
                 radio.addEventListener('change', async () => {
                     const old = videos.find(v => v.highlighting);
@@ -92,10 +98,14 @@ export function initVideos() {
                 const featuredDesktop = document.createElement('div');
                 featuredDesktop.className = 'video-featured';
                 const radioDesktop = document.createElement('input');
-                radioDesktop.type = 'radio';
-                radioDesktop.name = 'highlighting';
+                radioDesktop.classList.add('highlighting-radio');
+                if (item.highlighting) {
+                    radioDesktop.classList.add('checked');
+                }
+                // radioDesktop.className = 'highlighting-radio';
                 radioDesktop.checked = !!item.highlighting;
-                radioDesktop.className = 'highlighting-radio';
+          
+
                 radioDesktop.title = 'Sélectionner la vidéo mise en avant';
                 radioDesktop.addEventListener('change', async () => {
                     const old = videos.find(v => v.highlighting);

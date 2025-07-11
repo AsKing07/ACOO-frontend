@@ -11,7 +11,7 @@
   }
   
   .video-item {
-    background: #222;
+    background: white;
     border-radius: 12px;
     padding: 1.5rem;
     margin-bottom: 1rem;
@@ -31,18 +31,19 @@
     
     .video-info {
       display: block;
+      text-align: left;
       .video-name-row {
         display: flex;
         align-items: center;
         margin-bottom: 1rem;
         .video-name-label {
-          color: $primary-color;
+          color: $primary-color ;
           font-weight: 600;
           margin-right: 0.5rem;
           min-width: 60px;
         }
         .video-name {
-          color: #fff;
+          color: black;
           font-size: 1.1rem;
           font-weight: 500;
         }
@@ -67,6 +68,10 @@
           accent-color: $primary-color;
           width: 1.3em;
           height: 1.3em;
+        }
+        .checked {
+          background-color: $primary-color;
+         
         }
       }
     }
@@ -190,7 +195,7 @@
 }
 
 #video-modal .modal-content {
-  background: #222 !important;
+  background: $primary-color;
   color: #fff;
   border-radius: 12px;
   position: relative;
@@ -198,6 +203,10 @@
   min-width: 320px;
   min-height: 200px;
   box-sizing: border-box;
+
+  #video-modal-title{
+    color: white;
+  }
 }
 .modal-close--video {
   position: absolute;

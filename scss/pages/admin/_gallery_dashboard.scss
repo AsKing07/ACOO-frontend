@@ -139,34 +139,7 @@
                     font-weight: 600;
                     transition: all 0.3s ease;
 
-                    &.btn-add {
-                        background: $primary-color;
-                        color: white;
-
-                        &:hover {
-                            background: darken($primary-color, 10%);
-                        }
-                    }
-
-                    &.btn-edit {
-                        background: #f8f9fa;
-                        color: #666;
-
-                        &:hover {
-                            background: #e9ecef;
-                            color: $primary-color;
-                        }
-                    }
-
-                    &.btn-delete {
-                        background: #f8f9fa;
-                        color: #dc3545;
-
-                        &:hover {
-                            background: #dc3545;
-                            color: white;
-                        }
-                    }
+                 
                 }
             }
         }

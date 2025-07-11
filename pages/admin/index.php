@@ -4,36 +4,37 @@
   import { verifyTokenValidity } from '/service/api/auth.js';
 const user = localStorage.getItem('user');
 
-// if (!user) {
-//   window.location.href = '/pages/admin/auth/login.php';
-// } else {
-//   try {
-//     const userData = JSON.parse(user);
-//     const token = userData.tokenData.token;
+if (!user) {
+  window.location.href = '/pages/admin/auth/login.php';
+} else {
+  try {
+    const userData = JSON.parse(user);
+    const token = userData.tokenData.token;
    
-//     if (
-//       !token 
-//     ) {
+    if (
+      !token 
+    ) {
 
-
-//     alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
-//     // Redirection vers la page de connexion
-//     localStorage.removeItem('user'); // Nettoyer le localStorage
-//       window.location.href = '/pages/admin/auth/login.php';
-//     }
-//     else{
-//      const isValid = await verifyTokenValidity(token);
-//       if (!isValid) {
-//         alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
-//         // Redirection vers la page de connexion
-//         localStorage.removeItem('user'); // Nettoyer le localStorage
-//         window.location.href = '/pages/admin/auth/login.php';
-//       }
-//     }
-//   } catch (e) {
-//     window.location.href = '/pages/admin/auth/login.php';
-//   }
-// }
+console.log('Token non trouvée')
+    alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
+    // Redirection vers la page de connexion
+    localStorage.removeItem('user'); // Nettoyer le localStorage
+      window.location.href = '/pages/admin/auth/login.php';
+    }
+    else{
+     const isValid = await verifyTokenValidity(token);
+      if (!isValid) {
+        console.log("Verification échouée")
+        alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
+        // Redirection vers la page de connexion
+        localStorage.removeItem('user'); // Nettoyer le localStorage
+        window.location.href = '/pages/admin/auth/login.php';
+      }
+    }
+  } catch (e) {
+    window.location.href = '/pages/admin/auth/login.php';
+  }
+}
 </script>
 
 <!DOCTYPE html>

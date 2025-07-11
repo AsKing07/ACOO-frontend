@@ -31,7 +31,9 @@
         font-weight: 800;
         letter-spacing: 0.02em;
         margin-bottom: 1.5rem;
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        // text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        color: white;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
 
     &__subtitle {
@@ -144,7 +146,7 @@
 
         .filters-actions {
             .btn-reset-filters {
-                background: $secondary-color;
+                background: $primary-color;
                 color: white;
                 border: none;
                 padding: $spacer * 3 $spacer * 5;

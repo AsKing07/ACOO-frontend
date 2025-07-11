@@ -9,7 +9,7 @@
                     <i class="fas fa-user-plus"></i>
                     Ajouter un administrateur
                 </button>
-                <button class="btn-secondary" id="toggleViewBtn">
+                <button class="btn-tertiary" id="toggleViewBtn">
                     <i class="fas fa-user-edit"></i>
                     Afficher mon profil
                 </button>

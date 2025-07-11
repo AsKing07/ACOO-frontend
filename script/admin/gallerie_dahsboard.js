@@ -135,11 +135,11 @@ function renderGalleryCard(gallery) {
                         <i class="fas fa-plus"></i>
                         Ajouter
                     </button>
-                    <button class="action-btn btn-edit" onclick="editGallery(${gallery.id})">
+                    <button class="action-btn btn-tertiary" onclick="editGallery(${gallery.id})">
                         <i class="fas fa-edit"></i>
                         Modifier
                     </button>
-                    <button class="action-btn btn-delete" onclick="confirmDeleteGallery(${gallery.id})">
+                    <button class="action-btn btn-danger" onclick="confirmDeleteGallery(${gallery.id})">
                         <i class="fas fa-trash"></i>
                         Supprimer
                     </button>

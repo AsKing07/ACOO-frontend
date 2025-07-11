@@ -82,8 +82,8 @@
         <!-- Section Introduction/Vie du club -->
         <div class="reglement-introduction">
             <div id="club-life-loader" class="loader" style="display: block;">
-                <div class="loader__spinner"></div>
-                <p>Chargement des informations...</p>
+              
+             
             </div>
             
             <div id="club-life-content" style="display: none;">

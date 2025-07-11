@@ -21,11 +21,13 @@ export function initMessagerieDashboard() {
         <div class="name">${message.name}</div>
         <div class="phone">${message.mail}</div>
         <div class="last-msg">${message.subject || ''}</div>
-        <div class="status actif">Actif</div>
+        <div class="date">${new Date(message.createdAt).toLocaleDateString()}</div>
+        <div class="msg-content">${message.description || ''}</div>
       </div>
+     
       <div class="actions">
-        <button class="btn-repondre">Répondre</button>
-        <button class="btn-supprimer">Supprimer</button>
+        <button class="btn-primary btn-repondre">Répondre</button>
+        <button class="btn-danger btn-supprimer">Supprimer</button>
       </div>
     `;
 

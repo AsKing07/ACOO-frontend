@@ -32,6 +32,7 @@
     text-align: start;
     padding: 24px;
     border-radius: 10px;
+    
 }
 
 .editing-img-wording-container-col {
@@ -39,12 +40,13 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 24px;
-    background-color: $light-gray-color;
+    background-color: white;
     align-items: center;
     align-content: center;
     text-align: center;
     padding: 24px;
     width: 30%;
+    border-radius: 10px;
 }
 
 .edit-img {
