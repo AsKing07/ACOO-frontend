@@ -66,6 +66,19 @@
     display: flex;
     overflow: hidden;
 
+    
+    #club_histoire{
+
+      #content{
+        flex-direction: column;
+
+        img{
+          width:200px;
+          height: 129px;
+        }
+      }
+    }
+
     #menu_club {
       
       width: auto;
