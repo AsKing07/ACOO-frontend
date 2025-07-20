@@ -1,18 +1,18 @@
-import { ANALYTICS_API_URL, PLAUSIBLE_API_KEY, SITE_ID } from "../config.js"
+import { PLAUSIBLE_API_KEY, SITE_ID } from "../config.js"
 
-
+// URL de l'API PHP intégrée (remplace le serveur Node.js externe)
+const PHP_API_URL = window.location.origin + "/service/api/plausible/plausible.php";
 
 // Configuration pour les headers d'authentification
 const getHeaders = () => ({
-    "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`, // Remplacez par votre système d'auth
-    "Content-Type": "application/json"
+    "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`, 
 });
 
 /**
  * Récupère les visiteurs en temps réel
  */
 export async function getRealtime() {
-    const url = `${ANALYTICS_API_URL}/realtime?site_id=${SITE_ID}`;
+    const url = `${PHP_API_URL}?endpoint=realtime&site_id=${SITE_ID}`;
     const res = await fetch(url, {
         headers: getHeaders()
     });
@@ -24,7 +24,7 @@ export async function getRealtime() {
  * Récupère les métriques agrégées (visiteurs, pages vues, etc.)
  */
 export async function getAggregateStats( period = "7d", metrics = "visitors,pageviews,visits,bounce_rate") {
-    const url = `${ANALYTICS_API_URL}/aggregate?site_id=${SITE_ID}&period=${period}&metrics=${metrics}`;
+    const url = `${PHP_API_URL}?endpoint=aggregate&site_id=${SITE_ID}&period=${period}&metrics=${metrics}`;
     const res = await fetch(url, {
         headers: getHeaders()
     });
@@ -36,7 +36,7 @@ export async function getAggregateStats( period = "7d", metrics = "visitors,page
  * Récupère les données temporelles pour le graphique
  */
 export async function getTimeseries( period = "7d", metrics = "visitors") {
-    const url = `${ANALYTICS_API_URL}/timeseries?site_id=${SITE_ID}&period=${period}&metrics=${metrics}&dimensions=time:day`;
+    const url = `${PHP_API_URL}?endpoint=timeseries&site_id=${SITE_ID}&period=${period}&metrics=${metrics}&dimensions=time:day`;
     const res = await fetch(url, {
         headers: getHeaders()
     });
@@ -48,7 +48,7 @@ export async function getTimeseries( period = "7d", metrics = "visitors") {
  * Récupère les pages les plus populaires
  */
 export async function getTopPages( period = "7d") {
-    const url = `${ANALYTICS_API_URL}/breakdown?dimensions=event:page&site_id=${SITE_ID}&period=${period}&metrics=visitors`;
+    const url = `${PHP_API_URL}?endpoint=breakdown&dimensions=event:page&site_id=${SITE_ID}&period=${period}&metrics=visitors`;
     const res = await fetch(url, {
         headers: getHeaders()
     });
@@ -60,7 +60,7 @@ export async function getTopPages( period = "7d") {
  * Récupère le trafic par pays
  */
 export async function getCountries( period = "7d") {
-    const url = `${ANALYTICS_API_URL}/breakdown?dimensions=visit:country_name&site_id=${SITE_ID}&period=${period}&metrics=visitors`;
+    const url = `${PHP_API_URL}?endpoint=breakdown&dimensions=visit:country_name&site_id=${SITE_ID}&period=${period}&metrics=visitors`;
     const res = await fetch(url, {
         headers: getHeaders()
     });
@@ -72,7 +72,7 @@ export async function getCountries( period = "7d") {
  * Teste la connexion à l'API
  */
 export async function testConnection() {
-    const url = `${ANALYTICS_API_URL}/test-connection`;
+    const url = `${PHP_API_URL}?endpoint=test-connection`;
     const res = await fetch(url, {
         method: 'POST',
         headers: {

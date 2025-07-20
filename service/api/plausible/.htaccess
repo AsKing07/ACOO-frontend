@@ -1,0 +1,22 @@
+# Configuration pour l'API Plausible intégrée
+RewriteEngine On
+
+# Redirection des requêtes API vers le fichier PHP
+RewriteRule ^api/plausible/?$ api/plausible.php [L,QSA]
+
+# Protection du fichier de configuration
+<Files "plausible-config.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Headers de sécurité
+Header always set X-Content-Type-Options nosniff
+Header always set X-Frame-Options DENY
+Header always set X-XSS-Protection "1; mode=block"
+
+# Cache pour les ressources statiques
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType application/json "access plus 5 minutes"
+</IfModule>
