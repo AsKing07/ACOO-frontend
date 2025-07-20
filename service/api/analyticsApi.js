@@ -1,12 +1,11 @@
 import { PLAUSIBLE_API_KEY, SITE_ID } from "../config.js"
 
 // URL de l'API PHP intégrée (remplace le serveur Node.js externe)
-const PHP_API_URL = window.location.origin + "service/api/plausible/plausible.php";
+const PHP_API_URL = window.location.origin + "/service/api/plausible/plausible.php";
 
 // Configuration pour les headers d'authentification
 const getHeaders = () => ({
-    "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`, // Remplacez par votre système d'auth
-    "Content-Type": "application/json"
+    "Authorization": `Bearer ${PLAUSIBLE_API_KEY}`, 
 });
 
 /**

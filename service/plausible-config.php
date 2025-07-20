@@ -45,31 +45,4 @@ define('API_TIMEOUT', 30); // Timeout en secondes
 define('ENABLE_CACHE', false); // Cache simple (pour plus tard)
 define('CACHE_DURATION', 300); // 5 minutes
 
-/*
- * 📝 NOTES DE SYNCHRONISATION :
- * 
- * Quand vous modifiez ces variables, pensez aussi à mettre à jour :
- * - service/config.js : SITE_ID et PLAUSIBLE_API_KEY
- * 
- * Migration en cours :
- * - L'ancien ANALYTICS_API_URL dans config.js peut être supprimé
- * - Cette API PHP remplace le serveur Node.js externe
- * 
- * Vérification :
- * 1. PLAUSIBLE_API_KEY ici = PLAUSIBLE_API_KEY dans config.js ✓
- * 2. PLAUSIBLE_SITE_ID ici = SITE_ID dans config.js ✓
- * 3. Script Plausible ajouté dans <head> de toutes les pages ✓
- * 
- * EXEMPLE D'INTÉGRATION DU SCRIPT :
- * 
- * Dans vos fichiers PHP (ex: index.php, pages/*.php) :
- * <head>
- *     <title>Mon Site</title>
- *     <!-- Autres balises meta -->
- *     <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.js"></script>
- * </head>
- * 
- * OU dans un template commun :
- * <?php echo '<script defer data-domain="' . PLAUSIBLE_SITE_ID . '" src="https://plausible.io/js/script.js"></script>'; ?>
- */
 ?>

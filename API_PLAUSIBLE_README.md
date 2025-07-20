@@ -116,7 +116,7 @@ const ANALYTICS_API_URL = "https://acoo-plausible-analytics-back.onrender.com/ap
 ### Nouveau (API intégrée) :
 
 ```javascript
-const PHP_API_URL = window.location.origin + "/api/plausible.php";
+const PHP_API_URL = window.location.origin + "/service/api/plausible/plausible.php";
 ```
 
 ## 🛠️ Feuille de Route - Modification des Variables
@@ -160,8 +160,7 @@ const PHP_API_URL = window.location.origin + "/api/plausible.php";
 // Ancien - À SUPPRIMER ou commenter
 // export const ANALYTICS_API_URL = "https://acoo-plausible-analytics-back.onrender.com/api/plausible";
 
-// Nouveau - Déjà géré dans analyticsApi.js
-// Pas besoin de modifier config.js
+// Modifier les variables dans config.js pour qu'elles correspondent à celles dans plausible-config.js
 ```
 
 ## ⚠️ Notes Importantes

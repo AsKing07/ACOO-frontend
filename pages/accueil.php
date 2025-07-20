@@ -64,7 +64,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
 
     <title>ACOO: Aviron Orléans</title>
-<script defer data-domain="acoo2.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+<script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
 </head>
 <body class="body-accueil">
