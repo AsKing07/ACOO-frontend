@@ -1032,23 +1032,23 @@
   position: relative;
 }
 .event-mini-card__date {
-  flex: 0 0 120px;
+  flex: 0 0 80px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
   justify-content: center;
-  padding-left: 39px;
+  padding-left: 10px;
 }
 .event-mini-card__date .event-mini-card__day {
-  font-size: 48px;
+  font-size: 36px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
   font-weight: 700;
   color: white;
-  line-height: 1;
+  line-height: 1.1;
   text-align: center;
-  margin: 24px;
+  margin: 4px;
 }
 .event-mini-card__date .event-mini-card__month {
   font-size: 32px;
@@ -1059,11 +1059,11 @@
   margin-top: 14px;
 }
 .event-mini-card__divider {
-  width: 126px;
+  width: 80px;
   height: 0;
   border-top: 1px solid white;
   transform: rotate(90deg);
-  margin: 0 6px;
+  margin: 0 4px;
 }
 .event-mini-card__content {
   flex: 1 1 0;
@@ -1072,21 +1072,41 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-left: 39px;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-width: 0;
 }
 .event-mini-card__content .event-mini-card__title {
-  font-size: 32px;
+  font-size: 28px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
   font-weight: 700;
   color: white;
-  margin-bottom: 9px;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  line-height: 1.3;
 }
 .event-mini-card__content .event-mini-card__desc {
-  font-size: 24px;
+  font-size: 21px;
   font-family: "Montserrat", "Arial, sans-serif, roboto";
   font-weight: 400;
   color: white;
-  max-width: 400px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 @media (max-width: 992px) {
@@ -1108,8 +1128,22 @@
   }
   .event-mini-card__content {
     padding-left: 0;
+    padding-right: 0;
     align-items: center;
     text-align: center;
+    width: 100%;
+  }
+  .event-mini-card__content .event-mini-card__title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+  }
+  .event-mini-card__content .event-mini-card__desc {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    text-align: center;
+    max-width: 100%;
   }
   .event-mini-card__date {
     margin-bottom: 10px;
@@ -2540,6 +2574,13 @@
     margin-top: 6.5%;
     display: flex;
     overflow: hidden;
+  }
+  #club_container #club_histoire #content {
+    flex-direction: column;
+  }
+  #club_container #club_histoire #content img {
+    width: 200px;
+    height: 129px;
   }
   #club_container #menu_club {
     width: auto;

@@ -1,17 +1,27 @@
 import { getEvents } from '../../../service/api/eventsApi.js';
 
+function parseDate(datetimeStr) {
+    if (!datetimeStr) return null;
+    const [datePart, timePart] = datetimeStr.split(' ');
+    if (!datePart || !timePart) return null;
+
+    const [day, month, year] = datePart.split('/');
+    const [hours, minutes] = timePart.split(':');
+
+    if (!day || !month || !year || !hours || !minutes) return null;
+
+    // new Date(year, monthIndex, day, hours, minutes)
+    return new Date(year, month - 1, day, hours, minutes);
+}
+
 function formatDate(datetimeStr) {
-  const date = new Date(datetimeStr);
-  console.log('Formatted date:', date.toLocaleString('fr-FR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }));
-  return date.toLocaleString('fr-FR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
+  const date = parseDate(datetimeStr);
+  if (!date) return 'Date invalide';
+
+  const day = date.toLocaleString('fr-FR', { day: 'numeric' });
+  const month = date.toLocaleString('fr-FR', { month: 'long' });
+
+  return `${day} ${month}`;
 }
 
 async function showLastTwoEvents() {
@@ -20,16 +30,17 @@ async function showLastTwoEvents() {
 
     const sorted = allEvents
       .filter(e => {
-        // Vérifier que startDatetime existe et n'est pas vide
         if (!e.startDatetime) return false;
-        
-        // Vérifier que la date est valide après conversion
-        const date = new Date(e.startDatetime);
-        return !isNaN(date.getTime());
+        const date = parseDate(e.startDatetime);
+        return date && !isNaN(date.getTime());
       })
-      .sort((a, b) => new Date(b.startDatetime) - new Date(a.startDatetime));
+      .sort((a, b) => {
+          const dateA = parseDate(a.startDatetime);
+          const dateB = parseDate(b.startDatetime);
+          return (dateB || 0) - (dateA || 0);
+      });
 
-    const twoLatest = sorted.slice(0, 2);
+    const twoLatest = sorted.slice(0, 2).reverse();
 
     const container = document.getElementById('event-section-accueil__cards');
     container.innerHTML = twoLatest.map(event => `
