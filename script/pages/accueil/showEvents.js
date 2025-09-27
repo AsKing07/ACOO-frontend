@@ -2,6 +2,11 @@ import { getEvents } from '../../../service/api/eventsApi.js';
 
 function formatDate(datetimeStr) {
   const date = new Date(datetimeStr);
+  console.log('Formatted date:', date.toLocaleString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }));
   return date.toLocaleString('fr-FR', {
     year: 'numeric',
     month: 'long',
@@ -14,7 +19,14 @@ async function showLastTwoEvents() {
     const allEvents = await getEvents();
 
     const sorted = allEvents
-      .filter(e => e.startDatetime)
+      .filter(e => {
+        // Vérifier que startDatetime existe et n'est pas vide
+        if (!e.startDatetime) return false;
+        
+        // Vérifier que la date est valide après conversion
+        const date = new Date(e.startDatetime);
+        return !isNaN(date.getTime());
+      })
       .sort((a, b) => new Date(b.startDatetime) - new Date(a.startDatetime));
 
     const twoLatest = sorted.slice(0, 2);

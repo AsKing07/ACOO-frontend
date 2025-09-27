@@ -2,39 +2,48 @@
 <!-- Vérifier si user existe dans le localStorage sinon rediriger vers login -->
 <script type="module">
   import { verifyTokenValidity } from '/service/api/auth.js';
-const user = localStorage.getItem('user');
 
-if (!user) {
-  window.location.href = '/pages/admin/auth/login.php';
-} else {
-  try {
-    const userData = JSON.parse(user);
-    const token = userData.tokenData.token;
-   
-    if (
-      !token 
-    ) {
-
-console.log('Token non trouvée')
-    alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
-    // Redirection vers la page de connexion
-    localStorage.removeItem('user'); // Nettoyer le localStorage
-      window.location.href = '/pages/admin/auth/login.php';
+  // Fonction utilitaire pour rediriger vers la page de connexion
+  function redirectToLogin(message = null) {
+    if (message) {
+      console.log(message);
+      alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
     }
-    else{
-     const isValid = await verifyTokenValidity(token);
-      if (!isValid) {
-        console.log("Verification échouée")
-        alert('Session expirée ou utilisateur non autorisé. Vous serez redirigé vers la page de connexion.');
-        // Redirection vers la page de connexion
-        localStorage.removeItem('user'); // Nettoyer le localStorage
-        window.location.href = '/pages/admin/auth/login.php';
-      }
-    }
-  } catch (e) {
+    localStorage.removeItem('user');
     window.location.href = '/pages/admin/auth/login.php';
   }
-}
+
+  // Vérification de l'authentification
+  async function checkAuthentication() {
+    const user = localStorage.getItem('user');
+    
+    if (!user) {
+      redirectToLogin();
+      return;
+    }
+
+    try {
+      const userData = JSON.parse(user);
+      const token = userData?.tokenData?.token;
+      console.log('Token trouvé:', token);
+
+      if (!token) {
+        redirectToLogin('Token non trouvé');
+        return;
+      }
+
+      const isValid = await verifyTokenValidity(token);
+      if (!isValid) {
+        redirectToLogin('Vérification échouée');
+      }
+    } catch (error) {
+      console.error('Erreur lors de la vérification d\'authentification:', error);
+      redirectToLogin();
+    }
+  }
+
+  // Exécuter la vérification
+  checkAuthentication();
 </script>
 
 <!DOCTYPE html>
