@@ -126,7 +126,12 @@ export function initActualites() {
     newIdInput.value = newsItem.id;
     newTitleInput.value = newsItem.title ;
     newDescriptionInput.value = newsItem.content;
-    newImageInput.value = newsItem.image;
+    // Ne pas définir la valeur de l'input file - afficher l'image actuelle à la place
+    newImageInput.value = ''; // Réinitialiser l'input file
+    
+    // Optionnel : afficher l'image actuelle près de l'input
+    showCurrentImage(newsItem.image);
+    
     newSubmitButton.textContent = "Modifier l'actualité";
     newsModal.style.display = 'flex';
 
@@ -137,6 +142,26 @@ export function initActualites() {
     deleteNewsModal.style.display = 'flex';
  }
 
+ function showCurrentImage(imageUrl) {
+    // Chercher ou créer un élément pour afficher l'image actuelle
+    let currentImageContainer = document.getElementById('current-image-preview');
+    if (!currentImageContainer) {
+        currentImageContainer = document.createElement('div');
+        currentImageContainer.id = 'current-image-preview';
+        currentImageContainer.style.marginTop = '10px';
+        newImageInput.parentNode.appendChild(currentImageContainer);
+    }
+    
+    if (imageUrl) {
+        currentImageContainer.innerHTML = `
+            <p>Image actuelle :</p>
+            <img src="${imageUrl}" alt="Image actuelle" style="max-width: 200px; max-height: 150px; object-fit: cover; border-radius: 4px;">
+        `;
+    } else {
+        currentImageContainer.innerHTML = '<p>Aucune image actuelle</p>';
+    }
+ }
+
    // Event listeners pour les boutons et modals
    if(addNewsButton)
    {
@@ -145,6 +170,13 @@ export function initActualites() {
         newsForm.reset();
         newIdInput.value = '';
         newSubmitButton.textContent = "Ajouter l'actualité";
+        
+        // Nettoyer l'aperçu de l'image
+        const currentImageContainer = document.getElementById('current-image-preview');
+        if (currentImageContainer) {
+            currentImageContainer.innerHTML = '';
+        }
+        
         newsModal.style.display = 'flex';
 
     })
@@ -166,10 +198,20 @@ export function initActualites() {
       newSubmitButton.innerHTML = `<span class="loader" style="width:18px;height:18px;border-width:3px;vertical-align:middle;"></span>`;
 
       // Logique pour gérer l'upload de la photo
-      let photoBase64 = '/assets/images/profile-default.jpg';
+      let photoBase64;
+      
       if (newImageInput.files.length > 0) {
+        // Nouvelle image sélectionnée
         photoBase64 = await fileToBase64(newImageInput.files[0]);
+      } else if (newIdInput.value) {
+        // Mode édition : garder l'image existante si aucune nouvelle image n'est sélectionnée
+        const existingNews = news.find(n => n.id == newIdInput.value);
+        photoBase64 = existingNews?.image || '/assets/images/profile-default.jpg';
+      } else {
+        // Mode ajout : image par défaut
+        photoBase64 = '/assets/images/profile-default.jpg';
       }
+      
       const newsData = {
                 id: newIdInput.value ? parseInt(newIdInput.value) : null,
                 title: newTitleInput.value,

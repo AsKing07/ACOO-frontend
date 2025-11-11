@@ -87,7 +87,7 @@ export function initClub() {
         const staffEl = document.createElement('div');
         staffEl.className = 'staff';
         staffEl.innerHTML = `
-          <img src="${staff.image}" alt="${staff.name}">
+          <img src="${staff.image? staff.image : '/assets/images/default-avatar.png'}" alt="${staff.name}">
           <div class="info">
             <div class="name">${staff.name}</div>
             <div class="role">${staff.role}</div>
@@ -152,10 +152,11 @@ export function initClub() {
     sportEl.className = 'sport-card';
     sportEl.innerHTML = `
         <div class="sport-card__content">
-        <div class="sport-card__image">
+        ${sport.images[0] ? `  <div class="sport-card__image">
 
             <img src="${sport.images[0]}" alt="${sport.name}">
-        </div>
+        </div>`: ''}
+      
             <div class="sport-card__info">
                 <h3 class="sport-card__name">${sport.name}</h3>
                 <p class="sport-card__description">${sport.description || ''}</p>
