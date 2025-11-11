@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://acoo.charbelsnn.com/sitemap.xml
+Sitemap: https://club-acoo.fr/sitemap.xml
 
 # Répertoires à ne pas indexer
 Disallow: /script/admin/
@@ -10,10 +10,29 @@ Disallow: /pages/admin/
 Disallow: /service/
 Disallow: /scss/
 Disallow: /templates/
+Disallow: /ACOO-back/
+Disallow: /vendor/
 
-# Fichiers temporaires
+# Fichiers à ne pas indexer
 Disallow: *.tmp
 Disallow: *.log
+Disallow: /composer.json
+Disallow: /composer.lock
+Disallow: /.env
+
+# Fichiers importants à indexer
+Allow: /pages/*.php
+Allow: /css/
+Allow: /assets/
 
 # Amélioration du crawling
+Crawl-delay: 1
+
+# Bots spécifiques
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1

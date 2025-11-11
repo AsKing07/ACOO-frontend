@@ -6,90 +6,98 @@
 
   <!-- Page d'accueil -->
   <url>
-    <loc>https://acoo.charbelsnn.com/</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <!-- Page club -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/club.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/club</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Page actualités -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/actualites.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/actualites</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Page palmarès -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/palmares.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/palmares</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Page inscription -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/inscription.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/inscription</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Page règlement intérieur -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/reglement_interieur.php</loc>
-    <lastmod>2025-07-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://club-acoo.fr/pages/reglement_interieur</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <!-- Page découverte -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/decouverte.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/decouverte</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Page galerie -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/galerie.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/galerie</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Page contact -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/contact.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/contact</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Page événements -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/evenement.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/evenement</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
   <!-- Page ramer au club -->
   <url>
-    <loc>https://acoo.charbelsnn.com/pages/ramerAuClub.php</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://club-acoo.fr/pages/ramerAuClub</loc>
+    <lastmod>2025-11-11</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Page cookies -->
+  <url>
+    <loc>https://club-acoo.fr/pages/cookies</loc>
+    <lastmod>2025-11-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

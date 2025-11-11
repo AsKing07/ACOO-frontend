@@ -6,7 +6,7 @@
     <div class="footer__block footer__block--club">
       <div class="footer__block-title">ACOO - Club d’aviron</div>
       <div class="footer__block-desc">
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        L'Aviron Club Orléans Olivet est une structure sportive dynamique située en région Centre-Val de Loire, qui propose la pratique de l'aviron en loisir comme en compétition. Fort de ses installations modernes et d’un encadrement qualifié, le club accueille des pratiquants de tous âges et de tous niveaux, favorisant à la fois l’apprentissage technique, le dépassement de soi et l’esprit d’équipe.
       </div>
     </div>
     <div class="footer__divider"></div>
@@ -26,12 +26,14 @@
     <div class="footer__block footer__block--contact">
   <div class="footer__block-title">CONTACT</div>
   <div class="footer__contact-list">
-    <a id="footer-phone" href=""></a>
-    <a id="footer-email" href=""></a>
+    <a id="footer-phone" href="tel:0671053266">06 71 05 32 66</a> <br/>
+    <a id="footer-email" href="mailto:contact@club-acoo.fr">contact@club-acoo.fr</a>
   </div>
   <div class="footer__socials" id="footer-socials"></div>
   <div class="footer__contact-address">
-  <span id="footer-address"></span>
+  <span id="footer-address">
+    2575 Rue de la Source, 45160 Olivet - Orléans
+  </span>
 </div>
 </div>
     <div class="footer__copyright">
