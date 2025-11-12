@@ -538,7 +538,7 @@ class UnifiedCalendarManager {
 
     createUnifiedTableRow(item) {
         const typeLabels = {
-            'event': 'Événement',
+            'event': 'Événement Ponctuel',
             'recurring': 'Horaire récurrent',
             'exception': 'Exception'
         };
@@ -577,8 +577,14 @@ class UnifiedCalendarManager {
                     `;
                 }
                 
+                // Vérifier si l'événement est passé
+                const now = new Date();
+                const isPast = endDate && endDate < now;
+                
                 statusInfo = item.isCancelled ? 
                     '<span class="badge badge-status status-cancelled"><i class="fas fa-ban"></i> Annulé</span>' : 
+                    isPast ? 
+                    '<span class="badge badge-status status-past"><i class="fas fa-history"></i> Événement passé</span>' :
                     '<span class="badge badge-status status-active"><i class="fas fa-check"></i> Programmé</span>';
                 break;
                 
@@ -908,13 +914,24 @@ class UnifiedCalendarManager {
     updateStatusBadge(statusElement, itemData, itemType) {
         let statusText = '';
         let statusClass = 'badge badge-status';
+         const endDate = this.parseDateTime(itemData.endDatetime);
+            const now = new Date();
         
         switch (itemType) {
             case 'event':
                 if (itemData.isCancelled) {
                     statusText = 'Annulé';
                     statusClass += ' status-cancelled';
-                } else {
+                } 
+                else if( endDate && endDate < now) {
+                    statusText = 'Passé';
+                    statusClass += ' status-past';
+                }
+                
+                    
+            
+                
+                else {
                     statusText = 'Programmé';
                     statusClass += ' status-active';
                 }

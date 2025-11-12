@@ -1524,6 +1524,12 @@
                 color: #6366f1;
                 border: 1px solid rgba(#6366f1, 0.3);
             }
+
+            &.status-past {
+                background: rgba(#64748b, 0.1);
+                color: #64748b;
+                border: 1px solid rgba(#64748b, 0.3);
+            }
         }
     }
 

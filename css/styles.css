@@ -4991,6 +4991,40 @@
     transform: rotate(360deg);
   }
 }
+#evenement_page .badge {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 8.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+}
+#evenement_page .badge.badge-primary {
+  background: rgba(0, 51, 102, 0.1);
+  color: #003366;
+  border: 1px solid rgba(0, 51, 102, 0.3);
+}
+#evenement_page .badge.badge-status.status-active {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+#evenement_page .badge.badge-status.status-cancelled {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+#evenement_page .badge.badge-status.status-recurring {
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}
+#evenement_page .badge.badge-status.status-past {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+  border: 1px solid rgba(100, 116, 139, 0.3);
+}
 #evenement_page .page-header {
   text-align: center;
   margin-bottom: 12px;
@@ -8832,6 +8866,11 @@
   background: rgba(99, 102, 241, 0.1);
   color: #6366f1;
   border: 1px solid rgba(99, 102, 241, 0.3);
+}
+.body-event-dashboard .badge.badge-status.status-past {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+  border: 1px solid rgba(100, 116, 139, 0.3);
 }
 .body-event-dashboard .view-details .detail-group {
   margin-bottom: 16px;

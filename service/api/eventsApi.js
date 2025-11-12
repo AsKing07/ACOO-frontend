@@ -69,7 +69,7 @@ export async function updateEvent(id, event) {
     ).toJSON();
     
     const res = await fetch(`${API_BASE_URL}/api/events/${id}`, {
-        method: 'PATCH',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/merge-patch+json',
             'Authorization': `Bearer ${tokenData.token}`

@@ -13,7 +13,7 @@
     <div class="footer__block footer__block--links">
       <div class="footer__block-title">LIENS</div>
       <nav class="footer__links">
-        <a href="/pages/accueil.php">ACCUEIL</a>
+        <a href="/">ACCUEIL</a>
         <a href="/pages/club.php#">CLUB</a>
         <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
         <a href="/pages/galerie.php">GALERIE</a>

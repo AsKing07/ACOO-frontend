@@ -3,12 +3,12 @@
 
         <header class="header">
   <div class="header__container">
-    <a href="/" class="header__logo">
+    <a href="/index.php" class="header__logo">
   
-      <img src="../assets/images/Logo-sombre.png" alt="Logo ACOO" />
+      <img src="/assets/images/Logo-sombre.png" alt="Logo ACOO" />
     </a>
     <nav class="header__nav">
-      <a href="/pages/accueil.php">ACCUEIL</a>
+      <a href="/">ACCUEIL</a>
       <a href="/pages/club.php">CLUB</a>
       <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>
@@ -33,7 +33,7 @@
   </div>
   <div class="header__mobile-menu">
     <nav>
-      <a href="/pages/accueil.php">ACCUEIL</a>
+      <a href="/">ACCUEIL</a>
       <a href="/pages/club.php">CLUB</a>
       <a href="/pages/evenement.php">ÉVÉNEMENTS</a>
       <a href="/pages/actualites.php">ACTUALITES</a>

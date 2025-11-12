@@ -732,12 +732,74 @@ class OptimizedCalendar {
         document.body.style.overflow = 'hidden';
     }
 
+       /**
+     * Génère les informations de statut pour un élément
+     * @returns {Object} { text: string, class: string, icon: string }
+     */
+    getStatusInfo(itemData, itemType) {
+        let statusText = '';
+        let statusClass = 'badge badge-status';
+        let statusIcon = '';
+        const endDate = this.parseDateTime(itemData.endDatetime);
+        const now = new Date();
+        
+        switch (itemType) {
+            case 'event':
+                if (itemData.isCancelled) {
+                    statusText = 'Annulé';
+                    statusClass += ' status-cancelled';
+                    statusIcon = '<i class="fas fa-ban"></i>';
+                } else if (endDate && endDate < now) {
+                    statusText = 'Événement passé';
+                    statusClass += ' status-past';
+                    statusIcon = '<i class="fas fa-history"></i>';
+                } else {
+                    statusText = 'À venir';
+                    statusClass += ' status-active';
+                    statusIcon = '<i class="fas fa-check"></i>';
+                }
+                break;
+            case 'recurring':
+                statusText = 'Actif';
+                statusClass += ' status-recurring';
+                statusIcon = '<i class="fas fa-repeat"></i>';
+                break;
+            case 'exception':
+                if (itemData.is_cancelled) {
+                    statusText = 'Séance annulée';
+                    statusClass += ' status-cancelled';
+                    statusIcon = '<i class="fas fa-ban"></i>';
+                } else {
+                    statusText = 'Séance modifiée';
+                    statusClass += ' status-modified';
+                    statusIcon = '<i class="fas fa-exclamation-triangle"></i>';
+                }
+                break;
+        }
+        
+        return { text: statusText, class: statusClass, icon: statusIcon };
+    }
+
+    /**
+     * Met à jour un élément DOM avec le badge de statut
+     */
+    updateStatusBadge(statusElement, itemData, itemType) {
+        const statusInfo = this.getStatusInfo(itemData, itemType);
+        statusElement.textContent = statusInfo.text;
+        statusElement.className = statusInfo.class;
+    }
+
     generateEventDetailsHTML(item) {
         let html = `<div class="event-details">`;
         
         // Badge de statut
-        html += `<div class="status-section">`;
+        html += `<div style="display: flex; gap: 10px; align-items: center;" class="status-section">`;
         html += `<span class="status-badge ${item.itemType}-status">${this.getTypeLabel(item.itemType)}</span>`;
+        
+        // Utiliser getStatusInfo pour obtenir les informations de statut
+        const statusInfo = this.getStatusInfo(item, item.itemType);
+        html += `<span class="${statusInfo.class}">${statusInfo.icon} ${statusInfo.text}</span>`;
+        
         html += `</div>`;
         
         // Section date/heure
@@ -810,6 +872,9 @@ class OptimizedCalendar {
         return html;
     }
 
+    
+ 
+
     generateTooltip(item) {
         let tooltip = `${this.getItemTitle(item)}\n`;
         
@@ -852,7 +917,7 @@ class OptimizedCalendar {
 
     getTypeLabel(itemType) {
         const labels = {
-            'event': 'Événement',
+            'event': 'Événement Ponctuel',
             'recurring': 'Récurrent',
             'exception': 'Exception'
         };

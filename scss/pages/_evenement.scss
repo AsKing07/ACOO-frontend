@@ -46,6 +46,50 @@
         100% { transform: rotate(360deg); }
     }
 
+
+    // BADGE DE STATUT
+       .badge {
+        padding: $spacer * 2 $spacer * 4;
+        border-radius: $spacer * 4;
+        font-size: $font-size-base * 0.85;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: flex;
+
+        &.badge-primary {
+            background: rgba($primary-color, 0.1);
+            color: $primary-color;
+            border: 1px solid rgba($primary-color, 0.3);
+        }
+
+        &.badge-status {
+            &.status-active {
+                background: rgba(#10b981, 0.1);
+                color: #10b981;
+                border: 1px solid rgba(#10b981, 0.3);
+            }
+
+            &.status-cancelled {
+                background: rgba(#ef4444, 0.1);
+                color: #ef4444;
+                border: 1px solid rgba(#ef4444, 0.3);
+            }
+
+            &.status-recurring {
+                background: rgba(#6366f1, 0.1);
+                color: #6366f1;
+                border: 1px solid rgba(#6366f1, 0.3);
+            }
+
+            &.status-past {
+                background: rgba(#64748b, 0.1);
+                color: #64748b;
+                border: 1px solid rgba(#64748b, 0.3);
+            }
+        }
+    }
+
     // ===== EN-TÊTE DE PAGE =====
     .page-header {
         text-align: center;
