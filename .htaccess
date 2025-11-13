@@ -10,8 +10,8 @@
  # Décommentez l'une des deux options ci-dessous :
  
  # Option 1 : Rediriger www vers non-www
- # RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
- # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+ RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+ RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
  
  # Option 2 : Rediriger non-www vers www
  # RewriteCond %{HTTP_HOST} !^www\. [NC]
