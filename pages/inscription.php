@@ -12,22 +12,22 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/inscription.php">
+    <meta property="og:url" content="https://club-acoo.fr/pages/inscription.php">
     <meta property="og:title" content="Inscription - ACOO | Rejoignez notre Club d'Aviron à Orléans">
     <meta property="og:description" content="Rejoignez l'ACOO ! Découvrez nos équipes d'aviron et inscrivez-vous dans notre club d'Orléans.">
-    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
     <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
     <meta property="og:locale" content="fr_FR">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/inscription.php">
+    <meta name="twitter:url" content="https://club-acoo.fr/pages/inscription.php">
     <meta name="twitter:title" content="Inscription - ACOO | Rejoignez notre Club d'Aviron à Orléans">
     <meta name="twitter:description" content="Rejoignez l'ACOO ! Découvrez nos équipes d'aviron et inscrivez-vous dans notre club d'Orléans.">
-    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta name="twitter:image" content="https://club-acoo.fr/assets/images/Logo.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/inscription.php">
+    <link rel="canonical" href="https://club-acoo.fr/pages/inscription.php">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/Logo.png">
@@ -40,11 +40,11 @@
       "@type": "WebPage",
       "name": "Inscription - ACOO",
       "description": "Page d'inscription au club d'aviron ACOO d'Orléans",
-      "url": "https://acoo.charbelsnn.com/pages/inscription.php",
+      "url": "https://club-acoo.fr/pages/inscription.php",
       "isPartOf": {
         "@type": "WebSite",
         "name": "ACOO - Aviron Club Orléans",
-        "url": "https://acoo.charbelsnn.com/"
+        "url": "https://club-acoo.fr/"
       },
       "about": {
         "@type": "SportsClub",
@@ -60,7 +60,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
 
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 </head>
 <body class="body-inscription">
 

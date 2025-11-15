@@ -12,22 +12,22 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acoo.charbelsnn.com/">
+    <meta property="og:url" content="https://club-acoo.fr/">
     <meta property="og:title" content="ACOO - Aviron Club Orléans | Club d'Aviron de Loire">
     <meta property="og:description" content="Découvrez l'ACOO, le club d'aviron d'Orléans. Rejoignez-nous pour pratiquer l'aviron sur la Loire dans une ambiance conviviale.">
-    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
     <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
     <meta property="og:locale" content="fr_FR">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://acoo.charbelsnn.com/">
+    <meta name="twitter:url" content="https://club-acoo.fr/">
     <meta name="twitter:title" content="ACOO - Aviron Club Orléans | Club d'Aviron de Loire">
     <meta name="twitter:description" content="Découvrez l'ACOO, le club d'aviron d'Orléans. Rejoignez-nous pour pratiquer l'aviron sur la Loire dans une ambiance conviviale.">
-    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta name="twitter:image" content="https://club-acoo.fr/assets/images/Logo.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://acoo.charbelsnn.com/">
+    <link rel="canonical" href="https://club-acoo.fr/">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/Logo.png">
@@ -40,8 +40,8 @@
       "@type": "SportsClub",
       "name": "ACOO - Aviron Club Orléans",
       "description": "Club d'aviron situé à Orléans, pratique de l'aviron sur la Loire",
-      "url": "https://acoo.charbelsnn.com/",
-      "logo": "https://acoo.charbelsnn.com/assets/images/Logo.png",
+      "url": "https://club-acoo.fr/",
+      "logo": "https://club-acoo.fr/assets/images/Logo.png",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "2575 Rue de la Source",
@@ -51,8 +51,8 @@
       },
       "sport": "Aviron",
       "sameAs": [
-        "https://www.facebook.com/acoo.orleans",
-        "https://www.instagram.com/acoo.orleans"
+        "https://www.facebook.com/avironorleans",
+        "https://www.instagram.com/aviron_club_orleans_olivet"
       ]
     }
     </script>
@@ -64,7 +64,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
 
     <title>ACOO: Aviron Orléans</title>
-<script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+<script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
 </head>
 <body class="body-accueil">

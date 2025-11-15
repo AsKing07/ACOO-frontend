@@ -5,7 +5,7 @@
  * ⚠️ IMPORTANT : Cette configuration doit être synchronisée avec config.js
  * 
  * CONFIGURATION ACTUELLE DANS config.js :
- * - SITE_ID = "acoo.charbelsnn.com"
+ * - SITE_ID = "club-acoo.fr"
  * - PLAUSIBLE_API_KEY = "eWn4RufkS5Kv1iwTWLJSTXJFwTA-HMv_U45xIomzEXgl-F4Z-ygUoZHBHLfpvkRW"
  * - ANALYTICS_API_URL = "https://acoo-plausible-analytics-back.onrender.com/api/plausible" (ANCIEN - remplacé par cette API)
  * 
@@ -25,12 +25,12 @@
  * 
  * 4. SCRIPT PLAUSIBLE REQUIS DANS LES PAGES :
  *    - Ajoutez ce script dans l'en-tête (<head>) de TOUTES vos pages :
- *    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.js"></script>
+ *    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.js"></script>
  *    
  *    ⚠️ IMPORTANT : Le data-domain doit correspondre à PLAUSIBLE_SITE_ID ci-dessous
  *    
  *    Pour le site de production actuel :
- *    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.js"></script>
+ *    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.js"></script>
  */
 
 // Configuration Plausible (synchronisée avec config.js)

@@ -31,7 +31,7 @@ define('PLAUSIBLE_SITE_ID', 'votre-domaine.com');
 
 ```html
 <!-- À ajouter dans le <head> de TOUTES vos pages -->
-<script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.js"></script>
+<script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.js"></script>
 ```
 
 ⚠️ **Important** : Le `data-domain` doit correspondre exactement à votre `PLAUSIBLE_SITE_ID`
@@ -43,7 +43,7 @@ define('PLAUSIBLE_SITE_ID', 'votre-domaine.com');
 Pour que Plausible puisse collecter les données de votre site, vous devez ajouter ce script dans **toutes** vos pages :
 
 ```html
-<script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.js"></script>
+<script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.js"></script>
 ```
 
 ### Où l'ajouter :
@@ -57,7 +57,7 @@ Pour que Plausible puisse collecter les données de votre site, vous devez ajout
     <title>Mon Site ACOO</title>
     <meta charset="UTF-8">
     <!-- AJOUTER ICI -->
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.js"></script>
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
     <!-- Contenu de votre page -->

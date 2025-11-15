@@ -13,22 +13,22 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/decouverte.php">
+    <meta property="og:url" content="https://club-acoo.fr/pages/decouverte.php">
     <meta property="og:title" content="Stages & Découverte - ACOO | Initiation à l'Aviron">
     <meta property="og:description" content="Découvrez l'aviron avec nos stages d'initiation et de découverte. Tous niveaux bienvenus !">
-    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
     <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
     <meta property="og:locale" content="fr_FR">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/decouverte.php">
+    <meta name="twitter:url" content="https://club-acoo.fr/pages/decouverte.php">
     <meta name="twitter:title" content="Stages & Découverte - ACOO | Initiation à l'Aviron">
     <meta name="twitter:description" content="Découvrez l'aviron avec nos stages d'initiation et de découverte. Tous niveaux bienvenus !">
-    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta name="twitter:image" content="https://club-acoo.fr/assets/images/Logo.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/decouverte.php">
+    <link rel="canonical" href="https://club-acoo.fr/pages/decouverte.php">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/Logo.png">
@@ -41,11 +41,11 @@
       "@type": "WebPage",
       "name": "Stages & Découverte - ACOO",
       "description": "Page dédiée aux stages et à la découverte de l'aviron au club ACOO",
-      "url": "https://acoo.charbelsnn.com/pages/decouverte.php",
+      "url": "https://club-acoo.fr/pages/decouverte.php",
       "isPartOf": {
         "@type": "WebSite",
         "name": "ACOO - Aviron Club Orléans",
-        "url": "https://acoo.charbelsnn.com/"
+        "url": "https://club-acoo.fr/"
       },
       "about": {
         "@type": "SportsClub",
@@ -66,7 +66,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
 
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 </head>
 <body class="body-decouverte">
 

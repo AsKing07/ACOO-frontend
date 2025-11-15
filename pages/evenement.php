@@ -3,14 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Calendrier des Événements ACOO - Compétitions & Entraînements | Aviron Orléans Olivet</title>
+    <meta name="description" content="Consultez le calendrier complet des événements, compétitions et entraînements de l'ACOO. Restez informé de toutes nos activités d'aviron à Orléans-Olivet.">
+    <meta name="keywords" content="calendrier aviron, événements ACOO, compétitions aviron Orléans, entraînements aviron, agenda club aviron, planning aviron">
+    <meta name="author" content="ACOO - Aviron Club Orléans Olivet">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <meta name="theme-color" content="#1a4d8f">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://club-acoo.fr/pages/evenement.php">
+    <meta property="og:title" content="Calendrier des Événements ACOO | Aviron Orléans Olivet">
+    <meta property="og:description" content="Consultez le calendrier complet des événements, compétitions et entraînements de l'ACOO.">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans Olivet">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@aviron_acoo">
+    <meta name="twitter:creator" content="@aviron_acoo">
+    <meta name="twitter:url" content="https://club-acoo.fr/pages/evenement.php">
+    <meta name="twitter:title" content="Calendrier des Événements ACOO">
+    <meta name="twitter:description" content="Calendrier des événements, compétitions et entraînements de l'ACOO.">
+    <meta name="twitter:image" content="https://club-acoo.fr/assets/images/Logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://club-acoo.fr/pages/evenement.php">
+    
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="fr" href="https://club-acoo.fr/pages/evenement.php">
+    <link rel="alternate" hreflang="x-default" href="https://club-acoo.fr/pages/evenement.php">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://plausible.io">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/Logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/Logo.png">
+    <link rel="manifest" href="../site.webmanifest">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EventSchedule",
+      "name": "Calendrier des Événements ACOO",
+      "description": "Calendrier des événements et compétitions du club d'aviron ACOO",
+      "url": "https://club-acoo.fr/pages/evenement.php",
+      "organizer": {
+        "@type": "SportsClub",
+        "name": "ACOO - Aviron Club Orléans Olivet",
+        "sameAs": [
+          "https://www.facebook.com/avironorleans",
+          "https://www.instagram.com/aviron_club_orleans_olivet"
+        ]
+      }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://club-acoo.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Événements",
+          "item": "https://club-acoo.fr/pages/evenement.php"
+        }
+      ]
+    }
+    </script>
+    
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <title>ACOO: Calendrier des Événements</title>
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+    
+    <!-- Plausible Analytics -->
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 </head>
 
-<body class="body-evenement">
-    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
+<body class="body-evenement" itemscope itemtype="https://schema.org/WebPage">
+    <?php include_once __DIR__ . '/../templates/components/layout/header.php'; ?>
     
     <section id="evenement_page">
         <div class="page-header">
@@ -187,6 +277,6 @@
 
     <script type="module" src="../script/pages/evenement.js"></script>
     <script type="module" src="../script/navbar.js"></script>
-    <?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
+    <?php include_once __DIR__ . '/../templates/components/layout/footer.php'; ?>
 </body>
 </html>

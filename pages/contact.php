@@ -1,37 +1,58 @@
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <!-- SEO Meta Tags -->
-    <title>Contact ACOO - Nous Contacter | Aviron Club Orléans</title>
-    <meta name="description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans. Adresse, téléphone, email, horaires. FAQ et formulaire de contact disponibles.">
-    <meta name="keywords" content="contact ACOO, contacter club aviron Orléans, adresse ACOO, téléphone aviron, email club, FAQ aviron">
-    <meta name="author" content="ACOO - Aviron Club Orléans">
-    <meta name="robots" content="index, follow">
+    <title>Contact ACOO - Nous Contacter | Aviron Club Orléans Olivet</title>
+    <meta name="description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans-Olivet. Adresse : 2575 Rue de la Source. FAQ, formulaire de contact et coordonnées complètes disponibles.">
+    <meta name="keywords" content="contact ACOO, contacter club aviron Orléans, adresse ACOO, téléphone aviron, email club, FAQ aviron, horaires club aviron">
+    <meta name="author" content="ACOO - Aviron Club Orléans Olivet">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <meta name="theme-color" content="#1a4d8f">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/contact.php">
-    <meta property="og:title" content="Contact ACOO - Nous Contacter | Aviron Club Orléans">
-    <meta property="og:description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans. Formulaire de contact et coordonnées disponibles.">
-    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
-    <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
+    <meta property="og:url" content="https://club-acoo.fr/pages/contact.php">
+    <meta property="og:title" content="Contact ACOO - Nous Contacter | Aviron Club Orléans Olivet">
+    <meta property="og:description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans-Olivet. Formulaire de contact et coordonnées disponibles.">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Logo ACOO">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans Olivet">
     <meta property="og:locale" content="fr_FR">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/contact.php">
+    <meta name="twitter:site" content="@aviron_acoo">
+    <meta name="twitter:creator" content="@aviron_acoo">
+    <meta name="twitter:url" content="https://club-acoo.fr/pages/contact.php">
     <meta name="twitter:title" content="Contact ACOO - Nous Contacter">
-    <meta name="twitter:description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans. Formulaire de contact et coordonnées.">
-    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta name="twitter:description" content="Contactez l'ACOO pour toute information sur l'aviron à Orléans-Olivet. Formulaire de contact et coordonnées.">
+    <meta name="twitter:image" content="https://club-acoo.fr/assets/images/Logo.png">
+    <meta name="twitter:image:alt" content="Logo ACOO">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/contact.php">
+    <link rel="canonical" href="https://club-acoo.fr/pages/contact.php">
+    
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="fr" href="https://club-acoo.fr/pages/contact.php">
+    <link rel="alternate" hreflang="x-default" href="https://club-acoo.fr/pages/contact.php">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://plausible.io">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    <link rel="preconnect" href="https://www.google.com">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/images/Logo.png">
-    <link rel="apple-touch-icon" href="../assets/images/Logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/Logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/Logo.png">
+    <link rel="manifest" href="../site.webmanifest">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -39,29 +60,65 @@
       "@context": "https://schema.org",
       "@type": "ContactPage",
       "name": "Contact ACOO",
-      "description": "Page de contact du club d'aviron ACOO d'Orléans",
-      "url": "https://acoo.charbelsnn.com/pages/contact.php",
+      "description": "Page de contact du club d'aviron ACOO d'Orléans-Olivet",
+      "url": "https://club-acoo.fr/pages/contact.php",
       "mainEntity": {
         "@type": "SportsClub",
-        "name": "ACOO - Aviron Club Orléans",
+        "name": "ACOO - Aviron Club Orléans Olivet",
+        "telephone": "+33-2-38-XX-XX-XX",
+        "email": "contact@club-acoo.fr",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "2575 Rue de la Source",
           "addressLocality": "Orléans",
+          "addressRegion": "Centre-Val de Loire",
           "postalCode": "45160",
           "addressCountry": "FR"
-        }
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "47.8489",
+          "longitude": "1.9092"
+        },
+        "sameAs": [
+          "https://www.facebook.com/avironorleans",
+          "https://www.instagram.com/aviron_club_orleans_olivet"
+        ]
       }
+    }
+    </script>
+    
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://club-acoo.fr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact",
+          "item": "https://club-acoo.fr/pages/contact.php"
+        }
+      ]
     }
     </script>
     
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+    
+    <!-- Plausible Analytics -->
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 
 </head>
-<body class="body-contact">
-    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
+<body class="body-contact" itemscope itemtype="https://schema.org/WebPage">
+    <?php include_once __DIR__ . '/../templates/components/layout/header.php'; ?>
     
     <?php include __DIR__ . '/../templates/components/faq.php'; ?>
     

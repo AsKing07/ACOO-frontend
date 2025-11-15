@@ -3,30 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
     <!-- SEO Meta Tags -->
-    <title>Politique de cookies - ACOO | Aviron Club Orléans</title>
-    <meta name="description" content="Politique de cookies de l'ACOO - Comment nous utilisons les cookies sur notre site web pour améliorer votre expérience de navigation.">
-    <meta name="keywords" content="cookies, politique, confidentialité, ACOO, aviron, Orléans">
-    <meta name="author" content="ACOO - Aviron Club Orléans">
-    <meta name="robots" content="index, follow">
+    <title>Politique de Cookies - ACOO | Aviron Club Orléans Olivet</title>
+    <meta name="description" content="Politique de cookies de l'ACOO - Comment nous utilisons les cookies sur notre site web pour améliorer votre expérience de navigation. Gestion et confidentialité.">
+    <meta name="keywords" content="cookies ACOO, politique cookies, confidentialité, RGPD, aviron Orléans, gestion cookies, Plausible Analytics">
+    <meta name="author" content="ACOO - Aviron Club Orléans Olivet">
+    <meta name="robots" content="index, follow, max-snippet:-1">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/cookies.php">
-    <meta property="og:title" content="Politique de cookies - ACOO">
+    <meta property="og:url" content="https://club-acoo.fr/pages/cookies.php">
+    <meta property="og:title" content="Politique de Cookies - ACOO">
     <meta property="og:description" content="Politique de cookies de l'ACOO - Comment nous utilisons les cookies sur notre site web.">
-    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
+    <meta property="og:site_name" content="ACOO - Aviron Club Orléans Olivet">
+    <meta property="og:locale" content="fr_FR">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/cookies.php">
+    <link rel="canonical" href="https://club-acoo.fr/pages/cookies.php">
+    
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="fr" href="https://club-acoo.fr/pages/cookies.php">
+    <link rel="alternate" hreflang="x-default" href="https://club-acoo.fr/pages/cookies.php">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://plausible.io">
+    <link rel="dns-prefetch" href="https://kit.fontawesome.com">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/Logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/Logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/Logo.png">
+    <link rel="manifest" href="../site.webmanifest">
     
     <script src="https://kit.fontawesome.com/5563162149.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/styles.css">
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+    
+    <!-- Plausible Analytics -->
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 </head>
-<body class="body-cookies">
-    <?php include __DIR__ . '/../templates/components/layout/header.php'; ?>
+<body class="body-cookies" itemscope itemtype="https://schema.org/WebPage">
+    <?php include_once __DIR__ . '/../templates/components/layout/header.php'; ?>
 
     <main class="cookies-main">
         <h1>Politique de cookies</h1>
@@ -119,9 +138,9 @@
     </main>
 
   <!-- Footer -->
-<?php include __DIR__ . '/../templates/components/layout/footer.php'; ?>
+<?php include_once __DIR__ . '/../templates/components/layout/footer.php'; ?>
 
-</body>
 <script src="../script/navbar.js"></script>
 <script type="module" src="../script/cookies.js"></script>
+</body>
 </html>

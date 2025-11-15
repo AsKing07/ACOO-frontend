@@ -74,6 +74,22 @@
  # Sécurité : désactiver la liste des fichiers
  Options -Indexes
  
+ # En-têtes de sécurité pour le SEO et la sécurité
+ <IfModule mod_headers.c>
+   Header set X-Content-Type-Options "nosniff"
+   Header set X-Frame-Options "SAMEORIGIN"
+   Header set X-XSS-Protection "1; mode=block"
+   Header set Referrer-Policy "strict-origin-when-cross-origin"
+   
+   # Cache-Control pour les ressources statiques
+   <FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|webp|svg|js|css|woff|woff2|ttf|eot)$">
+     Header set Cache-Control "max-age=31536000, public, immutable"
+   </FilesMatch>
+ </IfModule>
+ 
+ # Charset UTF-8 par défaut
+ AddDefaultCharset UTF-8
+ 
  # Protection contre les injections
  <IfModule mod_rewrite.c>
    RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]

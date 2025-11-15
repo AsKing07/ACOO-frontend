@@ -13,22 +13,22 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://acoo.charbelsnn.com/pages/reglement_interieur.php">
+    <meta property="og:url" content="https://club-acoo.fr/pages/reglement_interieur.php">
     <meta property="og:title" content="Vie du Club & Règlement Intérieur - ACOO">
     <meta property="og:description" content="Découvrez la vie du club ACOO et téléchargez notre règlement intérieur.">
-    <meta property="og:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta property="og:image" content="https://club-acoo.fr/assets/images/Logo.png">
     <meta property="og:site_name" content="ACOO - Aviron Club Orléans">
     <meta property="og:locale" content="fr_FR">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://acoo.charbelsnn.com/pages/reglement_interieur.php">
+    <meta name="twitter:url" content="https://club-acoo.fr/pages/reglement_interieur.php">
     <meta name="twitter:title" content="Vie du Club & Règlement Intérieur - ACOO">
     <meta name="twitter:description" content="Découvrez la vie du club ACOO et téléchargez notre règlement intérieur.">
-    <meta name="twitter:image" content="https://acoo.charbelsnn.com/assets/images/Logo.png">
+    <meta name="twitter:image" content="https://club-acoo.fr/assets/images/Logo.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://acoo.charbelsnn.com/pages/reglement_interieur.php">
+    <link rel="canonical" href="https://club-acoo.fr/pages/reglement_interieur.php">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/Logo.png">
@@ -41,11 +41,11 @@
       "@type": "WebPage",
       "name": "Vie du Club & Règlement Intérieur - ACOO",
       "description": "Page dédiée à la vie du club et au règlement intérieur de l'ACOO",
-      "url": "https://acoo.charbelsnn.com/pages/reglement_interieur.php",
+      "url": "https://club-acoo.fr/pages/reglement_interieur.php",
       "isPartOf": {
         "@type": "WebSite",
         "name": "ACOO - Aviron Club Orléans",
-        "url": "https://acoo.charbelsnn.com/"
+        "url": "https://club-acoo.fr/"
       },
       "about": {
         "@type": "SportsClub",
@@ -61,7 +61,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap" rel="stylesheet">
 
-    <script defer data-domain="acoo.charbelsnn.com" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
+    <script defer data-domain="club-acoo.fr" src="https://plausible.io/js/script.file-downloads.outbound-links.js"></script>
 </head>
 <body class="body-reglement">
 
