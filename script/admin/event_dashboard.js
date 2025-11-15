@@ -914,7 +914,7 @@ class UnifiedCalendarManager {
     updateStatusBadge(statusElement, itemData, itemType) {
         let statusText = '';
         let statusClass = 'badge badge-status';
-         const endDate = this.parseDateTime(itemData.endDatetime);
+         const endDate = this.parseApiDateTime(itemData.endDatetime);
             const now = new Date();
         
         switch (itemType) {

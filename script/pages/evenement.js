@@ -156,7 +156,7 @@ class OptimizedCalendar {
         if (!this.filters.type || this.filters.type === 'event') {
             let events = this.allEvents;
             if (this.filters.sport) {
-                events = events.filter(event => event.sport == this.filters.sport);
+                events = events.filter(event => event.sport.id == this.filters.sport);
             }
             this.filteredItems.push(...events.map(item => ({...item, itemType: 'event'})));
         }
@@ -165,7 +165,7 @@ class OptimizedCalendar {
         if (!this.filters.type || this.filters.type === 'recurring') {
             let recurring = this.allRecurringSchedules;
             if (this.filters.sport) {
-                recurring = recurring.filter(schedule => schedule.sport == this.filters.sport);
+                recurring = recurring.filter(schedule => schedule.sport.id == this.filters.sport);
             }
             const recurringItems = recurring.map(item => ({...item, itemType: 'recurring'}));
             console.log('🔄 Horaires récurrents filtrés:', recurringItems);
@@ -178,7 +178,7 @@ class OptimizedCalendar {
             if (this.filters.sport) {
                 exceptions = exceptions.filter(exception => {
                     const schedule = this.allRecurringSchedules.find(s => s.id == exception.recurring_schedule);
-                    return schedule && schedule.sport == this.filters.sport;
+                    return schedule && schedule.sport.id == this.filters.sport;
                 });
             }
             this.filteredItems.push(...exceptions.map(item => ({...item, itemType: 'exception'})));
