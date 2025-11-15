@@ -70,7 +70,7 @@ getStaff()
         box.appendChild(imageBox);
 
         let image = document.createElement('img');
-        image.src = personnel.image
+        image.src = personnel.image? personnel.image : '/assets/images/default-avatar.png'; 
         imageBox.appendChild(image);
 
         let infoBox = document.createElement('div');

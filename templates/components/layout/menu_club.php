@@ -10,7 +10,7 @@
     </div>
     <div class="ram" data-target="club_equipe">
       <img src="../assets/images/rame.png" alt="rame">
-      <span>Equipe</span>
+      <span>Staff</span>
     </div>
     <div class="ram" data-target="club_sports">
       <img src="../assets/images/rame.png" alt="rame">
