@@ -17,6 +17,8 @@
     <div class="login-error" id="forgot-error"></div>
     <div class="login-success" id="forgot-success" style="display: none; color: #00d876; background: #e8f5e8; border-radius: 6px; padding: 0.7rem 1rem; margin-bottom: 1rem; font-size: 0.98rem; text-align: center;">
       Un lien de réinitialisation a été envoyé à votre adresse email.
+      Vérifiez votre boîte de réception et vos spams.
+      Redirection vers la page de connexion dans quelques instants.
     </div>
    
     <form class="form" id="forgot-form" autocomplete="on">
@@ -60,7 +62,7 @@
         // Optionnel: rediriger vers la page de connexion après 3 secondes
         setTimeout(() => {
           window.location.href = '/pages/admin/auth/login.php';
-        }, 3000);
+        }, 10000);
         
       } catch (err) {
         console.error(err);

@@ -8,9 +8,12 @@ getIntroductionByTitle('A propos de nous').then(data => {
     console.log("Introduction Data fetched from API:", data);;
 
     const aboutUsText  = document.querySelector('.about-text');
+    const aboutUsImage = document.querySelector('.about-section__content img');
 
    
         aboutUsText.textContent = data[0].description;
+        aboutUsImage.src = data[0].image;
+        aboutUsImage.alt = data[0].title;
     
 }).catch(error => {
     console.error("Error fetching introduction data:", error);

@@ -1,13 +1,13 @@
 import {User} from '../models/User.js';
 import {API_BASE_URL} from '../config.js';
 
-export async function login(username, password) {
+export async function login(email, password) {
   const response = await fetch(`${API_BASE_URL}/api/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ username, password })
+    body: JSON.stringify({ email, password })
   });
 
     if (!response.ok) {
@@ -31,7 +31,7 @@ export async function logout() {
 }
 
 export async function register(username, email, password) {
-  const response = await fetch(`${API_BASE_URL}/register`, {
+  const response = await fetch(`${API_BASE_URL}/api/admin/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

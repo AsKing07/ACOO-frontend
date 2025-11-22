@@ -16,8 +16,8 @@
          <form class="form" id="login-form" autocomplete="on">
       
         <div class="form__group">
-            <input class="form__input" type="text" placeholder="" id="username" name="username" required autocomplete="username">
-            <label class="form__label" for="username">Nom d'utilisateur</label>
+            <input class="form__input" type="email" placeholder="" id="email" name="email" required autocomplete="email">
+            <label class="form__label" for="email">Email</label>
         </div>
       <div class="form__group">
         <input class="form__input" placeholder="" type="password" id="password" name="password" required autocomplete="current-password">
@@ -45,7 +45,7 @@
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       errorDiv.style.display = 'none';
-      const username = form.username.value.trim();
+      const email = form.email.value.trim();
       const password = form.password.value;
       const loginButton = form.querySelector('.login-btn');
 
@@ -53,7 +53,7 @@
         
         loginButton.disabled = true; // Désactiver le bouton pour éviter les soumissions multiples
         loginButton.innerHTML = `<span class="loader" style="width:18px;height:18px;border-width:3px;vertical-align:middle; color:white;"></span>`;
-        await login(username, password);
+        await login(email, password);
          window.location.href = '/pages/admin/index.php';
       
       } catch (err) {

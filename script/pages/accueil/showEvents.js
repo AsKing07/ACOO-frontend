@@ -40,7 +40,7 @@ async function showLastTwoEvents() {
           return (dateB || 0) - (dateA || 0);
       });
 
-    const twoLatest = sorted.slice(0, 2).reverse();
+    const twoLatest = sorted.slice(0, 2);
 
     const container = document.getElementById('event-section-accueil__cards');
     container.innerHTML = twoLatest.map(event => `
