@@ -400,7 +400,13 @@ async function uploadWordingFile() {
 
 // Fonction pour télécharger le règlement intérieur
 function downloadWordingFile() {
-  window.open('/assets/docs/reglement_club.pdf', '_blank');
+  const link = document.createElement('a');
+  link.href = '/assets/docs/reglement_club.pdf';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // Fonction pour uploader le guide d'inscription
@@ -443,7 +449,13 @@ async function uploadGuideFile() {
 
 // Fonction pour télécharger le guide d'inscription
 function downloadGuideFile() {
-  window.open('/assets/docs/guide_inscription.pdf', '_blank');
+  const link = document.createElement('a');
+  link.href = '/assets/docs/guide_inscription.pdf';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 // Fonction pour uploader les CGU
@@ -486,7 +498,13 @@ async function uploadCguFile() {
 
 // Fonction pour télécharger les CGU
 function downloadCguFile() {
-  window.open('/assets/docs/CGU.pdf', '_blank');
+  const link = document.createElement('a');
+  link.href = '/assets/docs/CGU.pdf';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
     // Gestion des événements pour le règlement intérieur
