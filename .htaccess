@@ -31,9 +31,10 @@
  RewriteCond %{THE_REQUEST} ^GET\ .*/index\.php
  RewriteRule ^(.+)/index\.php$ /$1/ [R=301,L]
  
- # Ajouter un slash final aux répertoires
- RewriteCond %{REQUEST_FILENAME} !-f
- RewriteCond %{REQUEST_URI} !(.*)/$
+# Ajouter un slash final aux répertoires (sauf fichiers avec extension)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteCond %{REQUEST_URI} !\.(pdf|jpg|jpeg|png|gif|css|js|txt|xml|ico|svg|webp|mp4|webm)$
  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [R=301,L]
  </IfModule>
  
